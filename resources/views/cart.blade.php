@@ -172,7 +172,7 @@
                                     </div>
                                     <div class="row py-2">
                                         <div class="col-12">
-                                            <a href="checkout.html"><input type="submit" value="ادامه ثبت سفارش" class="btn btn-success w-100"></a>
+                                            <a href="{{route('checkout')}}"><input type="submit" value="ادامه ثبت سفارش" class="btn btn-success w-100"></a>
                                         </div>
                                     </div>
                                 </div>

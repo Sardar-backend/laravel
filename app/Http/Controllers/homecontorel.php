@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\activecode;
 use App\Models\Product as ModelsProduct;
-
+use App\Models\User;
 use Illuminate\Http\Request;
 class homecontorel extends Controller
 {
     public function index(){
         $pro = ModelsProduct::orderby('id')->get();
-        return view('index');
+        return view('index')->with('pro', $pro);
     }
 
     public function about(){
@@ -18,6 +19,7 @@ class homecontorel extends Controller
 
 
     public function contact(){
+        // alert()->success();
         return view('contact');
     }
 
@@ -53,5 +55,26 @@ class homecontorel extends Controller
         return view('checkout');
     }
 
+    public function getauth2 (){
+        return view('auth2');
+    }
 
+    public function postauth2(Request $request){
+        $data = $request->validate([
+            'phonenumber' => 'required'
+        ]);
+        return $data;
+    }
+
+    public function tokengetauth2 () {
+        return view('tokenauth2');
+    }
+
+    public function activcode(){
+        User::create([
+            'code' => 1111 ,
+            'expired_at'=> now()->addMinutes(10)
+
+        ]);
+    }
 }

@@ -70,6 +70,7 @@
 
         <!-- Products -->
         <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-md-4 featured-product featured" data-aos="fade-up" data-aos-duration="1000">
+            @foreach ($pro as $p)
             <div class="col">
                 <!-- Product Box -->
                 <div class="col">
@@ -86,7 +87,7 @@
                                 &nbsp;/&nbsp;
                                 <a href="products.html">سامسونگ</a>
                             </div>
-                            <a href="product.html"><h2>گوشی موبایل سامسونگ مدل Galaxy A51 دو سیم کارت</h2></a>
+                            <a href="product.html"><h2>{{$p->name}}</h2></a>
                             <div class="encode4365gbf265g43d">6.000.000 تومان</div>
                             <div class="rate">
                                 <i class="fa fa-star-half-alt"></i>
@@ -102,90 +103,7 @@
                 </div>
                 <!-- /Product Box -->
             </div>
-            <div class="col">
-                <!-- Product Box -->
-                <div class="encode4326654321vfb">
-                    <a href="product.html"><div class="image" style="background-image: url('assets/images/products/p200.png')"></div></a>
-                    <div class="icons">
-                        <div class="btn btn-outline-secondary encode43243d"></div>
-                        <div class="btn btn-outline-secondary encode43bf243d"></div>
-                    </div>
-                    <div class="details p-3">
-                        <div class="category">
-                            <a href="products.html">گوشی موبایل</a>
-                            &nbsp;/&nbsp;
-                            <a href="products.html">سامسونگ</a>
-                        </div>
-                        <a href="product.html"><h2>لپ تاپ 15 اینچی ایسوس مدل VivoBook X543MA-DM905</h2></a>
-                        <div class="encode4365gbf265g43d">6.000.000 تومان</div>
-                        <div class="rate">
-                            <i class="fa fa-star-half-alt"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <span class="encode43bf265g43d">(14 رای دهنده)</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- /Product Box -->
-            </div>
-            <div class="col">
-                <!-- Product Box -->
-                <div class="encode4326654321vfb">
-                    <a href="product.html"><div class="image" style="background-image: url('assets/images/products/p300.png')"></div></a>
-                    <div class="icons">
-                        <div class="btn btn-outline-secondary encode43243d"></div>
-                        <div class="btn btn-outline-secondary encode43bf243d"></div>
-                    </div>
-                    <div class="details p-3">
-                        <div class="category">
-                            <a href="products.html">گوشی موبایل</a>
-                            &nbsp;/&nbsp;
-                            <a href="products.html">سامسونگ</a>
-                        </div>
-                        <a href="product.html"><h2>هدفون بی سیم سامسونگ مدل Galaxy Buds Live</h2></a>
-                        <div class="encode4365gbf265g43d">6.000.000 تومان</div>
-                        <div class="rate">
-                            <i class="fa fa-star-half-alt"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <span class="encode43bf265g43d">(14 رای دهنده)</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- /Product Box -->
-            </div>
-            <div class="col">
-                <!-- Product Box -->
-                <div class="encode4326654321vfb">
-                    <a href="product.html"><div class="image" style="background-image: url('assets/images/products/p400.png')"></div></a>
-                    <div class="icons">
-                        <div class="btn btn-outline-secondary encode43243d"></div>
-                        <div class="btn btn-outline-secondary encode43bf243d"></div>
-                    </div>
-                    <div class="details p-3">
-                        <div class="category">
-                            <a href="products.html">گوشی موبایل</a>
-                            &nbsp;/&nbsp;
-                            <a href="products.html">سامسونگ</a>
-                        </div>
-                        <a href="product.html"><h2>دوربین دیجیتال کانن مدل EOS 2000D به همراه لنز 18-55 میلی متر DC III</h2></a>
-                        <div class="encode4365gbf265g43d">6.000.000 تومان</div>
-                        <div class="rate">
-                            <i class="fa fa-star-half-alt"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <span class="encode43bf265g43d">(14 رای دهنده)</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- /Product Box -->
-            </div>
+            @endforeach
         </div>
 
         <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-md-4 featured-product on-sale">

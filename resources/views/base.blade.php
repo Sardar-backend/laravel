@@ -57,10 +57,16 @@
                 </div>
                 <div class="col-12 col-md-4">
                     <div class="row">
+                        @guest
                         <div class="col-12 col-md-7 col-lg-6 text-center" id="btn-login-register">
-                            <a href={{route('login')}}>ورود</a> /
-                            <a href="register.html">عضویت</a>
+                            <a href=>ورود</a> /
+                            <a href="">عضویت</a>
                         </div>
+                        @else
+                        <div class="col-12 col-md-7 col-lg-6 text-center" id="btn-login-register">
+                            <a href="">{{Auth::user()->name}}</a>
+                        </div>
+                        @endguest
                         <div class="col-12 col-md-5 col-lg-6">
                             <a href={{route('cart')}}>
                                 <div class="btn btn-warning w-100"><i class="fa fa-shopping-cart"></i>&nbsp;<span class="d-md-none d-lg-inline-block">سبد خرید</span> (2)</div>
@@ -329,10 +335,10 @@
                                                 <a href="#" aria-expanded="false">سایر صفحات<em class="droopmenu-topanim"></em></a><div class="dm-arrow"></div>
                                                 <ul style="">
                                                     <li><a href="compare.html">مقایسه محصول</a></li>
-                                                    <li><a href={{route('cart')}}>سبد خرید</a></li>
-                                                    <li><a href="checkout.html">پیش فاکتور</a></li>
+                                                    <li><a href="">سبد خرید</a></li>
+                                                    <li><a href=""checkout.html">پیش فاکتور</a></li>
                                                     <li class="dm-bottom-separator"></li>
-                                                    <li><a href={{route('login')}}>ورود به سایت</a></li>
+                                                    <li><a href=>ورود به سایت</a></li>
                                                     <li><a href="register.html">عضویت در سایت</a></li>
                                                     <li><a href="reset-password.html">بازگردانی رمز عبور</a></li>
                                                     <li class="dm-bottom-separator"></li>
@@ -427,10 +433,10 @@
             <div class="col-6 col-sm-4 col-lg-2 d-none d-sm-inline-block">
                 <div class="title">ناحیه کاربری</div>
                 <ul>
-                    <li><a href={{route('login')}}>ورود به سایت</a></li>
+                    <li><a href="">ورود به سایت</a></li>
                     <li><a href="register.html">عضویت در سایت</a></li>
                     <li><a href="reset-password.html">بازیابی رمز عبور</a></li>
-                    <li><a href={{route('cart')}}>سبد خرید</a></li>
+                    <li><a href="">سبد خرید</a></li>
                     <li><a href="checkout.html">پیش فاکتور</a></li>
                 </ul>
             </div>

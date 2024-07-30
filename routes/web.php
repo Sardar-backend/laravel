@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/',[\App\Http\Controllers\homecontorel::class,'index'])->name('index');
+Route::get('/home',[\App\Http\Controllers\homecontorel::class,'index'])->name('index');
 
 Route::get('/about',[\App\Http\Controllers\homecontorel::class,'about'])->name('about');
 
@@ -18,27 +18,32 @@ Route::get('/products-list',[\App\Http\Controllers\homecontorel::class,'products
 
 Route::get('/compare',[\App\Http\Controllers\homecontorel::class,'compare'])->name('compare');
 
-Route::get('/cart',[\App\Http\Controllers\homecontorel::class,'cart'])->name('cart');
+Route::get('/cart',[\App\Http\Controllers\homecontorel::class,'cart'])->name('cart')->middleware(['auth','password.confirm']);
 
-Route::get('/checkout',[\App\Http\Controllers\homecontorel::class,'checkout'])->name('checkout');
+Route::get('/checkout',[\App\Http\Controllers\homecontorel::class,'checkout'])->name('checkout')->middleware('password.confirm');
 
 
-Route::prefix('auth')->group(function(){
+Route::get('/auth2',[\App\Http\Controllers\homecontorel::class,'getauth2'])->name('auth2');
+Route::post('/auth2',[\App\Http\Controllers\homecontorel::class,'postauth2'])->name('postauth2');
 
-    Route::get('/login',[App\Http\Controllers\authcontroll\authcontorel::class,'login'])->name('login');
+Route::get('/t_auth2',[\App\Http\Controllers\homecontorel::class,'tokengetauth2'])->name('t_auth2');
+Route::post('/t_auth2',[\App\Http\Controllers\homecontorel::class,'tokenpostauth2']);
 
-    Route::get('/reset',[App\Http\Controllers\authcontroll\authcontorel::class,'reset'])->name('reset');
 
-    Route::get('/register',[App\Http\Controllers\authcontroll\authcontorel::class,'register'])->name('register');
-});
+Route::get('/adresses',[\App\Http\Controllers\admin\usercontorel::class,'adresses'])->name('adresses');
 
-Route::prefix('profile')->group(function(){
+Route::get('/factors',[\App\Http\Controllers\admin\usercontorel::class,'factors'])->name('factors');
 
-    Route::get('/adresses',[\App\Http\Controllers\admin\usercontorel::class,'adresses'])->name('adresses');
+Route::get('/favorites',[\App\Http\Controllers\admin\usercontorel::class,'favorites'])->name('favorites');
 
-    Route::get('/factors',[\App\Http\Controllers\admin\usercontorel::class,'factors'])->name('factors');
+Route::get('/personal',[\App\Http\Controllers\admin\usercontorel::class,'personal'])->name('personal');
 
-    Route::get('/favorites',[\App\Http\Controllers\admin\usercontorel::class,'favorites'])->name('favorites');
+Route::get('/p',[\App\Http\Controllers\authcontroll\authcontorel::class,'login'])->name('per');
+Route::get('/x',[\App\Http\Controllers\authcontroll\authcontorel::class,'log'])->name('x');
+Route::post('/p',[\App\Http\Controllers\authcontroll\authcontorel::class,'po'])->name('perp');
 
-    Route::get('/personal',[\App\Http\Controllers\admin\usercontorel::class,'personal'])->name('personal');
-});
+
+// Auth::routes();
+
+Route::get('/auth/google',[\App\Http\Controllers\Auth\googleAuthcontroller::class,'redirect'])->name('auth.google');
+Route::get('/auth/google/callback',[\App\Http\Controllers\Auth\googleAuthcontroller::class,'callback']);

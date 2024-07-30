@@ -116,7 +116,7 @@
                                                     <div class="col-12 px-0">
                                                         <div class="row py-2 px-3">
                                                             <div class="col-12">
-                                                                <div class="pb-1 title">انتخاب تاریخ تحویل</div>
+                                                                <div class="pادامه ثبت سفارش-1 title">انتخاب تاریخ تحویل</div>
                                                                 <div class="row">
                                                                     <!-- Date -->
                                                                     <div class="col-6 col-sm-4 col-lg-2 pt-3 pt-md-0 pl-2">

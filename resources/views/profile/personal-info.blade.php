@@ -1,6 +1,6 @@
-
 @extends('base')
 @section('content')
+
 <section class="inner-page" id="profile-page">
     <div class="container-fluid" id="page-hero">
         <div class="row">
@@ -74,6 +74,13 @@
                                                     <a href="addresses.html">
                                                         <div>
                                                             <div class="icon d-inline-block"><img src="../assets/images/icons/profile-menu/addresses.webp" class="pl-2"></div> آدرس های من
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href={{route('auth2')}}>
+                                                        <div>
+                                                            <div class="icon d-inline-block"><img src="../assets/images/icons/profile-menu/right to bracket.svg" class="pl-2"></div> فعال سازی احراز هویت دو مرحله ای
                                                         </div>
                                                     </a>
                                                 </li>

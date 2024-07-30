@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('contacts', function (Blueprint $table) {
+        Schema::create('contactss', function (Blueprint $table) {
             $table->id()->primary();
             $table->string('name');
             $table->integer('number-phone');
@@ -34,18 +34,18 @@ return new class extends Migration
             $table->timestamp('failed_at')->useCurrent();
         });
 
-        Schema::create('USERES', function (Blueprint $table) {
-            $table->id()->primary();
-            $table->string('full_name');
-            $table->integer('number');
-            $table->char('email');
-            $table->integer('cart_number');
-            $table->dateTime('birthday');
-            $table->char('password');
-            $table->char('image');
-            $table->integer('home_number');
-            $table->timestamp('failed_at')->useCurrent();
-        });
+        // Schema::create('USERES', function (Blueprint $table) {
+        //     $table->id()->primary();
+        //     $table->string('full_name');
+        //     $table->integer('number');
+        //     $table->char('email');
+        //     $table->integer('cart_number');
+        //     $table->dateTime('birthday');
+        //     $table->char('password');
+        //     $table->char('image');
+        //     $table->integer('home_number');
+        //     $table->timestamp('failed_at')->useCurrent();
+        // });
 
         Schema::create('adresses', function (Blueprint $table) {
             $table->id()->primary();
@@ -89,7 +89,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('contact');
-        Schema::dropIfExists('USER');
+        // Schema::dropIfExists('USER');
         Schema::dropIfExists('blog');
         Schema::dropIfExists('blog_category');
         Schema::dropIfExists('comment');
