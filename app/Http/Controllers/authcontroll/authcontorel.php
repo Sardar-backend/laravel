@@ -7,10 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Models\activecode;
 
 use App\Models\User;
-
+use App\Notifications\notificationCode;
 use Illuminate\Http\Request;
-
-
+use Illuminate\Notifications\Notification;
 
 class authcontorel extends Controller
 {
@@ -19,37 +18,41 @@ class authcontorel extends Controller
         return view('p')->with('u',$u);
     }
     public function po(Request $request) {
-        $g= $request->name;
-        $u = User::where('phonenumber', $g)->get();
+        $gnn= $request->name;
+        $u = User::where('phonenumber', $gnn)->get();
         try {
             $w= $u[0]->id;
         } catch (\Throwable $th) {
             $w= null;
         }
 
-        $g = User::find($w);
+        $g= User::find($w);
         if ($g) {
             $code = activecode::createcode();
-            $b= $u[0]->activecode()->whereCode($code)->first();
-            dd($u[0]->activecode[0]->code);
-            //  return view('p')->with('u', $u);
+            // $b= $u[0]->activecode()->whereCode($code)->first();
+            $fd=$u[0]->activecode[0]->code;
+            // new notificationCode($code,$gnn);
+            return view('enter2')->with('u', $fd);
         }else {
 
              User::create([
                  'phonenumber' => request('name')
              ]);
+             $cb = User::where('phonenumber',$gnn)->get();
              $code = activecode::createcode();
              activecode::create([
-                 'user_id' =>2,
+                 'user_id' =>$cb[0]->id,
                  'code' => $code,
                  'expired_at'=> now()->addMinutes(10)
              ]);
-
-
-             return $code;
+             new notificationCode($code,$gnn);
+            // return $code;
+            return view('enter2')->with('u', $code);
         }
     }
-
+    public function enter2(){
+        return view('enter2');
+    }
     public function log (){
         $vv = activecode::where('code',1111)->first();
         if ($vv) {

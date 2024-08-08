@@ -1,5 +1,7 @@
 @extends('base')
 
+
+
 @section('content')
 <section class="inner-page" id="contact-page">
     <div class="container-fluid" id="page-hero">
@@ -54,7 +56,16 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            </div><br>
+                            </div>
+                            <div class="form-group" >
+                                <div class="g-recaptcha  @error('g-recaptcha-response') is-invalid @enderror" data-sitekey="{{ env('GOOGLE_RECAPTCHA_SITE_KEY') }}"></div>
+                                @error('g-recaptcha-response')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <br>
                             <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
@@ -91,3 +102,15 @@
     </div>
 </section>
 @endsection
+
+@section('Scripts')
+    <script src="https://www.google.com/recaptcha/api.js?hl=fa" async defer></script>
+@endsection
+<!-- <div class="form-group" >
+                                <input type="text" name="g-recaptcha-response" class="@error('g-recaptcha-response') is-invalid @enderror">
+                                @error('g-recaptcha-response')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div> -->

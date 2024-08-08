@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f8786d8fd7759b420aea1d021fe642b1",
+    "content-hash": "9df65671f6869050e431fa870692b7a0",
     "packages": [
         {
             "name": "brick/math",
@@ -722,6 +722,56 @@
                 }
             ],
             "time": "2023-10-12T05:21:21+00:00"
+        },
+        {
+            "name": "ghasedaksms/php",
+            "version": "v1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ghasedakapi/ghasedaksms-php.git",
+                "reference": "cc92d40f11d5d63b764b9e0fc9a6976dd22634e3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ghasedakapi/ghasedaksms-php/zipball/cc92d40f11d5d63b764b9e0fc9a6976dd22634e3",
+                "reference": "cc92d40f11d5d63b764b9e0fc9a6976dd22634e3",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "php": ">=8.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ghasedak\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "mrt",
+                    "email": "mortezaei76@gmail.com"
+                }
+            ],
+            "description": "a package for use ghasedaksms api services in php programming",
+            "keywords": [
+                "Ghasedak",
+                "ghasedaksms",
+                "notification",
+                "sms",
+                "sms-api",
+                "sms-gateway"
+            ],
+            "support": {
+                "issues": "https://github.com/ghasedakapi/ghasedaksms-php/issues",
+                "source": "https://github.com/ghasedakapi/ghasedaksms-php/tree/v1.0.3"
+            },
+            "time": "2024-08-03T10:02:52+00:00"
         },
         {
             "name": "graham-campbell/result-type",

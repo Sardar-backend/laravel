@@ -1,5 +1,9 @@
 @extends('base')
 
+@section('Scripts')
+    <script src="https://www.google.com/recaptcha/api.js?hl=fa" async defer></script>
+@endsection
+
 @section('content')
 
 <section class="inner-page" id="contact-page">
@@ -67,6 +71,14 @@
                             <div class="form-group">
                                 <label for="password">تائید رمز عبور :</label>
                                 <input name="password_confirmation" type="password" class="form-control" id="password">
+                            </div>
+                            <div class="form-group" >
+                                <div class="g-recaptcha  @error('g-recaptcha-response') is-invalid @enderror" data-sitekey="{{ env('GOOGLE_RECAPTCHA_SITE_KEY') }}"></div>
+                                @error('g-recaptcha-response')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <button type="submit"  class="btn btn-success">تکمیل عضویت</button>

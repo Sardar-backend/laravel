@@ -31,6 +31,10 @@ return [
 
     ],
 
+    'ghasedak' => [
+        'key' => env('GHASEDAK_API_KEY')
+    ],
+
     'resend' => [
         'key' => env('RESEND_KEY'),
     ],

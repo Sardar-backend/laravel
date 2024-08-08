@@ -1,19 +1,21 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Notifications\notificationCode;
 use App\Models\activecode;
 use App\Models\Product as ModelsProduct;
 use App\Models\User;
 use Illuminate\Http\Request;
 class homecontorel extends Controller
 {
-    public function index(){
+    public function index(Request $request){
+        // if ($request->user()->is_superuser){
+        //     return 'Home';}
         $pro = ModelsProduct::orderby('id')->get();
         return view('index')->with('pro', $pro);
     }
-
     public function about(){
+        alert()->success('cdsdcscsd' , 'scsdcsd')->persistent(' dffdvf!');
         return view('about');
     }
 
@@ -51,7 +53,10 @@ class homecontorel extends Controller
     }
 
 
-    public function checkout(){
+    public function checkout(Request $request){
+        $d=$request->user()->phonenumber;
+        $code = activecode::createcode();
+        $request->user()->notify(new notificationCode($code,$d));
         return view('checkout');
     }
 

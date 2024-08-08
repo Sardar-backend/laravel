@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/home',[\App\Http\Controllers\homecontorel::class,'index'])->name('index');
@@ -39,11 +40,16 @@ Route::get('/favorites',[\App\Http\Controllers\admin\usercontorel::class,'favori
 Route::get('/personal',[\App\Http\Controllers\admin\usercontorel::class,'personal'])->name('personal');
 
 Route::get('/p',[\App\Http\Controllers\authcontroll\authcontorel::class,'login'])->name('per');
+
+
+
+Route::post('/pv',[\App\Http\Controllers\authcontroll\authcontorel::class,'po'])->name('perp');
+
+// Route::get('/pv',[\App\Http\Controllers\authcontroll\authcontorel::class,'enter2']);
+
 Route::get('/x',[\App\Http\Controllers\authcontroll\authcontorel::class,'log'])->name('x');
-Route::post('/p',[\App\Http\Controllers\authcontroll\authcontorel::class,'po'])->name('perp');
-
-
-// Auth::routes();
+Auth::routes();
 
 Route::get('/auth/google',[\App\Http\Controllers\Auth\googleAuthcontroller::class,'redirect'])->name('auth.google');
 Route::get('/auth/google/callback',[\App\Http\Controllers\Auth\googleAuthcontroller::class,'callback']);
+

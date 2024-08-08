@@ -21,6 +21,8 @@ class User extends Authenticatable
         'email'
         ,'phonenumber',
         'password',
+        'is_staff',
+        'is_superuser'
     ];
 
     /**
@@ -48,5 +50,14 @@ class User extends Authenticatable
 
     public function activecode(){
         return $this->hasMany(Activecode::class);
+    }
+
+    public function is_staff(){
+
+        return $this->is_staff;
+    }
+
+    public function is_superuser(){
+        return $this->is_superuser;
     }
 }

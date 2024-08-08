@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Rules\recaptcha;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -36,5 +38,17 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
         $this->middleware('auth')->only('logout');
+    }
+
+    public function validateLogin(Request $request)
+    {
+        $request->validate([
+            'email' =>'required|email',
+            // 'password' => 'required|min:8|confirmed'
+            'password' => 'required|string'
+            ,'g-recaptcha-response' => ['required', new recaptcha]
+        ],[
+            'g-recaptcha-response.required' => 'لطفا روی من ربات نیستم کلیک کنید'
+        ]);
     }
 }

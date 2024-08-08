@@ -499,6 +499,7 @@
 <script src="assets/js/nouislider.min.js"></script>
 <script src="assets/js/pagination.js"></script>
 <script src="assets/js/scripts.js"></script>
+@yield('Scripts')
 <!-- /Scripts -->
 </body>
 
