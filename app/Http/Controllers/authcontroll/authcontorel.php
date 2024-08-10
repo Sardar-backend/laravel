@@ -45,7 +45,7 @@ class authcontorel extends Controller
                  'code' => $code,
                  'expired_at'=> now()->addMinutes(10)
              ]);
-             new notificationCode($code,$gnn);
+            //  new notificationCode($code,$gnn);
             // return $code;
             return view('enter2')->with('u', $code);
         }

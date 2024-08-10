@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,18 +9,19 @@
   <title>پنل مدیریت | داشبورد سوم</title>
 
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/plugins/font-awesome/css/font-awesome.min.css">
   <!-- IonIcons -->
   <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <!-- <link rel="stylesheet" href="/dist/css/adminlte.min.css"> -->
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-
+  <link rel="stylesheet" href={{asset('css/all.min.css')}}>
+  @vite('resources/sass/admin.scss')
   <!-- bootstrap rtl -->
-  <link rel="stylesheet" href="dist/css/bootstrap-rtl.min.css">
+  <!-- <link rel="stylesheet" href="/dist/css/bootstrap-rtl.min.css"> -->
   <!-- template rtl version -->
-  <link rel="stylesheet" href="dist/css/custom-style.css">
+  <!-- <link rel="stylesheet" href="/dist/css/custom-style.css"> -->
 
 </head>
 <!--
@@ -73,7 +75,7 @@ to get the desired effect
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
-              <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 ml-3 img-circle">
+              <img src="/dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 ml-3 img-circle">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
                   حسام موسوی
@@ -89,7 +91,7 @@ to get the desired effect
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
-              <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle ml-3">
+              <img src="/dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle ml-3">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
                   پیمان احمدی
@@ -105,7 +107,7 @@ to get the desired effect
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
-              <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle ml-3">
+              <img src="/dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle ml-3">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
                   سارا وکیلی
@@ -160,7 +162,7 @@ to get the desired effect
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+      <img src="/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">پنل مدیریت</span>
     </a>
@@ -575,7 +577,7 @@ to get the desired effect
                   <tbody>
                   <tr>
                     <td>
-                      <img src="dist/img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2">
+                      <img src="/dist/img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2">
                       تلویزیون هوشمند
                     </td>
                     <td>13 تومان</td>
@@ -594,7 +596,7 @@ to get the desired effect
                   </tr>
                   <tr>
                     <td>
-                      <img src="dist/img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2">
+                      <img src="/dist/img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2">
                       محصول ایکس
                     </td>
                     <td>29 تومان</td>
@@ -613,7 +615,7 @@ to get the desired effect
                   </tr>
                   <tr>
                     <td>
-                      <img src="dist/img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2">
+                      <img src="/dist/img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2">
                       محصول پرفروش
                     </td>
                     <td>1,230 تومان</td>
@@ -632,7 +634,7 @@ to get the desired effect
                   </tr>
                   <tr>
                     <td>
-                      <img src="dist/img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2">
+                      <img src="/dist/img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2">
                       محصول جدید
                       <span class="badge bg-danger">جدید</span>
                     </td>
@@ -780,15 +782,15 @@ to get the desired effect
 <!-- REQUIRED SCRIPTS -->
 
 <!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
+<script src="/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap -->
-<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE -->
-<script src="dist/js/adminlte.js"></script>
+<script src="/dist/js/adminlte.js"></script>
 
 <!-- OPTIONAL SCRIPTS -->
-<script src="plugins/chart.js/Chart.min.js"></script>
-<script src="dist/js/demo.js"></script>
-<script src="dist/js/pages/dashboard3.js"></script>
+<script src="/plugins/chart.js/Chart.min.js"></script>
+<script src="/dist/js/demo.js"></script>
+<script src="/dist/js/pages/dashboard3.js"></script>
 </body>
 </html>
