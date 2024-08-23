@@ -1,7 +1,6 @@
 
 @extends('base')
 @section('content')
-
 <section class="inner-page" id="blog-page">
     <div class="container-fluid" id="page-hero">
         <div class="row">
@@ -39,140 +38,25 @@
                                         <div class="container px-2 pb-3">
                                             <div class="row row-cols-1 row-cols-md-2">
                                                 <!-- Blog Post -->
+                                                 @foreach ($blogs as $blog)
                                                 <div class="col">
                                                     <div class="encode43bdsf23da" data-aos="fade-up" data-aos-duration="1000">
-                                                        <a href="blog-post.html"><div class="post-image" style="background-image: url('assets/images/blog/post100.jpg')"></div></a>
+                                                        <a href={{route('blog_single',$id=$blog->id)}}><div class="post-image" style="background-image: url('assets/images/blog/post100.jpg')"></div></a>
                                                         <div class="details py-3 px-4">
-                                                            <div class="post-date">ارسال شده در 30 خرداد 1400</div>
+                                                            <div class="post-date">ارسال شده در {{jdate($blog->failed_at)->format('%B %d، %Y')}}</div>
                                                             <a href="blog-post.html">
-                                                                <h2 class="post-title">بررسی آیفون 12 پرو مکس اپل</h2>
+                                                                <h2 class="post-title">{{$blog->title}}</h2>
                                                             </a>
                                                             <a href="blog-post.html">
-                                                                <div class="encode43bbfb">آیفون ۱۲ پرو مکس با ابعاد غول‌پیکر، دوربین توانمندتر و باتری حجمیش، تمام‌عیارترین پرچم‌دار کنونی اپل به‌حساب می‌آید.</div>
+                                                                <div class="encode43bbfb">{{substr(strip_tags($blog->content),0,462)}}...</div>
                                                             </a>
                                                             <div class="read-more"><a href="blog-post.html" class="hvr-icon-back">بیشتر خوانید <i class="fa fa-arrow-left hvr-icon"></i></a></div>
                                                         </div>
                                                     </div>
                                                 </div>
+                                                 @endforeach
+
                                                 <!-- Blog Post -->
-                                                <!-- /Blog Post -->
-                                                <div class="col">
-                                                    <div class="encode43bdsf23da" data-aos="fade-up" data-aos-duration="1000">
-                                                        <a href="blog-post.html"><div class="post-image" style="background-image: url('assets/images/blog/post101.jpg')"></div></a>
-                                                        <div class="details py-3 px-4">
-                                                            <div class="post-date">ارسال شده در 30 خرداد 1400</div>
-                                                            <a href="blog-post.html">
-                                                                <h2 class="post-title">سامسونگ گلکسی S21 اولترا 5G</h2>
-                                                            </a>
-                                                            <a href="blog-post.html">
-                                                                <div class="encode43bbfb">سامسونگ برای گوشی پرچم‌دارش، یعنی گلکسی S21 اولترا 5G، علاوه‌بر رنگ‌های قبلی، رنگ جدید سرمه‌ای را معرفی کرد.</div>
-                                                            </a>
-                                                            <div class="read-more"><a href="blog-post.html" class="hvr-icon-back">بیشتر خوانید <i class="fa fa-arrow-left hvr-icon"></i></a></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- Blog Post -->
-                                                <!-- /Blog Post -->
-                                                <div class="col">
-                                                    <div class="encode43bdsf23da" data-aos="fade-up" data-aos-duration="1000">
-                                                        <a href="blog-post.html"><div class="post-image" style="background-image: url('assets/images/blog/post102.jpg')"></div></a>
-                                                        <div class="details py-3 px-4">
-                                                            <div class="post-date">ارسال شده در 30 خرداد 1400</div>
-                                                            <a href="blog-post.html">
-                                                                <h2 class="post-title">دریافت گواهی بلوتوث گلکسی A03s سامسونگ</h2>
-                                                            </a>
-                                                            <a href="blog-post.html">
-                                                                <div class="encode43bbfb">ماه گذشته، برای اولین‌بار اطلاعاتی از گلکسی A03s فاش شد و اکنون با دریافت گواهی بلوتوث، به زمان رونمایی این گوشی نزدیک شده‌ایم.</div>
-                                                            </a>
-                                                            <div class="read-more"><a href="blog-post.html" class="hvr-icon-back">بیشتر خوانید <i class="fa fa-arrow-left hvr-icon"></i></a></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- Blog Post -->
-                                                <!-- /Blog Post -->
-                                                <div class="col">
-                                                    <div class="encode43bdsf23da" data-aos="fade-up" data-aos-duration="1000">
-                                                        <a href="blog-post.html"><div class="post-image" style="background-image: url('assets/images/blog/post103.jpg')"></div></a>
-                                                        <div class="details py-3 px-4">
-                                                            <div class="post-date">ارسال شده در 30 خرداد 1400</div>
-                                                            <a href="blog-post.html">
-                                                                <h2 class="post-title">خرابی بی‌دلیل نمایشگرهای سری گلکسی S20</h2>
-                                                            </a>
-                                                            <a href="blog-post.html">
-                                                                <div class="encode43bbfb">ماه گذشته، برای اولین‌بار اطلاعاتی از گلکسی A03s فاش شد و اکنون با دریافت گواهی بلوتوث، به زمان رونمایی این گوشی نزدیک شده‌ایم.</div>
-                                                            </a>
-                                                            <div class="read-more"><a href="blog-post.html" class="hvr-icon-back">بیشتر خوانید <i class="fa fa-arrow-left hvr-icon"></i></a></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- Blog Post -->
-                                                <!-- Blog Post -->
-                                                <div class="col">
-                                                    <div class="encode43bdsf23da" data-aos="fade-up" data-aos-duration="1000">
-                                                        <a href="blog-post.html"><div class="post-image" style="background-image: url('assets/images/blog/post100.jpg')"></div></a>
-                                                        <div class="details py-3 px-4">
-                                                            <div class="post-date">ارسال شده در 30 خرداد 1400</div>
-                                                            <a href="blog-post.html">
-                                                                <h2 class="post-title">بررسی آیفون 12 پرو مکس اپل</h2>
-                                                            </a>
-                                                            <a href="blog-post.html">
-                                                                <div class="encode43bbfb">آیفون ۱۲ پرو مکس با ابعاد غول‌پیکر، دوربین توانمندتر و باتری حجمیش، تمام‌عیارترین پرچم‌دار کنونی اپل به‌حساب می‌آید.</div>
-                                                            </a>
-                                                            <div class="read-more"><a href="blog-post.html" class="hvr-icon-back">بیشتر خوانید <i class="fa fa-arrow-left hvr-icon"></i></a></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- Blog Post -->
-                                                <!-- /Blog Post -->
-                                                <div class="col">
-                                                    <div class="encode43bdsf23da" data-aos="fade-up" data-aos-duration="1000">
-                                                        <a href="blog-post.html"><div class="post-image" style="background-image: url('assets/images/blog/post101.jpg')"></div></a>
-                                                        <div class="details py-3 px-4">
-                                                            <div class="post-date">ارسال شده در 30 خرداد 1400</div>
-                                                            <a href="blog-post.html">
-                                                                <h2 class="post-title">سامسونگ گلکسی S21 اولترا 5G</h2>
-                                                            </a>
-                                                            <a href="blog-post.html">
-                                                                <div class="encode43bbfb">سامسونگ برای گوشی پرچم‌دارش، یعنی گلکسی S21 اولترا 5G، علاوه‌بر رنگ‌های قبلی، رنگ جدید سرمه‌ای را معرفی کرد.</div>
-                                                            </a>
-                                                            <div class="read-more"><a href="blog-post.html" class="hvr-icon-back">بیشتر خوانید <i class="fa fa-arrow-left hvr-icon"></i></a></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- Blog Post -->
-                                                <!-- /Blog Post -->
-                                                <div class="col">
-                                                    <div class="encode43bdsf23da" data-aos="fade-up" data-aos-duration="1000">
-                                                        <a href="blog-post.html"><div class="post-image" style="background-image: url('assets/images/blog/post102.jpg')"></div></a>
-                                                        <div class="details py-3 px-4">
-                                                            <div class="post-date">ارسال شده در 30 خرداد 1400</div>
-                                                            <a href="blog-post.html">
-                                                                <h2 class="post-title">دریافت گواهی بلوتوث گلکسی A03s سامسونگ</h2>
-                                                            </a>
-                                                            <a href="blog-post.html">
-                                                                <div class="encode43bbfb">ماه گذشته، برای اولین‌بار اطلاعاتی از گلکسی A03s فاش شد و اکنون با دریافت گواهی بلوتوث، به زمان رونمایی این گوشی نزدیک شده‌ایم.</div>
-                                                            </a>
-                                                            <div class="read-more"><a href="blog-post.html" class="hvr-icon-back">بیشتر خوانید <i class="fa fa-arrow-left hvr-icon"></i></a></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- Blog Post -->
-                                                <!-- /Blog Post -->
-                                                <div class="col">
-                                                    <div class="encode43bdsf23da" data-aos="fade-up" data-aos-duration="1000">
-                                                        <a href="blog-post.html"><div class="post-image" style="background-image: url('assets/images/blog/post103.jpg')"></div></a>
-                                                        <div class="details py-3 px-4">
-                                                            <div class="post-date">ارسال شده در 30 خرداد 1400</div>
-                                                            <a href="blog-post.html">
-                                                                <h2 class="post-title">خرابی بی‌دلیل نمایشگرهای سری گلکسی S20</h2>
-                                                            </a>
-                                                            <a href="blog-post.html">
-                                                                <div class="encode43bbfb">ماه گذشته، برای اولین‌بار اطلاعاتی از گلکسی A03s فاش شد و اکنون با دریافت گواهی بلوتوث، به زمان رونمایی این گوشی نزدیک شده‌ایم.</div>
-                                                            </a>
-                                                            <div class="read-more"><a href="blog-post.html" class="hvr-icon-back">بیشتر خوانید <i class="fa fa-arrow-left hvr-icon"></i></a></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
                                                 <!-- Blog Post -->
                                             </div>
                                         </div>

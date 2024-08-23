@@ -76,18 +76,18 @@
                 <div class="col">
                     <!-- Product Box -->
                     <div class="encode4326654321vfb">
-                        <a href="product.html"><div class="image" style="background-image: url('assets/images/products/p100.png')"></div></a>
+                        <a href="{{route('product',['id'=>$p->id])}}"><div class="image" style="background-image: url('assets/images/products/p100.png')"></div></a>
                         <div class="icons">
                             <div class="btn btn-outline-secondary encode43243d"></div>
                             <div class="btn btn-outline-secondary encode43bf243d"></div>
                         </div>
                         <div class="details p-3">
                             <div class="category">
-                                <a href="products.html">گوشی موبایل</a>
+                                <a href={{route('product',['id'=>$p->id])}}>گوشی موبایل</a>
                                 &nbsp;/&nbsp;
-                                <a href="products.html">سامسونگ</a>
+                                <a href={{route('product',['id'=>$p->id])}}>سامسونگ</a>
                             </div>
-                            <a href="product.html"><h2>{{$p->name}}</h2></a>
+                            <a href={{route('product',['id'=>$p->id])}}><h2>{{$p->name}}</h2></a>
                             <div class="encode4365gbf265g43d">6.000.000 تومان</div>
                             <div class="rate">
                                 <i class="fa fa-star-half-alt"></i>

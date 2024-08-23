@@ -1,24 +1,41 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\blog;
+use App\Models\Product;
 use App\Notifications\notificationCode;
 use App\Models\activecode;
+use App\Models\comment;
 use App\Models\Product as ModelsProduct;
 use App\Models\User;
+
+use \Illuminate\Support\Facades\Auth;
+use \Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate as FacadesGate;
+
 class homecontorel extends Controller
 {
     public function index(Request $request){
+        Auth::loginUsingId(1);
+        // Auth::logout();
         // if ($request->user()->is_superuser){
         //     return 'Home';}
+        if (Gate::allows('edit')) {
+            return 'Home';
+        };
         $pro = ModelsProduct::orderby('id')->get();
         return view('index')->with('pro', $pro);
     }
     public function about(){
-        alert()->success('cdsdcscsd' , 'scsdcsd')->persistent(' dffdvf!');
+        // alert()->success('cdsdcscsd' , 'scsdcsd')->persistent(' dffdvf!');
         return view('about');
     }
 
+    public function blog_list(){
+        $blogs=blog::orderBy('failed_at')->get();
+        return view('blog',compact('blogs'));
+    }
 
     public function contact(){
         // alert()->success();
@@ -31,6 +48,7 @@ class homecontorel extends Controller
     }
 
 
+
     public function faq(){
         return view('faq');
     }
@@ -38,6 +56,25 @@ class homecontorel extends Controller
 
     public function products(){
         return view('products');
+    }
+
+
+    public function blog_single(string $id){
+        $blog=blog::find($id);
+        return view('blog-post',compact('blog'));
+    }
+
+    public function product(int $id){
+        Auth::loginUsingId(1);
+        $product = Product::find($id);
+        if (is_null($product)) {
+            return view('404');
+        }
+
+        $comments = $product->comment()->where('status','LIKE',true)->where('parent_id','LIKE',0)->get();
+
+        $user = Auth::user();
+        return view('product',compact('product','comments','user'));
     }
 
     public function products_list(){
@@ -50,6 +87,20 @@ class homecontorel extends Controller
 
     public function cart(){
         return view('cart');
+    }
+
+
+    public function craete_comment(Request $request){
+        $data = $request->validate([
+            'parent_id' => 'max:255',
+            'user_id' => 'required',
+            'commenttable_id' => 'required',
+            'commenttable_type' => 'required',
+            'content' => 'required',
+
+        ]);
+        comment::create($data);
+        return back();
     }
 
 
@@ -82,4 +133,6 @@ class homecontorel extends Controller
 
         ]);
     }
+
+
 }

@@ -21,9 +21,21 @@ return new class extends Migration
             $table->timestamp('failed_at')->useCurrent();
         });
 
+        // Schema::create('sabad', function (Blueprint $table) {
+        //     $table->id()->primary();
+        //     $table->unsignedBigInteger('user_id');
+        //     $table->foreign('user_id')->references('id')->on('user')->onDelete('cascade');
+        //     $table->longText('content');
+        //     $table->char('email');
+        //     $table->char('subject');
+        //     $table->timestamp('failed_at')->useCurrent();
+        // });
+
         Schema::create('products', function (Blueprint $table) {
             $table->id()->primary();
             $table->string('name');
+            // $table->unsignedBigInteger('sabad_id');
+            // $table->foreign('sabad_id')->references('id')->on('sabad')->onDelete('cascade');
             $table->integer('price');
             $table->longText('discription');
             $table->float('stars');
@@ -60,10 +72,13 @@ return new class extends Migration
         Schema::create('comments', function (Blueprint $table) {
             $table->id()->primary();
             $table->string('name');
-            $table->boolean('status');
+            $table->boolean('status')->default(0);
             $table->longText('content');
-            $table->char('email');
-            $table->char('image');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('parent_id')->default(null);
+            $table->unsignedBigInteger('commenttable_id');
+            $table->string('commenttable_type');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamp('failed_at')->useCurrent();
         });
 
@@ -76,10 +91,7 @@ return new class extends Migration
             $table->timestamp('failed_at')->useCurrent();
         });
 
-        Schema::create('blog_categorys', function (Blueprint $table) {
-            $table->id()->primary();
-            $table->string('name');
-        });
+
 
     }
 
@@ -91,7 +103,7 @@ return new class extends Migration
         Schema::dropIfExists('contact');
         // Schema::dropIfExists('USER');
         Schema::dropIfExists('blog');
-        Schema::dropIfExists('blog_category');
+
         Schema::dropIfExists('comment');
         Schema::dropIfExists('product');
         Schema::dropIfExists('adresses');

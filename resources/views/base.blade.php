@@ -17,7 +17,9 @@
     <link rel="stylesheet" href="assets/css/highlight.css">
     <link rel="stylesheet" href="assets/css/nouislider.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     <!-- /CSS Styles -->
+    <link rel="stylesheet" href="assets/css/error-404.css">
 </head>
 <body>
 <!-- Header -->
@@ -326,8 +328,8 @@
                                             </li>
                                             <li class="droopmenu-parent" aria-haspopup="true">
                                                 <a href="blog.html" aria-expanded="false">بلاگ آموزشی<em class="droopmenu-topanim"></em></a><div class="dm-arrow"></div>
-                                                <ul style="">
-                                                    <li><a href="blog.html">آرشیو مطالب</a></li>
+                                                <ul >
+                                                    <li><a href="{{route('blog_list')}}">آرشیو مطالب</a></li>
                                                     <li><a href="blog-post.html">داخلی بلاگ</a></li>
                                                 </ul>
                                             </li>
@@ -499,7 +501,10 @@
 <script src="assets/js/nouislider.min.js"></script>
 <script src="assets/js/pagination.js"></script>
 <script src="assets/js/scripts.js"></script>
+
+
 @yield('Scripts')
+
 <!-- /Scripts -->
 </body>
 

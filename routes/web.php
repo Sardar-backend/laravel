@@ -11,9 +11,11 @@ Route::get('/contact',[\App\Http\Controllers\homecontorel::class,'contact'])->na
 
 Route::get('/error404',[\App\Http\Controllers\homecontorel::class,'error404'])->name('error404');
 
-Route::get('/faq',[\App\Http\Controllers\homecontorel::class,'faq'])->name('faq');
+Route::get('/faqn',[\App\Http\Controllers\homecontorel::class,'faq'])->name('faq');
 
 Route::get('/products',[\App\Http\Controllers\homecontorel::class,'products'])->name('products');
+
+Route::get('/product-{id}',[\App\Http\Controllers\homecontorel::class,'product'])->name('product');
 
 Route::get('/products-list',[\App\Http\Controllers\homecontorel::class,'products_list'])->name('products-list');
 
@@ -53,3 +55,10 @@ Auth::routes();
 Route::get('/auth/google',[\App\Http\Controllers\Auth\googleAuthcontroller::class,'redirect'])->name('auth.google');
 Route::get('/auth/google/callback',[\App\Http\Controllers\Auth\googleAuthcontroller::class,'callback']);
 
+
+Route::post('/create_comment',[\App\Http\Controllers\homecontorel::class,'craete_comment'])->name('create_comment')->middleware('auth');
+
+
+Route::get('/blog',[\App\Http\Controllers\homecontorel::class,'blog_list'])->name('blog_list');
+
+Route::get('/blog-single-{id}',[\App\Http\Controllers\homecontorel::class,'blog_single'])->name('blog_single');

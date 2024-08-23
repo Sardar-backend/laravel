@@ -1,6 +1,7 @@
-
-
 @component('admin.master')
+
+
+
 <div class="row">
           <div class="col-12">
             <div class="card">
@@ -27,20 +28,41 @@
                 <table class="table table-hover">
                   <tbody><tr>
                     <th>آیدی</th>
-                    <th>نام</th>
-                    <th>تاریخ عضویت</th>
-                    <th>تلفن</th>
-                    <th>ایمیل</th>
+                    <th>نام کاربر</th>
+                    <th>متن</th>
+                    <th>وضعیت</th>
+                    <th>آیدی کامنت والد</th>
+                    <th>اقدامات</th>
                   </tr>
-                  @foreach ($users as $user)
+                  @foreach ($comments as $user)
                   <tr>
                     <td>{{$user->id}}</td>
-                    <td>{{$user->name}}</td>
-                    <td>{{$user->created_at}}</td>
-                    <td>0{{$user->phonenumber }}</td>
-                    <td>{{$user->email}}</td>
-                    <td class="d-flex"><a href="{{route('edit_post', ['id'=>$user->id])}}"><button class="btn btn-primary"><span class="badge badge-primary">ویرایش</span></button></a>
-                    <form action="{{route('destroy_user', ['id'=>$user->id])}}" method="post" class="mr-1">
+                    <td>{{$user->user->name}}</td>
+                    <td>{{substr(strip_tags($user->content),0,150)}}...</td>
+                    <td>
+                        @if (! $user->status)
+                        <span class="badge bg-danger p-2">تائید نشده</span>
+
+                        @else
+                        <span class="badge badge-success p-2">تایید شده</span>
+
+                        @endif
+
+                    </td>
+                    <td>{{$user->parent_id}}</td>
+                    <td class="d-flex">
+                        <!-- <a href="{{route('edit_post', ['id'=>$user->id])}}">< class="btn btn-primary"><span class="badge badge-primary">ویرایش</span></a> -->
+                        @if (! $user->status)
+                    <form action="{{route('admin_comment.edit', ['admin_comment'=>$user->id])}}" method="get" class="mr-1">
+                        @csrf
+
+                        <button type="submit" class="btn btn-primary"><span class="badge badge-primary">تائید</span></button>
+                    </form>
+
+                        @endif
+
+
+                    <form action="{{route('admin_comment.destroy', ['admin_comment'=>$user->id])}}" method="post" class="mr-1">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger"><span class="badge badge-danger">حذف</span></button>
@@ -52,16 +74,15 @@
 
               <!-- /.card-body -->
             </div>
-            <!-- <div class="card-footer d-flex">
-                <div class="cart ">
-                    {{$users->render()}}
-                </div>
 
-              </div> -->
             </div></div>
 
             <!-- /.card -->
           </div>
         </div>
-@endcomponent
 
+
+
+
+
+@endcomponent

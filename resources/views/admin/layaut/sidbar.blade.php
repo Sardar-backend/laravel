@@ -15,7 +15,7 @@
             <img src="https://www.gravatar.com/avatar/52f0fbcbedee04a121cba8dad1174462?s=200&d=mm&r=g" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
-            <a href="#" class="d-block">حسام موسوی</a>
+            <a href="#" class="d-block">{{request()->user()->name}}</a>
           </div>
         </div>
 
@@ -34,26 +34,32 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="./index.html" class="nav-link">
+                  <a href="{{route('admin_PRODUCT.index')}}" class="nav-link">
                     <i class="fa fa-circle-o nav-icon"></i>
-                    <p>داشبورد اول</p>
+                    <p>محصولات</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="./index2.html" class="nav-link">
                     <i class="fa fa-circle-o nav-icon"></i>
-                    <p>داشبورد دوم</p>
+                    <p>مقالات</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="./index3.html" class="nav-link active">
+                  <a href="{{route('admin_comment.index')}}" class="nav-link">
                     <i class="fa fa-circle-o nav-icon"></i>
-                    <p>داشبورد سوم</p>
+                    <p>کامنت ها </p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{route('admin')}}" class="nav-link active">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>کاربران</p>
                   </a>
                 </li>
               </ul>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a href="pages/widgets.html" class="nav-link">
                 <i class="nav-icon fa fa-th"></i>
                 <p>
@@ -318,7 +324,7 @@
                 <i class="nav-icon fa fa-circle-o text-info"></i>
                 <p>اطلاعات</p>
               </a>
-            </li>
+            </li> -->
           </ul>
         </nav>
         <!-- /.sidebar-menu -->
