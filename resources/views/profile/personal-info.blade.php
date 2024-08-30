@@ -29,76 +29,7 @@
             <div class="col-12">
                 <div class="content">
                     <div class="row">
-                        <div class="col-12 col-lg-3">
-                            <!-- Side Panel -->
-                            <div class="accordion" id="side-panel">
-                                <div class="accordion-item menu-container">
-                                    <h2 class="accordion-header">
-                                        <button class="accordion-button bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-                                            <span class="row">
-                                                <span class="col-3 col-sm-2 col-lg-3">
-                                                    <img src="../assets/images/user-no-image.jpg" class="rounded-circle">
-                                                </span>
-                                                <span class="col-7 col-sm-8 col-lg-7 pt-0 pt-sm-2 pt-md-3 pt-lg-0 align-self-center">
-                                                    <div id="full-name">مصطفی کلانتری</div>
-                                                    <div class="mt-2" id="email-mobile">09351234567</div>
-                                                </span>
-                                            </span>
-                                        </button>
-                                    </h2>
-                                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
-                                        <div class="accordion-body">
-                                            <ul>
-                                                <li>
-                                                    <a href="personal-info.html" class="active">
-                                                        <div>
-                                                            <div class="icon d-inline-block"><img src="../assets/images/icons/profile-menu/profile.webp" class="pl-2"></div> اطلاعات حساب
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="factors.html">
-                                                        <div>
-                                                            <div class="icon d-inline-block"><img src="../assets/images/icons/profile-menu/orders.webp" class="pl-2"></div> سفارش های من
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="favorites.html">
-                                                        <div>
-                                                            <div class="icon d-inline-block"><img src="../assets/images/icons/profile-menu/favorites.webp" class="pl-2"></div> علاقه مندی ها
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="addresses.html">
-                                                        <div>
-                                                            <div class="icon d-inline-block"><img src="../assets/images/icons/profile-menu/addresses.webp" class="pl-2"></div> آدرس های من
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href={{route('auth2')}}>
-                                                        <div>
-                                                            <div class="icon d-inline-block"><img src="../assets/images/icons/profile-menu/right to bracket.svg" class="pl-2"></div> فعال سازی احراز هویت دو مرحله ای
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                                <li><hr></li>
-                                                <li>
-                                                    <a href="../index.html">
-                                                        <div>
-                                                            <div class="icon d-inline-block"><img src="../assets/images/icons/profile-menu/exit.webp" class="pl-2"></div> خروج از حساب
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /Side Panel -->
-                        </div>
+                            @include('layouts.sidbar_prof')
                         <div class="col-12 col-lg-9 pl-lg-0 pr-lg-2 mt-2 mt-lg-0">
                             <!-- Profile Fields -->
                             <div class="custom-container bg-light" id="profile-fields">
@@ -112,7 +43,7 @@
                                             <div class="row">
                                                 <div class="col-10">
                                                     <div class="title">نام و نام خانوادگی</div>
-                                                    <div class="value">مصطفی کلانتری</div>
+                                                    <div class="value">{{request()->user()->name}}</div>
                                                 </div>
                                                 <div class="col-2">
                                                     <a href="#" class="float-left" data-toggle="modal" data-target="#fullNameModal"><i class="fa fa-edit"></i></a>
@@ -123,7 +54,7 @@
                                             <div class="row">
                                                 <div class="col-10">
                                                     <div class="title">کدملی</div>
-                                                    <div class="value">1234567890</div>
+                                                    <div class="value">{{request()->user()->meli}}</div>
                                                 </div>
                                                 <div class="col-2">
                                                     <a href="#" class="float-left" data-toggle="modal" data-target="#nationalCodeModal"><i class="fa fa-edit"></i></a>
@@ -134,7 +65,7 @@
                                             <div class="row">
                                                 <div class="col-10">
                                                     <div class="title">شماره تلفن همراه</div>
-                                                    <div class="value">09351234567</div>
+                                                    <div class="value">{{request()->user()->phonenumber}}</div>
                                                 </div>
                                                 <div class="col-2">
                                                     <a href="#" class="float-left" data-toggle="modal" data-target="#mobileModal"><i class="fa fa-edit"></i></a>
@@ -145,7 +76,7 @@
                                             <div class="row">
                                                 <div class="col-10">
                                                     <div class="title">تلفن ثابت</div>
-                                                    <div class="value">02112345678</div>
+                                                    <div class="value">{{request()->user()->home_number}}</div>
                                                 </div>
                                                 <div class="col-2">
                                                     <a href="#" class="float-left" data-toggle="modal" data-target="#telModal"><i class="fa fa-edit"></i></a>
@@ -156,7 +87,7 @@
                                             <div class="row">
                                                 <div class="col-10">
                                                     <div class="title">پست الکترونیک</div>
-                                                    <div class="value">email@website.com</div>
+                                                    <div class="value">{{request()->user()->email}}</div>
                                                 </div>
                                                 <div class="col-2">
                                                     <a href="#" class="float-left" data-toggle="modal" data-target="#emailModal"><i class="fa fa-edit"></i></a>
@@ -167,7 +98,7 @@
                                             <div class="row">
                                                 <div class="col-10">
                                                     <div class="title">تاریخ تولد</div>
-                                                    <div class="value">1372/01/01</div>
+                                                    <div class="value">{{request()->user()->birthday}}</div>
                                                 </div>
                                                 <div class="col-2">
                                                     <a href="#" class="float-left" data-toggle="modal" data-target="#birthdayModal"><i class="fa fa-edit"></i></a>
@@ -178,7 +109,7 @@
                                             <div class="row">
                                                 <div class="col-10">
                                                     <div class="title">شماره کارت جهت مرجوع وجه</div>
-                                                    <div class="value" dir="ltr">1234-4321-1234-4321</div>
+                                                    <div class="value" dir="ltr">{{request()->user()->cart_number}}</div>
                                                 </div>
                                                 <div class="col-2">
                                                     <a href="#" class="float-left" data-toggle="modal" data-target="#cardNumberModal"><i class="fa fa-edit"></i></a>

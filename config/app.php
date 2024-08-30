@@ -104,6 +104,10 @@ return [
             explode(',', env('APP_PREVIOUS_KEYS', ''))
         ),
     ],
+// 'providers' => [
+//     // Other service providers...
+//     App\Helpers\Cart\CartServiceProvider::class
+// ],
 
     /*
     |--------------------------------------------------------------------------
@@ -117,7 +121,7 @@ return [
     | Supported drivers: "file", "cache"
     |
     */
-
+    'Cart' => App\Helpers\Cart\Cart::class,
 
     'maintenance' => [
         'driver' => env('APP_MAINTENANCE_DRIVER', 'file'),

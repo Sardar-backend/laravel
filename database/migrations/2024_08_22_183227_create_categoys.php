@@ -23,8 +23,8 @@ return new class extends Migration
         });
 
 
-        Schema::create('productCategoys', function (Blueprint $table) {
-            $table->id();
+        Schema::create('productcategory', function (Blueprint $table) {
+            $table->id()->primary();
             $table->string('name');
             $table->unsignedBigInteger('parent');
             $table->timestamps();
@@ -44,14 +44,14 @@ return new class extends Migration
         });
 
 
-        Schema::create('productCategoys_product', function (Blueprint $table) {
+        Schema::create('product_productcategory', function (Blueprint $table) {
 
-            $table->unsignedBigInteger('productCategoy_id');
-            $table->foreign('productCategoy_id')->references('id')->on('productCategoys')->onDelete('cascade');
+
+            $table->unsignedBigInteger('productcategory_id');
+            $table->foreign('productcategory_id')->references('id')->on('productcategory')->onDelete('cascade');
             $table->unsignedBigInteger('product_id');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
-            $table->primary(['productCategoy_id','product_id']);
-
+            $table->primary(['productcategory_id','product_id']);
 
 
         });

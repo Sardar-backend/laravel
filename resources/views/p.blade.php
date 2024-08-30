@@ -48,6 +48,7 @@
                 <div class="logo mb-4"> <a class="d-flex justify-content-center"  title="Oxyy"><img src="img/logo.png" alt="Oxyy"></a> </div>
                 <div class="d-flex justify-content-center">ورود به روبیک مارکت</div>
                 <form id="loginForm" class="form-dark" action={{route('perp')}} method="post">@csrf
+
                   <div class="form-group icon-group">
                     <input type="text" name="name" class="form-control" id="emailAddress" required placeholder="شماره موبایل">
                     <span class="icon-inside"><i class="fas fa-envelope"></i></span> </div>

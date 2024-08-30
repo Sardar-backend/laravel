@@ -47,6 +47,17 @@
                     </div>
                   </div>
                   <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">دسته بندی</label>
+                    <div class="col-sm-10">
+                    <select  class="form-control" name="categories[]" id="categories" multiple>
+                        @foreach ($categories as $category)
+                            <option value="{{$category->id}}" >{{$category->name}}</option>
+                        @endforeach
+
+                    </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">عرض</label>
 
                     <div class="col-sm-10">
@@ -60,11 +71,47 @@
                       <input type="number" min="0" max="100" name="discust" class="form-control" id="inputEmail3" placeholder="تخفیف را وارد کنید">
                     </div>
                   </div>
+                  <h6>ویژگی محصول</h6>
+                    <hr>
+                        <div class="container asa">
 
+                            <div class="row elem" onclick="">
+                            <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                            <label for="inputEmail3" class="col-sm-3 control-label">نوع ویژگی</label>
+
+                            <div class="col-sm-10">
+                            <input type="text" min="0" max="100" name="attribute[0][name]" class="form-control" id="inputEmail3" placeholder="تخفیف را وارد کنید">
+                            </div>
+                            </div>
+                            <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+
+                            <label for="inputEmail3" class="col-sm-3 control-label">نام ویژگی</label>
+
+                            <div class="col-sm-10">
+                            <input type="text" min="0" max="100" name="attribute[0][value]" class="form-control" id="inputEmail3" placeholder="تخفیف را وارد کنید">
+
+                            </div>
+                            </div>
+
+                            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                            <div class="col-sm-10">
+                                <button type="button" class="btn btn-danger">حذف</button>
+                            </div>
+                            </div>
+
+
+                        </div>
+                        </div>
+                        <div class="container">
+
+                            <button class="btn btn-sm btn-danger mt-5" type="button" onclick="name()" id="add_product_attribute">ویژگی جدید</button>
+
+
+                    <br>
                   <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                       <div class="form-check">
-                        <input name="garant" type="checkbox" class="form-check-input" id="exampleCheck2">
+                        <input  type="checkbox" name="garant" class="form-check-input" id="exampleCheck2">
                         <label class="form-check-label" for="exampleCheck2">گارانتی دارد</label>
                       </div>
                     </div>
@@ -81,5 +128,17 @@
             </div>
     </div>
 </div>
+<script>
+    let r =document.querySelector('.asa')
+    let el =document.getElementsByClassName('elem')
+    let y = document.querySelector('#add_product_attribute')
 
+    y.addEventListener('click', function(){
+
+        r.innerHTML +='<div class="row elem mt-2" onclick=""><div class="col-xs-5 col-sm-5 col-md-5 col-lg-5"><div class="col-sm-10"><input type="text" min="0" max="100" name="attribute[1][name]" class="form-control" id="inputEmail3" placeholder="نوع را وارد کنید"></div></div><div class="col-xs-5 col-sm-5 col-md-5 col-lg-5"><div class="col-sm-10"><input type="text" min="0" max="100" name="attribute[1][value]" class="form-control" id="inputEmail3" placeholder="نام را وارد کنید"></div></div><div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"><div class="col-sm-10"><button id="bf" type="button" class="btn btn-danger">حذف</button></div></div></div>'
+
+        let g =document.getElementsByClassName('bf')
+
+    })
+</script>
 @endcomponent

@@ -17,10 +17,21 @@ class Product extends Model
         'with',
         'length',
         'discust',
-        'garant'
+        'garant',
+        'count_view'
     ];
 
     public function comment() {
         return $this->morphMany(comment::class,'commenttable');
+    }
+
+
+    public function category() {
+
+        return $this->belongsToMany(productcategory::class,'product_productcategory');
+    }
+
+    public function attribute () {
+        return $this->belongsToMany(Attributes::class,'attribute_product');
     }
 }

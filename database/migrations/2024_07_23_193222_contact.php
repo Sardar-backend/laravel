@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('contactss', function (Blueprint $table) {
             $table->id()->primary();
             $table->string('name');
-            $table->integer('number-phone');
+            $table->integer('number_phone');
             $table->longText('content');
             $table->char('email');
             $table->char('subject');
@@ -37,12 +37,14 @@ return new class extends Migration
             // $table->unsignedBigInteger('sabad_id');
             // $table->foreign('sabad_id')->references('id')->on('sabad')->onDelete('cascade');
             $table->integer('price');
+            $table->integer('count_view')->default(0);
             $table->longText('discription');
             $table->float('stars');
             $table->float('with');
             $table->float('length');
             $table->float('discust');
             $table->boolean('garant');
+            $table->boolean('Chosen');
             $table->timestamp('failed_at')->useCurrent();
         });
 
@@ -71,11 +73,10 @@ return new class extends Migration
 
         Schema::create('comments', function (Blueprint $table) {
             $table->id()->primary();
-            $table->string('name');
             $table->boolean('status')->default(0);
             $table->longText('content');
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('parent_id')->default(null);
+            $table->unsignedBigInteger('parent_id')->default(0);
             $table->unsignedBigInteger('commenttable_id');
             $table->string('commenttable_type');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
@@ -86,6 +87,7 @@ return new class extends Migration
         Schema::create('blogs', function (Blueprint $table) {
             $table->id()->primary();
             $table->string('title');
+            $table->integer('count_view')->default(0);
             $table->longText('content');
             $table->char('image');
             $table->timestamp('failed_at')->useCurrent();

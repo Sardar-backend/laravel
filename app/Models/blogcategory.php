@@ -9,3 +9,4 @@ class blogcategory extends Model
 {
     use HasFactory;
 }
+

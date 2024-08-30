@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Notifications\notificationCode;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\Notification;
+use Illuminate\Support\Facades\Auth;
 
 class authcontorel extends Controller
 {
@@ -29,10 +30,13 @@ class authcontorel extends Controller
         $g= User::find($w);
         if ($g) {
             $code = activecode::createcode();
-            // $b= $u[0]->activecode()->whereCode($code)->first();
+
             $fd=$u[0]->activecode[0]->code;
-            // new notificationCode($code,$gnn);
-            return view('enter2')->with('u', $fd);
+
+            // $g->notify(new notificationCode($fd,$gnn));
+            $u = $fd;
+            $error = '';
+            return view('enter2',compact('u','error'));
         }else {
 
              User::create([
@@ -45,9 +49,10 @@ class authcontorel extends Controller
                  'code' => $code,
                  'expired_at'=> now()->addMinutes(10)
              ]);
-            //  new notificationCode($code,$gnn);
-            // return $code;
-            return view('enter2')->with('u', $code);
+            //  $cb->notify(new notificationCode($code,$gnn));
+            $u = $code;
+            $error = '';
+            return view('enter2',compact('u','error'));
         }
     }
     public function enter2(){
@@ -60,11 +65,25 @@ class authcontorel extends Controller
         }
     }
 
-    // public function reset (){
-    //     return view('auth/reset-password');
-    // }
+    public function mm (Request $request){
+        if ($request->code==$request->codeEnter) {
+            $active=activecode::query();
+            $active=activecode::all();
+            $active = $active->where('code','LIKE',$request->code)->first();
+            // $active = User::where('name','');
+            // $user=$active->user();
+            $id=$active->user->id;
+            Auth::loginUsingId($id);
+            return redirect('/home');
+        }else {
+            $u = $request->code;
+            $error = 'کد نوشته شده صحیح نمی باشد';
+            return view('enter2',compact('u','error'));
+        }
+    }
 
-    // public function register (){
-    //     return view('auth/register');
-    // }
+    public function logout (){
+        Auth::logout();
+        return  redirect()->route('index');
+    }
 }

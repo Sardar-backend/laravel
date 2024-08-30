@@ -52,10 +52,11 @@
                     </a>
                 </div>
                 <div class="col-12 col-md-5 col-xl-6">
+                    <form action="{{route('products')}}" method="get">
                     <div id="search-bar">
-                        <i class="fa fa-search"></i>
-                        <input type="text" placeholder="جستجو کنید...">
-                    </div>
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                        <input name="search" type="text" placeholder="جستجو کنید...">
+                    </div></form>
                 </div>
                 <div class="col-12 col-md-4">
                     <div class="row">
@@ -311,14 +312,7 @@
                                                 </ul>
                                             </li>
                                             <li><a href={{route('about')}}>درباره ما<em class="droopmenu-topanim"></em></a></li>
-                                            <li class="droopmenu-parent" aria-haspopup="true">
-                                                <a href="products.html" aria-expanded="false">صفحات فروشگاه<em class="droopmenu-topanim"></em></a><div class="dm-arrow"></div>
-                                                <ul style="">
-                                                    <li><a href="products.html">محصولات <sup>(کاشی کاری)</sup></a></li>
-                                                    <li><a href="products-list.html">محصولات <sup>(لیست)</sup></a></li>
-                                                    <li><a href="products.html">جزئیات محصول</a></li>
-                                                </ul>
-                                            </li>
+
                                             <li class="droopmenu-parent" aria-haspopup="true">
                                                 <a href={{route('contact')}} aria-expanded="false">تماس با فروشگاه<em class="droopmenu-topanim"></em></a><div class="dm-arrow"></div>
                                                 <ul style="">
@@ -327,11 +321,8 @@
                                                 </ul>
                                             </li>
                                             <li class="droopmenu-parent" aria-haspopup="true">
-                                                <a href="blog.html" aria-expanded="false">بلاگ آموزشی<em class="droopmenu-topanim"></em></a><div class="dm-arrow"></div>
-                                                <ul >
-                                                    <li><a href="{{route('blog_list')}}">آرشیو مطالب</a></li>
-                                                    <li><a href="blog-post.html">داخلی بلاگ</a></li>
-                                                </ul>
+                                                <a href="{{route('blog_list')}}" aria-expanded="false">بلاگ آموزشی<em class="droopmenu-topanim"></em></a><div class="dm-arrow"></div>
+
                                             </li>
                                             <li class="droopmenu-parent" aria-haspopup="true">
                                                 <a href="#" aria-expanded="false">سایر صفحات<em class="droopmenu-topanim"></em></a><div class="dm-arrow"></div>
@@ -339,12 +330,12 @@
                                                     <li><a href="compare.html">مقایسه محصول</a></li>
                                                     <li><a href="">سبد خرید</a></li>
                                                     <li><a href=""checkout.html">پیش فاکتور</a></li>
-                                                    <li class="dm-bottom-separator"></li>
-                                                    <li><a href=>ورود به سایت</a></li>
-                                                    <li><a href="register.html">عضویت در سایت</a></li>
-                                                    <li><a href="reset-password.html">بازگردانی رمز عبور</a></li>
-                                                    <li class="dm-bottom-separator"></li>
-                                                    <li><a href="error-404.html">خطای 404</a></li>
+                                                    <!-- <li class="dm-bottom-separator"></li> -->
+                                                    <!-- <li><a href=>عضویت/ورود به سایت</a></li> -->
+                                                    <!-- <li><a href="register.html">عضویت در سایت</a></li> -->
+                                                    <!-- <li><a href="reset-password.html">بازگردانی رمز عبور</a></li> -->
+
+
                                                 </ul>
                                             </li>
                                             <li class="droopmenu-parent" aria-haspopup="true">

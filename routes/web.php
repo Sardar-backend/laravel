@@ -8,6 +8,7 @@ Route::get('/home',[\App\Http\Controllers\homecontorel::class,'index'])->name('i
 Route::get('/about',[\App\Http\Controllers\homecontorel::class,'about'])->name('about');
 
 Route::get('/contact',[\App\Http\Controllers\homecontorel::class,'contact'])->name('contact');
+Route::post('/contact_p',[\App\Http\Controllers\homecontorel::class,'contact_post'])->name('contact_post');
 
 Route::get('/error404',[\App\Http\Controllers\homecontorel::class,'error404'])->name('error404');
 
@@ -39,18 +40,11 @@ Route::get('/factors',[\App\Http\Controllers\admin\usercontorel::class,'factors'
 
 Route::get('/favorites',[\App\Http\Controllers\admin\usercontorel::class,'favorites'])->name('favorites');
 
-Route::get('/personal',[\App\Http\Controllers\admin\usercontorel::class,'personal'])->name('personal');
-
-Route::get('/p',[\App\Http\Controllers\authcontroll\authcontorel::class,'login'])->name('per');
+Route::get('/personal',[\App\Http\Controllers\admin\usercontorel::class,'personal'])->middleware('auth')->name('personal');
 
 
+// Auth::routes();
 
-Route::post('/pv',[\App\Http\Controllers\authcontroll\authcontorel::class,'po'])->name('perp');
-
-// Route::get('/pv',[\App\Http\Controllers\authcontroll\authcontorel::class,'enter2']);
-
-Route::get('/x',[\App\Http\Controllers\authcontroll\authcontorel::class,'log'])->name('x');
-Auth::routes();
 
 Route::get('/auth/google',[\App\Http\Controllers\Auth\googleAuthcontroller::class,'redirect'])->name('auth.google');
 Route::get('/auth/google/callback',[\App\Http\Controllers\Auth\googleAuthcontroller::class,'callback']);
@@ -61,4 +55,27 @@ Route::post('/create_comment',[\App\Http\Controllers\homecontorel::class,'craete
 
 Route::get('/blog',[\App\Http\Controllers\homecontorel::class,'blog_list'])->name('blog_list');
 
-Route::get('/blog-single-{id}',[\App\Http\Controllers\homecontorel::class,'blog_single'])->name('blog_single');
+Route::get('/blog-single-{id}',[\App\Http\Controllers\homecontorel::class,'blog_single'])->name('blog_single')->middleware('auth');
+
+
+
+
+
+
+
+
+
+Route::get('/product-{category}',[\App\Http\Controllers\homecontorel::class,'category'])->name('categorys');
+
+
+
+Route::post('/pv',[\App\Http\Controllers\authcontroll\authcontorel::class,'po'])->name('perp');
+
+Route::get('/pv',[\App\Http\Controllers\authcontroll\authcontorel::class,'enter2']);
+
+Route::get('/x',[\App\Http\Controllers\authcontroll\authcontorel::class,'login'])->name('login');
+Route::get('/logute',[\App\Http\Controllers\authcontroll\authcontorel::class,'logout'])->name('logout');
+
+//Route::get('/y',[\App\Http\Controllers\authcontroll\authcontorel::class,'log'])->name('x');
+
+Route::post('/pvc',[\App\Http\Controllers\authcontroll\authcontorel::class,'mm'])->name('mm');

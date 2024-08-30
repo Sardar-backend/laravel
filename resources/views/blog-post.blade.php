@@ -86,6 +86,8 @@
                                                         <div class="row">
                                                             <div class="col-12 pt-2">
                                                                 <!-- Show Comments -->
+                                                                 @foreach ($comments as $comment)
+
                                                                 <div class="comment p-3 my-2">
                                                                     <div class="sender-details">
                                                                         <div class="row">
@@ -93,17 +95,20 @@
                                                                                 <img src="assets/images/user-no-image.jpg" alt="" class="rounded">
                                                                             </div>
                                                                             <div class="col-9 col-sm-10 col-md-11 pr-0 pr-md-2 pr-xl-0 pt-0 pt-lg-1">
-                                                                                <div class="name">مصطفی کلانتری</div>
-                                                                                <div class="date">ارسال شده در 18 تیر 1400</div>
+                                                                                <div class="name">{{$comment->user->name}}</div>
+                                                                                <div class="date">ارسال شده در {{jdate($comment->failed_at)->ago()}}</div>
                                                                             </div>
                                                                             <div class="col-12">
-                                                                                <p>این یک متن آزمایشی است که به زودی توسط نویسنده این سایت، تکمیل یا حذف خواهد شد. اگر شما نویسنده‌ی این سایت هستید، برای حذف یا ویرایش این صفحه، کافی است از طریق مرکز مدیریت سایت خود وارد بخش مربوطه شده و محتوای این صفحه را ویرایش یا حذف کنید.</p>
+                                                                                <p>{{$comment->content}}</p>
                                                                                 <span class="reply"><img src="assets/images/comment-reply.png" alt=""> ارسال پاسخ</span>
                                                                             </div>
                                                                         </div>
                                                                     </div>
 
                                                                     <!-- Comment Reply -->
+                                                                     @foreach ($comment->child as $child )
+
+
                                                                     <div class="row justify-content-end">
                                                                         <div class="col-11 pt-2 pr-0">
                                                                             <div class="comment p-3">
@@ -113,19 +118,22 @@
                                                                                             <img src="assets/images/user-no-image.jpg" alt="" class="rounded">
                                                                                         </div>
                                                                                         <div class="col-9 col-sm-10 col-md-11 pr-0 pr-md-2 pr-xl-0 pt-0 pt-lg-1">
-                                                                                            <div class="name">امین کیانی</div>
-                                                                                            <div class="date">ارسال شده در 18 تیر 1400</div>
+                                                                                            <div class="name">{{$child->user->name}}</div>
+                                                                                            <div class="date">ارسال شده در {{jdate($child->failed_at)->ago()}}</div>
                                                                                         </div>
                                                                                         <div class="col-12">
-                                                                                            <p>صفحات و محتوای آزمایشی همیشه بخشی از محتوای پیش‌نمایش قالب و افزونه های وب هستند که شما بتوانید ارتباط درستی با پیش نمایش قالب گرفته و تصمیم مناسبی بگیرید. این صفحات معمولا برای اطلاعات کلی در مورد سایت مثل «درباره ما»، «تماس با ما»، «فهرست» یا «نظرات شما» مفید هستند.</p>
+                                                                                            <p>{{$child->content}}</p>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
+                                                                   @endforeach
                                                                     <!-- /Comment Reply -->
                                                                 </div>
+
+                                                                @endforeach
                                                                 <!-- /Show Comments -->
                                                             </div>
                                                         </div>
@@ -139,28 +147,23 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-12 py-3">
-                                                            <form>
+                                                            <form method="post" action="{{route('create_comment')}}" >
+                                                                @csrf
                                                                 <div id="send-comment-form">
                                                                     <p>نظر خود را برای این مطلب ارسال کنید. نشانی ایمیل شما منتشر نخواهد شد.</p>
                                                                     <div class="row">
-                                                                        <div class="col-12 px-3 pl-md-1 col-md-6">
-                                                                            <div class="form-group my-1">
-                                                                                <input type="text" class="form-control" placeholder="* نام شما" required oninvalid="this.setCustomValidity('لطفا نام خود را وارد کنید')" oninput="setCustomValidity('')">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-12 px-3 pr-md-1 col-md-6">
-                                                                            <div class="form-group my-1">
-                                                                                <input type="email" class="form-control text-start" placeholder="پست الکترونیک *" required oninvalid="this.setCustomValidity('لطفا پست الکترونیک خود را وارد کنید')" oninput="setCustomValidity('')">
-                                                                            </div>
-                                                                        </div>
+                                                                    <input type="hidden" class="parent_id"  name="parent_id" value="{{request()->p}}"  id="">
+                                                                    <input type="hidden" name="user_id" value="{{request()->user()->id}}">
+                                                                    <input type="hidden" name="commenttable_id" value="{{$blog->id}}">
+                                                                    <input type="hidden" name="commenttable_type" value="{{get_class($blog)}}">
                                                                         <div class="col-12 px-3">
                                                                             <div class="form-group my-1">
-                                                                                <textarea class="form-control" id="" rows="4" placeholder="متن دیدگاه"></textarea>
+                                                                                <textarea name="content" class="form-control" id="" rows="4" placeholder="متن دیدگاه"></textarea>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-12">
                                                                             <div class="form-group my-1">
-                                                                                <input type="submit" value="ارسال دیدگاه" class="btn btn-success px-5">
+                                                                                <button type="submit" value="ارسال دیدگاه" class="btn btn-success px-5">ارسال دیدگاه</button>
                                                                             </div>
                                                                         </div>
                                                                     </div>

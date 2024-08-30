@@ -5,7 +5,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header d-flex">
-                <h3 class="card-title">فهرست محصولات</h3>
+                <h3 class="card-title">فهرست کاربران</h3>
 
                 <div class="card-tools d-flex"><form action="">
                   <div class="input-group input-group-sm" style="width: 150px;">
@@ -18,7 +18,7 @@
                     </div>
                     </form>
                     <div class="btn-group-sm mr-2"></div>
-                    <a href="{{ route('admin_PRODUCT.create') }}" class="btn btn-info">ایجاد محصول</a>
+                    <a href="{{ route('admin_category.create') }}" class="btn btn-info">ایجاد دسته بندی</a>
                     </div>
                 </div>
 
@@ -28,39 +28,23 @@
                   <tbody><tr>
                     <th>آیدی</th>
                     <th>نام</th>
-                    <th>قیمت</th>
-                    <th>ستاره</th>
-                    <th>عرض</th>
-                    <th>طول</th>
-                    <th>تخفیف</th>
-                    <th>گارانتی</th>
-                    <th>منتخب</th>
-                    <th></th>
+                    <th>دسته بندی والد</th>
+                    <th>اقدامات</th>
 
                   </tr>
-                  @foreach ($users as $user)
+                  @foreach ($category as $user)
                   <tr>
                     <td>{{$user->id}}</td>
                     <td>{{$user->name}}</td>
-                    <td>{{$user->price}}</td>
-                    <td>{{$user->stars}}</td>
-                    <td>{{$user->length}}</td>
-                    <td>{{$user->with}}</td>
-                    <td>{{$user->discust}}</td>
-                    <td>{{$user->garant}}</td>
-                    <!-- <td>{{$user->Chosen}}</td> -->
+                    <td>{{$user->parent}}</td>
 
-                    @if ($user->Chosen)
-                        <td><span class="badge bg-warning p-2">منتخب</span></td>
-                    @else
-                        <td></td>
-                    @endif
-                    <td class="d-flex"><a href="{{route('admin_PRODUCT.show', ['admin_PRODUCT'=>$user->id])}}"><button class="btn btn-primary"><span class="badge badge-primary">ویرایش</span></button></a>
-                    <form action="{{route('admin_PRODUCT.destroy', ['admin_PRODUCT'=>$user->id])}}" method="post" class="mr-1">
+                    <td class="d-flex"><a href="{{route('admin_category.show', ['admin_category'=>$user->id])}}"><button class="btn btn-primary"><span class="badge badge-primary">ویرایش</span></button></a>
+                    <form action="{{route('admin_category.destroy', ['admin_category'=>$user->id])}}" method="post" class="mr-1">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger"><span class="badge badge-danger">حذف</span></button>
                     </form></td>
+                  </tr>
                   @endforeach
 
                 </tbody></table>
@@ -69,7 +53,7 @@
             </div>
             <!-- <div class="card-footer d-flex">
                 <div class="cart ">
-                    {{$users->render()}}
+                    {{$category->render()}}
                 </div>
 
               </div> -->

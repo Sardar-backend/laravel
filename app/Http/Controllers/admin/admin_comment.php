@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\comment;
+use App\Models\contacts;
 use Illuminate\Http\Request;
 
 class admin_comment extends Controller
@@ -15,7 +16,7 @@ class admin_comment extends Controller
     {
         $comments = comment::query();
         if ($keywords = request('search')) {
-            $comments->where('content','LIKE', "%$keywords%")->orWhereHas('user', function ($query) use ($keywords) {
+            $comments=$comments->where('content','LIKE', "%$keywords%")->orWhereHas('user', function ($query) use ($keywords) {
                 $query->where('name', 'LIKE', "%$keywords%");
             });
         }
@@ -72,5 +73,16 @@ class admin_comment extends Controller
     {
         comment::find($id)->delete();
         return back();
+    }
+    public function massage()
+    {
+        $users = contacts::query();
+        if ($keyword=request('search')) {
+            $users = $users->where('name', 'LIKE', "%{$keyword}%")->orWhere('content', 'LIKE', "%{$keyword}%")->orWhere('id', 'LIKE', "%{$keyword}%");
+        }
+        $all=$users->paginate(20);
+        return view('admin.componnets.massage',compact('all'));
+        // $all=contacts::orderBy('failed_at')->get();
+        // return view('admin/componnets/massage',compact('all'));
     }
 }

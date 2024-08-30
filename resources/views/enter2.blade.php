@@ -47,9 +47,13 @@
               <div class="hero-content">
                 <div class="logo mb-4"> <a class="d-flex justify-content-center"  title="Oxyy"><img src="img/logo.png" alt="Oxyy"></a> </div>
                 <div class="d-flex justify-content-center">ورود به روبیک مارکت</div>
-                <form id="loginForm" class="form-dark" method="post">
+                <div class="d-flex justify-content-center mt-3 mb-3">{{$error}}</div>
+
+                <form action="{{route('mm')}}" id="loginForm" class="form-dark" method="post">
+                    @csrf
                   <div class="form-group icon-group">
-                    <input type="text" class="form-control" value="{{$u}}" id="emailAddress" required placeholder="کد پیامک شده به شماره همراه">
+                    <input name="codeEnter" type="text" class="form-control" value="" id="emailAddress" required placeholder="کد پیامک شده به شماره همراه">
+                    <input name="code" type="text" class="form-control" value="{{$u}}" id="emailAddress" required placeholder="کد پیامک شده به شماره همراه">
                     <span class="icon-inside"><i class="fas fa-envelope"></i></span> </div>
                   <button class="btn btn-primary btn-block shadow-none mt-4 mb-3" type="submit">ورود</button>
                 </form>

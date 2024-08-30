@@ -39,8 +39,10 @@ class notificationCode extends Notification
     }
 
     public function toghasedaksms ($notifiable){
+
         return [
-            'text' => "کد احراز هویت{this->code} \nوبسایت دینگ فون " ,
+
+            'text' => "کد احراز هویت " . $this->code . " \nوبسایت  روبیک مارکت \n لغو 11" ,
             'phone'=>$this->phone
         ];
     }

@@ -46,33 +46,34 @@
                                 <div>email@website.com</div>
                             </div>
                         </div>
-                        <div class="col-12 col-lg-7 p-4">
+                        <div class="col-12 col-lg-7 p-4"><form action="{{route('contact_post')}}" method="post">@csrf
+
                             <div class="title">ارسال پیام</div>
                             <p>نظرات، پیشنهادات و انتقادات سازنده خود را از طریق فرم زیر با ما در میان بگذارید. ما در این فروشگاه اینترنتی همواره برای بهبود خدمات خود در تلاش هستیم.</p>
                             <div class="form-group">
                                 <label for="name">نام شما :</label>
-                                <input type="text" class="form-control" id="name">
+                                <input name="name"  type="text" class="form-control" id="name">
                             </div>
                             <div class="form-group">
                                 <label for="tel">تلفن تماس :</label>
-                                <input type="text" class="form-control" id="tel">
+                                <input name="number_phone" type="text" class="form-control" id="tel">
                             </div>
                             <div class="form-group">
                                 <label for="email">پست الکترونیک :</label>
-                                <input type="text" class="form-control" id="email">
+                                <input name="email" type="text" class="form-control" id="email">
                             </div>
                             <div class="form-group">
                                 <label for="subject">موضوع پیام :</label>
-                                <input type="text" class="form-control" id="subject">
+                                <input name="subject" type="text" class="form-control" id="subject">
                             </div>
                             <div class="form-group">
                                 <label for="message">متن پیام :</label>
-                                <textarea name="" class="form-control" id="message" rows="3"></textarea>
+                                <textarea name="content" class="form-control" id="message" rows="3"></textarea>
                             </div>
                             <div class="form-group">
-                                <input type="submit" value="ارسال پیام" class="btn btn-success">
+                                <button type="submit" value="ارسال پیام" class="btn btn-success">ارسال پیام</button>
                             </div>
-                        </div>
+                        </form></div>
                         <div class="col-12 mt-4 px-0">
                             <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13877.455761926274!2d52.5714962!3d29.5931048!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xcc3a67871fb07f53!2z2YjYqCDYsdmI2KjbjNqpIC0gV2ViUnViaWs!5e0!3m2!1sen!2sca!4v1600581121318!5m2!1sen!2sca" width="100%" height="400" class="rounded"></iframe>
                         </div>

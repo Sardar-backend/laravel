@@ -40,7 +40,7 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="./index2.html" class="nav-link">
+                  <a href="{{route('admin_blog.index')}}" class="nav-link">
                     <i class="fa fa-circle-o nav-icon"></i>
                     <p>مقالات</p>
                   </a>
@@ -52,6 +52,12 @@
                   </a>
                 </li>
                 <li class="nav-item">
+                  <a href="{{route('admin_category.index')}}" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>دسته بندی ها</p>
+                  </a>
+                </li>
+                <li class="nav-item">
                   <a href="{{route('admin')}}" class="nav-link active">
                     <i class="fa fa-circle-o nav-icon"></i>
                     <p>کاربران</p>
@@ -59,15 +65,14 @@
                 </li>
               </ul>
             </li>
-            <!-- <li class="nav-item">
-              <a href="pages/widgets.html" class="nav-link">
+            <li class="nav-item">
+              <a href="{{route('massage')}}" class="nav-link">
                 <i class="nav-icon fa fa-th"></i>
                 <p>
                   ویجت‌ها
-                  <span class="right badge badge-danger">جدید</span>
                 </p>
               </a>
-            </li>
+            </li> <!--
             <li class="nav-item has-treeview">
               <a href="#" class="nav-link">
                 <i class="nav-icon fa fa-pie-chart"></i>
