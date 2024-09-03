@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Model;
 
 class User extends Authenticatable
 {
@@ -76,5 +77,11 @@ class User extends Authenticatable
         return $this->permisons->contains('name', $key->name) || $this->hasRole($key->roles);
     }
 
+    public function adresses() {
+        return $this->hasMany(adresse::class);
+    }
 
+    public function favorites (){
+        return $this->belongsToMany(Product::class,'favorites','products_id','user_id','id','id');
+    }
 }

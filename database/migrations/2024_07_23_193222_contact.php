@@ -63,7 +63,10 @@ return new class extends Migration
 
         Schema::create('adresses', function (Blueprint $table) {
             $table->id()->primary();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('ostan');
+            $table->string('city');
             $table->char('tahvil');
             $table->char('adress');
             $table->integer('number');

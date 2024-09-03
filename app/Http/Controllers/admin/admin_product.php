@@ -69,14 +69,18 @@ class admin_product extends Controller
         $id=$g->last()->id;
         $t=Product::find($id);
         $t->category()->sync($data['categories']);
+
+
         $attr = collect($data['attribute']);
         $attr->each(function($item) use($t) {
             if (is_null($item['name']) || is_null($item['value']))return;
                 $attre = Attributes::firstOrCreate(
                     ['name' => $item['name']]
                 );
+                // dd($attre->values()->get());
                 $attre_value = $attre->values()->firstOrCreate(
-                    ['name' => $item['name']]
+                    ['value' => $item['value']]
+                    // ['value' => 'value']
                 );
                 $t->attribute()->attach($attre->id,['value_id' => $attre_value->id]);
         });

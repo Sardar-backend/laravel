@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helpers\Cart\Cart;
 use App\Helpers\Cart\CartService;
+use App\Helpers\Zand\Zand;
 use App\Models\blog;
 use App\Models\Product;
 use App\Notifications\notificationCode;
@@ -23,7 +24,7 @@ class homecontorel extends Controller
 {
     public function index(Request $request){
 
-        Auth::loginUsingId(1);
+        // Auth::loginUsingId(1);
         // Auth::logout();
         $categorys=productcategory::all()->where('parent','LIKE',0);
         $blogs =blog::orderBy('failed_at')->limit(3)->get();
@@ -72,6 +73,8 @@ class homecontorel extends Controller
 
     public function contact(){
         Cart::get(1);
+        // $a=Zand::okfubc();
+        // dd($a);
         Auth::loginUsingId(1);
         // alert()->success();
         return view('contact');
@@ -100,7 +103,7 @@ class homecontorel extends Controller
 
 
     public function category(string $category){
-        
+
         return view('error-404');
     }
 

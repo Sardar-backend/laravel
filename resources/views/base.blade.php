@@ -62,8 +62,8 @@
                     <div class="row">
                         @guest
                         <div class="col-12 col-md-7 col-lg-6 text-center" id="btn-login-register">
-                            <a href=>ورود</a> /
-                            <a href="">عضویت</a>
+                            <a href="{{route('login')}}">ورود</a> /
+                            <a href="{{route('login')}}">عضویت</a>
                         </div>
                         @else
                         <div class="col-12 col-md-7 col-lg-6 text-center" id="btn-login-register">

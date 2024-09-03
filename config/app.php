@@ -1,5 +1,7 @@
 <?php
 
+
+
 return [
 
     /*
@@ -106,7 +108,7 @@ return [
     ],
 // 'providers' => [
 //     // Other service providers...
-//     App\Helpers\Cart\CartServiceProvider::class
+//     App\Providers\CartServiceProvider::class,
 // ],
 
     /*
@@ -121,7 +123,7 @@ return [
     | Supported drivers: "file", "cache"
     |
     */
-    'Cart' => App\Helpers\Cart\Cart::class,
+    // gi
 
     'maintenance' => [
         'driver' => env('APP_MAINTENANCE_DRIVER', 'file'),

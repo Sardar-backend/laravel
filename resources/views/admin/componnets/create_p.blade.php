@@ -132,11 +132,11 @@
     let r =document.querySelector('.asa')
     let el =document.getElementsByClassName('elem')
     let y = document.querySelector('#add_product_attribute')
-
+    let id = 1 ;
     y.addEventListener('click', function(){
 
-        r.innerHTML +='<div class="row elem mt-2" onclick=""><div class="col-xs-5 col-sm-5 col-md-5 col-lg-5"><div class="col-sm-10"><input type="text" min="0" max="100" name="attribute[1][name]" class="form-control" id="inputEmail3" placeholder="نوع را وارد کنید"></div></div><div class="col-xs-5 col-sm-5 col-md-5 col-lg-5"><div class="col-sm-10"><input type="text" min="0" max="100" name="attribute[1][value]" class="form-control" id="inputEmail3" placeholder="نام را وارد کنید"></div></div><div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"><div class="col-sm-10"><button id="bf" type="button" class="btn btn-danger">حذف</button></div></div></div>'
-
+        r.innerHTML +='<div class="row elem mt-2" onclick=""><div class="col-xs-5 col-sm-5 col-md-5 col-lg-5"><div class="col-sm-10"><input type="text" min="0" max="100" name="attribute['+id+'][name]" class="form-control" id="inputEmail3" placeholder="نوع را وارد کنید"></div></div><div class="col-xs-5 col-sm-5 col-md-5 col-lg-5"><div class="col-sm-10"><input type="text" min="0" max="100" name="attribute['+id+'][value]" class="form-control" id="inputEmail3" placeholder="نام را وارد کنید"></div></div><div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"><div class="col-sm-10"><button id="bf" type="button" class="btn btn-danger">حذف</button></div></div></div>'
+        id++ ;
         let g =document.getElementsByClassName('bf')
 
     })

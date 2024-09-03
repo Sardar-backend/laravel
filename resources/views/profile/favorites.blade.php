@@ -39,6 +39,7 @@
                                 <div class="container">
                                     <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 gx-md-4">
                                         <!-- Products -->
+                                         @foreach ($favorites as $favorite )
                                         <div class="col">
                                             <!-- Product Box -->
                                             <div class="encode4326654321vfb">
@@ -63,126 +64,8 @@
                                             </div>
                                             <!-- /Product Box -->
                                         </div>
-                                        <div class="col">
-                                            <!-- Product Box -->
-                                            <div class="encode4326654321vfb">
-                                                <a href="../product.html"><div class="image" style="background-image: url('../assets/images/products/p400.png')"></div></a>
-                                                <div class="details p-3">
-                                                    <div class="category">
-                                                        <a href="../products.html">گوشی موبایل</a>
-                                                        &nbsp;/&nbsp;
-                                                        <a href="../products.html">سامسونگ</a>
-                                                    </div>
-                                                    <a href="../product.html"><h2>دوربین دیجیتال کانن مدل EOS 2000D به همراه لنز 18-55 میلی متر DC III</h2></a>
-                                                    <div class="encode4365gbf265g43d">6.000.000 تومان</div>
-                                                    <div class="rate">
-                                                        <i class="fa fa-star-half-alt"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <span class="encode43bf265g43d">(14 رای دهنده)</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- /Product Box -->
-                                        </div>
-                                        <div class="col">
-                                            <!-- Product Box -->
-                                            <div class="encode4326654321vfb">
-                                                <a href="../product.html"><div class="image" style="background-image: url('../assets/images/products/p103.png')"></div></a>
-                                                <div class="details p-3">
-                                                    <div class="category">
-                                                        <a href="../products.html">گوشی موبایل</a>
-                                                        &nbsp;/&nbsp;
-                                                        <a href="../products.html">سامسونگ</a>
-                                                    </div>
-                                                    <a href="../product.html"><h2>گوشی موبایل شیائومی مدل POCO X3 M2007J20CG دو سیم‌ کارت</h2></a>
-                                                    <div class="encode4365gbf265g43d">3.000.000 تومان</div>
-                                                    <div class="rate">
-                                                        <i class="fa fa-star-half-alt"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <span class="encode43bf265g43d">(14 رای دهنده)</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- /Product Box -->
-                                        </div>
-                                        <div class="col">
-                                            <!-- Product Box -->
-                                            <div class="encode4326654321vfb">
-                                                <a href="../product.html"><div class="image" style="background-image: url('../assets/images/products/p103.png')"></div></a>
-                                                <div class="details p-3">
-                                                    <div class="category">
-                                                        <a href="../products.html">گوشی موبایل</a>
-                                                        &nbsp;/&nbsp;
-                                                        <a href="../products.html">سامسونگ</a>
-                                                    </div>
-                                                    <a href="../product.html"><h2>گوشی موبایل شیائومی مدل POCO X3 M2007J20CG دو سیم‌ کارت</h2></a>
-                                                    <div class="encode4365gbf265g43d">3.000.000 تومان</div>
-                                                    <div class="rate">
-                                                        <i class="fa fa-star-half-alt"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <span class="encode43bf265g43d">(14 رای دهنده)</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- /Product Box -->
-                                        </div>
-                                        <div class="col">
-                                            <!-- Product Box -->
-                                            <div class="encode4326654321vfb">
-                                                <a href="../product.html"><div class="image" style="background-image: url('../assets/images/products/p400.png')"></div></a>
-                                                <div class="details p-3">
-                                                    <div class="category">
-                                                        <a href="../products.html">گوشی موبایل</a>
-                                                        &nbsp;/&nbsp;
-                                                        <a href="../products.html">سامسونگ</a>
-                                                    </div>
-                                                    <a href="../product.html"><h2>دوربین دیجیتال کانن مدل EOS 2000D به همراه لنز 18-55 میلی متر DC III</h2></a>
-                                                    <div class="encode4365gbf265g43d">6.000.000 تومان</div>
-                                                    <div class="rate">
-                                                        <i class="fa fa-star-half-alt"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <span class="encode43bf265g43d">(14 رای دهنده)</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- /Product Box -->
-                                        </div>
-                                        <div class="col">
-                                            <!-- Product Box -->
-                                            <div class="encode4326654321vfb">
-                                                <a href="../product.html"><div class="image" style="background-image: url('../assets/images/products/p100.png')"></div></a>
-                                                <div class="details p-3">
-                                                    <div class="category">
-                                                        <a href="../products.html">گوشی موبایل</a>
-                                                        &nbsp;/&nbsp;
-                                                        <a href="../products.html">سامسونگ</a>
-                                                    </div>
-                                                    <a href="../product.html"><h2>گوشی موبایل سامسونگ مدل Galaxy A51 دو سیم کارت</h2></a>
-                                                    <div class="encode4365gbf265g43d">6.000.000 تومان</div>
-                                                    <div class="rate">
-                                                        <i class="fa fa-star-half-alt"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <span class="encode43bf265g43d">(14 رای دهنده)</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- /Product Box -->
-                                        </div>
+                                         @endforeach
+
                                     </div>
                                 </div>
                             </div>

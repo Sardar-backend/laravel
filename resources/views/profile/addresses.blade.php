@@ -39,12 +39,16 @@
                                 <hr>
                                 <div class="container">
                                     <div class="row">
+                                        <form action="{{route('adresses_post')}}" method="post">@csrf
+
+
+
                                         <div class="col-12 pt-3">
                                             <div class="row">
                                                 <div class="col-12 col-md-4 pl-2">
                                                     <div class="form-group m-1">
                                                         <label for="province">استان:</label>
-                                                        <select name="province" id="province" class="form-control">
+                                                        <select name="ostan" id="province" class="form-control">
                                                             <option value="tehran">تهران</option>
                                                             <option value="fars">فارس</option>
                                                             <option value="esfehan">اصفهان</option>
@@ -53,7 +57,7 @@
                                                 </div>
                                                 <div class="col-12 col-md-4 pl-2">
                                                     <div class="form-group m-1">
-                                                        <label for="city">استان:</label>
+                                                        <label for="city">شهر:</label>
                                                         <select name="city" id="city" class="form-control">
                                                             <option value="tehran">تهران</option>
                                                             <option value="shiraz">شیراز</option>
@@ -64,25 +68,26 @@
                                                 <div class="col-12 col-md-8 pl-2">
                                                     <div class="form-group m-1">
                                                         <label for="address">نشانی کامل:</label>
-                                                        <input type="text" name="address" id="address" class="form-control">
+                                                        <input type="text" name="adress" id="address" class="form-control">
+                                                        <input type="hidden" name="user_id" value="{{request()->user()->id}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-4 pl-2">
                                                     <div class="form-group m-1">
                                                         <label for="postal_code">کد پستی:</label>
-                                                        <input type="text" name="postal_code" id="postal_code" class="form-control">
+                                                        <input type="text" name="post_number" id="postal_code" class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-4 pl-2">
                                                     <div class="form-group m-1">
                                                         <label for="receiver">تحویل گیرنده:</label>
-                                                        <input type="text" name="receiver" id="receiver" class="form-control">
+                                                        <input type="text" name="tahvil" id="receiver" class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-4 pl-2">
                                                     <div class="form-group m-1">
                                                         <label for="tel">تلفن تماس:</label>
-                                                        <input type="text" name="tel" id="tel" class="form-control">
+                                                        <input type="text" name="number" id="tel" class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="col-12">
@@ -92,7 +97,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                        </form></div>
                                 </div>
                             </div>
                             <!-- /New Address Form -->
@@ -106,40 +111,31 @@
                                 <div class="container">
                                     <div class="row">
                                         <!-- Address Record -->
+                                         @foreach ($adresses as $adress )
                                         <div class="col-12 address py-2">
                                             <div class="row">
                                                 <div class="col-12 col-sm-10">
-                                                    <div class="title">تهران، بلوار ولی عصر</div>
-                                                    <div class="sub-title">تهران، تهران</div>
-                                                    <div class="sub-title">1234567890</div>
-                                                    <div class="sub-title">امید کریمی</div>
-                                                    <div class="sub-title">02112345678</div>
+                                                    <div class="title">{{$adress->ostan}}، {{$adress->adress}}</div>
+                                                    <div class="sub-title">{{$adress->ostan}}، {{$adress->city}}</div>
+                                                    <div class="sub-title">{{$adress->post_number}}</div>
+                                                    <div class="sub-title">{{$adress->tahvil}}</div>
+                                                    <div class="sub-title">{{$adress->number}}</div>
                                                 </div>
                                                 <div class="col-12 col-sm-2 text-lg-end">
-                                                    <a href="#" onclick="return confirm('آیا جهت حذف این آدرس اطمینان دارید؟')" class="float-right float-sm-left pr-2 pl-sm-2"><i class="fa fa-trash-alt font-weight-normal"></i></a>
+                                                    <a onclick="return confirm('sdsdsdsd')"  class="float-right float-sm-left pr-2 pl-sm-2"><form id="foorm" action="" method="get"><input type="hidden" name="id" value="{{$adress->id}}"></form><i  id="iiii" class="fa fa-trash-alt font-weight-normal"></i></a>
                                                     <a href="#" class="float-right float-sm-left"><i class="fa fa-edit font-weight-normal"></i></a>
                                                     <a href="#" class="float-right float-sm-left ml-2" title="آدرس پیش فرض"><i class="fa fa-check-circle" style="color: #fcb941"></i></a>
                                                 </div>
                                             </div>
                                         </div>
+                                        <!-- <script>
+                                        let y = document.querySelector('#iiii');y.addEventListener('click', function() {document.querySelector('#foorm').submit();});
+                                        </script> -->
+                                         @endforeach
+
                                         <!-- Address Record -->
                                         <!-- Address Record -->
-                                        <div class="col-12 address py-2">
-                                            <div class="row">
-                                                <div class="col-12 col-sm-10">
-                                                    <div class="title">تهران، بلوار ولی عصر</div>
-                                                    <div class="sub-title">تهران، تهران</div>
-                                                    <div class="sub-title">1234567890</div>
-                                                    <div class="sub-title">امید کریمی</div>
-                                                    <div class="sub-title">02112345678</div>
-                                                </div>
-                                                <div class="col-12 col-sm-2 text-lg-end">
-                                                    <a href="#" onclick="return confirm('آیا جهت حذف این آدرس اطمینان دارید؟')" class="float-right float-sm-left pr-2 pl-sm-2"><i class="fa fa-trash-alt font-weight-normal"></i></a>
-                                                    <a href="#" class="float-right float-sm-left"><i class="fa fa-edit font-weight-normal"></i></a>
-                                                    <a href="#" class="float-right float-sm-left ml-2" title="آدرس پیش فرض"><i class="fa fa-circle-notch"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
+
                                         <!-- Address Record -->
                                     </div>
                                 </div>

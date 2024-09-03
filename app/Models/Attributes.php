@@ -10,6 +10,6 @@ class Attributes extends Model
     protected $fillable =['name'];
     protected $table = 'attribute';
     public function values () {
-        return $this->hasMany(Attribute_values::class);
+        return $this->hasMany(Attribute_values::class,'attribute_id');
     }
 }

@@ -35,6 +35,7 @@ Route::post('/t_auth2',[\App\Http\Controllers\homecontorel::class,'tokenpostauth
 
 
 Route::get('/adresses',[\App\Http\Controllers\admin\usercontorel::class,'adresses'])->name('adresses');
+Route::post('/adresses',[\App\Http\Controllers\admin\usercontorel::class,'adresses_post'])->name('adresses_post');
 
 Route::get('/factors',[\App\Http\Controllers\admin\usercontorel::class,'factors'])->name('factors');
 
