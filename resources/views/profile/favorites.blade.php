@@ -50,8 +50,8 @@
                                                         &nbsp;/&nbsp;
                                                         <a href="../products.html">سامسونگ</a>
                                                     </div>
-                                                    <a href="../product.html"><h2>گوشی موبایل سامسونگ مدل Galaxy A51 دو سیم کارت</h2></a>
-                                                    <div class="encode4365gbf265g43d">6.000.000 تومان</div>
+                                                    <a href="../product.html"><h2>{{$favorite->name}}</h2></a>
+                                                    <div class="encode4365gbf265g43d">{{$favorite->price}} </div>
                                                     <div class="rate">
                                                         <i class="fa fa-star-half-alt"></i>
                                                         <i class="fa fa-star"></i>

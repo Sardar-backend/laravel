@@ -37,7 +37,8 @@ class usercontorel extends Controller
     public function favorites (Request $request){
         $id=$request->user()->id;
         $favorite=User::find($id);
-        $favorites=$favorite->favorites()->get();
+
+        $favorites=$favorite->favorite()->get();
         return view('profile\favorites',compact('favorites'));
     }
 

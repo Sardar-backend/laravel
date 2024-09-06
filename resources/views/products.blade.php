@@ -133,7 +133,35 @@
                                         <div class="accordion-body">
                                             <div class="row">
                                                 <!-- Side Product -->
-                                                <div class="col-12 col-md-4 col-lg-12 px-0 mt-2">
+                                                 <?php use App\Helpers\Zand; ?>
+                                                 @foreach (Zand::ttt()[1] as $item )
+                                                 <div class="col-12 col-md-4 col-lg-12 px-0 mt-2">
+                                                     <a href="{{route('product',$id=$item->id)}}">
+                                                         <div class="side-product">
+                                                             <div class="row pl-3">
+                                                                 <div class="col-3 pl-2">
+                                                                     <div class="image" style="background-image: url('assets/images/products/p100.png')"></div>
+                                                                 </div>
+                                                                 <div class="col-9 pr-0">
+                                                                     <h2>{{$item->name}}</h2>
+                                                                     <div class="row">
+                                                                         <div class="col-7 pl-0">
+                                                                             <span class="encode4365gbf265g43d">{{$item->price}} تومان</span>
+                                                                         </div>
+                                                                         <div class="col-5 pr-0 text-end">
+                                                                             <span class="views">{{$item->count_view}} بازدید</span>
+                                                                         </div>
+                                                                     </div>
+                                                                 </div>
+                                                             </div>
+                                                         </div>
+                                                     </a>
+                                                 </div>
+
+                                                 @endforeach
+                                                <!-- Side Product -->
+                                                <!-- Side Product -->
+                                                <!-- <div class="col-12 col-md-4 col-lg-12 px-0 mt-2">
                                                     <a href="product.html">
                                                         <div class="side-product">
                                                             <div class="row pl-3">
@@ -154,10 +182,10 @@
                                                             </div>
                                                         </div>
                                                     </a>
-                                                </div>
+                                                </div> -->
                                                 <!-- Side Product -->
                                                 <!-- Side Product -->
-                                                <div class="col-12 col-md-4 col-lg-12 px-0 mt-2">
+                                                <!-- <div class="col-12 col-md-4 col-lg-12 px-0 mt-2">
                                                     <a href="product.html">
                                                         <div class="side-product">
                                                             <div class="row pl-3">
@@ -178,31 +206,7 @@
                                                             </div>
                                                         </div>
                                                     </a>
-                                                </div>
-                                                <!-- Side Product -->
-                                                <!-- Side Product -->
-                                                <div class="col-12 col-md-4 col-lg-12 px-0 mt-2">
-                                                    <a href="product.html">
-                                                        <div class="side-product">
-                                                            <div class="row pl-3">
-                                                                <div class="col-3 pl-2">
-                                                                    <div class="image" style="background-image: url('assets/images/products/p100.png')"></div>
-                                                                </div>
-                                                                <div class="col-9 pr-0">
-                                                                    <h2>گوشی موبایل سامسونگ مدل Galaxy A51</h2>
-                                                                    <div class="row">
-                                                                        <div class="col-7 pl-0">
-                                                                            <span class="encode4365gbf265g43d">320.000 تومان</span>
-                                                                        </div>
-                                                                        <div class="col-5 pr-0 text-end">
-                                                                            <span class="views">321 بازدید</span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                </div>
+                                                </div> -->
                                                 <!-- Side Product -->
                                             </div>
                                         </div>
@@ -246,15 +250,15 @@
                                 <div class="col">
                                         <!-- Product Box -->
                                         <div class="encode4326654321vfb">
-                                                <a href="product.html"><div class="image" style="background-image: url('assets/images/products/p100.png')"></div></a>
+                                                <a href="{{route('product',$id=$product->id)}}"><div class="image" style="background-image: url('assets/images/products/p100.png')"></div></a>
                                                 <div class="details p-3">
                                                     <div class="category">
                                                         <a href="products.html">گوشی موبایل</a>
                                                         &nbsp;/&nbsp;
                                                         <a href="products.html">سامسونگ</a>
                                                     </div>
-                                                    <a href="product.html"><h2>گوشی موبایل سامسونگ مدل Galaxy A51 دو سیم کارت</h2></a>
-                                                    <div class="encode4365gbf265g43d">6.000.000 تومان</div>
+                                                    <a href="{{route('product',$id=$product->id)}}"><h2>{{$product->name}}</h2></a>
+                                                    <div class="encode4365gbf265g43d">{{$product->price}} تومان</div>
                                                     <div class="rate">
                                                         <i class="fa fa-star-half-alt"></i>
                                                         <i class="fa fa-star"></i>
@@ -274,9 +278,11 @@
                             <div class="container">
                                 <div class="row">
                                     <div class="col-12">
-                                        <div id="pagination-bg">
-                                            <ul class="pagination justify-content-center pagination-sm"></ul>
+                                    <div class="card-footer d-flex">
+                                        <div class="cart ">
+                                            {{$products->render()}}
                                         </div>
+                                    </div>
                                     </div>
                                 </div>
                             </div>

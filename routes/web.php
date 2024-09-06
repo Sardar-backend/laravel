@@ -62,6 +62,7 @@ Route::get('/blog-single-{id}',[\App\Http\Controllers\homecontorel::class,'blog_
 
 
 
+Route::post('/like',[\App\Http\Controllers\homecontorel::class,'like_post'])->name('like_post');
 
 
 
@@ -80,3 +81,6 @@ Route::get('/logute',[\App\Http\Controllers\authcontroll\authcontorel::class,'lo
 //Route::get('/y',[\App\Http\Controllers\authcontroll\authcontorel::class,'log'])->name('x');
 
 Route::post('/pvc',[\App\Http\Controllers\authcontroll\authcontorel::class,'mm'])->name('mm');
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
+});

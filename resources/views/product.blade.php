@@ -527,6 +527,9 @@
                                     </div>
                                 </div>
                             </div>
+                            <form id="formlike" action="{{route('like_post' )}}" method="post">@csrf
+                                            <input type="hidden" name="product_id" value="{{$product->id}}">
+                                        </form>
                             <div class="cta-container pt-3 pt-md-5">
                                 <div class="row">
                                     <div class="col-12">
@@ -534,7 +537,10 @@
                                             <div class="btn btn-success px-4 px-lg-2 px-xl-4 btn-add-to-basket"><i class="fa fa-shopping-cart"></i> افزودن به سبد خرید</div>
                                         </a>
                                         <br class="d-sm-none">
-                                        <div class="btn btn-outline-secondary encode43243d mt-1 mt-sm-0" data-toggle="tooltip" data-placement="top" title="افزودن به علاقه‌مندی"></div>
+
+                                        <div @if (Auth::user()->favorite()->where('product_id',$product->id)->get()->first())
+                                            style="background-image: url('assets/images/icons/favorited.png');"
+                                        @endif  onclick="let d = document.querySelector('#formlike').submit()" class="btn btn-outline-secondary encode43243d mt-1 mt-sm-0" data-toggle="tooltip" data-placement="top" title="افزودن به علاقه‌مندی"></div>
                                         <a href="#"><div class="btn btn-outline-secondary encode43bf243d mt-1 mt-sm-0" data-toggle="tooltip" data-placement="top" title="مقایسه"></div></a>
                                     </div>
                                 </div>

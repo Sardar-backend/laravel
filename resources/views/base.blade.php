@@ -20,6 +20,11 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- /CSS Styles -->
     <link rel="stylesheet" href="assets/css/error-404.css">
+    <style>
+        .but_s{
+            background: inherit !important;;
+        }
+    </style>
 </head>
 <body>
 <!-- Header -->
@@ -54,7 +59,7 @@
                 <div class="col-12 col-md-5 col-xl-6">
                     <form action="{{route('products')}}" method="get">
                     <div id="search-bar">
-                        <button type="submit"><i class="fa fa-search"></i></button>
+                        <button class="but_s" type="submit"><i class="fa fa-search"></i></button>
                         <input name="search" type="text" placeholder="جستجو کنید...">
                     </div></form>
                 </div>
@@ -490,7 +495,7 @@
 <script src="assets/plugins/aos-master/dist/aos.js"></script>
 <script src="assets/js/droopmenu.js"></script>
 <script src="assets/js/nouislider.min.js"></script>
-<script src="assets/js/pagination.js"></script>
+<!-- <script src="assets/js/pagination.js"></script> -->
 <script src="assets/js/scripts.js"></script>
 
 

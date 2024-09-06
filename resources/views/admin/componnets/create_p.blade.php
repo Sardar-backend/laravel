@@ -39,6 +39,20 @@
                       <input type="number" max="5" min="0" name="stars" class="form-control" id="inputEmail3" placeholder="ستاره را وارد کنید">
                     </div>
                   </div>
+
+                  <div class="form-group">
+                    <textarea id="my-editor" name="image" class="form-control">{!! old('content', '') !!}</textarea>
+                    <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+                    <script>
+                    var options = {
+                        filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
+                        filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
+                        filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
+                        filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
+                    };
+                    CKEDITOR.replace('my-editor', options);
+                    </script></div>
+
                   <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">طول</label>
 

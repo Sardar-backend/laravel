@@ -10,6 +10,7 @@ class Product extends Model
     //  use HasFactory;
     public $timestamps = false;
     protected $fillable = [
+        'image',
         'name',
         'price'
         ,'discription',
@@ -34,8 +35,12 @@ class Product extends Model
     public function attribute () {
         return $this->belongsToMany(Attributes::class,'attribute_product');
     }
-    public function favorites (){
-        return $this->belongsToMany(User::class,'favorites','user_id','products_id','id','id');
+
+    public function gallery() {
+        return $this->hasMany(Gallery::class);
     }
+    // public function favorite (){
+    //     return $this->belongsToMany(User::class,'favorites','user_id','products_id','id','id');
+    // }
 
 }

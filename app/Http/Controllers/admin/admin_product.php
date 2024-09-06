@@ -59,11 +59,14 @@ class admin_product extends Controller
             'with' => ['required', 'string', 'max:255'],
             'length' => ['required', 'string', 'max:255'],
             'discust' => ['required', 'string', 'max:255'],
-
+            'image' => ['required'],
             'attribute' => ['required', 'array',],
             'categories'=>['required']
             // 'garant	' => ['required', 'boolean'],
         ]);
+        $f =$data['image'];
+        $x= preg_split('/<p><img alt="" src="|" style="height:.*/',$f);
+        $data['image']= $x[1];
 
         $g=Product::create($data)->get();
         $id=$g->last()->id;
@@ -112,15 +115,19 @@ class admin_product extends Controller
     {
         $user= Product::find($id);
         $data=$request->validate([
-            'name' => ['required', 'string', 'max:255', 'unique:products'],
+            'name' => ['required', 'string', 'max:255'],
             'price' => ['required', 'string', 'max:255'],
             'discription' => ['required', 'string', 'max:255'],
             'stars' => ['required', 'string', 'max:255'],
             'with' => ['required', 'string', 'max:255'],
             'length' => ['required', 'string', 'max:255'],
             'discust' => ['required', 'string', 'max:255'],
-            'categories'=>['required']
+            'categories'=>['required'],
+            'image' => ['required']
         ]);
+        $f =$data['image'];
+        $x= preg_split('/<p><img alt="" src="|" style="height:.*/',$f);
+        $data['image']= $x[1];
         $user->update($data);
 
         return redirect()->route('admin_PRODUCT.index');

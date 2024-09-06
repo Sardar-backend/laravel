@@ -26,7 +26,7 @@
                     <div class="col-lg-5 col-md-6">
                         <!--About Image-->
                         <div class="about-img">
-                            <img src="assets/images/about-us.jpg" alt="">
+                            <img  src="assets/images/Untitled.jpg" alt="">
                         </div>
                     </div>
                     <div class="col-lg-7 col-md-6">

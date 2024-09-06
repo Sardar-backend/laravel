@@ -44,13 +44,13 @@
                                                         <a href={{route('blog_single',$id=$blog->id)}}><div class="post-image" style="background-image: url('assets/images/blog/post100.jpg')"></div></a>
                                                         <div class="details py-3 px-4">
                                                             <div class="post-date">ارسال شده در {{jdate($blog->failed_at)->format('%B %d، %Y')}}</div>
-                                                            <a href="blog-post.html">
+                                                            <a href="{{route('blog_single',$id=$blog->id)}}">
                                                                 <h2 class="post-title">{{$blog->title}}</h2>
                                                             </a>
-                                                            <a href="blog-post.html">
+                                                            <a href="{{route('blog_single',$id=$blog->id)}}">
                                                                 <div class="encode43bbfb">{{substr(strip_tags($blog->content),0,462)}}...</div>
                                                             </a>
-                                                            <div class="read-more"><a href="blog-post.html" class="hvr-icon-back">بیشتر خوانید <i class="fa fa-arrow-left hvr-icon"></i></a></div>
+                                                            <div class="read-more"><a href="{{route('blog_single',$id=$blog->id)}}" class="hvr-icon-back">بیشتر خوانید <i class="fa fa-arrow-left hvr-icon"></i></a></div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -63,209 +63,40 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-12 col-lg-3">
-                            <div class="row">
-                                <!-- Side Panel -->
-                                <div class="col-12 col-sm-6 col-lg-12 px-lg-2">
-                                    <div class="blog-side-panel">
-                                        <div class="row pt-2 px-3">
-                                            <div class="col"><div class="title">پربازدیدترین محصولات</div></div>
-                                        </div>
-                                        <hr>
-                                        <div class="container">
-                                            <div class="row">
-                                                <!-- Side Panel Product -->
-                                                <div class="col-12 col-lg-12 px-0 mt-2">
-                                                    <a href="product.html">
-                                                        <div class="side-blog-product">
-                                                            <div class="row pl-3">
-                                                                <div class="col-4 pl-2">
-                                                                    <div class="image" style="background-image: url(assets/images/products/p100.png)"></div>
-                                                                </div>
-                                                                <div class="col-8 px-0">
-                                                                    <h2>گوشی موبایل سامسونگ مدل Galaxy A51 دو سیم کارت</h2>
-                                                                    <div class="row">
-                                                                        <div class="col-8 pl-0">
-                                                                            <span class="encode4365gbf265g43d">3.200.000 تومان</span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                                <!-- /Side Panel Product -->
-                                                <!-- Side Panel Product -->
-                                                <div class="col-12 col-lg-12 px-0 mt-2">
-                                                    <a href="product.html">
-                                                        <div class="side-blog-product">
-                                                            <div class="row pl-3">
-                                                                <div class="col-4 pl-2">
-                                                                    <div class="image" style="background-image: url(assets/images/products/p200.png)"></div>
-                                                                </div>
-                                                                <div class="col-8 px-0">
-                                                                    <h2>لپ تاپ 15 اینچی ایسوس مدل VivoBook X543MA-DM905</h2>
-                                                                    <div class="row">
-                                                                        <div class="col-8 pl-0">
-                                                                            <span class="encode4365gbf265g43d">3.200.000 تومان</span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                                <!-- /Side Panel Product -->
-                                                <!-- Side Panel Product -->
-                                                <div class="col-12 col-lg-12 px-0 mt-2">
-                                                    <a href="product.html">
-                                                        <div class="side-blog-product">
-                                                            <div class="row pl-3">
-                                                                <div class="col-4 pl-2">
-                                                                    <div class="image" style="background-image: url(assets/images/products/p300.png)"></div>
-                                                                </div>
-                                                                <div class="col-8 px-0">
-                                                                    <h2>هدفون بی سیم سامسونگ مدل Galaxy Buds Live</h2>
-                                                                    <div class="row">
-                                                                        <div class="col-8 pl-0">
-                                                                            <span class="encode4365gbf265g43d">3.200.000 تومان</span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                                <!-- /Side Panel Product -->
-                                                <!-- Side Panel Product -->
-                                                <div class="col-12 col-lg-12 px-0 mt-2">
-                                                    <a href="product.html">
-                                                        <div class="side-blog-product">
-                                                            <div class="row pl-3">
-                                                                <div class="col-4 pl-2">
-                                                                    <div class="image" style="background-image: url(assets/images/products/p400.png)"></div>
-                                                                </div>
-                                                                <div class="col-8 px-0">
-                                                                    <h2>دوربین دیجیتال کانن مدل EOS 2000D به همراه لنز 18-55 میلی متر</h2>
-                                                                    <div class="row">
-                                                                        <div class="col-8 pl-0">
-                                                                            <span class="encode4365gbf265g43d">3.200.000 تومان</span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                                <!-- /Side Panel Product -->
-                                            </div>
+                            <!-- <div class="container">
+
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div id="pagination-bg">
+                                            <ul class="pagination justify-content-center pagination-sm">
+                                                <li class="page-item" id="previous-page"><a class="page-link" href="javascript:void(0)"><svg class="svg-inline--fa fa-angle-double-right fa-w-14" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-double-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"></path></svg><!-- <i class="fas fa-angle-double-right"></i> Font Awesome fontawesome.com --></a></li>
+                                                <!-- <li class="page-item current-page active"><a class="page-link" href="javascript:void(0)">1</a></li>
+                                                <li class="page-item current-page"><a class="page-link" href="javascript:void(0)">2</a></li>
+                                                <li class="page-item current-page"><a class="page-link" href="javascript:void(0)">3</a></li>
+                                                <li class="page-item current-page"><a class="page-link" href="javascript:void(0)">4</a></li>
+                                                <li class="page-item" id="next-page"><a class="page-link" href="javascript:void(0)"><svg class="svg-inline--fa fa-angle-double-left fa-w-14" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-double-left" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M223.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L319.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L393.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34zm-192 34l136 136c9.4 9.4 24.6 9.4 33.9 0l22.6-22.6c9.4-9.4 9.4-24.6 0-33.9L127.9 256l96.4-96.4c9.4-9.4 9.4-24.6 0-33.9L201.7 103c-9.4-9.4-24.6-9.4-33.9 0l-136 136c-9.5 9.4-9.5 24.6-.1 34z"></path></svg><!-- <i class="fas fa-angle-double-left"></i> Font Awesome fontawesome.com --></a></li>
+                                            <!-- </ul>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-12 col-sm-6 col-lg-12 px-lg-2">
-                                    <div class="blog-side-panel">
-                                        <div class="row pt-4 pt-sm-2 px-3">
-                                            <div class="col"><div class="title">پربازدیدترین مطالب</div></div>
-                                        </div>
-                                        <hr>
-                                        <div class="container">
-                                            <div class="row">
-                                                <!-- Side Panel Post -->
-                                                <div class="col-12 col-lg-12 px-0 mt-2">
-                                                    <div class="side-blog-post">
-                                                        <div class="row pl-3">
-                                                            <div class="col-4 pl-2">
-                                                                <a href="blog-post.html"><div class="image" style="background-image: url(assets/images/blog/post100.jpg)"></div></a>
-                                                            </div>
-                                                            <div class="col-8 px-0">
-                                                                <a href="blog-post.html"><h2>بررسی آیفون 12 پرو مکس اپل</h2></a>
-                                                                <div class="row">
-                                                                    <div class="col-12 col-xl-6 pl-0">
-                                                                        <span class="category">دسته بندی: <a href="blog.html">اخبار</a></span>
-                                                                    </div>
-                                                                    <div class="col-12 col-xl-6 pr-0 text-start text-xl-end d-none d-xl-block">
-                                                                        <span class="date">30 خرداد 1400</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- /Side Panel Post -->
-                                                <!-- Side Panel Post -->
-                                                <div class="col-12 col-lg-12 px-0 mt-2">
-                                                    <div class="side-blog-post">
-                                                        <div class="row pl-3">
-                                                            <div class="col-4 pl-2">
-                                                                <a href="blog-post.html"><div class="image" style="background-image: url(assets/images/blog/post101.jpg)"></div></a>
-                                                            </div>
-                                                            <div class="col-8 px-0">
-                                                                <a href="blog-post.html"><h2>سامسونگ گلکسی S21 اولترا 5G</h2></a>
-                                                                <div class="row">
-                                                                    <div class="col-12 col-xl-6 pl-0">
-                                                                        <span class="category">دسته بندی: <a href="blog.html">اخبار</a></span>
-                                                                    </div>
-                                                                    <div class="col-12 col-xl-6 pr-0 text-start text-xl-end d-none d-xl-block">
-                                                                        <span class="date">30 خرداد 1400</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- /Side Panel Post -->
-                                                <!-- Side Panel Post -->
-                                                <div class="col-12 col-lg-12 px-0 mt-2">
-                                                    <div class="side-blog-post">
-                                                        <div class="row pl-3">
-                                                            <div class="col-4 pl-2">
-                                                                <a href="blog-post.html"><div class="image" style="background-image: url(assets/images/blog/post102.jpg)"></div></a>
-                                                            </div>
-                                                            <div class="col-8 px-0">
-                                                                <a href="blog-post.html"><h2>دریافت گواهی بلوتوث گلکسی A03s سامسونگ</h2></a>
-                                                                <div class="row">
-                                                                    <div class="col-12 col-xl-6 pl-0">
-                                                                        <span class="category">دسته بندی: <a href="blog.html">اخبار</a></span>
-                                                                    </div>
-                                                                    <div class="col-12 col-xl-6 pr-0 text-start text-xl-end d-none d-xl-block">
-                                                                        <span class="date">30 خرداد 1400</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- /Side Panel Post -->
-                                                <!-- Side Panel Post -->
-                                                <div class="col-12 col-lg-12 px-0 mt-2">
-                                                    <div class="side-blog-post">
-                                                        <div class="row pl-3">
-                                                            <div class="col-4 pl-2">
-                                                                <a href="blog-post.html"><div class="image" style="background-image: url(assets/images/blog/post103.jpg)"></div></a>
-                                                            </div>
-                                                            <div class="col-8 px-0">
-                                                                <a href="blog-post.html"><h2>خرابی نمایشگرهای سری گلکسی S20</h2></a>
-                                                                <div class="row">
-                                                                    <div class="col-12 col-xl-6 pl-0">
-                                                                        <span class="category">دسته بندی: <a href="blog.html">اخبار</a></span>
-                                                                    </div>
-                                                                    <div class="col-12 col-xl-6 pr-0 text-start text-xl-end d-none d-xl-block">
-                                                                        <span class="date">30 خرداد 1400</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- /Side Panel Post -->
-                                            </div>
+                            </div> -->
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-12">
+                                    <div class="card-footer d-flex">
+                                        <div class="cart ">
+                                            {{$blogs->render()}}
                                         </div>
                                     </div>
+                                    </div>
                                 </div>
-                                <!-- /Side Panel -->
                             </div>
+                            <script>
+                                let a = document.querySelector('.small .text-muted')
+                                a.remove();
+                            </script>
                         </div>
+                        @include('layouts/last_blogs&products')
                     </div>
                 </div>
             </div>

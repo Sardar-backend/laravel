@@ -60,7 +60,12 @@
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger"><span class="badge badge-danger">حذف</span></button>
-                    </form></td>
+
+                    </form>
+                    <a class="mr-1" href="{{route('product.gallery.index', ['product'=>$user->id])}}"><button class="btn btn-warning"><span class="badge badge-warning">گالری تصاویر</span></button></a>
+
+                    <!-- <button type="submit" class="btn btn-warning mr-1"><span class="badge badge-warning ">گالری تصاویر</span></button> -->
+                </td>
                   @endforeach
 
                 </tbody></table>

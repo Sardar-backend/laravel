@@ -16,6 +16,7 @@ Route::delete('user/destroy{id}',[App\Http\Controllers\admin\admin_user::class,'
 // Route::get('user/edit{id}',[App\Http\Controllers\admin\admin_product::class,'edit'])->middleware(adminmiddleware::class)->name('edit_post');
 // Route::patch('user/edit{id}',[App\Http\Controllers\admin\admin_product::class,'edituser'])->middleware(adminmiddleware::class)->name('edituser');
 // Route::delete('user/destroy{id}',[App\Http\Controllers\admin\admin_product::class,'destroy'])->middleware(adminmiddleware::class)->name('destroy_user');
+Route::resource('product.gallery',App\Http\Controllers\admin\gallery::class);
 Route::resource('admin_PRODUCT',App\Http\Controllers\admin\admin_product::class);
 Route::resource('admin_comment',App\Http\Controllers\admin\admin_comment::class);
 Route::resource('admin_category',App\Http\Controllers\admin\admin_category::class);

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helpers\Cart\Cart;
 use App\Helpers\Cart\CartService;
-use App\Helpers\Zand\Zand;
+use App\Helpers\Zand;
 use App\Models\blog;
 use App\Models\Product;
 use App\Notifications\notificationCode;
@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Gate as FacadesGate;
 
 class homecontorel extends Controller
 {
+
     public function index(Request $request){
 
         // Auth::loginUsingId(1);
@@ -67,12 +68,12 @@ class homecontorel extends Controller
     }
 
     public function blog_list(){
-        $blogs=blog::orderBy('failed_at')->get();
-        return view('blog',compact('blogs'));
+        $blogs=blog::orderBy('failed_at')->paginate(2);
+        return view('blog',compact('blogs'))->with('last_blog',Zand::ttt()[0])->with('last_products',Zand::ttt()[1]);
     }
 
     public function contact(){
-        Cart::get(1);
+        // Cart::get(1);
         // $a=Zand::okfubc();
         // dd($a);
         Auth::loginUsingId(1);
@@ -112,6 +113,7 @@ class homecontorel extends Controller
     public function faq(){
 
         // return view('faq');
+
         Cart::get(5);
         return 'test';
     }
@@ -122,7 +124,7 @@ class homecontorel extends Controller
         if ($keyword=request('search')) {
             $products= $products->where('name','LIKE',"%$keyword%")->orWhere('discription','LIKE',"%$keyword%")->orWhere('id','LIKE',"%$keyword%");
         }
-        $products = $products->orderBy('failed_at')->paginate(20);
+        $products = $products->orderBy('failed_at')->paginate(5);
         return view('products',compact('products'));
     }
 
@@ -133,7 +135,7 @@ class homecontorel extends Controller
         $blog->update(['count_view' => $view]);
         $comments=$blog->comment()->where('status','LIKE',true)->where('parent_id','LIKE',0)->get();
 
-        return view('blog-post',compact('blog','comments'));
+        return view('blog-post',compact('blog','comments'))->with('last_blog',Zand::ttt()[0])->with('last_products',Zand::ttt()[1]);
     }
 
     public function product(int $id){
@@ -206,6 +208,10 @@ class homecontorel extends Controller
 
         ]);
     }
-
+    public function like_post (Request $request){
+        $p=Product::find($request->product_id);
+        $request->user()->favorite()->attach($p);
+        return back();
+    }
 
 }

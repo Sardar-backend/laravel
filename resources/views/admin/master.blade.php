@@ -18,11 +18,17 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <link rel="stylesheet" href={{asset('css/all.min.css')}}>
   @vite('resources/sass/admin.scss')
+  
   <!-- bootstrap rtl -->
   <!-- <link rel="stylesheet" href="/dist/css/bootstrap-rtl.min.css"> -->
   <!-- template rtl version -->
   <!-- <link rel="stylesheet" href="/dist/css/custom-style.css"> -->
-
+    <style>
+        /* #imageadmin{
+            width: 50%;
+            height: 50%;
+        } */
+    </style>
 </head>
 <!--
 BODY TAG OPTIONS:

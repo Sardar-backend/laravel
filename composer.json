@@ -8,6 +8,7 @@
         "php": "^8.2",
         "contao-components/swiper": "^11.1",
         "ghasedaksms/php": "^1.0",
+        "intervention/image-laravel": "^1.3",
         "kavenegar/php": "^1.2",
         "laravel/framework": "^11.9",
         "laravel/socialite": "^5.15",
@@ -15,6 +16,7 @@
         "laravel/tinker": "^2.9",
         "laravel/ui": "^4.5",
         "morilog/jalali": "^3.4",
+        "nwidart/laravel-modules": "^11.0",
         "phpunit/php-timer": "^7.0",
         "realrashid/sweet-alert": "^7.2",
         "unisharp/laravel-filemanager": "^2.9"
@@ -68,7 +70,8 @@
         "allow-plugins": {
             "pestphp/pest-plugin": true,
             "php-http/discovery": true,
-            "contao-components/installer": true
+            "contao-components/installer": true,
+            "wikimedia/composer-merge-plugin": true
         }
     },
     "minimum-stability": "stable",
