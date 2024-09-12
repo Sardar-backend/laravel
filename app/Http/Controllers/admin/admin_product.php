@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\productcategory;
 use Attribute;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class admin_product extends Controller
 {
@@ -59,14 +60,14 @@ class admin_product extends Controller
             'with' => ['required', 'string', 'max:255'],
             'length' => ['required', 'string', 'max:255'],
             'discust' => ['required', 'string', 'max:255'],
-            'image' => ['required'],
+            // 'image' => ['required'],
             'attribute' => ['required', 'array',],
             'categories'=>['required']
             // 'garant	' => ['required', 'boolean'],
         ]);
-        $f =$data['image'];
-        $x= preg_split('/<p><img alt="" src="|" style="height:.*/',$f);
-        $data['image']= $x[1];
+        // $f =$data['image'];
+        // $x= preg_split('/<p><img alt="" src="|" style="height:.*/',$f);
+        // $data['image']= $x[1];
 
         $g=Product::create($data)->get();
         $id=$g->last()->id;
@@ -123,12 +124,18 @@ class admin_product extends Controller
             'length' => ['required', 'string', 'max:255'],
             'discust' => ['required', 'string', 'max:255'],
             'categories'=>['required'],
-            'image' => ['required']
+            // 'image' => ['required'],
+            'cfc' => ['required']
         ]);
-        $f =$data['image'];
-        $x= preg_split('/<p><img alt="" src="|" style="height:.*/',$f);
-        $data['image']= $x[1];
+        // dd($request->file('cfc'));
+        Storage::putFileAs('file',$request->file('cfc'),$request->file('cfc')->getClientOriginalName());
+        // $f =$data['image'];
+        // $x= preg_split('/<p><img alt="" src="|" style="height:.*/',$f);
+        // $data['image']= $x[1];
+        $p = Product::where('name' , $data['name'])->get()->first();
+
         $user->update($data);
+        $p->category()->sync($data['categories']);
 
         return redirect()->route('admin_PRODUCT.index');
     }

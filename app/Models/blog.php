@@ -16,4 +16,9 @@ class blog extends Model
     public  function comment() {
         return $this->morphMany(comment::class, 'commenttable');
     }
+
+    public function category() {
+
+        return $this->belongsToMany(blogcategory::class,'blogcategorys_blog');
+    }
 }

@@ -58,7 +58,7 @@
                 <!-- /.card-body -->
                 <div class="card-footer">
                   <button type="submit" class="btn btn-info">ویرایش</button>
-                  <button type="submit" class="btn btn-default float-left">لغو</button>
+                  <a href="{{route('admin')}}" class="btn btn-default float-left">لغو<a/>
                 </div>
                 <!-- /.card-footer -->
               </form>

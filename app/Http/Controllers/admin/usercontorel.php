@@ -15,6 +15,12 @@ class usercontorel extends Controller
 
         return view('profile\addresses',compact('adresses'));
     }
+    public function delete_adresses (Request $request , string $id){
+        // dd('d');
+        $adresses = $request->user()->adresses()->where('id',$id)->delete();
+
+        return back();
+    }
     public function adresses_post (Request $request){
         $data = $request->validate([
             'ostan' => ['required'],

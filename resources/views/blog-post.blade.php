@@ -1,6 +1,5 @@
 @extends('base')
 @section('content')
-
 <section class="inner-page blog-inner-page" id="blog-page">
     <div class="container-fluid" id="page-hero">
         <div class="row">
@@ -42,9 +41,9 @@
                                         <hr>
                                         <div class="row py-0 px-3" id="post-details">
                                             <div class="col-8">
-                                                <span>دسته بندی: <a href="blog.html">آموزش وردپرس</a></span>
+                                                <!-- <span>دسته بندی: <a href="blog.html">آموزش وردپرس</a></span> -->
                                             </div>
-                                            <div class="col-4 text-end"><span>244 بازدید | 3 نظر</span></div>
+                                            <div class="col-4 text-end"><span>{{$blog->count_view}} بازدید | {{$blog->comment->count()}} نظر</span></div>
                                         </div>
                                         <div class="row">
                                             <div class="col-12 pt-2 text-justify" id="post-html">
@@ -59,12 +58,12 @@
                                             <div class="col-12">
                                                 <hr>
                                                 <div id="keywords">
-                                                    <span>برچسب ها:</span>
-                                                    <a href="#"><span class="keyword">وردپرس</span></a>
-                                                    <a href="#"><span class="keyword">طراحی سایت</span></a>
-                                                    <a href="#"><span class="keyword">قالب فروشگاهی</span></a>
-                                                    <a href="#"><span class="keyword">روبیک مارکت</span></a>
-                                                    <a href="#"><span class="keyword">قالب اختصاصی</span></a>
+                                                    <span>دسته بندی ها:</span>
+                                                    @foreach ($blog->category()->get() as $category)
+                                                        <!-- <form id="xx{{$category->name}}" action="{{route('products')}}" method="get"> <input type="hidden" name="search" value="{{$category->name}}"></form> -->
+                                                        <!-- <a onclick="let cc = document.querySelector('#xx{{$category->name}}').submit()" ><span class="keyword">{{$category->name}}</span></a> -->
+                                                        <a href="{{route('blog_category',['category'=>$category->name])}}" ><span class="keyword">{{$category->name}}</span></a>
+                                                    @endforeach
                                                 </div>
                                             </div>
                                         </div>
@@ -86,13 +85,19 @@
                                                         <div class="row">
                                                             <div class="col-12 pt-2">
                                                                 <!-- Show Comments -->
-                                                                 @foreach ($comments as $comment)
 
+                                                                 <!-- {{$comments}} -->
+
+                                                                 @if (!$comments->first())
+                                                                     <p>اولین نفری باشید که نظری ارسال میکنید</p>
+                                                                     
+                                                                 @endif
+                                                                @foreach ($comments as $comment)
                                                                 <div class="comment p-3 my-2">
                                                                     <div class="sender-details">
                                                                         <div class="row">
                                                                             <div class="col-3 col-sm-2 col-md-1 pl-md-0 pl-lg-2 pl-xl-3">
-                                                                                <img src="assets/images/user-no-image.jpg" alt="" class="rounded">
+                                                                                <img oncontextmenu="function d (event){ event.preventDefault()}" style="pointer-events: none;"  src="assets/images/user-no-image.jpg" alt="" class="rounded">
                                                                             </div>
                                                                             <div class="col-9 col-sm-10 col-md-11 pr-0 pr-md-2 pr-xl-0 pt-0 pt-lg-1">
                                                                                 <div class="name">{{$comment->user->name}}</div>
@@ -105,8 +110,12 @@
                                                                         </div>
                                                                     </div>
 
+
+                                                                    <script>
+                                                                        let t =document.querySelector('.rounded')
+                                                                    t.addEventListener('contextmenu', event => event.preventDefault());</script>
                                                                     <!-- Comment Reply -->
-                                                                     @foreach ($comment->child as $child )
+                                                                    @foreach ($comment->child as $child )
 
 
                                                                     <div class="row justify-content-end">
@@ -152,20 +161,20 @@
                                                                 <div id="send-comment-form">
                                                                     <p>نظر خود را برای این مطلب ارسال کنید. نشانی ایمیل شما منتشر نخواهد شد.</p>
                                                                     <div class="row">
-                                                                    <input type="hidden" class="parent_id"  name="parent_id" value="{{request()->p}}"  id="">
+                                                                        <input type="hidden" class="parent_id"  name="parent_id" value="{{request()->p}}"  id="">
                                                                     <input type="hidden" name="user_id" value="{{request()->user()->id}}">
                                                                     <input type="hidden" name="commenttable_id" value="{{$blog->id}}">
                                                                     <input type="hidden" name="commenttable_type" value="{{get_class($blog)}}">
-                                                                        <div class="col-12 px-3">
-                                                                            <div class="form-group my-1">
-                                                                                <textarea name="content" class="form-control" id="" rows="4" placeholder="متن دیدگاه"></textarea>
-                                                                            </div>
+                                                                    <div class="col-12 px-3">
+                                                                        <div class="form-group my-1">
+                                                                            <textarea name="content" class="form-control" id="" rows="4" placeholder="متن دیدگاه"></textarea>
                                                                         </div>
-                                                                        <div class="col-12">
-                                                                            <div class="form-group my-1">
-                                                                                <button type="submit" value="ارسال دیدگاه" class="btn btn-success px-5">ارسال دیدگاه</button>
-                                                                            </div>
+                                                                    </div>
+                                                                    <div class="col-12">
+                                                                        <div class="form-group my-1">
+                                                                            <button type="submit" value="ارسال دیدگاه" class="btn btn-success px-5">ارسال دیدگاه</button>
                                                                         </div>
+                                                                    </div>
                                                                     </div>
                                                                 </div>
                                                             </form>
@@ -187,6 +196,7 @@
         </div>
     </div>
 </section>
+
 
 
 

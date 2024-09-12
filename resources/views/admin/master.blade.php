@@ -18,7 +18,7 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <link rel="stylesheet" href={{asset('css/all.min.css')}}>
   @vite('resources/sass/admin.scss')
-  
+
   <!-- bootstrap rtl -->
   <!-- <link rel="stylesheet" href="/dist/css/bootstrap-rtl.min.css"> -->
   <!-- template rtl version -->
@@ -354,5 +354,6 @@ to get the desired effect
 <script src="/plugins/chart.js/Chart.min.js"></script>
 <script src="/dist/js/demo.js"></script>
 <script src="/dist/js/pages/dashboard3.js"></script>
+
 </body>
 </html>

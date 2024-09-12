@@ -121,10 +121,14 @@
                                                     <div class="sub-title">{{$adress->tahvil}}</div>
                                                     <div class="sub-title">{{$adress->number}}</div>
                                                 </div>
+
                                                 <div class="col-12 col-sm-2 text-lg-end">
-                                                    <a onclick="return confirm('sdsdsdsd')"  class="float-right float-sm-left pr-2 pl-sm-2"><form id="foorm" action="" method="get"><input type="hidden" name="id" value="{{$adress->id}}"></form><i  id="iiii" class="fa fa-trash-alt font-weight-normal"></i></a>
-                                                    <a href="#" class="float-right float-sm-left"><i class="fa fa-edit font-weight-normal"></i></a>
-                                                    <a href="#" class="float-right float-sm-left ml-2" title="آدرس پیش فرض"><i class="fa fa-check-circle" style="color: #fcb941"></i></a>
+                                                <form id="aaa{{$adress->id}}" action="{{route('delete_adresses',['id'=>$adress->id])}}" method="post">
+                                                    @csrf
+                                                </form>
+                                                    <a onclick="let cc = document.querySelector('#aaa{{$adress->id}}').submit()"  class="float-right float-sm-left pr-2 pl-sm-2"><i  id="iiii" class="fa fa-trash-alt font-weight-normal"></i></a>
+                                                    <!-- <a href="#" class="float-right float-sm-left"><i class="fa fa-edit font-weight-normal"></i></a> -->
+                                                    <!-- <a href="#" class="float-right float-sm-left ml-2" title="آدرس پیش فرض"><i class="fa fa-check-circle" style="color: #fcb941"></i></a> -->
                                                 </div>
                                             </div>
                                         </div>

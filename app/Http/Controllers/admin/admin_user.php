@@ -70,7 +70,7 @@ class admin_user extends Controller
     }
 
 
-     public function edituser(Request $request,string $id )
+     public function edituser (Request $request,string $id )
      {
         $user= User::find($id);
         $data=$request->validate([
@@ -79,6 +79,7 @@ class admin_user extends Controller
             'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
             'password' => ['required', 'string', 'min:8', 'confirmed']
         ]);
+        // dd($data);
         // if (!isNull($request->password)) {
         //     $request->validate(['password' => ['required', 'string', 'min:8', 'confirmed']]);
 

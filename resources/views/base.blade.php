@@ -18,11 +18,39 @@
     <link rel="stylesheet" href="assets/css/nouislider.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/style.css">
+
+
+    <!-- <link rel="stylesheet" href="assets/css/bootstrap.rtl.min.css">
+    <link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="assets/plugins/aos-master/dist/aos.css">
+    <link rel="stylesheet" href="assets/plugins/hover-master/css/hover-min.css">
+    <link rel="stylesheet" href="assets/css/ionicons.css">
+    <link rel="stylesheet" href="assets/css/droopmenu.css">
+    <link rel="stylesheet" href="assets/css/highlight.css">
+    <link rel="stylesheet" href="assets/css/nouislider.min.css"> -->
+
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+
+    <link rel="stylesheet" href="assets/css/style.css">
     <!-- /CSS Styles -->
     <link rel="stylesheet" href="assets/css/error-404.css">
     <style>
         .but_s{
-            background: inherit !important;;
+            background: inherit !important;
+            border: 0;
+        }
+        .post-image{
+            pointer-events: none;
+        }
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+        }
+
+        /* Firefox */
+        input[type=number] {
+            -moz-appearance: textfield;
         }
     </style>
 </head>
@@ -36,12 +64,12 @@
                 <div class="col-8 d-none d-md-block">
                     <ul>
                         <li><a href="{{route('index')}}">صفحه نخست</a></li>
-                        <li><a href={{route('about')}}>درباره ما</a></li>
-                        <li><a href={{route('contact')}}>تماس با ما</a></li>
+                        <li><a href="{{route('about')}}">درباره ما</a></li>
+                        <li><a href="{{route('contact')}}">تماس با ما</a></li>
                     </ul>
                 </div>
                 <div class="col-12 col-md-4 text-center text-md-end" id="top-encode43vfbb65gtabfb">
-                    <span>تلفن مشاوره و فروش: 09351234567</span>
+                    <span>این سایت یک نمونه کار است و کارکرد تجاری ندارد</span>
                 </div>
             </div>
         </div>
@@ -497,7 +525,10 @@
 <script src="assets/js/nouislider.min.js"></script>
 <!-- <script src="assets/js/pagination.js"></script> -->
 <script src="assets/js/scripts.js"></script>
-
+<script>let d =document.querySelectorAll('img');d.forEach(function (params) {params.addEventListener('contextmenu', event => event.preventDefault());});</script>
+<!-- فقط برای سبد خرید  -->
+<script src="assets/js/owl.carousel.min.js"></script>
+<!-- فقط برای سبد خرید -->
 
 @yield('Scripts')
 

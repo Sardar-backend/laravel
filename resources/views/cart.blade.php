@@ -33,7 +33,7 @@
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-12 py-3">
-                                            <div class="pb-3" id="return-to-shop">می‌خواهید محصولات دیگری اضافه کنید؟ <a href="products.html">بازگشت به فروشگاه</a></div>
+                                            <div class="pb-3" id="return-to-shop">می‌خواهید محصولات دیگری اضافه کنید؟ <a href="{{route('products')}}">بازگشت به فروشگاه</a></div>
                                             <div class="d-none d-md-block">
                                                 <div class="row my-2" id="heading">
                                                     <div class="col-4">
@@ -53,91 +53,70 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            @php
+                                            use App\Helpers\Cart\Cart;
+                                            @endphp
+                                            @if (! Cart::all()->count())
+                                            <p>سبد خرید شما خالی است</p>
+                                            @endif
                                             <!-- Order Product Record -->
-                                            <div class="row product">
-                                                <div class="col-12 col-md-4">
-                                                    <div class="row">
-                                                        <div class="col-2 col-md-4 pl-0">
-                                                            <img src="assets/images/products/p100.png" alt="">
-                                                        </div>
-                                                        <div class="col-10 col-md-8">
-                                                            <a href="product.html" target="_blank"><div class="title pt-2">گوشی موبایل سامسونگ مدل Galaxy A51 دو سیم کارت</div></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-6 col-md-2">
-                                                    <div class="d-md-none font-weight-bold">قیمت</div>
-                                                    <div class="pt-1"><span class="product-encode4365gbf265g43d">3.200.000</span> <span>تومان</span></div>
-                                                </div>
-                                                <div class="col-6 col-md-2 pl-4 pr-0 pr-md-3">
-                                                    <div class="d-md-none font-weight-bold">تعداد</div>
-                                                    <div class="input-group mb-3 order-number">
-                                                        <div class="input-group-prepend">
-                                                            <button class="btn btn-outline-secondary btn-plus" type="button">+</button>
-                                                        </div>
-                                                        <input type="text" name="order-number[]" value="1" class="form-control text-center order-number" readonly>
-                                                        <div class="input-group-prepend">
-                                                            <button class="btn btn-outline-secondary btn-minus" type="button">_</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-6 col-md-2">
-                                                    <div class="d-md-none font-weight-bold">تخفیف</div>
-                                                    <div class="pt-1"><span class="product-discount">3.200.000</span> <span>تومان</span></div>
-                                                </div>
-                                                <div class="col-6 col-md-2 pr-0">
-                                                    <div class="d-md-none font-weight-bold">قیمت نهایی</div>
-                                                    <div class="pt-1 pr-2 bg-light"><span class="product-total" >3.000.000</span> <span>تومان</span></div>
-                                                    <a href="#" class="product-remove btn-remove-from-basket" data-id=""><div class="small pl-2"><i class="fa fa-times"></i> حذف</div></a>
-                                                </div>
-                                            </div>
-                                            <hr>
+                                             @foreach (Cart::all() as $cart )
+                                             @if (isset($cart['product']))
+                                             @php
+                                             $product = $cart['product'];
+                                             @endphp
+                                             <div class="row product">
+                                                 <div class="col-12 col-md-4">
+                                                     <div class="row">
+                                                         <div class="col-2 col-md-4 pl-0">
+                                                             <img src="assets/images/products/p100.png" alt="">
+                                                         </div>
+                                                         <div class="col-10 col-md-8">
+                                                             <a href="product.html" target="_blank"><div class="title pt-2">{{$product->name}}</div></a>
+                                                         </div>
+                                                     </div>
+                                                 </div>
+                                                 <div class="col-6 col-md-2">
+                                                     <div class="d-md-none font-weight-bold">قیمت</div>
+                                                     <div class="pt-1"><span class="product-encode4365gbf265g43d">{{$product->price}}</span> <span>تومان</span></div>
+                                                 </div>
+                                                 <div class="col-6 col-md-2 pl-4 pr-0 pr-md-3">
+                                                     <div class="d-md-none font-weight-bold">تعداد</div>
+                                                     <div class="input-group mb-3 order-number">
+                                                         <div class="input-group-prepend">
+                                                             <button class="btn btn-outline-secondary btn-plus" type="button">+</button>
+                                                         </div>
+                                                         <input type="text" name="order-number[]"  max="10" value="1" class="form-control text-center order-number" readonly>
+                                                         <div class="input-group-prepend">
+                                                             <button class="btn btn-outline-secondary btn-minus" type="button">_</button>
+                                                         </div>
+                                                     </div>
+                                                 </div>
+                                                 <div class="col-6 col-md-2">
+                                                     <div class="d-md-none font-weight-bold">تخفیف</div>
+                                                     <div class="pt-1"><span class="product-discount">{{($product->discust)/100 * $product->price}}</span> <span>تومان</span></div>
+                                                 </div>
+                                                 <div class="col-6 col-md-2 pr-0">
+                                                     <div class="d-md-none font-weight-bold">قیمت نهایی</div>
+                                                     <div class="pt-1 pr-2 bg-light"><span class="product-total" >{{(100 - $product->discust)/100 * $product->price}}</span> <span>تومان</span></div>
+                                                     <a href="#" class="product-remove btn-remove-from-basket" data-id=""><div class="small pl-2"><i class="fa fa-times"></i> حذف</div></a>
+                                                 </div>
+                                             </div>
+                                             <hr>
+                                             @endif
+                                             @endforeach
                                             <!-- Order Product Record -->
                                             <!-- Order Product Record -->
-                                            <div class="row product">
-                                                <div class="col-12 col-md-4">
-                                                    <div class="row">
-                                                        <div class="col-2 col-md-4 pl-0">
-                                                            <img src="assets/images/products/p200.png" alt="">
-                                                        </div>
-                                                        <div class="col-10 col-md-8">
-                                                            <a href="product.html" target="_blank"><div class="title pt-2">لپ تاپ 15 اینچی ایسوس مدل VivoBook X543MA-DM905</div></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-6 col-md-2">
-                                                    <div class="d-md-none font-weight-bold">قیمت</div>
-                                                    <div class="pt-1"><span class="product-encode4365gbf265g43d">3.200.000</span> <span>تومان</span></div>
-                                                </div>
-                                                <div class="col-6 col-md-2 pl-4 pr-0 pr-md-3">
-                                                    <div class="d-md-none font-weight-bold">تعداد</div>
-                                                    <div class="input-group mb-3 order-number">
-                                                        <div class="input-group-prepend">
-                                                            <button class="btn btn-outline-secondary btn-plus" type="button">+</button>
-                                                        </div>
-                                                        <input type="text" name="order-number[]" value="1" class="form-control text-center order-number" readonly>
-                                                        <div class="input-group-prepend">
-                                                            <button class="btn btn-outline-secondary btn-minus" type="button">_</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-6 col-md-2">
-                                                    <div class="d-md-none font-weight-bold">تخفیف</div>
-                                                    <div class="pt-1"><span class="product-discount">3.200.000</span> <span>تومان</span></div>
-                                                </div>
-                                                <div class="col-6 col-md-2 pr-0">
-                                                    <div class="d-md-none font-weight-bold">قیمت نهایی</div>
-                                                    <div class="pt-1 pr-2 bg-light"><span class="product-total" >3.000.000</span> <span>تومان</span></div>
-                                                    <a href="#" class="product-remove btn-remove-from-basket" data-id=""><div class="small pl-2"><i class="fa fa-times"></i> حذف</div></a>
-                                                </div>
-                                            </div>
-                                            <hr>
+
                                             <!-- Order Product Record -->
+                                            @if (Cart::all()->count())
+
                                             <div class="row product">
                                                 <div class="col-12">
                                                     <a href="#" class="product-remove btn-remove-from-basket" data-id="all"><div class="float-end small pl-2 font-weight-bold">خالی کردن سبد</div></a>
                                                 </div>
                                             </div>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -183,116 +162,31 @@
                         <div class="col-12 pt-5" id="suggested-products">
                             <div class="title py-3 text-center">سایر محصولات پیشنهادی</div>
                             <div class="owl-carousel products-carousel">
+                                @foreach ($products as $product )
+
                                 <!-- Product Item -->
                                 <div class="encode4326654321vfb item">
-                                    <a href="product.html"><div class="image" style="background-image: url('assets/images/products/p102.png')"></div></a>
+                                    <a href="{{route('product',['id'=>$product->id])}}"><div class="image" style="background-image: url('assets/images/products/p102.png')"></div></a>
                                     <div class="details p-3">
                                         <div class="category">
                                             <a href="products.html">گوشی موبایل</a>
                                             &nbsp;/&nbsp;
                                             <a href="products.html">سامسونگ</a>
                                         </div>
-                                        <a href="product.html"><h2>گوشی موبایل سامسونگ مدل Galaxy A21s دو سیم کارت ظرفیت 128 گیگابایت</h2></a>
-                                        <div class="encode4365gbf265g43d">4.000.000 تومان</div>
+                                        <a href="{{route('product',['id'=>$product->id])}}""><h2>{{$product->name}}</h2></a>
+                                        <div class="encode4365gbf265g43d">{{$product->price}} تومان</div>
                                         <div class="rate">
                                             <i class="fa fa-star-half-alt"></i>
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
-                                            <span class="encode43bf265g43d">(14 رای دهنده)</span>
+                                            <span class="encode43bf265g43d">({{$product->comment()->count()}} رای دهنده)</span>
                                         </div>
                                     </div>
                                 </div>
                                 <!-- /Product Item -->
-                                <!-- Product Item -->
-                                <div class="encode4326654321vfb item">
-                                    <a href="product.html"><div class="image" style="background-image: url('assets/images/products/p102.png')"></div></a>
-                                    <div class="details p-3">
-                                        <div class="category">
-                                            <a href="products.html">گوشی موبایل</a>
-                                            &nbsp;/&nbsp;
-                                            <a href="products.html">سامسونگ</a>
-                                        </div>
-                                        <a href="product.html"><h2>گوشی موبایل سامسونگ مدل Galaxy A21s دو سیم کارت ظرفیت 128 گیگابایت</h2></a>
-                                        <div class="encode4365gbf265g43d">4.000.000 تومان</div>
-                                        <div class="rate">
-                                            <i class="fa fa-star-half-alt"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <span class="encode43bf265g43d">(14 رای دهنده)</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- /Product Item -->
-                                <!-- Product Item -->
-                                <div class="encode4326654321vfb item">
-                                    <a href="product.html"><div class="image" style="background-image: url('assets/images/products/p102.png')"></div></a>
-                                    <div class="details p-3">
-                                        <div class="category">
-                                            <a href="products.html">گوشی موبایل</a>
-                                            &nbsp;/&nbsp;
-                                            <a href="products.html">سامسونگ</a>
-                                        </div>
-                                        <a href="product.html"><h2>گوشی موبایل سامسونگ مدل Galaxy A21s دو سیم کارت ظرفیت 128 گیگابایت</h2></a>
-                                        <div class="encode4365gbf265g43d">4.000.000 تومان</div>
-                                        <div class="rate">
-                                            <i class="fa fa-star-half-alt"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <span class="encode43bf265g43d">(14 رای دهنده)</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- /Product Item -->
-                                <!-- Product Item -->
-                                <div class="encode4326654321vfb item">
-                                    <a href="product.html"><div class="image" style="background-image: url('assets/images/products/p102.png')"></div></a>
-                                    <div class="details p-3">
-                                        <div class="category">
-                                            <a href="products.html">گوشی موبایل</a>
-                                            &nbsp;/&nbsp;
-                                            <a href="products.html">سامسونگ</a>
-                                        </div>
-                                        <a href="product.html"><h2>گوشی موبایل سامسونگ مدل Galaxy A21s دو سیم کارت ظرفیت 128 گیگابایت</h2></a>
-                                        <div class="encode4365gbf265g43d">4.000.000 تومان</div>
-                                        <div class="rate">
-                                            <i class="fa fa-star-half-alt"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <span class="encode43bf265g43d">(14 رای دهنده)</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- /Product Item -->
-                                <!-- Product Item -->
-                                <div class="encode4326654321vfb item">
-                                    <a href="product.html"><div class="image" style="background-image: url('assets/images/products/p102.png')"></div></a>
-                                    <div class="details p-3">
-                                        <div class="category">
-                                            <a href="products.html">گوشی موبایل</a>
-                                            &nbsp;/&nbsp;
-                                            <a href="products.html">سامسونگ</a>
-                                        </div>
-                                        <a href="product.html"><h2>گوشی موبایل سامسونگ مدل Galaxy A21s دو سیم کارت ظرفیت 128 گیگابایت</h2></a>
-                                        <div class="encode4365gbf265g43d">4.000.000 تومان</div>
-                                        <div class="rate">
-                                            <i class="fa fa-star-half-alt"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <span class="encode43bf265g43d">(14 رای دهنده)</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- /Product Item -->
+                                @endforeach
                             </div>
                         </div>
                         <!-- /Suggested Products -->

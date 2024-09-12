@@ -9,7 +9,7 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form class="form-horizontal" action="{{route('admin_PRODUCT.update', ['admin_PRODUCT'=>$cat->id])}}" method="post">
+              <form class="form-horizontal" action="{{route('admin_PRODUCT.update', ['admin_PRODUCT'=>$cat->id])}}" enctype="multipart/form-data" method="post">
                 @method('PATCH')
                 @csrf
                 <div class="card-body">
@@ -39,10 +39,15 @@
                     <div class="col-sm-10">
                       <input type="number" max="5" min="0" name="stars" class="form-control" id="inputEmail3" placeholder="ستاره را وارد کنید" value="{{$cat->stars}}">
                     </div>
+                </div>
+
+
+
+                      <input type="file" name="cfc" class="form-control" >
+
+
                   </div>
-
-
-                  <div class="form-group">
+                  <!-- <div class="form-group">
                     <textarea id="my-editor" name="image" class="form-control">{!! old('content', '') !!}</textarea>
                     <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
                     <script>
@@ -53,7 +58,7 @@
                         filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
                     };
                     CKEDITOR.replace('my-editor', options);
-                    </script></div>
+                    </script></div> -->
 
 
                   <div class="form-group">
@@ -75,7 +80,7 @@
                     <div class="col-sm-10">
                     <select  class="form-control" name="categories[]" id="categories" multiple>
                         @foreach ($categories as $category)
-                            <option value="{{$category->name}}" >{{$category->name}}</option>
+                            <option value="{{$category->id}}" >{{$category->name}}</option>
                         @endforeach
 
                     </select>
@@ -109,7 +114,7 @@
                 <!-- /.card-body -->
                 <div class="card-footer">
                   <button type="submit" class="btn btn-info">ویرایش</button>
-                  <button type="submit" class="btn btn-default float-left">لغو</button>
+                  <a href="{{route('admin_PRODUCT.index')}}" class="btn btn-default float-left">لغو<a/>
                 </div>
                 <!-- /.card-footer -->
               </form>

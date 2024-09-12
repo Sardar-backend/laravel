@@ -13,7 +13,7 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="index.html">صفحه نخست</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">محصولات</li>
+                                    <!-- <li class="breadcrumb-item ">محصولات</li> -->
                                 </ol>
                             </nav>
                         </div>
@@ -39,11 +39,19 @@
                                     </h2>
                                     <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                         <div class="accordion-body">
-                                            <div class="form-group">
-                                                <input type="checkbox" id="category1">
-                                                <label for="category1">گوشی موبایل</label>
+                                            @foreach ($categories as $category)
+                                             <div class="form-group">
+                                                <form id="ss{{$category->id}}" action="{{route('products')}}" method="get">
+                                                <input type="hidden" name="search" value="{{$category->name}}"></form>
+                                                <input onclick="let a = document.querySelector('#ss{{$category->id}}').submit()" type="checkbox"
+                                                @if (request('search')==$category->name)
+                                                    checked
+                                                @endif
+                                                 >
+                                                <label for="category1">{{$category->name}}</label>
                                             </div>
-                                            <div class="form-group">
+                                            @endforeach
+                                            <!-- <div class="form-group">
                                                 <input type="checkbox" id="category2">
                                                 <label for="category2">جانبی موبایل</label>
                                             </div>
@@ -58,7 +66,7 @@
                                             <div class="form-group">
                                                 <input type="checkbox" id="category5">
                                                 <label for="category5">لپ تاپ</label>
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </div>
                                 </div>
@@ -74,6 +82,10 @@
                                     <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                         <div class="accordion-body">
                                             <div class="row">
+                                                <form action="" method="get" id="formrange">
+                                                    <input id="input-from" value="0" type="hidden" name="from">
+                                                    <input id="input-up" value="5000000" type="hidden" name="up">
+                                                </form>
                                                 <div class="col-12 py-1 px-4 mt-3">
                                                     <div id="steps-slider" dir="rtl"></div>
                                                 </div>
@@ -87,7 +99,7 @@
                                                     <div id="encode4365gbf265g43d-range-to">500000</div>
                                                     <div>تومان</div>
                                                 </div>
-                                                <div class="col-12 text-center py-2">
+                                                <div id="button" class="col-12 text-center py-2">
                                                     <div class="btn btn-warning">اعمال محدوده تخفیف</div>
                                                 </div>
                                             </div>
@@ -95,15 +107,51 @@
                                     </div>
                                 </div>
                             </div>
+                            <script>
+                            let form =document.querySelector('#formrange');
+                            let from =document.querySelector('#encode4365gbf265g43d-range-from');
+                            let to =document.querySelector('#encode4365gbf265g43d-range-to');
+                            let aaa =document.querySelector('#button');
+                            let input_from =document.querySelector('#input-from');
+                            let input_to =document.querySelector('#input-up');
+                            // console.log(d.innerHTML);
+                            aaa.addEventListener('click', function(){
+                                // console.log(d.innerHTML);
+                                let r =from.innerHTML
+                                input_from.value = r
+                                let g =to.innerHTML
+                                input_to.value= g
+                                form.submit();
 
+                            })
+                            </script>
                             <div class="accordion filters-container mt-3">
                                 <div class="accordion-item">
                                     <div id="collapseThree" class="accordion-collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                         <div class="accordion-body pb-2">
-                                            <div class="form-group">
-                                                <input type="checkbox" id="only-available">
-                                                <label for="only-available">فقط کالاهای موجود</label>
-                                            </div>
+                                        @if (Request::path()=='products_Existing')
+                                        <div class="form-group">
+                                            <form action="{{route('products')}}" method="get" id="formc">
+                                            <!-- <input type="hidden" value="true" name="Existing"> -->
+                                            </form>
+                                            <!-- <a href="{{route('products')}}"> -->
+                                                <input onclick="let sss = document.querySelector('#formc').submit()" type="checkbox" checked id="only-available">
+                                            <!-- </a> -->
+                                            <label for="only-available">فقط کالاهای موجود</label>
+                                        </div>
+                                        @else
+
+                                        <div class="form-group">
+                                            <form action="{{route('products_Existing')}}" method="get" id="formExisting">
+                                                <!-- <input type="hidden" value="true" name="Existing"> -->
+                                            </form>
+                                            <input onclick="let formExisting = document.querySelector('#formExisting').submit() " type="checkbox"    id="only-available">
+                                            <label for="only-available">فقط کالاهای موجود</label>
+                                        </div>
+
+
+
+                                        @endif
                                         </div>
                                     </div>
                                 </div>
@@ -113,10 +161,27 @@
                                 <div class="accordion-item">
                                     <div id="collapseFour" class="accordion-collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                         <div class="accordion-body pb-2">
+                                            @if (Request::path()=='products_status')
                                             <div class="form-group">
-                                                <input type="checkbox" id="only-warranty">
+                                            <form action="{{route('products')}}" method="get" id="formcf">
+
+                                            </form>
+
+                                                <input onclick="let xc = document.querySelector('#formcf').submit()" type="checkbox" checked id="only-available">
+
+                                                <label for="only-warranty">فقط کالاهای دارای گارانتی</label>
+                                        </div>
+                                            @else
+                                            <div class="form-group">
+                                                <form action="{{route('products_status')}}" method="get" id="formGarant">
+                                                    <!-- <input type="hidden" value="1" name="status"> -->
+                                                </form>
+
+                                                <input onclick="let formGarant = document.querySelector('#formGarant').submit() " name="status" type="checkbox" id="only-warranty">
                                                 <label for="only-warranty">فقط کالاهای دارای گارانتی</label>
                                             </div>
+
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -221,19 +286,23 @@
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-12 col-sm-10 my-1">
+                                            <form id="popular" action="{{route('products_popular')}}" method="get"></form>
+                                            <form id="cheapest" action="{{route('products_cheapest')}}" method="get"></form>
+                                            <form id="p" action="{{route('products')}}" method="get"></form>
                                             <span class="d-block d-sm-inline-block">مرتب سازی بر اساس:</span>
-                                            <span class="order-filter d-block d-sm-inline-block active">جدیدترین</span>
-                                            <span class="order-filter d-block d-sm-inline-block">پربازدیدترین</span>
+                                            <span onclick="let p = document.querySelector('#p').submit()" class="order-filter d-block d-sm-inline-block @if (Request::path()=='products') active @endif ">جدیدترین</span>
+                                            <span onclick="let popular = document.querySelector('#popular').submit()" class="order-filter d-block d-sm-inline-block @if (Request::path()=='products_popular') active @endif ">پربازدیدترین</span>
                                             <span class="order-filter d-block d-sm-inline-block">پرفروش‌ترین</span>
-                                            <span class="order-filter d-block d-sm-inline-block">ارزان‌ترین</span>
+                                            <span onclick="let cheapest = document.querySelector('#cheapest').submit()" class="order-filter d-block d-sm-inline-block @if (Request::path()=='products_cheapest') active @endif ">ارزان‌ترین</span>
+
                                         </div>
                                         <div class="col-12 col-sm-2 pt-1 text-end">
-                                            <span>
+                                            <!-- <span>
                                                 <a href="products-list.html" class="products-view-type"><i class="fa fa-th-list"></i></a>
                                                 <a href="products.html" class="products-view-type active"><i class="fa fa-th"></i></a>
-                                            </span>
-                                            &nbsp;|&nbsp;
-                                            <span>122 کالا</span>
+                                            </span> -->
+                                            <!-- &nbsp;|&nbsp; -->
+                                            <span>{{$products->count()}} کالا</span>
                                         </div>
                                     </div>
                                 </div>

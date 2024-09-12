@@ -12,17 +12,17 @@
                                                 <!-- Side Panel Product -->
                                                  @foreach ($last_products as $product )
                                                 <div class="col-12 col-lg-12 px-0 mt-2">
-                                                    <a href="product.html">
+                                                    <a href="{{route('product',['id'=>$product->id])}}">
                                                         <div class="side-blog-product">
                                                             <div class="row pl-3">
                                                                 <div class="col-4 pl-2">
                                                                     <div class="image" style="background-image: url(assets/images/products/p100.png)"></div>
                                                                 </div>
                                                                 <div class="col-8 px-0">
-                                                                    <h2>گوشی موبایل سامسونگ مدل Galaxy A51 دو سیم کارت</h2>
+                                                                    <h2> {{$product->name}}</h2>
                                                                     <div class="row">
                                                                         <div class="col-8 pl-0">
-                                                                            <span class="encode4365gbf265g43d">3.200.000 تومان</span>
+                                                                            <span class="encode4365gbf265g43d">{{$product->price}}تومان</span>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -54,13 +54,13 @@
                                                                 <a href="blog-post.html"><div class="image" style="background-image: url(assets/images/blog/post100.jpg)"></div></a>
                                                             </div>
                                                             <div class="col-8 px-0">
-                                                                <a href="blog-post.html"><h2>بررسی آیفون 12 پرو مکس اپل</h2></a>
+                                                                <a href="blog-post.html"><h2>{{$blog->title}}</h2></a>
                                                                 <div class="row">
                                                                     <div class="col-12 col-xl-6 pl-0">
-                                                                        <span class="category">دسته بندی: <a href="blog.html">اخبار</a></span>
+                                                                        <span class="category">دسته بندی: <a href="{{route('blog_category',['category'=>$blog->category()->get()->first()->name])}}">{{$blog->category()->get()->first()->name}}</a></span>
                                                                     </div>
                                                                     <div class="col-12 col-xl-6 pr-0 text-start text-xl-end d-none d-xl-block">
-                                                                        <span class="date">30 خرداد 1400</span>
+                                                                        <span class="date">{{jdate($blog->failed_at)->ago()}}</span>
                                                                     </div>
                                                                 </div>
                                                             </div>

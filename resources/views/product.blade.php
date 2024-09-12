@@ -527,20 +527,31 @@
                                     </div>
                                 </div>
                             </div>
-                            <form id="formlike" action="{{route('like_post' )}}" method="post">@csrf
+                            <form id="formlike" action="{{route('like_post')}}" method="post">@csrf
                                             <input type="hidden" name="product_id" value="{{$product->id}}">
-                                        </form>
+                            </form>
+                            <form id="formdislike" action="{{route('dislike_post' )}}" method="post">@csrf
+                                            <input type="hidden" name="product_id" value="{{$product->id}}">
+                            </form>
                             <div class="cta-container pt-3 pt-md-5">
                                 <div class="row">
                                     <div class="col-12">
-                                        <a href="cart.html">
-                                            <div class="btn btn-success px-4 px-lg-2 px-xl-4 btn-add-to-basket"><i class="fa fa-shopping-cart"></i> افزودن به سبد خرید</div>
-                                        </a>
+                                        <form action="{{route('add_to_card',[$product->id])}}" method="post" id="cart" >
+                                             @csrf
+                                        </form>
+                                        <!-- <a href="cart.html"> -->
+                                            <div onclick="let formcartadd = document.querySelector('#cart').submit()" class="btn btn-success px-4 px-lg-2 px-xl-4 btn-add-to-basket"><i class="fa fa-shopping-cart"></i> افزودن به سبد خرید</div>
+                                        <!-- </a> -->
                                         <br class="d-sm-none">
-
-                                        <div @if (Auth::user()->favorite()->where('product_id',$product->id)->get()->first())
+                                        @if (Auth::user()->favorite()->where('product_id',$product->id)->get()->first())
+                                        <div
                                             style="background-image: url('assets/images/icons/favorited.png');"
-                                        @endif  onclick="let d = document.querySelector('#formlike').submit()" class="btn btn-outline-secondary encode43243d mt-1 mt-sm-0" data-toggle="tooltip" data-placement="top" title="افزودن به علاقه‌مندی"></div>
+                                         onclick="let d = document.querySelector('#formdislike').submit()" class="btn btn-outline-secondary encode43243d mt-1 mt-sm-0" data-toggle="tooltip" data-placement="top" title="افزودن به علاقه‌مندی"></div>
+                                         @else
+                                         <div
+                                            style="background-image: url('assets/images/icons/favorite.png');"
+                                         onclick="let c = document.querySelector('#formlike').submit()" class="btn btn-outline-secondary encode43243d mt-1 mt-sm-0" data-toggle="tooltip" data-placement="top" title="افزودن به علاقه‌مندی"></div>
+                                        @endif
                                         <a href="#"><div class="btn btn-outline-secondary encode43bf243d mt-1 mt-sm-0" data-toggle="tooltip" data-placement="top" title="مقایسه"></div></a>
                                     </div>
                                 </div>
@@ -603,16 +614,25 @@
                                                     </div>
                                                     <!-- /Detail Section -->
                                                     <!-- Detail Section -->
-                                                    <div class="row">
-                                                        <div class="col-12 my-2">
-                                                            <span class="detail-title"><i class="fa fa-chevron-left small"></i> صفحه نمایش</span>
+
+                                                    <div>
+                                                        <div class="row">
+                                                            <div class="col-12 my-2">
+                                                                <span class="detail-title"><i class="fa fa-chevron-left small"></i> sefsd</span>
+                                                            </div>
                                                         </div>
-                                                    </div>
+                                                        @foreach ($product->attribute()->get()->unique('name') as $attribute)
                                                     <div class="row mb-2">
-                                                        <div class="col-12 col-md-3 font-weight-bold"><div class="bg-light p-2">صفحه نمایش رنگی</div></div>
-                                                        <div class="col-12 col-md-9 pr-md-0"><div class="bg-light p-2">بله</div></div>
+                                                        <div class="col-12 col-md-3 font-weight-bold"><div class="bg-light p-2">{{$attribute->name}}</div></div>
+                                                        <div class="col-12 col-md-9 pr-md-0"><div class="bg-light p-2">
+                                                            @foreach ($attribute->values()->get() as $value)
+                                                                <span>{{$value->value}}</span>
+                                                            @endforeach
+
+                                                        </div></div>
                                                     </div>
-                                                    <div class="row mb-2">
+                                                    @endforeach
+                                                    <!-- <div class="row mb-2">
                                                         <div class="col-12 col-md-3 font-weight-bold"><div class="bg-light p-2">صفحه نمایش لمسی</div></div>
                                                         <div class="col-12 col-md-9 pr-md-0"><div class="bg-light p-2">بله</div></div>
                                                     </div>
@@ -623,8 +643,8 @@
                                                     <div class="row mb-2">
                                                         <div class="col-12 col-md-3 font-weight-bold"><div class="bg-light p-2">نسبت صفحه‌نمایش به بدنه</div></div>
                                                         <div class="col-12 col-md-9 pr-md-0"><div class="bg-light p-2">87.4 درصد</div></div>
+                                                    </div> -->
                                                     </div>
-                                                    <!-- /Detail Section -->
                                                 </div>
                                                 <!-- /Details Tab -->
 
@@ -742,7 +762,8 @@
                             <div class="title py-3 text-center">محصولات مرتبط</div>
                             <div class="owl-carousel products-carousel">
                                 <!-- Product Item -->
-                                <div class="encode4326654321vfb item">
+                                 @foreach ($category as $item)
+                                    <div class="encode4326654321vfb item">
                                     <a href="product.html"><div class="image" style="background-image: url('assets/images/products/p303.png')"></div></a>
                                     <div class="details p-3">
                                         <div class="category">
@@ -750,8 +771,8 @@
                                             &nbsp;/&nbsp;
                                             <a href="products.html">سامسونگ</a>
                                         </div>
-                                        <a href="product.html"><h2>مودم روتر ADSL2 Plus بی‌ سیم N300 دی-لینک مدل DSL-2740U</h2></a>
-                                        <div class="encode4365gbf265g43d">3.000.000 تومان</div>
+                                        <a href="product.html"><h2>{{$item->name}}</h2></a>
+                                        <div class="encode4365gbf265g43d">{{$item->price}} تومان</div>
                                         <div class="rate">
                                             <i class="fa fa-star-half-alt"></i>
                                             <i class="fa fa-star"></i>
@@ -761,73 +782,11 @@
                                             <span class="encode43bf265g43d">(14 رای دهنده)</span>
                                         </div>
                                     </div>
-                                </div>
+                                    </div>
+                                @endforeach
                                 <!-- /Product Item -->
                                 <!-- Product Item -->
-                                <div class="encode4326654321vfb item">
-                                    <a href="product.html"><div class="image" style="background-image: url('assets/images/products/p201.png')"></div></a>
-                                    <div class="details p-3">
-                                        <div class="category">
-                                            <a href="products.html">گوشی موبایل</a>
-                                            &nbsp;/&nbsp;
-                                            <a href="products.html">سامسونگ</a>
-                                        </div>
-                                        <a href="product.html"><h2>لپ تاپ 14 اینچی ایسوس مدل ZenBook UM433IQ - A5023</h2></a>
-                                        <div class="encode4365gbf265g43d">5.000.000 تومان</div>
-                                        <div class="rate">
-                                            <i class="fa fa-star-half-alt"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <span class="encode43bf265g43d">(14 رای دهنده)</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- /Product Item -->
-                                <!-- Product Item -->
-                                <div class="encode4326654321vfb item">
-                                    <a href="product.html"><div class="image" style="background-image: url('assets/images/products/p302.png')"></div></a>
-                                    <div class="details p-3">
-                                        <div class="category">
-                                            <a href="products.html">گوشی موبایل</a>
-                                            &nbsp;/&nbsp;
-                                            <a href="products.html">سامسونگ</a>
-                                        </div>
-                                        <a href="product.html"><h2>اسپیکر بلوتوثی قابل حمل تی اند جی مدل Tg-113</h2></a>
-                                        <div class="encode4365gbf265g43d">4.000.000 تومان</div>
-                                        <div class="rate">
-                                            <i class="fa fa-star-half-alt"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <span class="encode43bf265g43d">(14 رای دهنده)</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- /Product Item -->
-                                <!-- Product Item -->
-                                <div class="encode4326654321vfb item">
-                                    <a href="product.html"><div class="image" style="background-image: url('assets/images/products/p203.png')"></div></a>
-                                    <div class="details p-3">
-                                        <div class="category">
-                                            <a href="products.html">گوشی موبایل</a>
-                                            &nbsp;/&nbsp;
-                                            <a href="products.html">سامسونگ</a>
-                                        </div>
-                                        <a href="product.html"><h2>لپ تاپ 15 اینچی ایسوس مدل VivoBook X543MA - A</h2></a>
-                                        <div class="encode4365gbf265g43d">3.000.000 تومان</div>
-                                        <div class="rate">
-                                            <i class="fa fa-star-half-alt"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <span class="encode43bf265g43d">(14 رای دهنده)</span>
-                                        </div>
-                                    </div>
-                                </div>
+
                                 <!-- /Product Item -->
                             </div>
                         </div>

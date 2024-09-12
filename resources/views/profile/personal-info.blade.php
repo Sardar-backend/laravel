@@ -46,7 +46,7 @@
                                                     <div class="value">{{request()->user()->name}}</div>
                                                 </div>
                                                 <div class="col-2">
-                                                    <a href="#" class="float-left" data-toggle="modal" data-target="#fullNameModal"><i class="fa fa-edit"></i></a>
+                                                    <a href="{{route('edit_user',$id=request()->user()->id)}}" class="float-left" data-toggle="modal" data-target="#fullNameModal"><i class="fa fa-edit"></i></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -57,7 +57,7 @@
                                                     <div class="value">{{request()->user()->meli}}</div>
                                                 </div>
                                                 <div class="col-2">
-                                                    <a href="#" class="float-left" data-toggle="modal" data-target="#nationalCodeModal"><i class="fa fa-edit"></i></a>
+                                                    <a href="{{route('edit_user',$id=request()->user()->id)}}" class="float-left" data-toggle="modal" data-target="#nationalCodeModal"><i class="fa fa-edit"></i></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -68,7 +68,7 @@
                                                     <div class="value">{{request()->user()->phonenumber}}</div>
                                                 </div>
                                                 <div class="col-2">
-                                                    <a href="#" class="float-left" data-toggle="modal" data-target="#mobileModal"><i class="fa fa-edit"></i></a>
+                                                    <a href="{{route('edit_user',$id=request()->user()->id)}}" class="float-left" data-toggle="modal" data-target="#mobileModal"><i class="fa fa-edit"></i></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -79,7 +79,7 @@
                                                     <div class="value">{{request()->user()->home_number}}</div>
                                                 </div>
                                                 <div class="col-2">
-                                                    <a href="#" class="float-left" data-toggle="modal" data-target="#telModal"><i class="fa fa-edit"></i></a>
+                                                    <a href="{{route('edit_user',$id=request()->user()->id)}}" class="float-left" data-toggle="modal" data-target="#telModal"><i class="fa fa-edit"></i></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -90,7 +90,7 @@
                                                     <div class="value">{{request()->user()->email}}</div>
                                                 </div>
                                                 <div class="col-2">
-                                                    <a href="#" class="float-left" data-toggle="modal" data-target="#emailModal"><i class="fa fa-edit"></i></a>
+                                                    <a href="{{route('edit_user',$id=request()->user()->id)}}" class="float-left" data-toggle="modal" data-target="#emailModal"><i class="fa fa-edit"></i></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -101,7 +101,7 @@
                                                     <div class="value">{{request()->user()->birthday}}</div>
                                                 </div>
                                                 <div class="col-2">
-                                                    <a href="#" class="float-left" data-toggle="modal" data-target="#birthdayModal"><i class="fa fa-edit"></i></a>
+                                                    <a href="{{route('edit_user',$id=request()->user()->id)}}" class="float-left" data-toggle="modal" data-target="#birthdayModal"><i class="fa fa-edit"></i></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -112,7 +112,7 @@
                                                     <div class="value" dir="ltr">{{request()->user()->cart_number}}</div>
                                                 </div>
                                                 <div class="col-2">
-                                                    <a href="#" class="float-left" data-toggle="modal" data-target="#cardNumberModal"><i class="fa fa-edit"></i></a>
+                                                    <a href="{{route('edit_user',$id=request()->user()->id)}}" class="float-left" data-toggle="modal" data-target="#cardNumberModal"><i class="fa fa-edit"></i></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -123,7 +123,7 @@
                                                     <div class="value">******</div>
                                                 </div>
                                                 <div class="col-2">
-                                                    <a href="#" class="float-left" data-toggle="modal" data-target="#passwordModal"><i class="fa fa-edit"></i></a>
+                                                    <a href="{{route('edit_user',$id=request()->user()->id)}}" class="float-left" data-toggle="modal" data-target="#passwordModal"><i class="fa fa-edit"></i></a>
                                                 </div>
                                             </div>
                                         </div>

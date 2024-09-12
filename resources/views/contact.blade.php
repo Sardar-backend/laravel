@@ -83,7 +83,11 @@
         </div>
     </div>
 </section>
-
+<script>
+    let c =document.querySelector('#contact-page-info')
+    console.log(c)
+    c.addEventListener('contextmenu', event => event.preventDefault());
+</script>
 
 
 @endsection

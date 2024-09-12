@@ -54,7 +54,7 @@
                 <li class="nav-item">
                   <a href="{{route('admin_category.index')}}" class="nav-link">
                     <i class="fa fa-circle-o nav-icon"></i>
-                    <p>دسته بندی ها</p>
+                    <p>دسته بندی محصولات</p>
                   </a>
                 </li>
                 <li class="nav-item">
