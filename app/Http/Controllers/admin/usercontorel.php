@@ -7,6 +7,7 @@ use App\Models\adresse;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class usercontorel extends Controller
 {
@@ -18,7 +19,7 @@ class usercontorel extends Controller
     public function delete_adresses (Request $request , string $id){
         // dd('d');
         $adresses = $request->user()->adresses()->where('id',$id)->delete();
-
+        Alert::success('عملیات موفق آمیز بود','آدرس شما حذف شد');
         return back();
     }
     public function adresses_post (Request $request){
@@ -32,6 +33,7 @@ class usercontorel extends Controller
             'post_number' => ['required'],
         ]);
         adresse::create($data);
+        Alert::success('عملیات موفق آمیز بود','آدرس شما اضافه شد');
         return back();
     }
 

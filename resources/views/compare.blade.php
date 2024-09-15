@@ -34,7 +34,7 @@
                                     <div class="col-3 px-2 pb-2 products-compare-item">
                                         <div class="bg-light p-2 text-center">
                                             <div class="btn btn-sm btn-outline-secondary btn-cancel-compare float-left rounded-circle">X</div>
-                                            <div><img src="assets/images/products/p100.png" alt=""></div>
+                                            <div><img src="assets/images/products/p100.png" alt="image"></div>
                                             <div class="title">گوشی موبایل سامسونگ مدل Galaxy A51</div>
                                             <div class="encode4365gbf265g43d-container">
                                                 <span class="encode4365gbf265g43d">6.000.000 <span>تومان</span></span>
@@ -49,7 +49,7 @@
                                     <div class="col-3 px-2 pb-2 products-compare-item">
                                         <div class="bg-light p-2 text-center">
                                             <div class="btn btn-sm btn-outline-secondary btn-cancel-compare float-left rounded-circle">X</div>
-                                            <div><img src="assets/images/products/p103.png" alt=""></div>
+                                            <div><img src="assets/images/products/p103.png" alt="image"></div>
                                             <div class="title">گوشی موبایل شیائومی مدل POCO X3</div>
                                             <div class="encode4365gbf265g43d-container">
                                                 <span class="encode4365gbf265g43d">3.000.000 <span>تومان</span></span>
@@ -64,7 +64,7 @@
                                     <div class="col-3 px-2 pb-2 products-compare-item">
                                         <div class="bg-light p-2 text-center">
                                             <div class="btn btn-sm btn-outline-secondary btn-cancel-compare float-left rounded-circle">X</div>
-                                            <div><img src="assets/images/products/p102.png" alt=""></div>
+                                            <div><img src="assets/images/products/p102.png" alt="image"></div>
                                             <div class="title">گوشی موبایل سامسونگ مدل Galaxy A12</div>
                                             <div class="encode4365gbf265g43d-container">
                                                 <span class="encode4365gbf265g43d">4.000.000 <span>تومان</span></span>
@@ -79,7 +79,7 @@
                                     <div class="col-3 px-2 pb-2 products-compare-item">
                                         <div class="bg-light p-2 text-center">
                                             <div class="btn btn-sm btn-outline-secondary btn-cancel-compare float-left rounded-circle">X</div>
-                                            <div><img src="assets/images/products/p102.png" alt=""></div>
+                                            <div><img src="assets/images/products/p102.png" alt="image"></div>
                                             <div class="title">گوشی موبایل سامسونگ مدل Galaxy A12</div>
                                             <div class="encode4365gbf265g43d-container">
                                                 <span class="encode4365gbf265g43d">4.000.000 <span>تومان</span></span>

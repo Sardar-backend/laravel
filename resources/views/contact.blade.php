@@ -56,7 +56,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="tel">تلفن تماس :</label>
-                                <input name="number_phone" type="text" class="form-control" id="tel">
+                                <input name="number_phone" type="number" class="form-control" id="tel">
                             </div>
                             <div class="form-group">
                                 <label for="email">پست الکترونیک :</label>

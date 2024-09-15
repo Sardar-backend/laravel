@@ -11,6 +11,7 @@ use App\Notifications\notificationCode;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class authcontorel extends Controller
 {
@@ -74,6 +75,7 @@ class authcontorel extends Controller
             // $user=$active->user();
             $id=$active->user->id;
             Auth::loginUsingId($id);
+            Alert::success('ورود','با موفقیت وارد شدید');
             return redirect('/home');
         }else {
             $u = $request->code;

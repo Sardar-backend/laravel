@@ -20,13 +20,13 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div><br><br><br>
     <div class="container">
                 <div class="row">
                     <div class="col-lg-5 col-md-6">
                         <!--About Image-->
                         <div class="about-img">
-                            <img  src="assets/images/Untitled.jpg" alt="">
+                            <img  src="assets/images/Untitled.jpg" alt="image">
                         </div>
                     </div>
                     <div class="col-lg-7 col-md-6">
@@ -40,11 +40,12 @@
                             <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد </p>
                             <!--About Social Icons-->
                             <div class="social-icons">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-dribbble"></i></a>
-                                <a href="#"><i class="fa fa-google-plus"></i></a>
-                                <a href="#"><i class="fa fa-pinterest"></i></a>
+                                <a class="ico" target="_blank" href="https://www.instagram.com/sardar.devloper"  ><i class="ico fab fa-instagram"></i></a>    <!-- اینستاگرام -->
+                                <a class="ico" target="_blank" href="https://www.linkedin.com/in/mohammadjavad-sardar-48044a308"><i class="ico fab fa-linkedin"></i></a>     <!-- لینکدین -->
+                                <a class="ico" target="_blank" href="https://t.me/Sardar_backend"><i class="ico fab fa-telegram"></i></a>     <!-- تلگرام -->
+                                <a class="ico" target="_blank" href="https://github.com/Sardar-backend"><i class="ico fab fa-github"></i></a>       <!-- گیت‌هاب -->
+
+
                             </div>
                             <span class="about-button">
                                 <a class="main-btn" href="#">دانلود رزومه</a>
@@ -52,7 +53,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div><br><br>
 
     <!-- <div class="container">
         <div class="row">
@@ -60,7 +61,7 @@
                 <div class="content">
                     <div class="row d-flex">
                         <div class="col-12 col-lg-5 align-self-center h-100">
-                            <img src="assets/images/about-us.jpg" alt="">
+                            <img src="assets/images/about-us.jpg" alt="image">
                         </div>
                         <div class="col-12 col-lg-7 mt-5">
                             <div class="title">معرفی فروشگاه</div>

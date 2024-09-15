@@ -347,8 +347,8 @@
                             <div class="container">
                                 <div class="row">
                                     <div class="col-12">
-                                    <div class="card-footer d-flex">
-                                        <div class="cart ">
+                                    <div class="cca card-footer d-flex">
+                                        <div class="cca cart d-flex">
                                             {{$products->render()}}
                                         </div>
                                     </div>

@@ -6,7 +6,7 @@
                                                                                 <div class="sender-details">
                                                                                     <div class="row">
                                                                                         <div class="col-3 col-sm-2 col-md-1 pl-md-0 pl-lg-2 pl-xl-3">
-                                                                                            <img src="assets/images/user-no-image.jpg" alt="" class="rounded">
+                                                                                            <img src="assets/images/user-no-image.jpg" alt="image" class="rounded">
                                                                                         </div>
                                                                                         <div class="col-9 col-sm-10 col-md-11 pr-0 pr-md-2 pr-xl-0 pt-0 pt-lg-1">
                                                                                             <div class="name">{{$r->user->name}}</div>
@@ -17,7 +17,7 @@
 
                                                                                         <form action="">
                                                                                             <input type="hidden" name="p" value="{{$r->id}}">
-                                                                                            <button class="reply bb nn" type="submit">ارسال پاسخ<img class="ml-5" src="assets/images/comment-reply.png" id="{{$r->id}}" alt=""></button>
+                                                                                            <button class="reply bb nn" type="submit">ارسال پاسخ<img class="ml-5" src="assets/images/comment-reply.png" id="{{$r->id}}" alt="image"></button>
                                                                                             <!-- <span class="reply bb" id="{{$r->id}}"> ارسال پاسخ</span> -->
                                                                                         </form>
                                                                                         </div>
@@ -32,7 +32,7 @@
                                                                                             <div class="sender-details">
                                                                                                 <div class="row">
                                                                                                     <div class="col-3 col-sm-2 col-md-1 pl-md-0 pl-lg-2 pl-xl-3">
-                                                                                                        <img src="assets/images/user-no-image.jpg" alt="" class="rounded">
+                                                                                                        <img src="assets/images/user-no-image.jpg" alt="image" class="rounded">
                                                                                                     </div>
                                                                                                     <div class="col-9 col-sm-10 col-md-11 pr-0 pr-md-2 pr-xl-0 pt-0 pt-lg-1">
                                                                                                         <div class="name">امین کیانی</div>

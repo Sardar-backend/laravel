@@ -1,8 +1,13 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fa" dir="rtl">
 
-<!-- Mirrored from rubik-market-html.wbrk.ir/product.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 12 Aug 2023 06:32:51 GMT -->
+<!-- Mirrored from rubik-market-html.wbrk.ir/about.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 12 Aug 2023 06:32:39 GMT -->
 <head>
+
+    <!-- <title>قالب فروشگاهی روبیک مارکت</title> -->
+
+     {!! SEO::generate() !!}
+    <!-- CSS Styles -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -16,7 +21,7 @@
     <link rel="stylesheet" href="assets/css/droopmenu.css">
     <link rel="stylesheet" href="assets/css/highlight.css">
     <link rel="stylesheet" href="assets/css/nouislider.min.css">
-
+    <link rel="icon" href="/assets/images/logo.png" type="image/png">
     <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
     <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
     <link rel="stylesheet" href="assets/css/product-gallery.css">
@@ -24,14 +29,41 @@
     <link rel="stylesheet" href="../cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.3/default-skin/default-skin.min.css" />
 
     <link rel="stylesheet" href="assets/css/style.css">
-
     <style>
-        .nn{
-            background-color: white !important;
-            border: 0 white !important;
+        .but_s{
+            background: inherit !important;
+            border: 0;
+        }
+        .post-image{
+            pointer-events: none;
+        }
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+        }
+
+        /* Firefox */
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+        .cca{
+            justify-content: center !important;
+            align-items: center !important;
+        }
+        .fgf:hover{
+            color: #AEBA22 !important;
+        }
+        .ico{
+            color: black !important;
+            width: 4% !important;
+            height: 4% !important;
+            margin: 0 2px 0 2px !important;
+        }
+        .about-img{
+            box-shadow: 20px 20px 15px #8A8A8A;
         }
     </style>
-    <!-- /CSS Styles -->
 </head>
 <body>
 <!-- Header -->
@@ -42,42 +74,53 @@
             <div class="row">
                 <div class="col-8 d-none d-md-block">
                     <ul>
-                    <li><a href="{{route('index')}}">صفحه نخست</a></li>
-                        <li><a href={{route('about')}}>درباره ما</a></li>
-                        <li><a href={{route('contact')}}>تماس با ما</a></li>
+                        <li><a href="{{route('index')}}">صفحه نخست</a></li>
+                        <li><a href="{{route('about')}}">درباره ما</a></li>
+                        <li><a href="{{route('contact')}}">تماس با ما</a></li>
                     </ul>
                 </div>
                 <div class="col-12 col-md-4 text-center text-md-end" id="top-encode43vfbb65gtabfb">
-                    <span>تلفن مشاوره و فروش: 09351234567</span>
+                    <span>این سایت یک نمونه کار است و کارکرد تجاری ندارد</span>
                 </div>
             </div>
         </div>
     </div>
     <!-- /Top NavBar -->
     <!-- Search NavBar -->
+     @php
+        use App\Helpers\Cart\Cart;
+        $count =(Cart::all()->count()==0)?null:Cart::all()->count();
+     @endphp
     <div id="encode43254bvfb">
         <div class="container pt-1">
             <div class="row py-3 align-content-center">
                 <div class="col-12 col-md-3 col-xl-2 text-center text-md-start pb-2" id="encode4326523bvfb">
-                    <a href="index.html">
-                        <img src="assets/images/logo.png" alt=""> روبیک مارکت
+                    <a href={{route('index')}}>
+                        <img src="assets/images/logo.png" alt="image"> روبیک مارکت
                     </a>
                 </div>
                 <div class="col-12 col-md-5 col-xl-6">
+                    <form action="{{route('products')}}" method="get">
                     <div id="search-bar">
-                        <i class="fa fa-search"></i>
-                        <input type="text" placeholder="جستجو کنید...">
-                    </div>
+                        <button class="but_s" type="submit"><i class="fa fa-search"></i></button>
+                        <input name="search" type="text" placeholder="جستجو کنید...">
+                    </div></form>
                 </div>
                 <div class="col-12 col-md-4">
                     <div class="row">
+                        @guest
                         <div class="col-12 col-md-7 col-lg-6 text-center" id="btn-login-register">
-                            <a href="login.html">ورود</a> /
-                            <a href="register.html">عضویت</a>
+                            <a href="{{route('login')}}">ورود</a> /
+                            <a href="{{route('login')}}">عضویت</a>
                         </div>
+                        @else
+                        <div class="col-12 col-md-7 col-lg-6 text-center" id="btn-login-register">
+                            <a href="">{{Auth::user()->name}}</a>
+                        </div>
+                        @endguest
                         <div class="col-12 col-md-5 col-lg-6">
-                            <a href="cart.html">
-                                <div class="btn btn-warning w-100"><i class="fa fa-shopping-cart"></i>&nbsp;<span class="d-md-none d-lg-inline-block">سبد خرید</span> (2)</div>
+                            <a href={{route('cart')}}>
+                                <div class="btn btn-warning w-100"><i class="fa fa-shopping-cart"></i>&nbsp;<span class="d-md-none d-lg-inline-block">سبد خرید</span> {{$count}}</div>
                             </a>
                         </div>
                     </div>
@@ -137,7 +180,7 @@
                                                                         <li><a href="products.html">بازی کامپیوتری</a></li>
                                                                     </ul>
                                                                     <ul class="droopmenu-col droopmenu-col4 d-none d-lg-inline-block">
-                                                                        <li><img src="assets/images/megamenu/megamenu-image1.png" alt=""></li>
+                                                                        <li><img src="assets/images/megamenu/megamenu-image1.png" alt="image"></li>
                                                                     </ul>
                                                                 </div>
                                                             </div>
@@ -170,7 +213,7 @@
                                                                         <li><a href="products.html">لوازم دکوری</a></li>
                                                                     </ul>
                                                                     <ul class="droopmenu-col droopmenu-col4 d-none d-lg-inline-block">
-                                                                        <li><img src="assets/images/megamenu/megamenu-image2.png" alt=""></li>
+                                                                        <li><img src="assets/images/megamenu/megamenu-image2.png" alt="image"></li>
                                                                     </ul>
                                                                 </div>
                                                             </div>
@@ -205,7 +248,7 @@
                                                                         <li><a href="products.html">لباس زیر</a></li>
                                                                     </ul>
                                                                     <ul class="droopmenu-col droopmenu-col4 d-none d-lg-inline-block">
-                                                                        <li><img src="assets/images/megamenu/megamenu-image3.png" alt=""></li>
+                                                                        <li><img src="assets/images/megamenu/megamenu-image3.png" alt="image"></li>
                                                                     </ul>
                                                                 </div>
                                                             </div>
@@ -242,7 +285,7 @@
                                                                         <li><a href="products.html">خاتم و منبت</a></li>
                                                                     </ul>
                                                                     <ul class="droopmenu-col droopmenu-col4 d-none d-lg-inline-block">
-                                                                        <li><img src="assets/images/megamenu/megamenu-image4.png" alt=""></li>
+                                                                        <li><img src="assets/images/megamenu/megamenu-image4.png" alt="image"></li>
                                                                     </ul>
                                                                 </div>
                                                             </div>
@@ -277,7 +320,7 @@
                                                                         <li><a href="products.html">آیسان</a></li>
                                                                     </ul>
                                                                     <ul class="droopmenu-col droopmenu-col4 d-none d-lg-inline-block">
-                                                                        <li><img src="assets/images/megamenu/megamenu-image5.png" alt=""></li>
+                                                                        <li><img src="assets/images/megamenu/megamenu-image5.png" alt="image"></li>
                                                                     </ul>
                                                                 </div>
                                                             </div>
@@ -308,7 +351,7 @@
                                                                         <li><a href="products.html">سایر</a></li>
                                                                     </ul>
                                                                     <ul class="droopmenu-col droopmenu-col4 d-none d-lg-inline-block">
-                                                                        <li><img src="assets/images/megamenu/megamenu-image6.png" alt=""></li>
+                                                                        <li><img src="assets/images/megamenu/megamenu-image6.png" alt="image"></li>
                                                                     </ul>
                                                                 </div>
                                                             </div>
@@ -316,50 +359,40 @@
                                                     </li>
                                                 </ul>
                                             </li>
-                                            <li><a href="about.html">درباره ما<em class="droopmenu-topanim"></em></a></li>
+                                            <li><a href={{route('about')}}>درباره ما<em class="droopmenu-topanim"></em></a></li>
+
                                             <li class="droopmenu-parent" aria-haspopup="true">
-                                                <a href="products.html" aria-expanded="false">صفحات فروشگاه<em class="droopmenu-topanim"></em></a><div class="dm-arrow"></div>
+                                                <a href={{route('contact')}} aria-expanded="false">تماس با فروشگاه<em class="droopmenu-topanim"></em></a><div class="dm-arrow"></div>
                                                 <ul style="">
-                                                    <li><a href="products.html">محصولات <sup>(کاشی کاری)</sup></a></li>
-                                                    <li><a href="products-list.html">محصولات <sup>(لیست)</sup></a></li>
-                                                    <li><a href="products.html">جزئیات محصول</a></li>
+                                                    <li><a href={{route('faq')}}>سوالات متداول</a></li>
+                                                    <li><a href={{route('contact')}}>تماس با ما</a></li>
                                                 </ul>
                                             </li>
                                             <li class="droopmenu-parent" aria-haspopup="true">
-                                                <a href="contact.html" aria-expanded="false">تماس با فروشگاه<em class="droopmenu-topanim"></em></a><div class="dm-arrow"></div>
-                                                <ul style="">
-                                                    <li><a href="faq.html">سوالات متداول</a></li>
-                                                    <li><a href="contact.html">تماس با ما</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="droopmenu-parent" aria-haspopup="true">
-                                                <a href="blog.html" aria-expanded="false">بلاگ آموزشی<em class="droopmenu-topanim"></em></a><div class="dm-arrow"></div>
-                                                <ul style="">
-                                                    <li><a href="blog.html">آرشیو مطالب</a></li>
-                                                    <li><a href="blog-post.html">داخلی بلاگ</a></li>
-                                                </ul>
+                                                <a href="{{route('blog_list')}}" aria-expanded="false">بلاگ آموزشی<em class="droopmenu-topanim"></em></a><div class="dm-arrow"></div>
+
                                             </li>
                                             <li class="droopmenu-parent" aria-haspopup="true">
                                                 <a href="#" aria-expanded="false">سایر صفحات<em class="droopmenu-topanim"></em></a><div class="dm-arrow"></div>
                                                 <ul style="">
-                                                    <li><a href="compare.html">مقایسه محصول</a></li>
-                                                    <li><a href="cart.html">سبد خرید</a></li>
-                                                    <li><a href="checkout.html">پیش فاکتور</a></li>
-                                                    <li class="dm-bottom-separator"></li>
-                                                    <li><a href="login.html">ورود به سایت</a></li>
-                                                    <li><a href="register.html">عضویت در سایت</a></li>
-                                                    <li><a href="reset-password.html">بازگردانی رمز عبور</a></li>
-                                                    <li class="dm-bottom-separator"></li>
-                                                    <li><a href="error-404.html">خطای 404</a></li>
+                                                    <!-- <li><a href="compare.html">مقایسه محصول</a></li> -->
+                                                    <li><a href="">سبد خرید</a></li>
+                                                    <li><a href=""checkout.html">پیش فاکتور</a></li>
+                                                    <!-- <li class="dm-bottom-separator"></li> -->
+                                                    <!-- <li><a href=>عضویت/ورود به سایت</a></li> -->
+                                                    <!-- <li><a href="register.html">عضویت در سایت</a></li> -->
+                                                    <!-- <li><a href="reset-password.html">بازگردانی رمز عبور</a></li> -->
+
+
                                                 </ul>
                                             </li>
                                             <li class="droopmenu-parent" aria-haspopup="true">
-                                                <a href="profile/personal-info.html" aria-expanded="false">پروفایل کاربری<em class="droopmenu-topanim"></em></a><div class="dm-arrow"></div>
+                                                <a href={{route('personal')}} aria-expanded="false">پروفایل کاربری<em class="droopmenu-topanim"></em></a><div class="dm-arrow"></div>
                                                 <ul style="">
-                                                    <li><a href="profile/personal-info.html">مشخصات کاربری</a></li>
-                                                    <li><a href="profile/factors.html">سفارشات</a></li>
-                                                    <li><a href="profile/addresses.html">آدرس ها</a></li>
-                                                    <li><a href="profile/favorites.html">علاقه مندی ها</a></li>
+                                                    <li><a href={{route('personal')}}>مشخصات کاربری</a></li>
+                                                    <li><a href={{route('factors')}}>سفارشات</a></li>
+                                                    <li><a href={{route('adresses')}}>آدرس ها</a></li>
+                                                    <li><a href={{route('favorites')}}>علاقه مندی ها</a></li>
                                                 </ul>
                                             </li>
                                         </ul>
@@ -540,7 +573,15 @@
                                              @csrf
                                         </form>
                                         <!-- <a href="cart.html"> -->
+                                            @php
+
+
+                                            $quantity=(Cart::get($product)==null)? 0:Cart::get($product)['quantity'];
+                                            @endphp
+                                            @if ($quantity< $product->count)
+
                                             <div onclick="let formcartadd = document.querySelector('#cart').submit()" class="btn btn-success px-4 px-lg-2 px-xl-4 btn-add-to-basket"><i class="fa fa-shopping-cart"></i> افزودن به سبد خرید</div>
+                                            @endif
                                         <!-- </a> -->
                                         <br class="d-sm-none">
                                         @if (Auth::user()->favorite()->where('product_id',$product->id)->get()->first())
@@ -552,17 +593,17 @@
                                             style="background-image: url('assets/images/icons/favorite.png');"
                                          onclick="let c = document.querySelector('#formlike').submit()" class="btn btn-outline-secondary encode43243d mt-1 mt-sm-0" data-toggle="tooltip" data-placement="top" title="افزودن به علاقه‌مندی"></div>
                                         @endif
-                                        <a href="#"><div class="btn btn-outline-secondary encode43bf243d mt-1 mt-sm-0" data-toggle="tooltip" data-placement="top" title="مقایسه"></div></a>
+                                        <!-- <a href="#"><div class="btn btn-outline-secondary encode43bf243d mt-1 mt-sm-0" data-toggle="tooltip" data-placement="top" title="مقایسه"></div></a> -->
                                     </div>
                                 </div>
                             </div>
                             <!-- Share Links -->
                             <div class="pt-5" id="share-links">
                                 <span>اشتراک گذاری: </span>
-                                <a href="#" target="_blank"><span class="share-link"><img src="assets/images/social/twitter.png" alt="توئیتر" width="18px"></span></a>
                                 <a href="#" target="_blank"><span class="share-link"><img src="assets/images/social/insta.png" alt="اینستاگرام" width="18px"></span></a>
-                                <a href="#" target="_blank"><span class="share-link"><img src="assets/images/social/linkedin.png" alt="لینکدین" width="18px"></span></a>
-                                <a href="#" target="_blank"><span class="share-link"><img src="assets/images/social/facebook.png" alt="فیس بوک" width="18px"></span></a>
+                                <a href="https://twitter.com/intent/tweet?url={{ urlencode(Request::fullUrl()) }}&text=این+مقاله+را+ببینید!" target="_blank"><span class="share-link"><img src="assets/images/social/twitter.png" alt="توئیتر" height="25px"> </span></a>
+                                                <a href="https://t.me/share/url?url={{ urlencode(Request::fullUrl()) }}&text=این+مقاله+را+ببینید!" target="_blank"><span class="share-link"><img style="width: 2% !important;" src="assets/images/social/telgrampng.parspng.com_.png" alt="فیس بوک" height="25px"></span></a>
+                                                <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ urlencode(Request::fullUrl()) }}&title=عنوان+مقاله&summary=خلاصه+مقاله" target="_blank"><span class="share-link"><img src="assets/images/social/linkedin.png" alt="لینکدین" height="25px"> </span></a>
                             </div>
                             <!-- Share Links -->
                         </div>
@@ -575,7 +616,11 @@
                                             <div id="tabs-panel">
                                                 <button class="tab-item tablink px-3 bmv selected" onclick="openTab(event,'html-tab')">نقد و بررسی</button>
                                                 <button class="tab-item tablink px-3" onclick="openTab(event,'details-tab')">جدول مشخصات</button>
-                                                <button class="tab-item tablink px-3 bvb" onclick="openTab(event,'comments-tab')">دیدگاه کاربران (2)</button>
+                                                <button class="tab-item tablink px-3 bvb" onclick="openTab(event,'comments-tab')">دیدگاه کاربران @if ($product->comment->count())
+
+                                                ({{$product->comment->count()}})
+                                                @endif
+                                            </button>
                                             </div>
                                         </div>
                                     </div>
@@ -662,7 +707,7 @@
                                                                                 <div class="sender-details">
                                                                                     <div class="row">
                                                                                         <div class="col-3 col-sm-2 col-md-1 pl-md-0 pl-lg-2 pl-xl-3">
-                                                                                            <img src="assets/images/user-no-image.jpg" alt="" class="rounded">
+                                                                                            <img src="assets/images/user-no-image.jpg" alt="image" class="rounded">
                                                                                         </div>
                                                                                         <div class="col-9 col-sm-10 col-md-11 pr-0 pr-md-2 pr-xl-0 pt-0 pt-lg-1">
                                                                                             <div class="name">{{$r->user->name}}</div>
@@ -672,23 +717,23 @@
                                                                                             <p>{{$r->content}}</p>
                                                                                             <form action="">
                                                                                             <input type="hidden" name="p" value="{{$r->id}}">
-                                                                                            <button class="reply bb nn" type="submit">ارسال پاسخ<img class="ml-5" src="assets/images/comment-reply.png" id="{{$r->id}}" alt=""></button>
+                                                                                            <button class="reply bb nn" type="submit">ارسال پاسخ<img class="ml-5" src="assets/images/comment-reply.png" id="{{$r->id}}" alt="image"></button>
                                                                                             <!-- <span class="reply bb" id="{{$r->id}}"> ارسال پاسخ</span> -->
                                                                                         </form>
-                                                                                            <!-- <span class="reply"><img src="assets/images/comment-reply.png" alt=""> ارسال پاسخ</span> -->
+                                                                                            <!-- <span class="reply"><img src="assets/images/comment-reply.png" alt="image"> ارسال پاسخ</span> -->
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
 
                                                                                 <!-- Comment Reply -->
-                                                                                 @foreach ($r->child as $child)
+                                                                                 @foreach ($r->child->where('status',1) as $child)
                                                                                 <div class="row justify-content-end">
                                                                                     <div class="col-11 pt-2 pr-0">
                                                                                         <div class="comment p-3">
                                                                                             <div class="sender-details">
                                                                                                 <div class="row">
                                                                                                     <div class="col-3 col-sm-2 col-md-1 pl-md-0 pl-lg-2 pl-xl-3">
-                                                                                                        <img src="assets/images/user-no-image.jpg" alt="" class="rounded">
+                                                                                                        <img src="assets/images/user-no-image.jpg" alt="image" class="rounded">
                                                                                                     </div>
                                                                                                     <div class="col-9 col-sm-10 col-md-11 pr-0 pr-md-2 pr-xl-0 pt-0 pt-lg-1">
                                                                                                         <div class="name">{{$child->user->name}}</div>
@@ -805,10 +850,10 @@
             <div class="col-6 col-sm-4 col-lg-2">
                 <div class="title">دسترسی سریع</div>
                 <ul>
-                <li><a href="blog.html">بلاگ آموزشی</a></li>
+                    <li><a href="blog.html">بلاگ آموزشی</a></li>
                     <li><a href={{route('faq')}}>راهنمای خرید</a></li>
                     <li><a href={{route('faq')}}>شیوه های پرداخت</a></li>
-                    <li><a href={{route('contact')}}>پیگیری سفارش</a></li>
+                    <!-- <li><a href={{route('contact')}}>پیگیری سفارش</a></li> -->
                     <li><a href={{route('faq')}}>سوالات متداول</a></li>
                     <li><a href={{route('about')}}>درباره ما</a></li>
                     <li><a href={{route('contact')}}>تماس با ما</a></li>
@@ -817,29 +862,37 @@
             <div class="col-6 col-sm-4 col-lg-2">
                 <div class="title">گروه های محصولات</div>
                 <ul>
-                    <li><a href="products.html">تجهیزات کامپیوتر</a></li>
-                    <li><a href="products.html">گوشی موبایل</a></li>
+                    @php
+                    use App\Models\productcategory;
+                    $all=productcategory::all();
+                    @endphp
+                    @foreach ($all as $cat)
+                    <div class="form-group">
+                    <form id="ssf{{$cat->id}}" action="{{route('products')}}" method="get">
+                    <input type="hidden" name="search" value="{{$cat->name}}"></form>
+                     <li onclick="let f = document.querySelector('#ssf{{$cat->id}}').submit()" class="fgf" >{{$cat->name}}</li>
+                    @endforeach
+                    <!-- <li><a href="products.html">گوشی موبایل</a></li>
                     <li><a href="products.html">جانبی موبایل</a></li>
                     <li><a href="products.html">ساعت هوشمند</a></li>
                     <li><a href="products.html">جانبی کامپیوتر</a></li>
                     <li><a href="products.html">دوربین</a></li>
-                    <li><a href="products.html">لپ تاپ</a></li>
+                    <li><a href="products.html">لپ تاپ</a></li> -->
                 </ul>
             </div>
             <div class="col-6 col-sm-4 col-lg-2 d-none d-sm-inline-block">
                 <div class="title">ناحیه کاربری</div>
                 <ul>
-                    <li><a href="login.html">ورود به سایت</a></li>
-                    <li><a href="register.html">عضویت در سایت</a></li>
-                    <li><a href="reset-password.html">بازیابی رمز عبور</a></li>
-                    <li><a href="cart.html">سبد خرید</a></li>
-                    <li><a href="checkout.html">پیش فاکتور</a></li>
+                    <li><a href="{{route('login')}}">ورود به سایت</a></li>
+                    <li><a href="{{route('login')}}">عضویت در سایت</a></li>
+                    <li><a href="{{route('cart')}}">سبد خرید</a></li>
+                    <!-- <li><a href="checkout.html">پیش فاکتور</a></li> -->
                 </ul>
             </div>
             <div class="col-12 col-md-12 col-lg-6">
                 <hr class="d-lg-none">
-                <img src="assets/images/logo.png" alt=""> روبیک مارکت
-                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.</p>
+                <img src="assets/images/logo.png" alt="image"> روبیک مارکت
+                <p>روبیک مارکت یک پلتفرم آنلاین است که انواع محصولات متنوع و باکیفیت را با قیمت‌های مناسب عرضه می‌کند. با تنوع بالا و ارسال سریع، تجربه‌ای آسان و مطمئن برای خرید آنلاین را به مشتریان ارائه می‌دهیم. هدف ما جلب رضایت مشتریان با ارائه محصولات برتر و خدمات پشتیبانی عالی است .روبیک مارکت به ارائه بهترین تجربه خرید برای کاربران و ارتقاء مهارت‌های ذهنی آن‌ها متعهد است.</p>
                 <div class="row">
                     <div class="col-12 col-md-6 text-center p-2" id="encode43vfbb65gtabfb">
                         <div>7 روز هفته، 24 ساعت شبانه روز</div>
@@ -849,13 +902,13 @@
                     <div class="col-12 col-md-6 pt-2 pt-md-0" id="encode43vfbbbfb">
                         <div class="row">
                             <div class="col-4 text-center">
-                                <a href="#"><img src="assets/images/encode43vfbbbfb/enamad.html" alt=""></a>
+                                <!-- <a href="#"><img src="assets/images/encode43vfbbbfb/enamad.html" alt="image"></a> -->
                             </div>
                             <div class="col-4 text-center">
-                                <a href="#"><img src="assets/images/encode43vfbbbfb/samandehi.html" alt=""></a>
+                                <!-- <a href="#"><img src="assets/images/encode43vfbbbfb/samandehi.html" alt="image"></a> -->
                             </div>
                             <div class="col-4 text-center">
-                                <a href="#"><img src="assets/images/encode43vfbbbfb/etehadiye.html" alt=""></a>
+                                <!-- <a href="#"><img src="assets/images/encode43vfbbbfb/etehadiye.html" alt="image"></a> -->
                             </div>
                         </div>
                     </div>
@@ -872,11 +925,11 @@
         <div class="row">
             <div class="col-12 col-sm-6" id="social-links">
                 <span>ما را دنبال کنید</span>
-                <a href="#"><img src="assets/images/social/insta.png" alt=""></a>
-                <a href="#"><img src="assets/images/social/facebook.png" alt=""></a>
-                <a href="#"><img src="assets/images/social/linkedin.png" alt=""></a>
-                <a href="#"><img src="assets/images/social/twitter.png" alt=""></a>
-                <a href="#"><img src="assets/images/social/youtube.png" alt=""></a>
+                <a href="#"><img src="assets/images/social/insta.png" alt="image"></a>
+                <a href="#"><img src="assets/images/social/facebook.png" alt="image"></a>
+                <a href="#"><img src="assets/images/social/linkedin.png" alt="image"></a>
+                <a href="#"><img src="assets/images/social/twitter.png" alt="image"></a>
+                <a href="#"><img src="assets/images/social/youtube.png" alt="image"></a>
             </div>
             <div class="col-12 col-sm-6 text-sm-end pt-2 pt-sm-0">
                 <span>کلیه حقوق و مادی معنوی محفوط است.</span>
@@ -928,6 +981,7 @@
     })
 
 </script>
+@include('sweetalert::alert')
 <!-- /Scripts -->
 </body>
 

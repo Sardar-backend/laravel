@@ -82,12 +82,12 @@ Route::get('/show/{user}/file' , function($file){
 Route::post('/add_to_card{product}',[\App\Http\Controllers\cartcontroller::class,'addToCart'])->name('add_to_card');
 
 
-Route::post('/pv',[\App\Http\Controllers\authcontroll\authcontorel::class,'po'])->name('perp');
+Route::post('/login_step2',[\App\Http\Controllers\authcontroll\authcontorel::class,'po'])->name('perp');
 
-Route::get('/pv',[\App\Http\Controllers\authcontroll\authcontorel::class,'enter2']);
+Route::get('/login_step2',[\App\Http\Controllers\authcontroll\authcontorel::class,'enter2']);
 
-Route::get('/x',[\App\Http\Controllers\authcontroll\authcontorel::class,'login'])->name('login');
-Route::get('/logute',[\App\Http\Controllers\authcontroll\authcontorel::class,'logout'])->name('logout');
+Route::get('/login',[\App\Http\Controllers\authcontroll\authcontorel::class,'login'])->name('login');
+Route::get('/logout',[\App\Http\Controllers\authcontroll\authcontorel::class,'logout'])->name('logout');
 
 //Route::get('/y',[\App\Http\Controllers\authcontroll\authcontorel::class,'log'])->name('x');
 
@@ -122,6 +122,8 @@ Route::get('/products_status',[\App\Http\Controllers\ProductListcontroller::clas
 
 
 
+Route::delete('/delete_cart{product}',[\App\Http\Controllers\cartcontroller::class,'deleteFromCart'])->name('delete_cart');
 
+Route::post('/delete_cartAll',[\App\Http\Controllers\cartcontroller::class,'deleteAll'])->name('delete_cart_All');
 
 Route::get('/cart',[\App\Http\Controllers\cartcontroller::class,'Cart'])->name('cart');

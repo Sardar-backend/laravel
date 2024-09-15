@@ -10,12 +10,7 @@
                         <div class="col-12 px-0">
                             <h1>سوالات متداول</h1>
                             <p>پاسخ به سوالاتی که برای اکثر کاربران پیش می آید.</p>
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.html">صفحه نخست</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">سوالات متداول</li>
-                                </ol>
-                            </nav>
+
                         </div>
                     </div>
                 </div>

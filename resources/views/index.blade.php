@@ -33,17 +33,17 @@
                 <div class="row row-cols-1 row-cols-sm-3 row-cols-md-1 h-100 gy-2 g-sm-1 g-md-0">
                     <div class="col align-self-start" data-aos="fade-top" data-aos-duration="1000">
                         <a href="products.html">
-                            <img src="assets/images/slider/side-slide1.jpg" alt="" width="100%">
+                            <img src="assets/images/slider/side-slide1.jpg" alt="image" width="100%">
                         </a>
                     </div>
                     <div class="col align-self-center" data-aos="fade-top" data-aos-duration="1100">
                         <a href="products.html">
-                            <img src="assets/images/slider/side-slide2.jpg" alt="" width="100%">
+                            <img src="assets/images/slider/side-slide2.jpg" alt="image" width="100%">
                         </a>
                     </div>
                     <div class="col align-self-end" data-aos="fade-top" data-aos-duration="1200">
                         <a href="products.html">
-                            <img src="assets/images/slider/side-slide3.jpg" alt="" width="100%">
+                            <img src="assets/images/slider/side-slide3.jpg" alt="image" width="100%">
                         </a>
                     </div>
                 </div>
@@ -79,7 +79,7 @@
                         <a href="{{route('product',['id'=>$p->id])}}"><div class="image" style="background-image: url('assets/images/products/p100.png')"></div></a>
                         <div class="icons">
                             <div class="btn btn-outline-secondary encode43243d"></div>
-                            <div class="btn btn-outline-secondary encode43bf243d"></div>
+                            <!-- <div class="btn btn-outline-secondary encode43bf243d"></div> -->
                         </div>
                         <div class="details p-3">
                             <div class="category">
@@ -145,13 +145,15 @@
         </div>
 
         <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-md-4 featured-product most-visited">
+            @foreach ($count_view as $item)
+
             <div class="col">
                 <!-- Product Box -->
                 <div class="encode4326654321vfb">
                     <a href="product.html"><div class="image" style="background-image: url('assets/images/products/p403.png')"></div></a>
                     <div class="icons">
                         <div class="btn btn-outline-secondary encode43243d"></div>
-                        <div class="btn btn-outline-secondary encode43bf243d"></div>
+                        <!-- <div class="btn btn-outline-secondary encode43bf243d"></div> -->
                     </div>
                     <div class="details p-3">
                         <div class="category">
@@ -159,104 +161,23 @@
                             &nbsp;/&nbsp;
                             <a href="products.html">سامسونگ</a>
                         </div>
-                        <a href="product.html"><h2>دوربین دیجیتال مدل AX6065</h2></a>
-                        <div class="encode4365gbf265g43d">3.000.000 تومان</div>
+                        <a href="product.html"><h2>{{$item->name}}</h2></a>
+                        <div class="encode4365gbf265g43d">{{$item->price}} تومان</div>
                         <div class="rate">
                             <i class="fa fa-star-half-alt"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
-                            <span class="encode43bf265g43d">(14 رای دهنده)</span>
+                            <span class="encode43bf265g43d">({{$item->comment->count()}} رای دهنده)</span>
                         </div>
                     </div>
                 </div>
                 <!-- /Product Box -->
             </div>
-            <div class="col">
-                <!-- Product Box -->
-                <div class="encode4326654321vfb">
-                    <a href="product.html"><div class="image" style="background-image: url('assets/images/products/p303.png')"></div></a>
-                    <div class="icons">
-                        <div class="btn btn-outline-secondary encode43243d"></div>
-                        <div class="btn btn-outline-secondary encode43bf243d"></div>
-                    </div>
-                    <div class="details p-3">
-                        <div class="category">
-                            <a href="products.html">گوشی موبایل</a>
-                            &nbsp;/&nbsp;
-                            <a href="products.html">سامسونگ</a>
-                        </div>
-                        <a href="product.html"><h2>مودم روتر ADSL2 Plus بی‌ سیم N300 دی-لینک مدل DSL-2740U</h2></a>
-                        <div class="encode4365gbf265g43d">3.000.000 تومان</div>
-                        <div class="rate">
-                            <i class="fa fa-star-half-alt"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <span class="encode43bf265g43d">(14 رای دهنده)</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- /Product Box -->
-            </div>
-            <div class="col">
-                <!-- Product Box -->
-                <div class="encode4326654321vfb">
-                    <a href="product.html"><div class="image" style="background-image: url('assets/images/products/p204.png')"></div></a>
-                    <div class="icons">
-                        <div class="btn btn-outline-secondary encode43243d"></div>
-                        <div class="btn btn-outline-secondary encode43bf243d"></div>
-                    </div>
-                    <div class="details p-3">
-                        <div class="category">
-                            <a href="products.html">گوشی موبایل</a>
-                            &nbsp;/&nbsp;
-                            <a href="products.html">سامسونگ</a>
-                        </div>
-                        <a href="product.html"><h2>لپ تاپ 15 اینچی لنوو مدل Lenovo Ideapad 330 - E</h2></a>
-                        <div class="encode4365gbf265g43d">6.000.000 تومان</div>
-                        <div class="rate">
-                            <i class="fa fa-star-half-alt"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <span class="encode43bf265g43d">(14 رای دهنده)</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- /Product Box -->
-            </div>
-            <div class="col">
-                <!-- Product Box -->
-                <div class="encode4326654321vfb">
-                    <a href="product.html"><div class="image" style="background-image: url('assets/images/products/p302.png')"></div></a>
-                    <div class="icons">
-                        <div class="btn btn-outline-secondary encode43243d"></div>
-                        <div class="btn btn-outline-secondary encode43bf243d"></div>
-                    </div>
-                    <div class="details p-3">
-                        <div class="category">
-                            <a href="products.html">گوشی موبایل</a>
-                            &nbsp;/&nbsp;
-                            <a href="products.html">سامسونگ</a>
-                        </div>
-                        <a href="product.html"><h2>اسپیکر بلوتوثی قابل حمل تی اند جی مدل Tg-113</h2></a>
-                        <div class="encode4365gbf265g43d">4.000.000 تومان</div>
-                        <div class="rate">
-                            <i class="fa fa-star-half-alt"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <span class="encode43bf265g43d">(14 رای دهنده)</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- /Product Box -->
-            </div>
+            @endforeach
+
+
         </div>
         <!-- /Products -->
     </div>
@@ -387,19 +308,19 @@
     <div class="container">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 gy-3 text-center">
             <div class="col" data-aos="fade-zoom-in" data-aos-duration="800">
-                <img src="assets/images/benefits/benefit1.png" alt="">
+                <img src="assets/images/benefits/benefit1.png" alt="image">
                 <span>پشتیبانی 24 ساعته</span>
             </div>
             <div class="col" data-aos="fade-zoom-in" data-aos-duration="1000">
-                <img src="assets/images/benefits/benefit2.png" alt="">
+                <img src="assets/images/benefits/benefit2.png" alt="image">
                 <span>ضمانت اصالت کالا</span>
             </div>
             <div class="col" data-aos="fade-zoom-in" data-aos-duration="1200">
-                <img src="assets/images/benefits/benefit3.png" alt="">
+                <img src="assets/images/benefits/benefit3.png" alt="image">
                 <span>ضمانت بازگشت وجه</span>
             </div>
             <div class="col" data-aos="fade-zoom-in" data-aos-duration="1400">
-                <img src="assets/images/benefits/benefit4.png" alt="">
+                <img src="assets/images/benefits/benefit4.png" alt="image">
                 <span>ارسال سریع و رایگان</span>
             </div>
         </div>
@@ -438,7 +359,7 @@
                     <a href="product.html"><div class="image" style="background-image: url('assets/images/products/p100.png')"></div></a>
                     <div class="icons">
                         <div class="btn btn-outline-secondary encode43243d"></div>
-                        <div class="btn btn-outline-secondary encode43bf243d"></div>
+                        <!-- <div class="btn btn-outline-secondary encode43bf243d"></div> -->
                     </div>
                     <div class="details p-3">
                         <div class="category">
@@ -472,7 +393,7 @@
                     <a href="product.html"><div class="image" style="background-image: url('assets/images/products/p200.png')"></div></a>
                     <div class="icons">
                         <div class="btn btn-outline-secondary encode43243d"></div>
-                        <div class="btn btn-outline-secondary encode43bf243d"></div>
+                        <!-- <div class="btn btn-outline-secondary encode43bf243d"></div> -->
                     </div>
                     <div class="details p-3">
                         <div class="category">
@@ -506,7 +427,7 @@
                     <a href="product.html"><div class="image" style="background-image: url('assets/images/products/p300.png')"></div></a>
                     <div class="icons">
                         <div class="btn btn-outline-secondary encode43243d"></div>
-                        <div class="btn btn-outline-secondary encode43bf243d"></div>
+                        <!-- <div class="btn btn-outline-secondary encode43bf243d"></div> -->
                     </div>
                     <div class="details p-3">
                         <div class="category">
@@ -539,7 +460,7 @@
                     <a href="product.html"><div class="image" style="background-image: url('assets/images/products/p400.png')"></div></a>
                     <div class="icons">
                         <div class="btn btn-outline-secondary encode43243d"></div>
-                        <div class="btn btn-outline-secondary encode43bf243d"></div>
+                        <!-- <div class="btn btn-outline-secondary encode43bf243d"></div> -->
                     </div>
                     <div class="details p-3">
                         <div class="category">
@@ -573,13 +494,13 @@
 <div class="container" data-aos="fade-up" data-aos-duration="1200">
     <div class="row">
         <div class="col-12 col-md-4 pt-2 text-center">
-            <a href="products.html">
-                <img src="assets/images/promo-image1.png" alt="">
+            <a href="products?search=لپ تاپ">
+                <img src="assets/images/promo-image1.png" alt="image">
             </a>
         </div>
         <div class="col-12 col-md-8 pt-2 text-center">
-            <a href="products.html">
-                <img src="assets/images/promo-image2.png" alt="">
+            <a href="products?search=موبایل">
+                <img src="assets/images/promo-image2.png" alt="image">
             </a>
         </div>
     </div>

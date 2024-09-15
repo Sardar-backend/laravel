@@ -19,7 +19,7 @@ class ProductListcontroller extends Controller
             $products=Product::whereBetween('price' , [$from,$up]);
         }
         $categories=productcategory::orderBy('updated_at')->limit(4)->get();
-        $products = $products->paginate(10);
+        $products = $products->paginate(2);
         return view('products',compact('products','categories'));
     }
 

@@ -43,14 +43,14 @@
                                         <div class="col">
                                             <!-- Product Box -->
                                             <div class="encode4326654321vfb">
-                                                <a href="../product.html"><div class="image" style="background-image: url('../assets/images/products/p100.png')"></div></a>
+                                                <a href="{{route('product',['id'=>$favorite->id])}}"><div class="image" style="background-image: url('../assets/images/products/p100.png')"></div></a>
                                                 <div class="details p-3">
                                                     <div class="category">
                                                         <a href="../products.html">گوشی موبایل</a>
                                                         &nbsp;/&nbsp;
                                                         <a href="../products.html">سامسونگ</a>
                                                     </div>
-                                                    <a href="../product.html"><h2>{{$favorite->name}}</h2></a>
+                                                    <a href="{{route('product',['id'=>$favorite->id])}}"><h2>{{$favorite->name}}</h2></a>
                                                     <div class="encode4365gbf265g43d">{{$favorite->price}} </div>
                                                     <div class="rate">
                                                         <i class="fa fa-star-half-alt"></i>
@@ -58,7 +58,7 @@
                                                         <i class="fa fa-star"></i>
                                                         <i class="fa fa-star"></i>
                                                         <i class="fa fa-star"></i>
-                                                        <span class="encode43bf265g43d">(14 رای دهنده)</span>
+                                                        <span class="encode43bf265g43d">({{$favorite->comment->count()}} رای دهنده)</span>
                                                     </div>
                                                 </div>
                                             </div>

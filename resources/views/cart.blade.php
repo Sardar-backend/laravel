@@ -55,6 +55,11 @@
                                             </div>
                                             @php
                                             use App\Helpers\Cart\Cart;
+                                            $totalPrice=Cart::all()->sum(function($cart){
+                                             return $cart['price'] * $cart['quantity'];
+                                            });
+                                            $totalDiscust =Cart::all()->sum(function($cart){return (($cart['product']->discust)/100 * $cart['price'])* $cart['quantity'];});
+                                            $FinalPrice = $totalPrice - $totalDiscust;
                                             @endphp
                                             @if (! Cart::all()->count())
                                             <p>سبد خرید شما خالی است</p>
@@ -69,7 +74,7 @@
                                                  <div class="col-12 col-md-4">
                                                      <div class="row">
                                                          <div class="col-2 col-md-4 pl-0">
-                                                             <img src="assets/images/products/p100.png" alt="">
+                                                             <img src="assets/images/products/p100.png" alt="image">
                                                          </div>
                                                          <div class="col-10 col-md-8">
                                                              <a href="product.html" target="_blank"><div class="title pt-2">{{$product->name}}</div></a>
@@ -86,7 +91,7 @@
                                                          <div class="input-group-prepend">
                                                              <button class="btn btn-outline-secondary btn-plus" type="button">+</button>
                                                          </div>
-                                                         <input type="text" name="order-number[]"  max="10" value="1" class="form-control text-center order-number" readonly>
+                                                         <input type="text" name="order-number[]"  max="10" value="{{$cart['quantity']}}" class="form-control text-center order-number" readonly>
                                                          <div class="input-group-prepend">
                                                              <button class="btn btn-outline-secondary btn-minus" type="button">_</button>
                                                          </div>
@@ -99,7 +104,11 @@
                                                  <div class="col-6 col-md-2 pr-0">
                                                      <div class="d-md-none font-weight-bold">قیمت نهایی</div>
                                                      <div class="pt-1 pr-2 bg-light"><span class="product-total" >{{(100 - $product->discust)/100 * $product->price}}</span> <span>تومان</span></div>
-                                                     <a href="#" class="product-remove btn-remove-from-basket" data-id=""><div class="small pl-2"><i class="fa fa-times"></i> حذف</div></a>
+                                                     <form id="fo{{$product->id}}" action="{{route('delete_cart',['product'=>$product])}}" method="post">
+                                                        @method('delete')
+                                                        @csrf
+                                                    </form>
+                                                     <a onclick="let deleter = document.querySelector('#fo{{$product->id}}').submit()" class="product-remove btn-remove-from-basket" data-id=""><div class="small pl-2"><i class="fa fa-times"></i> حذف</div></a>
                                                  </div>
                                              </div>
                                              <hr>
@@ -112,8 +121,11 @@
                                             @if (Cart::all()->count())
 
                                             <div class="row product">
+                                                <form id="all" action="{{route('delete_cart_All')}}" method="post">
+                                                    @csrf
+                                                </form>
                                                 <div class="col-12">
-                                                    <a href="#" class="product-remove btn-remove-from-basket" data-id="all"><div class="float-end small pl-2 font-weight-bold">خالی کردن سبد</div></a>
+                                                    <a onclick="let all = document.querySelector('#all').submit()" class="product-remove btn-remove-from-basket" data-id="all"><div class="float-end small pl-2 font-weight-bold">خالی کردن سبد</div></a>
                                                 </div>
                                             </div>
                                             @endif
@@ -122,6 +134,7 @@
                                 </div>
                             </div>
                         </div>
+                        @if (Cart::all()->count())
                         <div class="col-12 col-lg-3 mt-2 mt-lg-0 pr-3 pr-lg-0">
                             <div id="factor">
                                 <div class="container">
@@ -130,7 +143,7 @@
                                             <div>جمع کل فاکتور:</div>
                                         </div>
                                         <div class="col-6">
-                                            <div><span id="factor-total-encode4365gbf265g43d">3.200.000</span> تومان</div>
+                                            <div><span id="factor-total-encode4365gbf265g43d"></span>{{$totalPrice}} تومان</div>
                                         </div>
                                     </div>
                                     <div class="row py-2 bg-light">
@@ -138,7 +151,7 @@
                                             <div>جمع تخفیف:</div>
                                         </div>
                                         <div class="col-6">
-                                            <div><span id="factor-total-discount">200.000</span> تومان</div>
+                                            <div><span id="factor-total-discount">{{$totalDiscust}}</span> تومان</div>
                                         </div>
                                     </div>
                                     <div class="row py-2" id="total">
@@ -146,9 +159,10 @@
                                             <div>مبلغ قابل پرداخت:</div>
                                         </div>
                                         <div class="col-6">
-                                            <div><span id="factor-total">3.000.000</span> تومان</div>
+                                            <div><span id="factor-total">{{$FinalPrice}}</span> تومان</div>
                                         </div>
                                     </div>
+
                                     <div class="row py-2">
                                         <div class="col-12">
                                             <a href="{{route('checkout')}}"><input type="submit" value="ادامه ثبت سفارش" class="btn btn-success w-100"></a>
@@ -157,6 +171,7 @@
                                 </div>
                             </div>
                         </div>
+                        @endif
 
                         <!-- Suggested Products -->
                         <div class="col-12 pt-5" id="suggested-products">

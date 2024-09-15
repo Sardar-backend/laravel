@@ -29,7 +29,7 @@
                 <div class="content">
                     <div class="row">
                         <div class="col-12 col-lg-5 text-center">
-                            <img src="assets/images/login.png" alt="">
+                            <img src="assets/images/login.png" alt="image">
                         </div>
                         <div class="col-12 col-lg-7 pt-5 pt-md-0 align-self-center">
                             <form action="{{route('aaaaaaaaaa' , ['id'=>request()->user()->id] )}}" method="POST">

@@ -2,6 +2,7 @@
 
 namespace App\Helpers\Cart;
 
+use App\Models\Product;
 use Illuminate\Database\Eloquent\Model;
 use PhpParser\Node\Expr\Cast\String_;
 
@@ -30,10 +31,11 @@ class CartService
 
 
 
-    public function get($key){
-        $item = $key instanceof Model ? $this->cart->where('subject_id', $key->id)->where('subject_type',get_class($key))->first()
-        : $this->cart->firstWhere('id' , $key);
-        return $this->withRelationshipIfExists($item);
+    public function get($key,$withRelationshipIfExists=true){
+        $item = $key instanceof Model
+                    ? $this->cart->where('subject_id', $key->id)->where('subject_type',get_class($key))->first()
+                    : $this->cart->firstWhere('id' , $key);
+        return $withRelationshipIfExists ? $this->withRelationshipIfExists($item) : $item;
     }
 
     public function all(){
@@ -46,17 +48,19 @@ class CartService
         return $cart;
     }
 
-    public function put(array $value , $obj = null)
+    public function put(array $value , $obj=null)
     {
-        if(! is_null($obj) && $obj instanceof Model) {
+
+        $id=Cart::all()->count() + 1;
+        if(! is_null($obj) && $obj instanceof Product) {
             $value = array_merge($value , [
-               'id' => 1,
-                'subject_id' => $obj->id,
+               'id' => $id,
+                'subject_id' => $obj->id ,
                 'subject_type' => get_class($obj)
             ]);
-        } else {
+        } elseif( ! isset($value['id'])) {
             $value = array_merge($value , [
-                'id' => 1
+                'id' => $id
             ]);
         }
 
@@ -77,5 +81,39 @@ class CartService
         return ! is_null(
             $this->cart->firstWhere('id' , $key)
         );
+    }
+
+
+    public function delete ($key){
+        if ($this->has($key)) {
+            $this->cart = $this->cart->filter(function ($item) use ($key) {
+
+                if ($key instanceof Model) {
+                    return  $item['subject_id'] !== $key->id && $item['subject_type'] = get_class($key);
+                }
+
+                return $item['id'] != $key;
+            });
+            // dd($this->cart);
+            session()->put('cart', $this->cart);
+
+            return true;
+        }
+
+        return false;
+    }
+
+
+    public function update ($key,$options){
+        if (Cart::has($key)) {
+            $item = collect($this->get($key , false));
+            if (is_numeric($options)) {
+                $item = $item->merge([
+                    'quantity' => $item['quantity']  + $options
+                ]);
+            }
+            $this->put($item->toArray());
+            return $this;
+        }
     }
 }

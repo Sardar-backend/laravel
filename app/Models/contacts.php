@@ -10,5 +10,5 @@ class contacts extends Model
     // use HasFactory;
     public $timestamps = false;
     protected $table = 'contactss';
-    protected $fillable = ['name', 'email', 'number-phone', 'content','subject'];
+    protected $fillable = ['name', 'email', 'number_phone', 'content','subject'];
 }

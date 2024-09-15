@@ -99,7 +99,7 @@
             </div>
             <div class="col-12 col-md-12 col-lg-6">
                 <hr class="d-lg-none">
-                <img src="assets/images/logo.png" alt=""> روبیک مارکت
+                <img src="assets/images/logo.png" alt="image"> روبیک مارکت
                 <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.</p>
                 <div class="row">
                     <div class="col-12 col-md-6 text-center p-2" id="encode43vfbb65gtabfb">
@@ -110,13 +110,13 @@
                     <div class="col-12 col-md-6 pt-2 pt-md-0" id="encode43vfbbbfb">
                         <div class="row">
                             <div class="col-4 text-center">
-                                <a href="#"><img src="assets/images/encode43vfbbbfb/enamad.html" alt=""></a>
+                                <a href="#"><img src="assets/images/encode43vfbbbfb/enamad.html" alt="image"></a>
                             </div>
                             <div class="col-4 text-center">
-                                <a href="#"><img src="assets/images/encode43vfbbbfb/samandehi.html" alt=""></a>
+                                <a href="#"><img src="assets/images/encode43vfbbbfb/samandehi.html" alt="image"></a>
                             </div>
                             <div class="col-4 text-center">
-                                <a href="#"><img src="assets/images/encode43vfbbbfb/etehadiye.html" alt=""></a>
+                                <a href="#"><img src="assets/images/encode43vfbbbfb/etehadiye.html" alt="image"></a>
                             </div>
                         </div>
                     </div>

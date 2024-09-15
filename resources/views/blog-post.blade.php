@@ -70,9 +70,9 @@
                                         <div class="row pt-3 pb-4 pb-lg-0">
                                             <div class="col-12" id="share-links">
                                                 <span>به اشتراک بگذارید در:</span><br class="d-md-none">
-                                                <a href="#" target="_blank"><span class="share-link"><img src="assets/images/social/twitter.png" alt="توئیتر" height="25px"> توئیتر</span></a>
-                                                <a href="#" target="_blank"><span class="share-link"><img src="assets/images/social/facebook.png" alt="فیس بوک" height="25px"> فیس بوک</span></a>
-                                                <a href="#" target="_blank"><span class="share-link"><img src="assets/images/social/linkedin.png" alt="لینکدین" height="25px"> لینکدین</span></a>
+                                                <a href="https://twitter.com/intent/tweet?url={{ urlencode(Request::fullUrl()) }}&text=این+مقاله+را+ببینید!" target="_blank"><span class="share-link"><img src="assets/images/social/twitter.png" alt="توئیتر" height="25px"> توئیتر</span></a>
+                                                <a href="https://t.me/share/url?url={{ urlencode(Request::fullUrl()) }}&text=این+مقاله+را+ببینید!" target="_blank"><span class="share-link"><img style="width: 2% !important;" src="assets/images/social/telgrampng.parspng.com_.png" alt="فیس بوک" height="25px">تلگرام</span></a>
+                                                <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ urlencode(Request::fullUrl()) }}&title=عنوان+مقاله&summary=خلاصه+مقاله" target="_blank"><span class="share-link"><img src="assets/images/social/linkedin.png" alt="لینکدین" height="25px"> لینکدین</span></a>
                                             </div>
                                         </div>
                                         <hr>
@@ -90,14 +90,14 @@
 
                                                                  @if (!$comments->first())
                                                                      <p>اولین نفری باشید که نظری ارسال میکنید</p>
-                                                                     
+
                                                                  @endif
                                                                 @foreach ($comments as $comment)
                                                                 <div class="comment p-3 my-2">
                                                                     <div class="sender-details">
                                                                         <div class="row">
                                                                             <div class="col-3 col-sm-2 col-md-1 pl-md-0 pl-lg-2 pl-xl-3">
-                                                                                <img oncontextmenu="function d (event){ event.preventDefault()}" style="pointer-events: none;"  src="assets/images/user-no-image.jpg" alt="" class="rounded">
+                                                                                <img oncontextmenu="function d (event){ event.preventDefault()}" style="pointer-events: none;"  src="assets/images/user-no-image.jpg" alt="image" class="rounded">
                                                                             </div>
                                                                             <div class="col-9 col-sm-10 col-md-11 pr-0 pr-md-2 pr-xl-0 pt-0 pt-lg-1">
                                                                                 <div class="name">{{$comment->user->name}}</div>
@@ -105,7 +105,7 @@
                                                                             </div>
                                                                             <div class="col-12">
                                                                                 <p>{{$comment->content}}</p>
-                                                                                <span class="reply"><img src="assets/images/comment-reply.png" alt=""> ارسال پاسخ</span>
+                                                                                <span onclick="let parent_id = document.querySelector('.parent_id').value={{$comment->id}};window.scrollTo(0,);" class="reply"><img  src="assets/images/comment-reply.png" alt="image"> ارسال پاسخ</span>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -115,7 +115,7 @@
                                                                         let t =document.querySelector('.rounded')
                                                                     t.addEventListener('contextmenu', event => event.preventDefault());</script>
                                                                     <!-- Comment Reply -->
-                                                                    @foreach ($comment->child as $child )
+                                                                    @foreach ($comment->child->where('status',1) as $child )
 
 
                                                                     <div class="row justify-content-end">
@@ -124,7 +124,7 @@
                                                                                 <div class="sender-details">
                                                                                     <div class="row">
                                                                                         <div class="col-3 col-sm-2 col-md-1 pl-md-0 pl-lg-2 pl-xl-3">
-                                                                                            <img src="assets/images/user-no-image.jpg" alt="" class="rounded">
+                                                                                            <img src="assets/images/user-no-image.jpg" alt="image" class="rounded">
                                                                                         </div>
                                                                                         <div class="col-9 col-sm-10 col-md-11 pr-0 pr-md-2 pr-xl-0 pt-0 pt-lg-1">
                                                                                             <div class="name">{{$child->user->name}}</div>
@@ -161,7 +161,7 @@
                                                                 <div id="send-comment-form">
                                                                     <p>نظر خود را برای این مطلب ارسال کنید. نشانی ایمیل شما منتشر نخواهد شد.</p>
                                                                     <div class="row">
-                                                                        <input type="hidden" class="parent_id"  name="parent_id" value="{{request()->p}}"  id="">
+                                                                    <input type="hidden" class="parent_id"  name="parent_id" value="0"  id="">
                                                                     <input type="hidden" name="user_id" value="{{request()->user()->id}}">
                                                                     <input type="hidden" name="commenttable_id" value="{{$blog->id}}">
                                                                     <input type="hidden" name="commenttable_type" value="{{get_class($blog)}}">
@@ -196,7 +196,9 @@
         </div>
     </div>
 </section>
+<script>
 
+</script>
 
 
 

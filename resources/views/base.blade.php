@@ -6,7 +6,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>قالب فروشگاهی روبیک مارکت</title>
+    <!-- <title>قالب فروشگاهی روبیک مارکت</title> -->
+
+     {!! SEO::generate() !!}
     <!-- CSS Styles -->
     <link rel="stylesheet" href="assets/css/bootstrap.rtl.min.css">
     <link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
@@ -18,7 +20,7 @@
     <link rel="stylesheet" href="assets/css/nouislider.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/style.css">
-
+    <link rel="icon" href="/assets/images/logo.png" type="image/png">
 
     <!-- <link rel="stylesheet" href="assets/css/bootstrap.rtl.min.css">
     <link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
@@ -34,6 +36,8 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- /CSS Styles -->
     <link rel="stylesheet" href="assets/css/error-404.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         .but_s{
             background: inherit !important;
@@ -51,6 +55,22 @@
         /* Firefox */
         input[type=number] {
             -moz-appearance: textfield;
+        }
+        .cca{
+            justify-content: center !important;
+            align-items: center !important;
+        }
+        .fgf:hover{
+            color: #AEBA22 !important;
+        }
+        .ico{
+            color: black !important;
+            width: 4% !important;
+            height: 4% !important;
+            margin: 0 2px 0 2px !important;
+        }
+        .about-img{
+            box-shadow: 20px 20px 15px #8A8A8A;
         }
     </style>
 </head>
@@ -76,12 +96,16 @@
     </div>
     <!-- /Top NavBar -->
     <!-- Search NavBar -->
+     @php
+        use App\Helpers\Cart\Cart;
+        $count =(Cart::all()->count()==0)?null:Cart::all()->count();
+     @endphp
     <div id="encode43254bvfb">
         <div class="container pt-1">
             <div class="row py-3 align-content-center">
                 <div class="col-12 col-md-3 col-xl-2 text-center text-md-start pb-2" id="encode4326523bvfb">
                     <a href={{route('index')}}>
-                        <img src="assets/images/logo.png" alt=""> روبیک مارکت
+                        <img src="assets/images/logo.png" alt="image"> روبیک مارکت
                     </a>
                 </div>
                 <div class="col-12 col-md-5 col-xl-6">
@@ -105,7 +129,7 @@
                         @endguest
                         <div class="col-12 col-md-5 col-lg-6">
                             <a href={{route('cart')}}>
-                                <div class="btn btn-warning w-100"><i class="fa fa-shopping-cart"></i>&nbsp;<span class="d-md-none d-lg-inline-block">سبد خرید</span> (2)</div>
+                                <div class="btn btn-warning w-100"><i class="fa fa-shopping-cart"></i>&nbsp;<span class="d-md-none d-lg-inline-block">سبد خرید</span> {{$count}}</div>
                             </a>
                         </div>
                     </div>
@@ -165,7 +189,7 @@
                                                                         <li><a href="products.html">بازی کامپیوتری</a></li>
                                                                     </ul>
                                                                     <ul class="droopmenu-col droopmenu-col4 d-none d-lg-inline-block">
-                                                                        <li><img src="assets/images/megamenu/megamenu-image1.png" alt=""></li>
+                                                                        <li><img src="assets/images/megamenu/megamenu-image1.png" alt="image"></li>
                                                                     </ul>
                                                                 </div>
                                                             </div>
@@ -198,7 +222,7 @@
                                                                         <li><a href="products.html">لوازم دکوری</a></li>
                                                                     </ul>
                                                                     <ul class="droopmenu-col droopmenu-col4 d-none d-lg-inline-block">
-                                                                        <li><img src="assets/images/megamenu/megamenu-image2.png" alt=""></li>
+                                                                        <li><img src="assets/images/megamenu/megamenu-image2.png" alt="image"></li>
                                                                     </ul>
                                                                 </div>
                                                             </div>
@@ -233,7 +257,7 @@
                                                                         <li><a href="products.html">لباس زیر</a></li>
                                                                     </ul>
                                                                     <ul class="droopmenu-col droopmenu-col4 d-none d-lg-inline-block">
-                                                                        <li><img src="assets/images/megamenu/megamenu-image3.png" alt=""></li>
+                                                                        <li><img src="assets/images/megamenu/megamenu-image3.png" alt="image"></li>
                                                                     </ul>
                                                                 </div>
                                                             </div>
@@ -270,7 +294,7 @@
                                                                         <li><a href="products.html">خاتم و منبت</a></li>
                                                                     </ul>
                                                                     <ul class="droopmenu-col droopmenu-col4 d-none d-lg-inline-block">
-                                                                        <li><img src="assets/images/megamenu/megamenu-image4.png" alt=""></li>
+                                                                        <li><img src="assets/images/megamenu/megamenu-image4.png" alt="image"></li>
                                                                     </ul>
                                                                 </div>
                                                             </div>
@@ -305,7 +329,7 @@
                                                                         <li><a href="products.html">آیسان</a></li>
                                                                     </ul>
                                                                     <ul class="droopmenu-col droopmenu-col4 d-none d-lg-inline-block">
-                                                                        <li><img src="assets/images/megamenu/megamenu-image5.png" alt=""></li>
+                                                                        <li><img src="assets/images/megamenu/megamenu-image5.png" alt="image"></li>
                                                                     </ul>
                                                                 </div>
                                                             </div>
@@ -336,7 +360,7 @@
                                                                         <li><a href="products.html">سایر</a></li>
                                                                     </ul>
                                                                     <ul class="droopmenu-col droopmenu-col4 d-none d-lg-inline-block">
-                                                                        <li><img src="assets/images/megamenu/megamenu-image6.png" alt=""></li>
+                                                                        <li><img src="assets/images/megamenu/megamenu-image6.png" alt="image"></li>
                                                                     </ul>
                                                                 </div>
                                                             </div>
@@ -360,7 +384,7 @@
                                             <li class="droopmenu-parent" aria-haspopup="true">
                                                 <a href="#" aria-expanded="false">سایر صفحات<em class="droopmenu-topanim"></em></a><div class="dm-arrow"></div>
                                                 <ul style="">
-                                                    <li><a href="compare.html">مقایسه محصول</a></li>
+                                                    <!-- <li><a href="compare.html">مقایسه محصول</a></li> -->
                                                     <li><a href="">سبد خرید</a></li>
                                                     <li><a href=""checkout.html">پیش فاکتور</a></li>
                                                     <!-- <li class="dm-bottom-separator"></li> -->
@@ -438,7 +462,7 @@
                     <li><a href="blog.html">بلاگ آموزشی</a></li>
                     <li><a href={{route('faq')}}>راهنمای خرید</a></li>
                     <li><a href={{route('faq')}}>شیوه های پرداخت</a></li>
-                    <li><a href={{route('contact')}}>پیگیری سفارش</a></li>
+                    <!-- <li><a href={{route('contact')}}>پیگیری سفارش</a></li> -->
                     <li><a href={{route('faq')}}>سوالات متداول</a></li>
                     <li><a href={{route('about')}}>درباره ما</a></li>
                     <li><a href={{route('contact')}}>تماس با ما</a></li>
@@ -447,29 +471,37 @@
             <div class="col-6 col-sm-4 col-lg-2">
                 <div class="title">گروه های محصولات</div>
                 <ul>
-                    <li><a href="products.html">تجهیزات کامپیوتر</a></li>
-                    <li><a href="products.html">گوشی موبایل</a></li>
+                    @php
+                    use App\Models\productcategory;
+                    $all=productcategory::all();
+                    @endphp
+                    @foreach ($all as $cat)
+                    <div class="form-group">
+                    <form id="ssf{{$cat->id}}" action="{{route('products')}}" method="get">
+                    <input type="hidden" name="search" value="{{$cat->name}}"></form>
+                     <li onclick="let f = document.querySelector('#ssf{{$cat->id}}').submit()" class="fgf" >{{$cat->name}}</li>
+                    @endforeach
+                    <!-- <li><a href="products.html">گوشی موبایل</a></li>
                     <li><a href="products.html">جانبی موبایل</a></li>
                     <li><a href="products.html">ساعت هوشمند</a></li>
                     <li><a href="products.html">جانبی کامپیوتر</a></li>
                     <li><a href="products.html">دوربین</a></li>
-                    <li><a href="products.html">لپ تاپ</a></li>
+                    <li><a href="products.html">لپ تاپ</a></li> -->
                 </ul>
             </div>
             <div class="col-6 col-sm-4 col-lg-2 d-none d-sm-inline-block">
                 <div class="title">ناحیه کاربری</div>
                 <ul>
-                    <li><a href="">ورود به سایت</a></li>
-                    <li><a href="register.html">عضویت در سایت</a></li>
-                    <li><a href="reset-password.html">بازیابی رمز عبور</a></li>
-                    <li><a href="">سبد خرید</a></li>
-                    <li><a href="checkout.html">پیش فاکتور</a></li>
+                    <li><a href="{{route('login')}}">ورود به سایت</a></li>
+                    <li><a href="{{route('login')}}">عضویت در سایت</a></li>
+                    <li><a href="{{route('cart')}}">سبد خرید</a></li>
+                    <!-- <li><a href="checkout.html">پیش فاکتور</a></li> -->
                 </ul>
             </div>
             <div class="col-12 col-md-12 col-lg-6">
                 <hr class="d-lg-none">
-                <img src="assets/images/logo.png" alt=""> روبیک مارکت
-                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.</p>
+                <img src="assets/images/logo.png" alt="image"> روبیک مارکت
+                <p>روبیک مارکت یک پلتفرم آنلاین است که انواع محصولات متنوع و باکیفیت را با قیمت‌های مناسب عرضه می‌کند. با تنوع بالا و ارسال سریع، تجربه‌ای آسان و مطمئن برای خرید آنلاین را به مشتریان ارائه می‌دهیم. هدف ما جلب رضایت مشتریان با ارائه محصولات برتر و خدمات پشتیبانی عالی است .روبیک مارکت به ارائه بهترین تجربه خرید برای کاربران و ارتقاء مهارت‌های ذهنی آن‌ها متعهد است.</p>
                 <div class="row">
                     <div class="col-12 col-md-6 text-center p-2" id="encode43vfbb65gtabfb">
                         <div>7 روز هفته، 24 ساعت شبانه روز</div>
@@ -479,13 +511,13 @@
                     <div class="col-12 col-md-6 pt-2 pt-md-0" id="encode43vfbbbfb">
                         <div class="row">
                             <div class="col-4 text-center">
-                                <a href="#"><img src="assets/images/encode43vfbbbfb/enamad.html" alt=""></a>
+                                <!-- <a href="#"><img src="assets/images/encode43vfbbbfb/enamad.html" alt="image"></a> -->
                             </div>
                             <div class="col-4 text-center">
-                                <a href="#"><img src="assets/images/encode43vfbbbfb/samandehi.html" alt=""></a>
+                                <!-- <a href="#"><img src="assets/images/encode43vfbbbfb/samandehi.html" alt="image"></a> -->
                             </div>
                             <div class="col-4 text-center">
-                                <a href="#"><img src="assets/images/encode43vfbbbfb/etehadiye.html" alt=""></a>
+                                <!-- <a href="#"><img src="assets/images/encode43vfbbbfb/etehadiye.html" alt="image"></a> -->
                             </div>
                         </div>
                     </div>
@@ -502,11 +534,11 @@
         <div class="row">
             <div class="col-12 col-sm-6" id="social-links">
                 <span>ما را دنبال کنید</span>
-                <a href="#"><img src="assets/images/social/insta.png" alt=""></a>
-                <a href="#"><img src="assets/images/social/facebook.png" alt=""></a>
-                <a href="#"><img src="assets/images/social/linkedin.png" alt=""></a>
-                <a href="#"><img src="assets/images/social/twitter.png" alt=""></a>
-                <a href="#"><img src="assets/images/social/youtube.png" alt=""></a>
+                <a href="#"><img src="assets/images/social/insta.png" alt="image"></a>
+                <a href="#"><img src="assets/images/social/facebook.png" alt="image"></a>
+                <a href="#"><img src="assets/images/social/linkedin.png" alt="image"></a>
+                <a href="#"><img src="assets/images/social/twitter.png" alt="image"></a>
+                <a href="#"><img src="assets/images/social/youtube.png" alt="image"></a>
             </div>
             <div class="col-12 col-sm-6 text-sm-end pt-2 pt-sm-0">
                 <span>کلیه حقوق و مادی معنوی محفوط است.</span>
@@ -528,8 +560,10 @@
 <script>let d =document.querySelectorAll('img');d.forEach(function (params) {params.addEventListener('contextmenu', event => event.preventDefault());});</script>
 <!-- فقط برای سبد خرید  -->
 <script src="assets/js/owl.carousel.min.js"></script>
-<!-- فقط برای سبد خرید -->
 
+<!-- فقط برای سبد خرید -->
+<!-- <script src="assets/js/scripts.js"></script> -->
+@include('sweetalert::alert')
 @yield('Scripts')
 
 <!-- /Scripts -->

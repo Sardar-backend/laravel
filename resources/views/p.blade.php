@@ -20,6 +20,11 @@
 <link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
 <!-- Colors Css -->
 <link id="color-switcher" type="text/css" rel="stylesheet" href="css/color-red.css" />
+<style>
+/* body{
+    background-color: red!important;
+} */
+</style>
 </head>
 <body>
 
@@ -34,11 +39,11 @@
 </div>
 <!-- Preloader End -->
 
-<div id="main-wrapper" class="oxyy-login-register">
-  <div class="hero-wrap min-vh-100">
-    <div class="hero-mask opacity-4 bg-secondary"></div>
-    <div class="hero-bg hero-bg-scroll mn" style="background-image:url('logo.png');"></div>
-    <div class="k hero-content d-flex min-vh-100">
+<div id="main-wrapper" class="oxyy-login-register"style="background-image:url('img/aaa.jpg');">
+  <div class="hero-wrap min-vh-100" style="background-image:url('img/aaa.jpg');">
+    <div class="hero-mask opacity-4 bg-secondary" style="background-image:url('img/aaa.jpg');"></div>
+    <div class="hero-bg hero-bg-scroll mn" style="background-image:url('img/aaa.jpg');"></div>
+    <div class="k hero-content d-flex min-vh-100"style="background-image:url('img/aaa.jpg');">
       <div class="container my-auto">
         <div class="row">
           <div class="col-md-9 col-lg-7 col-xl-5 mx-auto">

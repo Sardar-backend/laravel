@@ -17,11 +17,13 @@ use App\Models\permission;
 use App\Models\Product as ModelsProduct;
 use App\Models\productcategory;
 use App\Models\User;
+use Artesaos\SEOTools\Facades\SEOTools;
 use \Illuminate\Support\Facades\Auth;
 use \Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate as FacadesGate;
 use Illuminate\Validation\Rule;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class homecontorel extends Controller
 {
@@ -50,20 +52,13 @@ class homecontorel extends Controller
         $ttt=productcategory::find($id->first()->id);
         $dor=$ttt->products()->limit(8)->get();
 
-
-
-
-
-
-
-
-
         if (Gate::allows('edit')) {
             return 'Home';
         };
-        $pro = ModelsProduct::where('Chosen',1)->get();
-        $disusted = ModelsProduct::where('discust','>',20)->get();
-        return view('index',compact('pro','categorys','blogs','mobile','tag','lab','dor','disusted'));
+        $count_view=Product::orderBy('count_view')->limit(4)->get();
+        $pro = ModelsProduct::where('Chosen',1)->limit(4)->get();
+        $disusted = ModelsProduct::where('discust','>',20)->limit(4)->get();
+        return view('index',compact('pro','categorys','blogs','mobile','tag','lab','dor','disusted','count_view'));
     }
     public function about(){
         // alert()->success('cdsdcscsd' , 'scsdcsd')->persistent(' dffdvf!');
@@ -76,11 +71,15 @@ class homecontorel extends Controller
     }
 
     public function contact(){
-        // Cart::get(1);
-        // $a=Zand::okfubc();
-        // dd($a);
         Auth::loginUsingId(1);
-        // alert()->success();
+        $this->seo()->setTitle('تماس با ما')
+        ->setDescription('پیشنهادات ، انتقادات و پیام های دیگر به ما بفرستید')
+        ->opengraph()->setTitle('تماس با ما')
+        ->addImage(asset('img/logo.png'), [
+            'height' => 200,
+            'width' => 200,
+        ])
+        ;
         return view('contact');
     }
 
@@ -93,8 +92,8 @@ class homecontorel extends Controller
             'subject' => ['required','string'],
             'content' => ['required','string']
         ]);
-
-        contacts::create($data);
+        $con=contacts::create($data);
+        Alert::success('ارسال موفیت آمیز بود','پیغام شما ارسال شد');
         return back();
     }
 
@@ -114,6 +113,9 @@ class homecontorel extends Controller
 
 
     public function faq(){
+
+        // return session()->get('cart');
+        $this->seo()->setTitle('سوالات متداول');
         return view('faq');
 
 
@@ -182,7 +184,7 @@ class homecontorel extends Controller
         //     $data['password']=$request->password;
         // }
         $user->update($data);
-
+        Alert::success('عملیات موفق آمیز بود','اطلاعات کاربری شما با موفق ویرایش شد');
         return redirect()->route('personal');
     }
     public function cart(){
@@ -200,6 +202,7 @@ class homecontorel extends Controller
 
         ]);
         comment::create($data);
+        Alert::success('نظر شما ارسال شد','دیدگاه شما پس از تائید نمایش داده خواهد شد');
         return back();
     }
 
@@ -236,12 +239,14 @@ class homecontorel extends Controller
     public function like_post (Request $request){
         $p=Product::find($request->product_id);
         $request->user()->favorite()->attach($p);
+        Alert::success('عملیات موفق آمیز بود',' محصول به علاقمندی های شما اضافه شد');
         return back();
     }
 
     public function dislike_post (Request $request){
         $p=Product::find($request->product_id);
         $request->user()->favorite()->detach($p);
+        Alert::success('عملیات موفق آمیز بود',' محصول از علاقمندی های شما حذف شد');
         return back();
     }
 

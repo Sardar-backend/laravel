@@ -51,7 +51,7 @@
                                                     <div class="side-blog-post">
                                                         <div class="row pl-3">
                                                             <div class="col-4 pl-2">
-                                                                <a href="blog-post.html"><div class="image" style="background-image: url(assets/images/blog/post100.jpg)"></div></a>
+                                                                <a href="{{route('blog_single',['id'=>$blog->id])}}"><div class="image" style="background-image: url(assets/images/blog/post100.jpg)"></div></a>
                                                             </div>
                                                             <div class="col-8 px-0">
                                                                 <a href="blog-post.html"><h2>{{$blog->title}}</h2></a>
