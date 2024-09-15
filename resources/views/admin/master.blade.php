@@ -5,12 +5,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
+  {!! SEO::generate() !!}
+  <link rel="icon" href="/assets/images/logo.png" type="image/png">
 
-  <title>پنل مدیریت | داشبورد سوم</title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="/plugins/font-awesome/css/font-awesome.min.css">
   <!-- IonIcons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
   <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
   <!-- <link rel="stylesheet" href="/dist/css/adminlte.min.css"> -->

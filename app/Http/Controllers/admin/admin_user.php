@@ -15,6 +15,13 @@ class admin_user extends Controller
      */
     public function index()
     {
+        $this->seo()->setTitle(' مدیریت کاربران')
+        ->setDescription('مدیریت کاربران')
+        ->opengraph()->setTitle(' مدیریت کاربران')
+        ->addImage(asset('img/logo.png'), [
+            'height' => 200,
+            'width' => 200,
+        ]);
         // $users = User::paginate(20);
         $users = User::query();
         if ($keyword=request('search')) {
@@ -32,6 +39,13 @@ class admin_user extends Controller
      */
     public function create()
     {
+        $this->seo()->setTitle(' مدیریت کاربران')
+        ->setDescription('مدیریت کاربران')
+        ->opengraph()->setTitle(' مدیریت کاربران')
+        ->addImage(asset('img/logo.png'), [
+            'height' => 200,
+            'width' => 200,
+        ]);
         return view('admin.componnets.create');
     }
 
@@ -65,6 +79,13 @@ class admin_user extends Controller
      */
     public function edit(string $id)
     {
+        $this->seo()->setTitle(' مدیریت کاربران')
+        ->setDescription('مدیریت کاربران')
+        ->opengraph()->setTitle(' مدیریت کاربران')
+        ->addImage(asset('img/logo.png'), [
+            'height' => 200,
+            'width' => 200,
+        ]);
         $user= User::find($id);
         return view('admin.componnets.edit',compact('user'));
     }

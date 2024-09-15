@@ -1,3 +1,8 @@
+<head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+<link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+</head>
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
@@ -34,31 +39,32 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="{{route('admin_PRODUCT.index')}}" class="nav-link">
+                  <a href="{{route('admin_PRODUCT.index')}}" class="nav-link @if (Request::path()=='admin_PRODUCT' || Request::path()=='admin_PRODUCT/create' ) active @endif ">
                     <i class="fa fa-circle-o nav-icon"></i>
                     <p>محصولات</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{route('admin_blog.index')}}" class="nav-link">
+                  <a href="{{route('admin_blog.index')}}" class="nav-link @if (Request::path()=='admin_blog' || Request::path()=='admin_blog/create' ) active @endif">
                     <i class="fa fa-circle-o nav-icon"></i>
                     <p>مقالات</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{route('admin_comment.index')}}" class="nav-link">
+                  <a href="{{route('admin_comment.index')}}" class="nav-link @if (Request::path()=='admin_comment'  ) active @endif">
                     <i class="fa fa-circle-o nav-icon"></i>
                     <p>کامنت ها </p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{route('admin_category.index')}}" class="nav-link">
+                  <a href="{{route('admin_category.index')}}" class="nav-link @if (Request::path()=='admin_category' || Request::path()=='admin_category/create' ) active @endif">
                     <i class="fa fa-circle-o nav-icon"></i>
                     <p>دسته بندی محصولات</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{route('admin')}}" class="nav-link active">
+                  <a href="{{route('admin')}}" class="nav-link @if (Request::path()=='admin' || Request::path()=='user/create' ) active @endif
+                  ">
                     <i class="fa fa-circle-o nav-icon"></i>
                     <p>کاربران</p>
                   </a>
@@ -66,10 +72,10 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a href="{{route('massage')}}" class="nav-link">
+              <a href="{{route('massage')}}" class="nav-link @if (Request::path()=='admin/massage' ) active @endif ">
                 <i class="nav-icon fa fa-th"></i>
                 <p>
-                  ویجت‌ها
+                  پیغام ها
                 </p>
               </a>
             </li> <!--

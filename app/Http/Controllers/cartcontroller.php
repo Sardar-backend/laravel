@@ -11,6 +11,13 @@ use RealRashid\SweetAlert\Facades\Alert;
 class cartcontroller extends Controller
 {
     public function Cart(){
+        $this->seo()->setTitle('سبد خرید')
+        ->setDescription('سبد خرید خود را اینجا ببینید')
+        ->opengraph()->setTitle('سبد خرید')
+        ->addImage(asset('img/logo.png'), [
+            'height' => 200,
+            'width' => 200,
+        ]);
          $products=Product::where('count_view','>', 20)->orderBy('failed_at')->limit(10)->get();
 
         return view('cart', compact('products'));

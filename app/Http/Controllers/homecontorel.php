@@ -25,11 +25,29 @@ use Illuminate\Support\Facades\Gate as FacadesGate;
 use Illuminate\Validation\Rule;
 use RealRashid\SweetAlert\Facades\Alert;
 
+
+
+
+
+
+
+
+
+
+
+
+
 class homecontorel extends Controller
 {
 
     public function index(Request $request){
-
+        $this->seo()->setTitle('صفحه اصلی')
+        ->setDescription('به صفحه اصلی سایت خوش آمدید')
+        ->opengraph()->setTitle('صفحه اصلی')
+        ->addImage(asset('img/logo.png'), [
+            'height' => 200,
+            'width' => 200,
+        ]);
         // Auth::loginUsingId(1);
         // Auth::logout();
         $categorys=productcategory::all()->where('parent','LIKE',0);
@@ -61,11 +79,24 @@ class homecontorel extends Controller
         return view('index',compact('pro','categorys','blogs','mobile','tag','lab','dor','disusted','count_view'));
     }
     public function about(){
-        // alert()->success('cdsdcscsd' , 'scsdcsd')->persistent(' dffdvf!');
+        $this->seo()->setTitle('درباره ما')
+        ->setDescription('درباره ما بیشتر بدانید')
+        ->opengraph()->setTitle('درباره ما')
+        ->addImage(asset('img/logo.png'), [
+            'height' => 200,
+            'width' => 200,
+        ]);
         return view('about');
     }
 
     public function blog_list(){
+        $this->seo()->setTitle('آرشیو مقالات')
+        ->setDescription('آرشیو مقالات مشاهده کنید')
+        ->opengraph()->setTitle('آرشیو مقالات')
+        ->addImage(asset('img/logo.png'), [
+            'height' => 200,
+            'width' => 200,
+        ]);
         $blogs=blog::orderBy('failed_at')->paginate(2);
         return view('blog',compact('blogs'))->with('last_blog',Zand::ttt()[0])->with('last_products',Zand::ttt()[1]);
     }
@@ -78,8 +109,7 @@ class homecontorel extends Controller
         ->addImage(asset('img/logo.png'), [
             'height' => 200,
             'width' => 200,
-        ])
-        ;
+        ]);
         return view('contact');
     }
 
@@ -98,22 +128,15 @@ class homecontorel extends Controller
     }
 
 
-    public function error404(){
-        return view('error-404');
-    }
-
-
-
-
-    public function category(string $category){
-
-        return view('error-404');
-    }
-
-
 
     public function faq(){
-
+        $this->seo()->setTitle('سوالات متداول')
+        ->setDescription('پاسخ سوالات خود را اینجا بیابید')
+        ->opengraph()->setTitle('سوالات متداول')
+        ->addImage(asset('img/logo.png'), [
+            'height' => 200,
+            'width' => 200,
+        ]);
         // return session()->get('cart');
         $this->seo()->setTitle('سوالات متداول');
         return view('faq');
@@ -127,6 +150,13 @@ class homecontorel extends Controller
 
     public function blog_single(int $id){
         $blog=blog::find($id);
+        $this->seo()->setTitle($blog->title)
+        ->setDescription($blog->content)
+        ->opengraph()->setTitle($blog->title)
+        ->addImage(asset('img/logo.png'), [
+            'height' => 200,
+            'width' => 200,
+        ]);
         $view=$blog->count_view + 1 ;
         $blog->update(['count_view' => $view]);
         $comments=$blog->comment()->where('status','LIKE',true)->where('parent_id','LIKE',0)->get();
@@ -136,6 +166,14 @@ class homecontorel extends Controller
 
     public function product(int $id){
         $product = Product::find($id);
+        $blog=blog::find($id);
+        $this->seo()->setTitle($product->name)
+        ->setDescription($product->discription)
+        ->opengraph()->setTitle($product->name)
+        ->addImage(asset('img/logo.png'), [
+            'height' => 200,
+            'width' => 200,
+        ]);
         if (is_null($product)) {
             return view('404');
         }
@@ -154,12 +192,14 @@ class homecontorel extends Controller
         $user =request()->user();
         return view('product',compact('product','comments','user','category'));
     }
-
-
-    public function compare(){
-        return view('compare');
-    }
     public function edit_user (){
+        $this->seo()->setTitle('ویرایش اطلاعات')
+        ->setDescription('اینجا میتوانید اطلاعت خود را ویرایش کنید')
+        ->opengraph()->setTitle('ویرایش اطلاعات')
+        ->addImage(asset('img/logo.png'), [
+            'height' => 200,
+            'width' => 200,
+        ]);
         return view('edit');
     }
 
@@ -188,6 +228,13 @@ class homecontorel extends Controller
         return redirect()->route('personal');
     }
     public function cart(){
+        $this->seo()->setTitle('سبد خرید')
+        ->setDescription('سبد خود را اینجا مشاهده کنید')
+        ->opengraph()->setTitle('سبد خرید')
+        ->addImage(asset('img/logo.png'), [
+            'height' => 200,
+            'width' => 200,
+        ]);
         return view('cart');
     }
 
@@ -207,35 +254,30 @@ class homecontorel extends Controller
     }
 
 
-    public function checkout(Request $request){
-        $d=$request->user()->phonenumber;
-        $code = activecode::createcode();
-        $request->user()->notify(new notificationCode($code,$d));
-        return view('checkout');
-    }
 
-    public function getauth2 (){
-        return view('auth2');
-    }
 
-    public function postauth2(Request $request){
-        $data = $request->validate([
-            'phonenumber' => 'required'
-        ]);
-        return $data;
-    }
+    // public function getauth2 (){
+    //     return view('auth2');
+    // }
 
-    public function tokengetauth2 () {
-        return view('tokenauth2');
-    }
+    // public function postauth2(Request $request){
+    //     $data = $request->validate([
+    //         'phonenumber' => 'required'
+    //     ]);
+    //     return $data;
+    // }
 
-    public function activcode(){
-        User::create([
-            'code' => 1111 ,
-            'expired_at'=> now()->addMinutes(10)
+    // public function tokengetauth2 () {
+    //     return view('tokenauth2');
+    // }
 
-        ]);
-    }
+    // public function activcode(){
+    //     User::create([
+    //         'code' => 1111 ,
+    //         'expired_at'=> now()->addMinutes(10)
+
+    //     ]);
+    // }
     public function like_post (Request $request){
         $p=Product::find($request->product_id);
         $request->user()->favorite()->attach($p);
@@ -251,6 +293,13 @@ class homecontorel extends Controller
     }
 
     public function blog_category(string $category){
+        $this->seo()->setTitle($category.' ' .'مقالات ')
+        ->setDescription($category . ' '.'مقالات دسته بندی')
+        ->opengraph()->setTitle($category.' '.'مقالات')
+        ->addImage(asset('img/logo.png'), [
+            'height' => 200,
+            'width' => 200,
+        ]);
         $blogs = blogcategory::where('name',$category)->orderBy('updated_at')->paginate(4);
         // $blogs=blog::where()->orderBy('failed_at')->paginate(2);
         return view('blog',compact('blogs'))->with('last_blog',Zand::ttt()[0])->with('last_products',Zand::ttt()[1]);

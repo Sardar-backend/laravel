@@ -16,10 +16,18 @@ use RealRashid\SweetAlert\Facades\Alert;
 class authcontorel extends Controller
 {
     public function login (){
+        $this->seo()->setTitle('صفحه ورود')
+        ->setDescription('به صفحه ورود خوش آمدید')
+        ->opengraph()->setTitle('صفحه ورود')
+        ->addImage(asset('img/logo.png'), [
+            'height' => 200,
+            'width' => 200,
+        ]);
         $u = User::where('id',1)->get();
         return view('p')->with('u',$u);
     }
     public function po(Request $request) {
+
         $gnn= $request->name;
         $u = User::where('phonenumber', $gnn)->get();
         try {
@@ -57,6 +65,13 @@ class authcontorel extends Controller
         }
     }
     public function enter2(){
+        $this->seo()->setTitle('صفحه ورود')
+        ->setDescription('به صفحه ورود خوش آمدید')
+        ->opengraph()->setTitle('صفحه ورود')
+        ->addImage(asset('img/logo.png'), [
+            'height' => 200,
+            'width' => 200,
+        ]);
         return view('enter2');
     }
     public function log (){

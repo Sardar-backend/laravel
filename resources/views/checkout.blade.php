@@ -73,21 +73,24 @@
                                         <div class="col-12">
                                             <div class="pb-1 title">سفارشات شما</div>
                                             <div class="row">
+                                                @foreach ($all as $pro)
+
                                                 <!-- Order Product Record -->
                                                 <span class="col-6 col-sm-4 col-lg-3 px-0">
-                                                    <a href="product.html" target="_blank">
+                                                    <a href="product-{{$pro['product']->id}}" target="_blank">
                                                         <div class="encode4326654321vfb">
                                                             <div class="image" style="background-image: url(assets/images/products/p100.png)"></div>
                                                             <div class="text-center px-1 px-sm-3">
-                                                                <a href="product.html" target="_blank"><h2>گوشی موبایل سامسونگ مدل Galaxy A51 دو سیم کارت</h2></a>
-                                                                <div class="number">تعداد: 2 عدد</div>
+                                                                <a href="product.html" target="_blank"><h2>{{$pro['product']->name}}</h2></a>
+                                                                <div class="number">تعداد: {{$pro['quantity']}} عدد</div>
                                                             </div>
                                                         </div>
                                                     </a>
                                                 </span>
                                                 <!-- /Order Product Record -->
+                                                @endforeach
                                                 <!-- Order Product Record -->
-                                                <span class="col-6 col-sm-4 col-lg-3 px-0">
+                                                <!-- <span class="col-6 col-sm-4 col-lg-3 px-0">
                                                     <a href="product.html" target="_blank">
                                                         <div class="encode4326654321vfb">
                                                             <div class="image" style="background-image: url(assets/images/products/p200.png)"></div>
@@ -97,7 +100,7 @@
                                                             </div>
                                                         </div>
                                                     </a>
-                                                </span>
+                                                </span> -->
                                                 <!-- /Order Product Record -->
                                             </div>
                                         </div>

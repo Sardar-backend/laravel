@@ -11,9 +11,9 @@ Route::get('/about',[\App\Http\Controllers\homecontorel::class,'about'])->name('
 Route::get('/contact',[\App\Http\Controllers\homecontorel::class,'contact'])->name('contact');
 Route::post('/contact_p',[\App\Http\Controllers\homecontorel::class,'contact_post'])->name('contact_post');
 
-Route::get('/error404',[\App\Http\Controllers\homecontorel::class,'error404'])->name('error404');
 
-Route::get('/faqn',[\App\Http\Controllers\homecontorel::class,'faq'])->name('faq');
+
+Route::get('/faq',[\App\Http\Controllers\homecontorel::class,'faq'])->name('faq');
 
 Route::get('/products',[\App\Http\Controllers\ProductListcontroller::class,'products'])->name('products');
 
@@ -21,22 +21,22 @@ Route::get('/product-{id}',[\App\Http\Controllers\homecontorel::class,'product']
 
 
 
-Route::get('/compare',[\App\Http\Controllers\homecontorel::class,'compare'])->name('compare');
+// Route::get('/compare',[\App\Http\Controllers\homecontorel::class,'compare'])->name('compare');
 
 Route::get('/cart',[\App\Http\Controllers\homecontorel::class,'cart'])->name('cart')->middleware(['auth','password.confirm']);
 
-Route::get('/checkout',[\App\Http\Controllers\homecontorel::class,'checkout'])->name('checkout')->middleware('password.confirm');
+Route::get('/checkout',[\App\Http\Controllers\paymentController::class,'checkout'])->name('checkout')->middleware('auth');
 
 
-Route::get('/auth2',[\App\Http\Controllers\homecontorel::class,'getauth2'])->name('auth2');
-Route::post('/auth2',[\App\Http\Controllers\homecontorel::class,'postauth2'])->name('postauth2');
+// Route::get('/auth2',[\App\Http\Controllers\homecontorel::class,'getauth2'])->name('auth2');
+// Route::post('/auth2',[\App\Http\Controllers\homecontorel::class,'postauth2'])->name('postauth2');
 
-Route::get('/t_auth2',[\App\Http\Controllers\homecontorel::class,'tokengetauth2'])->name('t_auth2');
-Route::post('/t_auth2',[\App\Http\Controllers\homecontorel::class,'tokenpostauth2']);
+// Route::get('/t_auth2',[\App\Http\Controllers\homecontorel::class,'tokengetauth2'])->name('t_auth2');
+// Route::post('/t_auth2',[\App\Http\Controllers\homecontorel::class,'tokenpostauth2']);
 
 
-Route::get('/adresses',[\App\Http\Controllers\admin\usercontorel::class,'adresses'])->name('adresses');
-Route::post('/adresses',[\App\Http\Controllers\admin\usercontorel::class,'adresses_post'])->name('adresses_post');
+Route::get('/Addresses',[\App\Http\Controllers\admin\usercontorel::class,'adresses'])->name('adresses');
+Route::post('/Addresses',[\App\Http\Controllers\admin\usercontorel::class,'adresses_post'])->name('adresses_post');
 Route::post('/deleteadresses{id}',[\App\Http\Controllers\admin\usercontorel::class,'delete_adresses'])->name('delete_adresses');
 
 Route::get('/factors',[\App\Http\Controllers\admin\usercontorel::class,'factors'])->name('factors');
@@ -49,8 +49,8 @@ Route::get('/personal',[\App\Http\Controllers\admin\usercontorel::class,'persona
 // Auth::routes();
 
 
-Route::get('/auth/google',[\App\Http\Controllers\Auth\googleAuthcontroller::class,'redirect'])->name('auth.google');
-Route::get('/auth/google/callback',[\App\Http\Controllers\Auth\googleAuthcontroller::class,'callback']);
+// Route::get('/auth/google',[\App\Http\Controllers\Auth\googleAuthcontroller::class,'redirect'])->name('auth.google');
+// Route::get('/auth/google/callback',[\App\Http\Controllers\Auth\googleAuthcontroller::class,'callback']);
 
 
 Route::post('/create_comment',[\App\Http\Controllers\homecontorel::class,'craete_comment'])->name('create_comment')->middleware('auth');
@@ -73,10 +73,10 @@ Route::post('/dislike',[\App\Http\Controllers\homecontorel::class,'dislike_post'
 Route::get('/blogs-{category}',[\App\Http\Controllers\homecontorel::class,'blog_category'])->name('blog_category');
 
 
-Route::get('/show/{user}/file' , function($file){
-    return Storage::download(request('path'));
-}
-)->name('categorys');
+// Route::get('/show/{user}/file' , function($file){
+//     return Storage::download(request('path'));
+// }
+// )->name('categorys');
 
 
 Route::post('/add_to_card{product}',[\App\Http\Controllers\cartcontroller::class,'addToCart'])->name('add_to_card');
@@ -92,6 +92,7 @@ Route::get('/logout',[\App\Http\Controllers\authcontroll\authcontorel::class,'lo
 //Route::get('/y',[\App\Http\Controllers\authcontroll\authcontorel::class,'log'])->name('x');
 
 Route::post('/pvc',[\App\Http\Controllers\authcontroll\authcontorel::class,'mm'])->name('mm');
+
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
@@ -102,7 +103,7 @@ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']
 //
 
 
-Route::get('/products-list',[\App\Http\Controllers\ProductListcontroller::class,'products_list'])->name('products-list');
+// Route::get('/products-list',[\App\Http\Controllers\ProductListcontroller::class,'products_list'])->name('products-list');
 Route::get('/products',[\App\Http\Controllers\ProductListcontroller::class,'products'])->name('products');
 Route::get('/products_popular',[\App\Http\Controllers\ProductListcontroller::class,'products_popular'])->name('products_popular');
 Route::get('/products_cheapest',[\App\Http\Controllers\ProductListcontroller::class,'products_cheapest'])->name('products_cheapest');
@@ -127,3 +128,22 @@ Route::delete('/delete_cart{product}',[\App\Http\Controllers\cartcontroller::cla
 Route::post('/delete_cartAll',[\App\Http\Controllers\cartcontroller::class,'deleteAll'])->name('delete_cart_All');
 
 Route::get('/cart',[\App\Http\Controllers\cartcontroller::class,'Cart'])->name('cart');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Route::get('/sitemap.xml', function () {
+    return response()->file(public_path('sitemap.xml'));
+});

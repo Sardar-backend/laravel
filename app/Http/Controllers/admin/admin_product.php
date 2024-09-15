@@ -17,6 +17,13 @@ class admin_product extends Controller
      */
     public function index()
     {
+        $this->seo()->setTitle('مدیریت محصولات')
+        ->setDescription('محصولات مدیریت کنید')
+        ->opengraph()->setTitle('مدیریت محصولات')
+        ->addImage(asset('img/logo.png'), [
+            'height' => 200,
+            'width' => 200,
+        ]);
         $users = Product::query();
         if ($keyword=request('search')) {
             $users = $users->where('name', 'LIKE', "%{$keyword}%")->orWhere('discription', 'LIKE', "%{$keyword}%")->orWhere('id', 'LIKE', "%{$keyword}%");
@@ -30,6 +37,13 @@ class admin_product extends Controller
      */
     public function create(Request $request)
     {
+        $this->seo()->setTitle('مدیریت محصولات')
+        ->setDescription('محصولات مدیریت کنید')
+        ->opengraph()->setTitle('مدیریت محصولات')
+        ->addImage(asset('img/logo.png'), [
+            'height' => 200,
+            'width' => 200,
+        ]);
         // $data=$request->validate([
         //     'name' => ['required', 'string', 'max:255'],
         //     'phonenumber' => ['required', 'string', 'max:255'],
@@ -96,6 +110,13 @@ class admin_product extends Controller
      */
     public function show(string $id)
     {
+        $this->seo()->setTitle('مدیریت محصولات')
+        ->setDescription('محصولات مدیریت کنید')
+        ->opengraph()->setTitle('مدیریت محصولات')
+        ->addImage(asset('img/logo.png'), [
+            'height' => 200,
+            'width' => 200,
+        ]);
         $cat=Product::find($id);
         $categories =productcategory::all();
         return view('admin/componnets/edit_p', compact('cat','categories'));
