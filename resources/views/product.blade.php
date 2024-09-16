@@ -717,7 +717,7 @@
                                                                                             <p>{{$r->content}}</p>
                                                                                             <form action="">
                                                                                             <input type="hidden" name="p" value="{{$r->id}}">
-                                                                                            <button class="reply bb nn" type="submit">ارسال پاسخ<img class="ml-5" src="assets/images/comment-reply.png" id="{{$r->id}}" alt="image"></button>
+                                                                                            <button style="background-color: inherit !important; border:0;" class="reply bb nn" type="submit">ارسال پاسخ<img class="ml-5" src="assets/images/comment-reply.png" id="{{$r->id}}" alt="image"></button>
                                                                                             <!-- <span class="reply bb" id="{{$r->id}}"> ارسال پاسخ</span> -->
                                                                                         </form>
                                                                                             <!-- <span class="reply"><img src="assets/images/comment-reply.png" alt="image"> ارسال پاسخ</span> -->
@@ -769,7 +769,12 @@
                                                                     <div class="col-12 py-3">
                                                                         <form method="post" action="{{route('create_comment')}}">
                                                                             @csrf
-                                                                            <input type="hidden" class="parent_id"  name="parent_id" value="{{request()->p}}"  id="">
+                                                                            <input type="hidden" class="parent_id"  name="parent_id" @if (request()->p)
+                                                                            value="{{request()->p}}"
+                                                                            @else
+                                                                            value="0"
+                                                                            @endif
+                                                                            id="">
                                                                             <input type="hidden" name="user_id" value="{{$user->id}}">
                                                                             <input type="hidden" name="commenttable_id" value="{{$product->id}}">
                                                                             <input type="hidden" name="commenttable_type" value="{{get_class($product)}}">

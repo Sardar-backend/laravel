@@ -9,12 +9,14 @@
   <link rel="icon" href="/assets/images/logo.png" type="image/png">
 
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="/plugins/font-awesome/css/font-awesome.min.css">
   <!-- IonIcons -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet"> -->
 
-  <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> -->
   <!-- Theme style -->
   <!-- <link rel="stylesheet" href="/dist/css/adminlte.min.css"> -->
   <!-- Google Font: Source Sans Pro -->
@@ -31,6 +33,10 @@
             width: 50%;
             height: 50%;
         } */
+        .cca{
+            justify-content: center !important;
+            align-items: center !important;
+        }
     </style>
 </head>
 <!--
@@ -357,6 +363,7 @@ to get the desired effect
 <script src="/plugins/chart.js/Chart.min.js"></script>
 <script src="/dist/js/demo.js"></script>
 <script src="/dist/js/pages/dashboard3.js"></script>
-
+@include('sweetalert::alert')
+@yield('Scripts')
 </body>
 </html>

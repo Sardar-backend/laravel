@@ -1,7 +1,11 @@
-<head>
+<!-- <head>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
 <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
+</head> -->
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
@@ -33,39 +37,45 @@
               <a href="#" class="nav-link active">
                 <i class="nav-icon fa fa-dashboard"></i>
                 <p>
-                  داشبوردها
+                داشبورد
                   <i class="right fa fa-angle-left"></i>
                 </p>
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="{{route('admin_PRODUCT.index')}}" class="nav-link @if (Request::path()=='admin_PRODUCT' || Request::path()=='admin_PRODUCT/create' ) active @endif ">
-                    <i class="fa fa-circle-o nav-icon"></i>
+                    <i class="fa fa-box"></i>
                     <p>محصولات</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="{{route('admin_blog.index')}}" class="nav-link @if (Request::path()=='admin_blog' || Request::path()=='admin_blog/create' ) active @endif">
-                    <i class="fa fa-circle-o nav-icon"></i>
+                    <i class="fa fa-file-text"></i>
                     <p>مقالات</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="{{route('admin_comment.index')}}" class="nav-link @if (Request::path()=='admin_comment'  ) active @endif">
-                    <i class="fa fa-circle-o nav-icon"></i>
+                    <i class="fa fa-comments"></i>
                     <p>کامنت ها </p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="{{route('admin_category.index')}}" class="nav-link @if (Request::path()=='admin_category' || Request::path()=='admin_category/create' ) active @endif">
-                    <i class="fa fa-circle-o nav-icon"></i>
+                    <i class="fa fa-folder"></i>
                     <p>دسته بندی محصولات</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{route('admin_blogCategory.index')}}" class="nav-link @if (Request::path()=='admin_blogCategory' || Request::path()=='admin_blogCategory/create' ) active @endif">
+                    <i class="fa fa-list"></i>
+                    <p>دسته بندی مقالات</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="{{route('admin')}}" class="nav-link @if (Request::path()=='admin' || Request::path()=='user/create' ) active @endif
                   ">
-                    <i class="fa fa-circle-o nav-icon"></i>
+                    <i class="fa fa-users"></i>
                     <p>کاربران</p>
                   </a>
                 </li>
@@ -73,7 +83,7 @@
             </li>
             <li class="nav-item">
               <a href="{{route('massage')}}" class="nav-link @if (Request::path()=='admin/massage' ) active @endif ">
-                <i class="nav-icon fa fa-th"></i>
+                <i class="fa fa-comment"></i>
                 <p>
                   پیغام ها
                 </p>

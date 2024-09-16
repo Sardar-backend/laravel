@@ -18,7 +18,7 @@
                     </div>
                     </form>
                     <div class="btn-group-sm mr-2"></div>
-                    <a href="{{ route('admin_category.create') }}" class="btn btn-info">ایجاد دسته بندی</a>
+                    <a href="{{ route('admin_blogCategory.create') }}" class="btn btn-info">ایجاد دسته بندی</a>
                     </div>
                 </div>
 
@@ -38,8 +38,8 @@
                     <td>{{$user->name}}</td>
                     <td>{{$user->parent}}</td>
 
-                    <td class="d-flex"><a href="{{route('admin_category.show', ['admin_category'=>$user->id])}}"><button class="btn btn-primary"><span class="badge badge-primary">ویرایش</span></button></a>
-                    <form action="{{route('admin_category.destroy', ['admin_category'=>$user->id])}}" method="post" class="mr-1">
+                    <td class="d-flex"><a href="{{route('admin_blogCategory.show', ['admin_blogCategory'=>$user->id])}}"><button class="btn btn-primary"><span class="badge badge-primary">ویرایش</span></button></a>
+                    <form action="{{route('admin_blogCategory.destroy', ['admin_blogCategory'=>$user->id])}}" method="post" class="mr-1">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger"><span class="badge badge-danger">حذف</span></button>

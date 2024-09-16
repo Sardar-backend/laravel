@@ -123,9 +123,17 @@
                             <a href="{{route('login')}}">عضویت</a>
                         </div>
                         @else
+                        @if (Auth::user()->name)
+
                         <div class="col-12 col-md-7 col-lg-6 text-center" id="btn-login-register">
                             <a href="">{{Auth::user()->name}}</a>
                         </div>
+                        @else
+                        <div class="col-12 col-md-7 col-lg-6 text-center" id="btn-login-register">
+                            <a href="">{{Auth::user()->phonenumber }}</a>
+                        </div>
+
+                        @endif
                         @endguest
                         <div class="col-12 col-md-5 col-lg-6">
                             <a href={{route('cart')}}>

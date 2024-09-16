@@ -53,22 +53,7 @@ class homecontorel extends Controller
         $categorys=productcategory::all()->where('parent','LIKE',0);
         $blogs =blog::orderBy('failed_at')->limit(3)->get();
 
-        $id=productcategory::where('name','گوشی موبایل')->get();
-        $ttt=productcategory::find($id->first()->id);
-        $mobile=$ttt->products()->limit(8)->get();
 
-        $i=productcategory::where('name','لپ تاپ')->get();
-        // dd($i);
-        $tt=productcategory::find($i->first()->id);
-        $lab=$tt->products()->limit(8)->get();
-
-        $id=productcategory::where('name','تجهیزات کامپیوتر')->get();
-        $ttt=productcategory::find($id->first()->id);
-        $tag=$ttt->products()->limit(8)->get();
-
-        $id=productcategory::where('name','دوربین')->get();
-        $ttt=productcategory::find($id->first()->id);
-        $dor=$ttt->products()->limit(8)->get();
 
         if (Gate::allows('edit')) {
             return 'Home';
@@ -76,7 +61,7 @@ class homecontorel extends Controller
         $count_view=Product::orderBy('count_view')->limit(4)->get();
         $pro = ModelsProduct::where('Chosen',1)->limit(4)->get();
         $disusted = ModelsProduct::where('discust','>',20)->limit(4)->get();
-        return view('index',compact('pro','categorys','blogs','mobile','tag','lab','dor','disusted','count_view'));
+        return view('index',compact('pro','categorys','blogs','disusted','count_view'));
     }
     public function about(){
         $this->seo()->setTitle('درباره ما')

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 
 Route::get('/home',[\App\Http\Controllers\homecontorel::class,'index'])->name('index');
+Route::get('/',[\App\Http\Controllers\homecontorel::class,'index'])->name('index');
 
 Route::get('/about',[\App\Http\Controllers\homecontorel::class,'about'])->name('about');
 
@@ -17,7 +18,7 @@ Route::get('/faq',[\App\Http\Controllers\homecontorel::class,'faq'])->name('faq'
 
 Route::get('/products',[\App\Http\Controllers\ProductListcontroller::class,'products'])->name('products');
 
-Route::get('/product-{id}',[\App\Http\Controllers\homecontorel::class,'product'])->name('product');
+Route::get('/product-{id}',[\App\Http\Controllers\homecontorel::class,'product'])->middleware('auth')->name('product');
 
 
 

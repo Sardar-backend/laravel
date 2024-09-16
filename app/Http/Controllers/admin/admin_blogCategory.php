@@ -3,26 +3,23 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\productcategory;
+use App\Models\blogcategory;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
 use function PHPUnit\Framework\isNull;
 
-class admin_category extends Controller
+class admin_blogCategory extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        $category = productcategory::query();
+        $category = blogcategory::query();
         if ($keyword = request('search')) {
             $category= $category->where('name', 'LIKE',"%$keyword%")->orWhere('id', 'LIKE',"%$keyword%");
         }
 
         $category = $category->orderBy('updated_at')->paginate(20);
-        return view('admin/componnets/categry',compact('category'));
+        return view('admin/componnets/admin_blogCategory/categry',compact('category'));
     }
 
     /**
@@ -30,7 +27,7 @@ class admin_category extends Controller
      */
     public function create()
     {
-        return view('admin/componnets/create_cat');
+        return view('admin/componnets/admin_blogCategory/create_cat');
     }
 
     /**
@@ -40,11 +37,11 @@ class admin_category extends Controller
     {
         $cat = $request->validate([
             'name' => ['required','string','max:255'],
-            'parent' => ['nullable','string','max:255'],
+            'parent' => ['required','string','max:255'],
         ]);
+         $parent=blogcategory::firstWhere('name', $cat['parent']);
 
-         $parent=productcategory::firstWhere('name', $cat['parent']);
-        if (!$parent and  !isNull($cat['parent'])) {
+         if (!$parent and  !isNull($cat['parent'])) {
             Alert::error('خطا','دسته بندی والد موجود نمی باشد');
 
             return back();
@@ -53,8 +50,8 @@ class admin_category extends Controller
         if ($parent) {
             $cat['parent'] = $parent->id;
         }
-        productcategory::create($cat);
-        return redirect()->route('admin_category.index');
+        blogcategory::create($cat);
+        return redirect()->route('admin_blogCategory.index');
     }
 
     /**
@@ -62,14 +59,14 @@ class admin_category extends Controller
      */
     public function show(string $id)
     {
-        $cat=productcategory::find($id);
-        return view('admin/componnets/edit_cat', compact('cat'));
+        $cat=blogcategory::find($id);
+        return view('admin/componnets/admin_blogCategory/edit_cat', compact('cat'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(productcategory $productcategory)
+    public function edit(blogcategory $blogcategory)
     {
         //
     }
@@ -77,18 +74,18 @@ class admin_category extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(string $id, Request $request ,productcategory $productcategory)
+    public function update(string $id, Request $request ,blogcategory $blogcategory)
     {
-        $user= productcategory::find($id);
+        $user= blogcategory::find($id);
         $data=$request->validate([
             'name' => ['required', 'string', 'max:255'],
             'parent' => ['required', 'string', 'max:255'],
 
         ]);
-        $parent=productcategory::firstWhere('name', $data['parent']);
-        if (!$parent and  !isNull($data['parent'])) {
+        $parent=blogcategory::firstWhere('name', $data['parent']);
+        $parent=blogcategory::firstWhere('name', $data['parent']);
+        if (!$parent and  ! isNull($data['parent'])) {
             Alert::error('خطا','دسته بندی والد موجود نمی باشد');
-
             return back();
         }
         $data['parent'] =0;
@@ -97,7 +94,7 @@ class admin_category extends Controller
         }
         $user->update($data);
 
-        return redirect()->route('admin_category.index');
+        return redirect()->route('admin_blogCategory.index');
     }
 
     /**
@@ -105,7 +102,7 @@ class admin_category extends Controller
      */
     public function destroy(string $id)
     {
-        productcategory::find($id)->delete();
-        return redirect()->route('admin_category.index');
+        blogcategory::find($id)->delete();
+        return redirect()->route('admin_blogCategory.index');
     }
 }

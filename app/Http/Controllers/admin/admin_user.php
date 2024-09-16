@@ -58,9 +58,14 @@ class admin_user extends Controller
             'name' => ['required', 'string', 'max:255'],
             'phonenumber' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed']
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'is_superuser' => ['nullable'],
+            'image' => ['nullable'],
         ]);
-
+        // dd($data);
+        $f =$data['image'];
+        $x= preg_split('/<p><img alt="" src="|" style="height:.*/',$f);
+        $data['image']= $x[1];
         User::create($data);
         return redirect()->route('admin');
         }
@@ -98,8 +103,12 @@ class admin_user extends Controller
             'name' => ['required', 'string', 'max:255'],
             'phonenumber' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
-            'password' => ['required', 'string', 'min:8', 'confirmed']
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'image' => ['string']
         ]);
+        $f =$data['image'];
+        $x= preg_split('/<p><img alt="" src="|" style="height:.*/',$f);
+        $data['image']= $x[1];
         // dd($data);
         // if (!isNull($request->password)) {
         //     $request->validate(['password' => ['required', 'string', 'min:8', 'confirmed']]);

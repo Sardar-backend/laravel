@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\Cart\Cart;
+use Exception;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
+use Shetabit\Multipay\Drivers\Payping\Payping;
+use Shetabit\Payment\Facade\Payment;
 
 class paymentController extends Controller
 {
@@ -30,6 +33,26 @@ class paymentController extends Controller
             ]);
             // dd($order->id);
             $order->product()->attach($orderitem);
+            $token = "توکن اختصاصی ";
+            $args = [
+                    "amount" =>' dd',
+                "payerIdentity" => "شناسه کاربر در صورت وجود",
+                "payerName" => "نام کاربر پرداخت کننده",
+                "description" => "توضیحات",
+                "returnUrl" => "آدرس برگشتی از سمت درگاه",
+                "clientRefId" => "شماره فاکتور"
+            ];
+
+            $payment = new Payment($token);
+
+            try {
+                $payment->pay($args);
+            } catch (Exception $e) {
+                var_dump($e->getMessage());
+            }
+            //echo $payment->getPayUrl();
+
+            header('Location: ' . $payment->getPayUrl());
             return view('checkout',compact('all'));
     }
     Alert::error('خطا','سبد خرید شما خالی است');

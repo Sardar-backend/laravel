@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->bigInteger('phonenumber')->unique()->nullable();
             $table->boolean('is_superuser')->default(0);
-            $table->boolean('is_staff')->default(0);
+            // $table->boolean('is_staff')->default(0);
             $table->integer('cart_number')->nullable();
             $table->integer('meli_code')->nullable();
             $table->dateTime('birthday')->nullable();
@@ -24,7 +24,6 @@ return new class extends Migration
             $table->char('image')->nullable();
             $table->integer('home_number')->nullable();
             $table->string('email')->nullable()->unique();
-            // $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

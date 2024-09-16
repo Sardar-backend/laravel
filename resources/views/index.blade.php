@@ -338,13 +338,16 @@
     <h1 class="section-title">پرفروش ترین محصولات</h1>
     <div class="container pt-4">
         <!-- Tabs -->
+         @php
+         use App\Models\productcategory;
+         @endphp
         <div class="row pb-2 pb-sm-4">
             <div class="col-12 text-center">
                 <div class="btn-group" role="group" id="encode436bvf2vrf-nav">
-                    <button type="button" class="btn active most-sales-categories" data-val="mobile">گوشی موبایل</button>
-                    <button type="button" class="btn most-sales-categories" data-val="laptop">لپ تاپ</button>
-                    <button type="button" class="btn most-sales-categories" data-val="computer">تجهیزات کامپیوتر</button>
-                    <button type="button" class="btn most-sales-categories" data-val="camera">دوربین</button>
+                    <button type="button" class="btn active most-sales-categories" data-val="mobile"> {{productcategory::all()[0]->name}}</button>
+                    <button type="button" class="btn most-sales-categories" data-val="laptop">{{productcategory::all()[1]->name}}</button>
+                    <button type="button" class="btn most-sales-categories" data-val="computer"> {{productcategory::all()[2]->name}}</button>
+                    <button type="button" class="btn most-sales-categories" data-val="camera">{{productcategory::all()[3]->name}}</button>
                 </div>
             </div>
         </div>
@@ -352,7 +355,7 @@
 
         <!-- Products -->
         <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-md-4 most-sales-product mobile" data-aos="fade-up" data-aos-duration="1000">
-            @foreach ($mobile as $X )
+            @foreach (productcategory::all()[0]->products()->limit(8)->get() as $X )
             <div class="col">
                 <!-- Product Box -->
                 <div class="encode4326654321vfb">
@@ -386,7 +389,7 @@
         </div>
 
         <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-md-4 most-sales-product laptop" data-aos="fade-up" data-aos-duration="1000">
-            @foreach ($lab as $l)
+            @foreach (productcategory::all()[1]->products()->limit(8)->get() as $l)
             <div class="col">
                 <!-- Product Box -->
                 <div class="encode4326654321vfb">
@@ -418,7 +421,7 @@
             @endforeach
             </div>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-md-4 most-sales-product computer" data-aos="fade-up" data-aos-duration="1000">
-            @foreach ($tag as $t )
+            @foreach (productcategory::all()[2]->products()->limit(8)->get() as $t )
 
 
             <div class="col">
@@ -452,7 +455,7 @@
             @endforeach
             </div>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-md-4 most-sales-product camera" data-aos="fade-up" data-aos-duration="1000">
-            @foreach ($dor as $d)
+            @foreach (productcategory::all()[3]->products()->limit(8)->get() as $d)
 
             <div class="col">
                 <!-- Product Box -->

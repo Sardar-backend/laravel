@@ -74,15 +74,15 @@ class admin_product extends Controller
             'with' => ['required', 'string', 'max:255'],
             'length' => ['required', 'string', 'max:255'],
             'discust' => ['required', 'string', 'max:255'],
-            // 'image' => ['required'],
+            'image' => ['required'],
             'attribute' => ['required', 'array',],
-            'categories'=>['required']
-            // 'garant	' => ['required', 'boolean'],
+            'categories'=>['required'],
+            'garant' => ['required'],
         ]);
         // $f =$data['image'];
         // $x= preg_split('/<p><img alt="" src="|" style="height:.*/',$f);
         // $data['image']= $x[1];
-
+        // dd($data);
         $g=Product::create($data)->get();
         $id=$g->last()->id;
         $t=Product::find($id);
@@ -145,11 +145,11 @@ class admin_product extends Controller
             'length' => ['required', 'string', 'max:255'],
             'discust' => ['required', 'string', 'max:255'],
             'categories'=>['required'],
-            // 'image' => ['required'],
-            'cfc' => ['required']
+            'image' => ['required'],
+            'garant' => ['required'],
         ]);
         // dd($request->file('cfc'));
-        Storage::putFileAs('file',$request->file('cfc'),$request->file('cfc')->getClientOriginalName());
+        // Storage::putFileAs('file',$request->file('cfc'),$request->file('cfc')->getClientOriginalName());
         // $f =$data['image'];
         // $x= preg_split('/<p><img alt="" src="|" style="height:.*/',$f);
         // $data['image']= $x[1];

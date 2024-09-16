@@ -19,6 +19,8 @@
         "nwidart/laravel-modules": "^11.0",
         "phpunit/php-timer": "^7.0",
         "realrashid/sweet-alert": "^7.2",
+        "shetabit/payment": "^5.8",
+        "spatie/laravel-sitemap": "^7.2",
         "unisharp/laravel-filemanager": "^2.9"
     },
     "require-dev": {

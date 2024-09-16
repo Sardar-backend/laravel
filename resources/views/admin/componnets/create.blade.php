@@ -44,12 +44,33 @@
                     <div class="col-sm-10">
                       <input type="password" name="password_confirmation" class="form-control" id="inputPassword3" placeholder="پسورد را وارد کنید">
                     </div>
+                    <br><br><div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">عکس پروفایل</label>
+                    <textarea id="my-editor" name="image" class="form-control">{!! old('content', '') !!}</textarea>
+                    <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+                    <script>
+                    var options = {
+                        filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
+                        filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
+                        filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
+                        filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
+                    };
+                    CKEDITOR.replace('my-editor', options);
+                    </script></div>
                   </div>
+                  <!-- <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                      <div class="form-check">
+                        <input name="is_staff" type="checkbox" class="form-check-input" id="exampleCheck2">
+                        <label class="form-check-label" for="exampleCheck2">کاربر ادمین</label>
+                      </div>
+                    </div>
+                  </div> -->
                   <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                       <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck2">
-                        <label class="form-check-label" for="exampleCheck2">مرا به خاطر بسپار</label>
+                        <input id="exampleCheck2" onclick="let sds= document.querySelector('exampleCheck2').value == 1 " name="is_superuser" type="checkbox" value="0" class="form-check-input" >
+                        <label class="form-check-label" for="exampleCheck2">کاربر کارمند</label>
                       </div>
                     </div>
                   </div>

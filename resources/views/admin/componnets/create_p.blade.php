@@ -40,7 +40,7 @@
                     </div>
                   </div>
 
-                  <div class="form-group">
+                  <!-- <div class="form-group">
                     <textarea id="my-editor" name="image" class="form-control">{!! old('content', '') !!}</textarea>
                     <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
                     <script>
@@ -51,7 +51,7 @@
                         filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
                     };
                     CKEDITOR.replace('my-editor', options);
-                    </script></div>
+                    </script></div> -->
 
                   <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">طول</label>
@@ -121,12 +121,17 @@
                             <button class="btn btn-sm btn-danger mt-5" type="button" onclick="name()" id="add_product_attribute">ویژگی جدید</button>
 
 
-                    <br>
+                    <br><br><br>
                   <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                       <div class="form-check">
-                        <input  type="checkbox" name="garant" class="form-check-input" id="exampleCheck2">
-                        <label class="form-check-label" for="exampleCheck2">گارانتی دارد</label>
+
+                          <label class="form-check-label" for="exampleCheck2">گارانتی </label>
+                        <select name="garant" id="input" class="form-control col-md-5" required="required">
+                            <option   value="بدون گارانتی"  >   بدون گارانتی</option>
+                            <option  value="6 ماهه گارانتی">  6 ماهه</option>
+                            <option  value="12 ماهه گارانتی">  یک ساله</option>
+                        </select>
                       </div>
                     </div>
                   </div>

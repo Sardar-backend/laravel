@@ -26,7 +26,7 @@ return new class extends Migration
         Schema::create('productcategory', function (Blueprint $table) {
             $table->id()->primary();
             $table->string('name');
-            $table->unsignedBigInteger('parent');
+            $table->unsignedBigInteger('parent')->default(0);
             $table->timestamps();
         });
 

@@ -98,8 +98,9 @@ use App\Models\Blog;
 use App\Models\BlogCategory;
 use App\Models\Product;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\URL ;
 use Spatie\Sitemap\Sitemap;
-use Spatie\Sitemap\Tags\Url;
+// use Spatie\Sitemap\Tags\Url;
 
 class SitemapController extends Controller
 {
@@ -111,7 +112,6 @@ class SitemapController extends Controller
         $sitemap->add(Url::create('/home')->setPriority(1.0))
                 ->add(Url::create('/about')->setPriority(0.8))
                 ->add(Url::create('/contact')->setPriority(0.7))
-                // ->add(Url::create('/error404')->setPriority(0.7))
                 ->add(Url::create('/faq')->setPriority(0.7))
                 ->add(Url::create('/products')->setPriority(0.7))
                 ->add(Url::create('/cart')->setPriority(0.7))
@@ -125,7 +125,6 @@ class SitemapController extends Controller
                 ->add(Url::create('/login_step2')->setPriority(0.7))
                 ->add(Url::create('/login')->setPriority(0.7))
                 ->add(Url::create('/logout')->setPriority(0.7))
-                // ->add(Url::create('/products-list')->setPriority(0.7))
                 ->add(Url::create('/products_popular')->setPriority(0.7))
                 ->add(Url::create('/products_cheapest')->setPriority(0.7))
                 ->add(Url::create('/products_Existing')->setPriority(0.7))

@@ -1,5 +1,18 @@
 @extends('base')
 @section('content')
+<style>
+    .about-button{
+        background-color: black !important;
+        padding: 1rem !important;
+        margin-right: 0.2rem !important;
+        border-radius: 0.5rem !important;;
+        color: white !important;
+    }
+    .about-button:hover{
+        background-color: white !important;
+        color: black !important;
+    }
+</style>
 <section class="inner-page" id="contact-page">
     <div class="container-fluid" id="page-hero">
         <div class="row">
@@ -46,9 +59,9 @@
                                 <a class="ico" target="_blank" href="https://github.com/Sardar-backend"><i class="ico fab fa-github"></i></a>       <!-- گیت‌هاب -->
 
 
-                            </div>
+                            </div><br><br>
                             <span class="about-button">
-                                <a class="main-btn" href="#">دانلود رزومه</a>
+                                <a style="color: inherit;" class="main-btn" href="#">دانلود رزومه</a>
                             </span>
                         </div>
                     </div>

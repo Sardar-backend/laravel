@@ -5,31 +5,31 @@
         @include('admin.layaut.errors')
     <div class="card ">
               <div class="card-header">
-                <h3 class="card-title">ویرایش کاربر</h3>
+                <h3 class="card-title">ایجاد دسته بندی</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form class="form-horizontal" action="{{route('admin_category.update', ['admin_category'=>$cat->id])}}" method="post">
-                @method('PATCH')
+              <form class="form-horizontal" action="{{route('admin_category.store')}}" method="post">
                 @csrf
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">نام کاربر</label>
+                    <label for="inputEmail3" class="col-sm-2 control-label">نام دسته بندی</label>
                   <div class="col-sm-10">
-                      <input type="text" name="name" class="form-control" id="inputEmail3" placeholder="نام کاربر را وارد کنید" value="{{$cat->name}}">
+                      <input type="text" name="name" class="form-control" id="inputEmail3" placeholder="نام دسته بندی را وارد کنید">
                   </div>
                   </div>
                   <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">دسته بندی والد</label>
                   <div class="col-sm-10">
-                      <input type="text" name="parent" class="form-control" id="inputEmail3" placeholder="شماره را وارد کنید" value="0{{$cat->phonenumber}}">
+                      <input type="text" name="parent" class="form-control" id="inputEmail3" placeholder="نام دسته بندی را وارد کنید">
                   </div>
                   </div>
 
+                </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-info">ویرایش</button>
-                  <a href="{{route('admin_category.index')}}" class="btn btn-default float-left">لغو<a/>
+                  <button type="submit" class="btn btn-info">ایجاد دسته بندی</button>
+                  <a href="{{route('admin_blogCategory.index')}}"  class="btn btn-default float-left">لغو<a/>
                 </div>
                 <!-- /.card-footer -->
               </form>

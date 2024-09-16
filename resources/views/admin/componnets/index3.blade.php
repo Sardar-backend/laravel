@@ -58,10 +58,20 @@
                 </div>
 
               </div> -->
+              <div class="container">
+                                <div class="row">
+                                    <div class="col-12">
+                                    <div class="cca card-footer d-flex">
+                                        <div class="cca cart d-flex">
+                                            {{$users->render()}}
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
             </div></div>
 
             <!-- /.card -->
           </div>
         </div>
 @endcomponent
-

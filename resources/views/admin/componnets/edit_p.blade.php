@@ -43,11 +43,11 @@
 
 
 
-                      <input type="file" name="cfc" class="form-control" >
+                      <!-- <input type="file" name="cfc" class="form-control" > -->
 
 
-                  </div>
-                  <!-- <div class="form-group">
+                  <!-- </div>
+                  <div class="form-group col-sm-10">
                     <textarea id="my-editor" name="image" class="form-control">{!! old('content', '') !!}</textarea>
                     <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
                     <script>
@@ -58,7 +58,7 @@
                         filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
                     };
                     CKEDITOR.replace('my-editor', options);
-                    </script></div> -->
+                    </script></div>
 
 
                   <div class="form-group">
@@ -66,7 +66,7 @@
                   <div class="col-sm-7">
                   <img class="form-control" id="imageadmin" src="{{$cat->image}}" alt="{{$cat->image}}">
                     </div>
-                  </div>
+                  </div> -->
 
                   <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">طول</label>
@@ -104,12 +104,16 @@
                   <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                       <div class="form-check">
-                        <input name="garant" type="checkbox" class="form-check-input" id="exampleCheck2">
-                        <label class="form-check-label" for="exampleCheck2">گارانتی دارد</label>
+
+                          <label class="form-check-label" for="exampleCheck2">گارانتی </label>
+                        <select name="garant" id="input" class="form-control col-md-5" required="required">
+                            <option   value="بدون گارانتی"  >   بدون گارانتی</option>
+                            <option  value="6 ماهه گارانتی">  6 ماهه</option>
+                            <option  value="12 ماهه گارانتی">  یک ساله</option>
+                        </select>
                       </div>
                     </div>
                   </div>
-
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">

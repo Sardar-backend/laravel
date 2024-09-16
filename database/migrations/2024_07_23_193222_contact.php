@@ -44,7 +44,7 @@ return new class extends Migration
             $table->float('with');
             $table->float('length');
             $table->float('discust');
-            $table->boolean('garant');
+            $table->string('garant');
             $table->boolean('Chosen');
             $table->timestamp('failed_at')->useCurrent();
         });

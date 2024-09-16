@@ -32,6 +32,20 @@
                       <input type="email" name="email" class="form-control" id="inputEmail3" placeholder="ایمیل را وارد کنید" value="{{$user->email}}">
                     </div>
                   </div>
+                  <br><br><div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">عکس پروفایل</label>
+                    <textarea id="my-editor" name="image" class="form-control">{!! old('content', '') !!}</textarea>
+                    <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+                    <script>
+                    var options = {
+                        filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
+                        filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
+                        filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
+                        filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
+                    };
+                    CKEDITOR.replace('my-editor', options);
+                    </script></div>
+                  </div>
                   <div class="form-group">
                     <label for="inputPassword3" class="col-sm-2 control-label">پسورد</label>
 

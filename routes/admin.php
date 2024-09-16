@@ -21,5 +21,6 @@ Route::resource('admin_PRODUCT',App\Http\Controllers\admin\admin_product::class)
 Route::resource('admin_comment',App\Http\Controllers\admin\admin_comment::class);
 Route::resource('admin_category',App\Http\Controllers\admin\admin_category::class);
 Route::resource('admin_blog',App\Http\Controllers\admin\admin_blog::class);
+Route::resource('admin_blogCategory',App\Http\Controllers\admin\admin_blogCategory::class);
 
 Route::get('admin/massage',[App\Http\Controllers\admin\admin_comment::class,'massage'])->middleware(adminmiddleware::class)->name('massage');
