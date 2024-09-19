@@ -10,12 +10,12 @@
                         <div class="col-12 px-0">
                             <h1>سبد خرید</h1>
                             <p>مدیریت و خرید همزمان چند محصول</p>
-                            <nav aria-label="breadcrumb">
+                            <!-- <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="index.html">صفحه نخست</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">سبد خرید</li>
                                 </ol>
-                            </nav>
+                            </nav> -->
                         </div>
                     </div>
                 </div>
@@ -74,10 +74,10 @@
                                                  <div class="col-12 col-md-4">
                                                      <div class="row">
                                                          <div class="col-2 col-md-4 pl-0">
-                                                             <img src="assets/images/products/p100.png" alt="image">
+                                                             <img src="{{$product->gallery()->first()->image}}" alt="image">
                                                          </div>
                                                          <div class="col-10 col-md-8">
-                                                             <a href="product.html" target="_blank"><div class="title pt-2">{{$product->name}}</div></a>
+                                                             <a href="{{route('product',['id'=>$product->id])}}" target="_blank"><div class="title pt-2">{{$product->name}}</div></a>
                                                          </div>
                                                      </div>
                                                  </div>

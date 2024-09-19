@@ -76,11 +76,20 @@
                 <div class="col">
                     <!-- Product Box -->
                     <div class="encode4326654321vfb">
-                        <a href="{{route('product',['id'=>$p->id])}}"><div class="image" style="background-image: url('assets/images/products/p100.png')"></div></a>
-                        <div class="icons">
-                            <div class="btn btn-outline-secondary encode43243d"></div>
-                            <!-- <div class="btn btn-outline-secondary encode43bf243d"></div> -->
-                        </div>
+                        <a href="{{route('product',['id'=>$p->id])}}"><div class="image" style="background-image: url('{{$p->gallery()->first()->image}}')"></div></a>
+                <form id="formlike{{$p->id}}" action="{{route('like_post')}}" method="post">@csrf
+                <input type="hidden" name="product_id" value="{{$p->id}}">
+                </form>
+                <form id="formdislike{{$p->id}}" action="{{route('dislike_post' )}}" method="post">@csrf
+                <input type="hidden" name="product_id" value="{{$p->id}}">
+                </form>
+                    <div class="icons">
+                    @if (Auth::user()->favorite()->where('product_id',$p->id)->get()->first())
+                        <div style="background-image: url('assets/images/icons/favorited.png'); background-repeat:no-repeat;  background-position:center;" onclick="let dsd = document.querySelector('#formdislike{{$p->id}}').submit()" class="btn btn-outline-secondary "></div>
+                    @else
+                    <div onclick="let cdss = document.querySelector('#formlike{{$p->id}}').submit()" class="btn btn-outline-secondary encode43243d"></div>
+                    @endif
+                    </div>
                         <div class="details p-3">
                             <div class="category">
                                 <a href={{route('product',['id'=>$p->id])}}>گوشی موبایل</a>
@@ -88,14 +97,14 @@
                                 <a href={{route('product',['id'=>$p->id])}}>سامسونگ</a>
                             </div>
                             <a href={{route('product',['id'=>$p->id])}}><h2>{{$p->name}}</h2></a>
-                            <div class="encode4365gbf265g43d">6.000.000 تومان</div>
+                            <div class="encode4365gbf265g43d">{{$p->price}} تومان</div>
                             <div class="rate">
                                 <i class="fa fa-star-half-alt"></i>
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
-                                <span class="encode43bf265g43d">(14 رای دهنده)</span>
+                                <span class="encode43bf265g43d">@if($p->comment->count())( ({{$product->comment->count()}}) رای دهنده)@endif</span>
                             </div>
                         </div>
                     </div>
@@ -107,26 +116,39 @@
         </div>
 
         <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-md-4 featured-product on-sale">
-            @foreach ($disusted as $y)
+            @foreach ($disusted as $product)
                         <div class="col">
                 <!-- Product Box -->
                 <div class="encode4326654321vfb">
-                    <a href="product.html">
-                        <div class="image" style="background-image: url('assets/images/products/p303.png')">
-                            <span class="badge on-sale-badge">فروش ویژه</span>
+                    <a href="{{route('product',['id'=>$product->id])}}">
+                        <div class="image" style="background-image: url({{$product->gallery()->first()->image}})">
+                            <!-- <span class="badge on-sale-badge">فروش ویژه</span> -->
                         </div>
                     </a>
+                <form id="formlike{{$product->id}}" action="{{route('like_post')}}" method="post">@csrf
+                <input type="hidden" name="product_id" value="{{$product->id}}">
+                </form>
+                <form id="formdislike{{$product->id}}" action="{{route('dislike_post' )}}" method="post">@csrf
+                <input type="hidden" name="product_id" value="{{$product->id}}">
+                </form>
+                    <div class="icons">
+                    @if (Auth::user()->favorite()->where('product_id',$product->id)->get()->first())
+                        <div style="background-image: url('assets/images/icons/favorited.png'); background-repeat:no-repeat;  background-position:center;" onclick="let d = document.querySelector('#formdislike{{$product->id}}').submit()" class="btn btn-outline-secondary "></div>
+                    @else
+                    <div onclick="let cd = document.querySelector('#formlike{{$product->id}}').submit()" class="btn btn-outline-secondary encode43243d"></div>
+                    @endif
+                    </div>
                     <div class="details p-3">
                         <div class="category">
                             <a href="products.html">گوشی موبایل</a>
                             &nbsp;/&nbsp;
                             <a href="products.html">سامسونگ</a>
                         </div>
-                        <a href="product.html"><h2>مودم روتر ADSL2 Plus بی‌ سیم N300 دی-لینک مدل DSL-2740U</h2></a>
+                        <a href="{{route('product',['id'=>$product->id])}}"><h2>{{$product->name}}</h2></a>
                         <div>
-                            <span class="discounted">4.500.000 تومان</span>
+                            <span class="discounted">{{$product->price}} تومان</span>
                             <br class="d-sm-none">
-                            <span class="encode4365gbf265g43d">4.800.000 تومان</span>
+                            <span class="encode4365gbf265g43d">{{$product->price * (100 - $product->discust)/100}} تومان</span>
                         </div>
                         <div class="rate">
                             <i class="fa fa-star-half-alt"></i>
@@ -134,7 +156,7 @@
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
-                            <span class="encode43bf265g43d">(14 رای دهنده)</span>
+                            <span class="encode43bf265g43d">@if($product->comment->count())( ({{$product->comment->count()}}) رای دهنده)@endif</span>
                         </div>
                     </div>
                 </div>
@@ -145,15 +167,24 @@
         </div>
 
         <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-md-4 featured-product most-visited">
-            @foreach ($count_view as $item)
+            @foreach ($count_view as $product)
 
             <div class="col">
                 <!-- Product Box -->
+                <form id="formlike{{$product->id}}" action="{{route('like_post')}}" method="post">@csrf
+                <input type="hidden" name="product_id" value="{{$product->id}}">
+                </form>
+                <form id="formdislike{{$product->id}}" action="{{route('dislike_post' )}}" method="post">@csrf
+                <input type="hidden" name="product_id" value="{{$product->id}}">
+                </form>
                 <div class="encode4326654321vfb">
-                    <a href="product.html"><div class="image" style="background-image: url('assets/images/products/p403.png')"></div></a>
+                    <a href="product-{{$product->id}}"><div class="image" style="background-image: url({{$product->gallery()->first()->image}})"></div></a>
                     <div class="icons">
-                        <div class="btn btn-outline-secondary encode43243d"></div>
-                        <!-- <div class="btn btn-outline-secondary encode43bf243d"></div> -->
+                    @if (Auth::user()->favorite()->where('product_id',$product->id)->get()->first())
+                        <div style="background-image: url('assets/images/icons/favorited.png'); background-repeat:no-repeat;  background-position:center;" onclick="let d = document.querySelector('#formdislike{{$product->id}}').submit()" class="btn btn-outline-secondary "></div>
+                    @else
+                    <div onclick="let c = document.querySelector('#formlike{{$product->id}}').submit()" class="btn btn-outline-secondary encode43243d"></div>
+                    @endif
                     </div>
                     <div class="details p-3">
                         <div class="category">
@@ -161,15 +192,15 @@
                             &nbsp;/&nbsp;
                             <a href="products.html">سامسونگ</a>
                         </div>
-                        <a href="product.html"><h2>{{$item->name}}</h2></a>
-                        <div class="encode4365gbf265g43d">{{$item->price}} تومان</div>
+                        <a href="{{route('product',['id'=>$product->id])}}"><h2>{{$product->name}}</h2></a>
+                        <div class="encode4365gbf265g43d">{{$product->price}} تومان</div>
                         <div class="rate">
                             <i class="fa fa-star-half-alt"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
-                            <span class="encode43bf265g43d">({{$item->comment->count()}} رای دهنده)</span>
+                            <span class="encode43bf265g43d">@if($product->comment->count())( ({{$product->comment->count()}}) رای دهنده)@endif</span>
                         </div>
                     </div>
                 </div>
@@ -194,12 +225,12 @@
                 <div class="on-sale-encode4326654321vfb h-100 p-3" data-aos="fade-zoom-in" data-aos-duration="800">
                     <div class="row h-100">
                         <div class="col-12 col-sm-4 col-lg-5">
-                            <a href="product.html"><div class="image h-100" style="background-image: url('assets/images/products/p1000.png')"></div></a>
+                            <a href="{{route('product',['id'=>$product->id])}}"><div class="image h-100" style="background-image: url('assets/images/products/p1000.png')"></div></a>
                         </div>
                         <div class="col-12 col-sm-8 col-lg-7 py-3">
                             <div class="encode4365gbf2vrf">محصول ویژه امروز</div>
                             <div class="box-subtitle">فروش به مدت محدود</div>
-                            <a href="product.html">
+                            <a href="{{route('product',['id'=>$product->id])}}">
                                 <div class="product-title pt-4">گوشی موبایل سامسونگ مدل Galaxy A51 دو سیم کارت</div>
                             </a>
                             <div class="encode4365gbf265g43d py-2">
@@ -208,7 +239,7 @@
                                 <span class="pre">4.800.000 تومان</span>
                             </div>
                             <div class="cta pt-2">
-                                <a href="product.html" class="hvr-icon-back">همین حالا بخرید <i class="fa fa-arrow-left hvr-icon"></i></a>
+                                <a href="{{route('product',['id'=>$product->id])}}" class="hvr-icon-back">همین حالا بخرید <i class="fa fa-arrow-left hvr-icon"></i></a>
                             </div>
                             <div class="counter mt-3">
                                 <div class="time-counter">
@@ -237,7 +268,7 @@
             <div class="col-12 col-sm-6 col-lg-3">
                 <!-- Product Box -->
                 <div class="encode4326654321vfb">
-                    <a href="product.html">
+                    <a href="{{route('product',['id'=>$product->id])}}">
                         <div class="image" style="background-image: url('assets/images/products/p303.png')">
                             <span class="badge on-sale-badge">فروش ویژه</span>
                         </div>
@@ -248,7 +279,7 @@
                             &nbsp;/&nbsp;
                             <a href="products.html">سامسونگ</a>
                         </div>
-                        <a href="product.html"><h2>مودم روتر ADSL2 Plus بی‌ سیم N300 دی-لینک مدل DSL-2740U</h2></a>
+                        <a href="{{route('product',['id'=>$product->id])}}"><h2>مودم روتر ADSL2 Plus بی‌ سیم N300 دی-لینک مدل DSL-2740U</h2></a>
                         <div>
                             <span class="discounted">4.500.000 تومان</span>
                             <br class="d-sm-none">
@@ -269,7 +300,7 @@
             <div class="col-12 col-sm-6 col-lg-3">
                 <!-- Product Box -->
                 <div class="encode4326654321vfb">
-                    <a href="product.html">
+                    <a href="{{route('product',['id'=>$product->id])}}">
                         <div class="image" style="background-image: url('assets/images/products/p403.png')">
                             <span class="badge on-sale-badge">فروش ویژه</span>
                         </div>
@@ -280,7 +311,7 @@
                             &nbsp;/&nbsp;
                             <a href="products.html">سامسونگ</a>
                         </div>
-                        <a href="product.html"><h2>دوربین دیجیتال مدل AX6065</h2></a>
+                        <a href="{{route('product',['id'=>$product->id])}}"><h2>دوربین دیجیتال مدل AX6065</h2></a>
                         <div>
                             <span class="discounted">4.500.000 تومان</span>
                             <br class="d-sm-none">
@@ -355,14 +386,23 @@
 
         <!-- Products -->
         <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-md-4 most-sales-product mobile" data-aos="fade-up" data-aos-duration="1000">
-            @foreach (productcategory::all()[0]->products()->limit(8)->get() as $X )
+            @foreach (productcategory::all()[0]->products()->limit(8)->get() as $product )
             <div class="col">
                 <!-- Product Box -->
                 <div class="encode4326654321vfb">
-                    <a href="product.html"><div class="image" style="background-image: url('assets/images/products/p100.png')"></div></a>
+                    <a href="{{route('product',['id'=>$product->id])}}"><div class="image" style="background-image: url({{$product->gallery()->first()->image}})"></div></a>
+                    <form id="formlike{{$product->id}}" action="{{route('like_post')}}" method="post">@csrf
+                <input type="hidden" name="product_id" value="{{$product->id}}">
+                </form>
+                <form id="formdislike{{$product->id}}" action="{{route('dislike_post' )}}" method="post">@csrf
+                <input type="hidden" name="product_id" value="{{$product->id}}">
+                </form>
                     <div class="icons">
-                        <div class="btn btn-outline-secondary encode43243d"></div>
-                        <!-- <div class="btn btn-outline-secondary encode43bf243d"></div> -->
+                    @if (Auth::user()->favorite()->where('product_id',$product->id)->get()->first())
+                        <div style="background-image: url('assets/images/icons/favorited.png'); background-repeat:no-repeat;  background-position:center;" onclick="let dq = document.querySelector('#formdislike{{$product->id}}').submit()" class="btn btn-outline-secondary "></div>
+                    @else
+                    <div onclick="let cdsa = document.querySelector('#formlike{{$product->id}}').submit()" class="btn btn-outline-secondary encode43243d"></div>
+                    @endif
                     </div>
                     <div class="details p-3">
                         <div class="category">
@@ -370,15 +410,15 @@
                             &nbsp;/&nbsp;
                             <a href="products.html">سامسونگ</a>
                         </div>
-                        <a href="product.html"><h2>{{$X->name}}</h2></a>
-                        <div class="encode4365gbf265g43d">6.000.000 تومان</div>
+                        <a href="{{route('product',['id'=>$product->id])}}"><h2>{{$product->name}}</h2></a>
+                        <div class="encode4365gbf265g43d">{{$product->price}} تومان</div>
                         <div class="rate">
                             <i class="fa fa-star-half-alt"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
-                            <span class="encode43bf265g43d">(14 رای دهنده)</span>
+                            <span class="encode43bf265g43d">@if($product->comment->count())( ({{$product->comment->count()}}) رای دهنده)@endif</span>
                         </div>
                     </div>
                 </div>
@@ -389,14 +429,23 @@
         </div>
 
         <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-md-4 most-sales-product laptop" data-aos="fade-up" data-aos-duration="1000">
-            @foreach (productcategory::all()[1]->products()->limit(8)->get() as $l)
+            @foreach (productcategory::all()[1]->products()->limit(8)->get() as $product)
             <div class="col">
                 <!-- Product Box -->
                 <div class="encode4326654321vfb">
-                    <a href="product.html"><div class="image" style="background-image: url('assets/images/products/p200.png')"></div></a>
+                    <a href="{{route('product',['id'=>$product->id])}}"><div class="image" style="background-image: url({{$product->gallery()->first()->image}})"></div></a>
+                    <form id="formlike{{$product->id}}" action="{{route('like_post')}}" method="post">@csrf
+                <input type="hidden" name="product_id" value="{{$product->id}}">
+                </form>
+                <form id="formdislike{{$product->id}}" action="{{route('dislike_post' )}}" method="post">@csrf
+                <input type="hidden" name="product_id" value="{{$product->id}}">
+                </form>
                     <div class="icons">
-                        <div class="btn btn-outline-secondary encode43243d"></div>
-                        <!-- <div class="btn btn-outline-secondary encode43bf243d"></div> -->
+                    @if (Auth::user()->favorite()->where('product_id',$product->id)->get()->first())
+                        <div style="background-image: url('assets/images/icons/favorited.png'); background-repeat:no-repeat;  background-position:center;" onclick="let sdd = document.querySelector('#formdislike{{$product->id}}').submit()" class="btn btn-outline-secondary "></div>
+                    @else
+                    <div onclick="let cbd = document.querySelector('#formlike{{$product->id}}').submit()" class="btn btn-outline-secondary encode43243d"></div>
+                    @endif
                     </div>
                     <div class="details p-3">
                         <div class="category">
@@ -404,15 +453,15 @@
                             &nbsp;/&nbsp;
                             <a href="products.html">سامسونگ</a>
                         </div>
-                        <a href="product.html"><h2>لپ تاپ 15 اینچی ایسوس مدل VivoBook X543MA-DM905</h2></a>
-                        <div class="encode4365gbf265g43d">6.000.000 تومان</div>
+                        <a href="{{route('product',['id'=>$product->id])}}"><h2>{{$product->name}}</h2></a>
+                        <div class="encode4365gbf265g43d">{{$product->price}} تومان</div>
                         <div class="rate">
                             <i class="fa fa-star-half-alt"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
-                            <span class="encode43bf265g43d">(14 رای دهنده)</span>
+                            <span class="encode43bf265g43d">@if($product->comment->count())( ({{$product->comment->count()}}) رای دهنده)@endif</span>
                         </div>
                     </div>
                 </div>
@@ -421,16 +470,25 @@
             @endforeach
             </div>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-md-4 most-sales-product computer" data-aos="fade-up" data-aos-duration="1000">
-            @foreach (productcategory::all()[2]->products()->limit(8)->get() as $t )
+            @foreach (productcategory::all()[2]->products()->limit(8)->get() as $product )
 
 
             <div class="col">
                 <!-- Product Box -->
                 <div class="encode4326654321vfb">
-                    <a href="product.html"><div class="image" style="background-image: url('assets/images/products/p300.png')"></div></a>
+                    <a href="{{route('product',['id'=>$product->id])}}"><div class="image" style="background-image: url({{$product->gallery()->first()->image}})"></div></a>
+                    <form id="formlike{{$product->id}}" action="{{route('like_post')}}" method="post">@csrf
+                <input type="hidden" name="product_id" value="{{$product->id}}">
+                </form>
+                <form id="formdislike{{$product->id}}" action="{{route('dislike_post' )}}" method="post">@csrf
+                <input type="hidden" name="product_id" value="{{$product->id}}">
+                </form>
                     <div class="icons">
-                        <div class="btn btn-outline-secondary encode43243d"></div>
-                        <!-- <div class="btn btn-outline-secondary encode43bf243d"></div> -->
+                    @if (Auth::user()->favorite()->where('product_id',$product->id)->get()->first())
+                        <div style="background-image: url('assets/images/icons/favorited.png'); background-repeat:no-repeat;  background-position:center;" onclick="let dasdas = document.querySelector('#formdislike{{$product->id}}').submit()" class="btn btn-outline-secondary "></div>
+                    @else
+                    <div onclick="let cddg = document.querySelector('#formlike{{$product->id}}').submit()" class="btn btn-outline-secondary encode43243d"></div>
+                    @endif
                     </div>
                     <div class="details p-3">
                         <div class="category">
@@ -438,15 +496,15 @@
                             &nbsp;/&nbsp;
                             <a href="products.html">سامسونگ</a>
                         </div>
-                        <a href="product.html"><h2>هدفون بی سیم سامسونگ مدل Galaxy Buds Live</h2></a>
-                        <div class="encode4365gbf265g43d">6.000.000 تومان</div>
+                        <a href="{{route('product',['id'=>$product->id])}}"><h2>{{$product->name}}</h2></a>
+                        <div class="encode4365gbf265g43d">{{$product->price}} تومان</div>
                         <div class="rate">
                             <i class="fa fa-star-half-alt"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
-                            <span class="encode43bf265g43d">(14 رای دهنده)</span>
+                            <span class="encode43bf265g43d">@if($product->comment->count())( ({{$product->comment->count()}}) رای دهنده)@endif</span>
                         </div>
                     </div>
                 </div>
@@ -455,15 +513,24 @@
             @endforeach
             </div>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-md-4 most-sales-product camera" data-aos="fade-up" data-aos-duration="1000">
-            @foreach (productcategory::all()[3]->products()->limit(8)->get() as $d)
+            @foreach (productcategory::all()[3]->products()->limit(8)->get() as $product)
 
             <div class="col">
                 <!-- Product Box -->
                 <div class="encode4326654321vfb">
-                    <a href="product.html"><div class="image" style="background-image: url('assets/images/products/p400.png')"></div></a>
+                    <a href="{{route('product',['id'=>$product->id])}}"><div class="image" style="background-image: url({{$product->gallery()->first()->image}})"></div></a>
+                    <form id="formlike{{$product->id}}" action="{{route('like_post')}}" method="post">@csrf
+                <input type="hidden" name="product_id" value="{{$product->id}}">
+                </form>
+                <form id="formdislike{{$product->id}}" action="{{route('dislike_post' )}}" method="post">@csrf
+                <input type="hidden" name="product_id" value="{{$product->id}}">
+                </form>
                     <div class="icons">
-                        <div class="btn btn-outline-secondary encode43243d"></div>
-                        <!-- <div class="btn btn-outline-secondary encode43bf243d"></div> -->
+                    @if (Auth::user()->favorite()->where('product_id',$product->id)->get()->first())
+                        <div style="background-image: url('assets/images/icons/favorited.png'); background-repeat:no-repeat;  background-position:center;" onclick="let dnnn = document.querySelector('#formdislike{{$product->id}}').submit()" class="btn btn-outline-secondary "></div>
+                    @else
+                    <div onclick="let cdvvv = document.querySelector('#formlike{{$product->id}}').submit()" class="btn btn-outline-secondary encode43243d"></div>
+                    @endif
                     </div>
                     <div class="details p-3">
                         <div class="category">
@@ -471,15 +538,15 @@
                             &nbsp;/&nbsp;
                             <a href="products.html">سامسونگ</a>
                         </div>
-                        <a href="product.html"><h2>دوربین دیجیتال کانن مدل EOS 2000D به همراه لنز 18-55 میلی متر DC III</h2></a>
-                        <div class="encode4365gbf265g43d">6.000.000 تومان</div>
+                        <a href="{{route('product',['id'=>$product->id])}}"><h2>{{$product->name}}</h2></a>
+                        <div class="encode4365gbf265g43d">{{$product->price}} تومان</div>
                         <div class="rate">
                             <i class="fa fa-star-half-alt"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
-                            <span class="encode43bf265g43d">(14 رای دهنده)</span>
+                            <span class="encode43bf265g43d">@if($product->comment->count())( ({{$product->comment->count()}}) رای دهنده)@endif</span>
                         </div>
                     </div>
                 </div>

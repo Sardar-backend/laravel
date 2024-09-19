@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 
+Route::get('/download',[\App\Http\Controllers\homecontorel::class,'download'])->name('download');
 Route::get('/home',[\App\Http\Controllers\homecontorel::class,'index'])->name('index');
 Route::get('/',[\App\Http\Controllers\homecontorel::class,'index'])->name('index');
 

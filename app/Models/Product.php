@@ -18,8 +18,10 @@ class Product extends Model
         'with',
         'length',
         'discust',
+        'Chosen',
         'garant',
         'count_view'
+        ,'Criticism'
     ];
 
     public function comment() {

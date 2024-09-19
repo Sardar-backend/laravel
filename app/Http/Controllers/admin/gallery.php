@@ -42,7 +42,6 @@ class gallery extends Controller
         $f =$data['image'];
         $x= preg_split('/<p><img alt="" src="|" style="height:.*/',$f);
         $data['image']= $x[1];
-        dd($data);
         $product->gallery()->create($data);
         return redirect(route('product.gallery.index',['product'=>$product->id]));
         //return redirect()->route('product.gallery.index','product'=>$product->id);

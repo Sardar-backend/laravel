@@ -19,19 +19,20 @@ class cartcontroller extends Controller
             'width' => 200,
         ]);
          $products=Product::where('count_view','>', 20)->orderBy('failed_at')->limit(10)->get();
-
+        // dd(Cart::all());
         return view('cart', compact('products'));
     }
 
-    public function addToCart(Product $product)
+    public function addToCart(Product $product , Request $request)
     {
+
         if(Cart::has($product)){
-            Cart::update($product ,1 );
+            Cart::update($product ,$request->quantity );
         }
         else{
             Cart::put(
                 [
-                    'quantity' => 1,
+                    'quantity' => $request->quantity ,
                     'price' => $product->price
                 ],
              $product

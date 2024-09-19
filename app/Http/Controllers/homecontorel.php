@@ -22,6 +22,7 @@ use \Illuminate\Support\Facades\Auth;
 use \Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate as FacadesGate;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -173,7 +174,7 @@ class homecontorel extends Controller
         //         echo $key->value;
         //    }
         // }
-
+        
         $user =request()->user();
         return view('product',compact('product','comments','user','category'));
     }
@@ -266,16 +267,26 @@ class homecontorel extends Controller
     public function like_post (Request $request){
         $p=Product::find($request->product_id);
         $request->user()->favorite()->attach($p);
-        Alert::success('عملیات موفق آمیز بود',' محصول به علاقمندی های شما اضافه شد');
+        // Alert::success('عملیات موفق آمیز بود',' محصول به علاقمندی های شما اضافه شد');
         return back();
     }
 
     public function dislike_post (Request $request){
         $p=Product::find($request->product_id);
         $request->user()->favorite()->detach($p);
-        Alert::success('عملیات موفق آمیز بود',' محصول از علاقمندی های شما حذف شد');
+        // Alert::success('عملیات موفق آمیز بود',' محصول از علاقمندی های شما حذف شد');
         return back();
     }
+
+
+    public function download (){
+            $filePath = storage_path('app\files\MyResume-314[www.cvbuilder.me].pdf');
+            return response()->download($filePath ,'MyResume', [
+            'Content-Type' => 'application/pdf', // نوع محتوای فایل
+            'Cache-Control' => 'no-cache', // جلوگیری از کش شدن فایل
+        ]);
+        }
+
 
     public function blog_category(string $category){
         $this->seo()->setTitle($category.' ' .'مقالات ')

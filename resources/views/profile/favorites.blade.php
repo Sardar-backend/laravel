@@ -10,13 +10,7 @@
                         <div class="col-12 px-0">
                             <h1>ناحیه کاربری</h1>
                             <p>به ناحیه کاربری روبیک مارکت خوش آمدید.</p>
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="../index.html">صفحه نخست</a></li>
-                                    <li class="breadcrumb-item"><a href="#">ناحیه کاربری</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">محصولات مورد علاقه</li>
-                                </ol>
-                            </nav>
+
                         </div>
                     </div>
                 </div>

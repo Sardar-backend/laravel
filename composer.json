@@ -18,6 +18,7 @@
         "morilog/jalali": "^3.4",
         "nwidart/laravel-modules": "^11.0",
         "phpunit/php-timer": "^7.0",
+        "rasulian/laravel-zarinpal": "^1.2",
         "realrashid/sweet-alert": "^7.2",
         "shetabit/payment": "^5.8",
         "spatie/laravel-sitemap": "^7.2",

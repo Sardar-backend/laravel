@@ -9,13 +9,13 @@
                         <div class="col-12 px-0">
                             <h1>آموزش نصب قالب وردپرسی روبیک مارکت</h1>
                             <p>در این آموزش یاد میگیرید که چگونه قالب وردپرسی روبیک مارکت را نصب کنید.</p>
-                            <nav aria-label="breadcrumb">
+                            <!-- <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="index.html">صفحه نخست</a></li>
                                     <li class="breadcrumb-item"><a href="blog.html">بلاگ آموزشی</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">آموزش وردپرس</li>
                                 </ol>
-                            </nav>
+                            </nav> -->
                         </div>
                     </div>
                 </div>

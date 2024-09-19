@@ -63,6 +63,7 @@
         .about-img{
             box-shadow: 20px 20px 15px #8A8A8A;
         }
+
     </style>
 </head>
 <body>
@@ -410,6 +411,11 @@
 </section>
 <!-- /Header -->
 
+@php
+
+
+$quantity=(Cart::get($product)==null)? 0:Cart::get($product)['quantity'];
+@endphp
 <section class="inner-page" id="product-page">
     <div class="container-fluid" id="page-hero">
         <div class="row">
@@ -419,13 +425,7 @@
                         <div class="col-12 px-0">
                             <h1>گوشی موبایل سامسونگ مدل Galaxy A21s</h1>
                             <p>دارای قابلیت دو سیم کارته و حافظه 128 گیگا بایت</p>
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.html">صفحه نخست</a></li>
-                                    <li class="breadcrumb-item"><a href="products.html">فروشگاه</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">گوشی موبایل</li>
-                                </ol>
-                            </nav>
+
                         </div>
                     </div>
                 </div>
@@ -443,26 +443,15 @@
                                 <!-- Additional required wrapper -->
                                 <ul class="swiper-wrapper">
                                     <!-- Slides -->
-                                    <li id="1" class="swiper-slide">
-                                        <a href="assets/images/products/p100.png" itemprop="contentUrl" data-size="900x710">
-                                            <img src="assets/images/products/p100.png" itemprop="thumbnail" alt="گوشی موبایل سامسونگ مدل Galaxy A21s" />
-                                        </a>
-                                    </li>
-                                    <li id="1" class="swiper-slide">
-                                        <a href="assets/images/products/p101.png" itemprop="contentUrl" data-size="900x710">
-                                            <img src="assets/images/products/p101.png" itemprop="thumbnail" alt="گوشی موبایل سامسونگ مدل Galaxy A21s" />
-                                        </a>
-                                    </li>
-                                    <li id="1" class="swiper-slide">
-                                        <a href="assets/images/products/p102.png" itemprop="contentUrl" data-size="900x710">
-                                            <img src="assets/images/products/p102.png" itemprop="thumbnail" alt="گوشی موبایل سامسونگ مدل Galaxy A21s" />
-                                        </a>
-                                    </li>
-                                    <li id="1" class="swiper-slide">
-                                        <a href="assets/images/products/p103.png" itemprop="contentUrl" data-size="900x710">
-                                            <img src="assets/images/products/p103.png" itemprop="thumbnail" alt="گوشی موبایل سامسونگ مدل Galaxy A21s" />
-                                        </a>
-                                    </li>
+                                     @foreach ($product->gallery()->get() as $item)
+
+                                     <li id="1" class="swiper-slide">
+                                         <a href="assets/images/products/p100.png" itemprop="contentUrl" data-size="900x710">
+                                             <img src="{{$item->image}}" itemprop="thumbnail" alt="گوشی موبایل سامسونگ مدل Galaxy A21s" />
+                                         </a>
+                                     </li>
+                                     @endforeach
+
                                     <!-- /Slides -->
                                 </ul>
                                 <!-- If we need navigation buttons -->
@@ -473,10 +462,12 @@
                             <!-- Swiper -->
                             <div class="swiper-container gallery-thumbs">
                                 <div class="swiper-wrapper">
-                                    <div class="swiper-slide" style="background-image:url('assets/images/products/p100.png')"></div>
-                                    <div class="swiper-slide" style="background-image:url('assets/images/products/p101.png')"></div>
+                                @foreach ($product->gallery()->get() as $item)
+                                    <div class="swiper-slide" style="background-image:url('{{$item->image}}')"></div>
+                                @endforeach
+                                    <!-- <div class="swiper-slide" style="background-image:url('assets/images/products/p101.png')"></div>
                                     <div class="swiper-slide" style="background-image:url('assets/images/products/p102.png')"></div>
-                                    <div class="swiper-slide" style="background-image:url('assets/images/products/p103.png')"></div>
+                                    <div class="swiper-slide" style="background-image:url('assets/images/products/p103.png')"></div> -->
                                 </div>
                             </div>
 
@@ -553,10 +544,15 @@
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-4 col-lg-3">
+                                    @if ($quantity< $product->count)
                                         <div class="variable">
-                                            <div class="sub-title pt-2 pb-2">تعداد</div>
-                                            <input type="number" min="1" max="10" class="form-control" value="1">
+                                            <div class="sub-title pt-2 pb-2 ">تعداد</div>
+                                            <div class="d-flex" >
+                                            <button type="button" class="form-control" onclick="decreaseValue()">-</button>
+                                            <input type="number" id="quantity" min="1" max="{{$product->count}}" class="form-control bnb" value="1">
+                                            <button type="button" class="form-control" onclick="increaseValue()">+</button></div>
                                         </div>
+                                    @endif
                                     </div>
                                 </div>
                             </div>
@@ -570,17 +566,17 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <form action="{{route('add_to_card',[$product->id])}}" method="post" id="cart" >
+                                        <input type="hidden" name="quantity" id="quantityy" min="1" max="{{$product->count}}" value="1" >
                                              @csrf
                                         </form>
                                         <!-- <a href="cart.html"> -->
-                                            @php
 
-
-                                            $quantity=(Cart::get($product)==null)? 0:Cart::get($product)['quantity'];
-                                            @endphp
                                             @if ($quantity< $product->count)
 
                                             <div onclick="let formcartadd = document.querySelector('#cart').submit()" class="btn btn-success px-4 px-lg-2 px-xl-4 btn-add-to-basket"><i class="fa fa-shopping-cart"></i> افزودن به سبد خرید</div>
+                                            @else
+                                            <div  class="btn btn-danger px-4 px-lg-2 px-xl-4 btn-add-to-basket "> محصول موجود نیست</div>
+
                                             @endif
                                         <!-- </a> -->
                                         <br class="d-sm-none">
@@ -600,7 +596,7 @@
                             <!-- Share Links -->
                             <div class="pt-5" id="share-links">
                                 <span>اشتراک گذاری: </span>
-                                <a href="#" target="_blank"><span class="share-link"><img src="assets/images/social/insta.png" alt="اینستاگرام" width="18px"></span></a>
+                                <!-- <a href="#" target="_blank"><span class="share-link"><img src="assets/images/social/insta.png" alt="اینستاگرام" width="18px"></span></a> -->
                                 <a href="https://twitter.com/intent/tweet?url={{ urlencode(Request::fullUrl()) }}&text=این+مقاله+را+ببینید!" target="_blank"><span class="share-link"><img src="assets/images/social/twitter.png" alt="توئیتر" height="25px"> </span></a>
                                                 <a href="https://t.me/share/url?url={{ urlencode(Request::fullUrl()) }}&text=این+مقاله+را+ببینید!" target="_blank"><span class="share-link"><img style="width: 2% !important;" src="assets/images/social/telgrampng.parspng.com_.png" alt="فیس بوک" height="25px"></span></a>
                                                 <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ urlencode(Request::fullUrl()) }}&title=عنوان+مقاله&summary=خلاصه+مقاله" target="_blank"><span class="share-link"><img src="assets/images/social/linkedin.png" alt="لینکدین" height="25px"> </span></a>
@@ -630,10 +626,7 @@
                                             <div class="col-12 pt-2 px-0 px-lg-0">
                                                 <!-- HTML Tab -->
                                                 <div id="html-tab" class="tabs-container text-justify p-0 p-md-3 nhhn">
-                                                    <p>این یک متن آزمایشی است که به زودی توسط نویسنده این سایت، تکمیل یا حذف خواهد شد. اگر شما نویسنده‌ی این سایت هستید، برای حذف یا ویرایش این صفحه، کافی است از طریق مرکز مدیریت سایت خود وارد بخش مربوطه شده و محتوای این صفحه را ویرایش یا حذف کنید.</p>
-                                                    <p>صفحات و محتوای آزمایشی همیشه بخشی از محتوای پیش‌نمایش قالب و افزونه های وب هستند که شما بتوانید ارتباط درستی با پیش نمایش قالب گرفته و تصمیم مناسبی بگیرید. این صفحات معمولا برای اطلاعات کلی در مورد سایت مثل «درباره ما»، «تماس با ما»، «فهرست» یا «نظرات شما» مفید هستند.</p>
-                                                    <p>بنابراین نگران ویرایش و بروزرسانی محتوای این نوع صفحات نباشید. شما می‌توانید به سادگی و تنها با چند کلیک وارد ناحیه مدیریت وب‌سایت خود شده و مطلب مربوطه را ویرایش کنید.</p>
-                                                    <p>این یک متن آزمایشی است که به زودی توسط نویسنده این سایت، تکمیل یا حذف خواهد شد. اگر شما نویسنده‌ی این سایت هستید، برای حذف یا ویرایش این صفحه، کافی است از طریق مرکز مدیریت سایت خود وارد بخش مربوطه شده و محتوای این صفحه را ویرایش یا حذف کنید. صفحات و محتوای آزمایشی همیشه بخشی از محتوای پیش‌نمایش قالب و افزونه های وب هستند که شما بتوانید ارتباط درستی با پیش نمایش قالب گرفته و تصمیم مناسبی بگیرید. این صفحات معمولا برای اطلاعات کلی در مورد سایت مثل «درباره ما»، «تماس با ما»، «فهرست» یا «نظرات شما» مفید هستند.</p>
+                                                    <p>{{$product->Criticism}}</p>
                                                 </div>
                                                 <!-- /HTML Tab -->
 
@@ -814,14 +807,14 @@
                                 <!-- Product Item -->
                                  @foreach ($category as $item)
                                     <div class="encode4326654321vfb item">
-                                    <a href="product.html"><div class="image" style="background-image: url('assets/images/products/p303.png')"></div></a>
+                                    <a href="{{route('product',['id'=>$item->id])}}"><div class="image" style="background-image: url({{$product->gallery()->first()->image}})"></div></a>
                                     <div class="details p-3">
                                         <div class="category">
                                             <a href="products.html">گوشی موبایل</a>
                                             &nbsp;/&nbsp;
                                             <a href="products.html">سامسونگ</a>
                                         </div>
-                                        <a href="product.html"><h2>{{$item->name}}</h2></a>
+                                        <a href="{{route('product',['id'=>$item->id])}}"><h2>{{$item->name}}</h2></a>
                                         <div class="encode4365gbf265g43d">{{$item->price}} تومان</div>
                                         <div class="rate">
                                             <i class="fa fa-star-half-alt"></i>
@@ -829,7 +822,7 @@
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
-                                            <span class="encode43bf265g43d">(14 رای دهنده)</span>
+                                            <span class="encode43bf265g43d">({{$item->comment()->count()}} رای دهنده)</span>
                                         </div>
                                     </div>
                                     </div>
@@ -930,7 +923,7 @@
         <div class="row">
             <div class="col-12 col-sm-6" id="social-links">
                 <span>ما را دنبال کنید</span>
-                <a href="#"><img src="assets/images/social/insta.png" alt="image"></a>
+                <!-- <a href="#"><img src="assets/images/social/insta.png" alt="image"></a> -->
                 <a href="#"><img src="assets/images/social/facebook.png" alt="image"></a>
                 <a href="#"><img src="assets/images/social/linkedin.png" alt="image"></a>
                 <a href="#"><img src="assets/images/social/twitter.png" alt="image"></a>
@@ -985,6 +978,25 @@
 
     })
 
+</script>
+<script>
+function increaseValue() {
+    var value = parseInt(document.getElementById('quantity').value, 10);
+    value = isNaN(value) ? 1 : value;
+    if (value < {{$product->count}}) {
+        value++;
+        document.getElementById('quantity').value = value;
+        document.getElementById('quantityy').value = value;
+    }
+}
+
+function decreaseValue() {
+    var value = parseInt(document.getElementById('quantity').value, 10);
+    value = isNaN(value) ? 1 : value;
+    value = value > 1 ? value - 1 : 1;
+    document.getElementById('quantity').value = value;
+    document.getElementById('quantityy').value = value;
+}
 </script>
 @include('sweetalert::alert')
 <!-- /Scripts -->

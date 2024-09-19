@@ -3,7 +3,7 @@
 <style>
     .about-button{
         background-color: black !important;
-        padding: 1rem !important;
+        padding: 0.75rem 1rem !important;
         margin-right: 0.2rem !important;
         border-radius: 0.5rem !important;;
         color: white !important;
@@ -22,12 +22,12 @@
                         <div class="col-12 px-0">
                             <h1>درباره ما</h1>
                             <p>با ما بیشتر آشنا شوید.</p>
-                            <nav aria-label="breadcrumb">
+                            <!-- <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.html">صفحه نخست</a></li>
+                                    <li class="breadcrumb-item"><a href="{{route('index')}}">صفحه نخست</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">درباره ما</li>
                                 </ol>
-                            </nav>
+                            </nav> -->
                         </div>
                     </div>
                 </div>
@@ -47,10 +47,10 @@
                         <div class="about-content mt-5">
                             <div class="about-heading">
                                 <h2>درباره من</h2>
-                                <span>مرجع قالب و اسکریپت های فارسی</span>
+                                <h5>محمد جواد سردار</h5>
                             </div>
-                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد </p>
-                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد </p>
+                            <p>برنامه‌نویس فریلنسر Back-End با تجربه چندین ساله در توسعه و پیاده‌سازی راهکارهای نرم‌افزاری با استفاده از زبان‌های برنامه‌نویسی مانند Python و php. مهارت در طراحی و بهینه‌سازی پایگاه‌های داده، ایجاد RESTful APIs و کار با فریم‌ورک‌های مختلف مانند لاراول و جنگو. توانایی کار در تیم‌های چندرشته‌ای و ارتباط موثر با سایر بخش‌ها. علاقه‌مند به مواجهه با چالش‌های جدید و به‌روز ماندن با تکنولوژی‌های نوین جهت ارائه راه‌حل‌های کارآمد و مقیاس‌پذیر.</p>
+                            <p>متعهد به ارائه راه‌حل‌های باکیفیت و کارآمد با تمرکز بر نیازها و اهداف کارفرما. تجربه در توسعه سایت‌های فروشگاهی و مدیریت محتوای آنلاین با تمرکز بر عملکرد بالا و بهینه‌سازی تجربه کاربری. توانمند در انجام پروژه‌ها به صورت مستقل و همچنین در محیط‌های فریلنسری با هدف تحویل به‌موقع و ارائه نتایج مطلوب برای مشتریان</p>
                             <!--About Social Icons-->
                             <div class="social-icons">
                                 <a class="ico" target="_blank" href="https://www.instagram.com/sardar.devloper"  ><i class="ico fab fa-instagram"></i></a>    <!-- اینستاگرام -->
@@ -61,7 +61,7 @@
 
                             </div><br><br>
                             <span class="about-button">
-                                <a style="color: inherit;" class="main-btn" href="#">دانلود رزومه</a>
+                                <a style="color: inherit;" class="main-btn" href="{{route('download')}}">دانلود رزومه</a>
                             </span>
                         </div>
                     </div>

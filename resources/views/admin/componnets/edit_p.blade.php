@@ -34,6 +34,14 @@
                     </div>
                   </div>
                   <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">نقد و بررسی</label>
+
+                    <div class="col-sm-10">
+                        <textarea name="Criticism"  class="form-control" placeholder="نقد را وارد کنید" id="discription" cols="30" rows="10"  >{{$cat->Criticism}}</textarea>
+                      <!-- <input type="text-eria" name="discription" id="discription" placeholder="توضیحات را وارد کنید" > -->
+                    </div>
+                  </div>
+                  <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">ستاره ها</label>
 
                     <div class="col-sm-10">
@@ -46,8 +54,8 @@
                       <!-- <input type="file" name="cfc" class="form-control" > -->
 
 
-                  <!-- </div>
-                  <div class="form-group col-sm-10">
+                  </div>
+                  <!-- <div class="form-group col-sm-10">
                     <textarea id="my-editor" name="image" class="form-control">{!! old('content', '') !!}</textarea>
                     <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
                     <script>
@@ -58,8 +66,8 @@
                         filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
                     };
                     CKEDITOR.replace('my-editor', options);
-                    </script></div>
-
+                    </script></div> -->
+<!--
 
                   <div class="form-group">
                   <label for="inputEmail3" class="col-sm-2 control-label">تصویر شاخص</label>
@@ -114,6 +122,21 @@
                       </div>
                     </div>
                   </div>
+                  <div class="form-group">
+                  <div class="col-sm-offset-2 col-sm-10">
+                  <div class="form-check">
+
+
+                      <input  name="Chosen" type="checkbox"
+                      @if ($cat->Chosen)
+                        checked
+                      @endif
+                      id="exampleCheck2" >
+                      <label   class="form-check-label" for="exampleCheck2">  فروش ویژه یا منتخب </label>
+
+                  </div>
+
+                  </div></div>
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">

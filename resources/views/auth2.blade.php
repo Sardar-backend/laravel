@@ -11,7 +11,7 @@
                             <p>برای امنیت بیشتر حساب خود احراز هویت دو مرحله ای فعال کنید</p>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.html">صفحه نخست</a></li>
+                                    <li class="breadcrumb-item"><a href="{{route('index')}}">صفحه نخست</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">بازیابی رمز عبور</li>
                                 </ol>
                             </nav>

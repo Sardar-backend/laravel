@@ -34,12 +34,14 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id()->primary();
             $table->string('name');
-            $table->string('image');
+            // $table->string('image');
             // $table->unsignedBigInteger('sabad_id');
             // $table->foreign('sabad_id')->references('id')->on('sabad')->onDelete('cascade');
             $table->integer('price');
+            $table->integer('count')->default(0);
             $table->integer('count_view')->default(0);
             $table->longText('discription');
+            $table->longText('Criticism');
             $table->float('stars');
             $table->float('with');
             $table->float('length');

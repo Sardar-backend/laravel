@@ -10,12 +10,7 @@
                         <div class="col-12 px-0">
                             <h1>فروشگاه روبیک مارکت</h1>
                             <p>هر آنچه نیاز دارید در این فروشگاه موجود است</p>
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.html">صفحه نخست</a></li>
-                                    <!-- <li class="breadcrumb-item ">محصولات</li> -->
-                                </ol>
-                            </nav>
+
                         </div>
                     </div>
                 </div>
@@ -319,7 +314,7 @@
                                 <div class="col">
                                         <!-- Product Box -->
                                         <div class="encode4326654321vfb">
-                                                <a href="{{route('product',$id=$product->id)}}"><div class="image" style="background-image: url('assets/images/products/p100.png')"></div></a>
+                                                <a href="{{route('product',$id=$product->id)}}"><div class="image" style="background-image: url('{{$product->gallery()->first()->image}}')"></div></a>
                                                 <div class="details p-3">
                                                     <div class="category">
                                                         <a href="products.html">گوشی موبایل</a>

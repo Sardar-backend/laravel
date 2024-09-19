@@ -9,7 +9,7 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form class="form-horizontal" action="{{route('admin_category.store')}}" method="post">
+              <form class="form-horizontal" action="{{route('admin_blogCategory.store')}}" method="post">
                 @csrf
                 <div class="card-body">
                   <div class="form-group">
@@ -19,9 +19,9 @@
                   </div>
                   </div>
                   <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">دسته بندی والد</label>
+                    <label for="inputEmail3" class="col-sm-2 control-label">نام دسته بندی والد</label>
                   <div class="col-sm-10">
-                      <input type="text" name="parent" class="form-control" id="inputEmail3" placeholder="نام دسته بندی را وارد کنید">
+                      <input type="text" name="parent" class="form-control" id="inputEmail3" placeholder="در صورت نداشتن والئ صفر قرار دهید">
                   </div>
                   </div>
 

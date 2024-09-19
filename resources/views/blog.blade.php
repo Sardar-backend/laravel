@@ -10,12 +10,12 @@
                         <div class="col-12 px-0">
                             <h1>بلاگ</h1>
                             <p>بلاگ آموزشی روبیک مارکت</p>
-                            <nav aria-label="breadcrumb">
+                            <!-- <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="index.html">صفحه نخست</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">بلاگ آموزشی</li>
                                 </ol>
-                            </nav>
+                            </nav> -->
                         </div>
                     </div>
                 </div>

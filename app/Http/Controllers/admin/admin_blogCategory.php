@@ -35,6 +35,7 @@ class admin_blogCategory extends Controller
      */
     public function store(Request $request )
     {
+
         $cat = $request->validate([
             'name' => ['required','string','max:255'],
             'parent' => ['required','string','max:255'],

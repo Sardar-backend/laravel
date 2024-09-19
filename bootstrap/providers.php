@@ -5,4 +5,5 @@ return [
     Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
     App\Providers\CartServiceProvider::class,
     App\Providers\auth::class,
+    Rasulian\ZarinPal\ZarinPalServiceProvider::class,
 ];

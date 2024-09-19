@@ -74,15 +74,18 @@ class admin_product extends Controller
             'with' => ['required', 'string', 'max:255'],
             'length' => ['required', 'string', 'max:255'],
             'discust' => ['required', 'string', 'max:255'],
-            'image' => ['required'],
+            'Criticism' => ['required', 'string' ],
             'attribute' => ['required', 'array',],
             'categories'=>['required'],
             'garant' => ['required'],
+            'Chosen' => ['nullable'],
         ]);
-        // $f =$data['image'];
-        // $x= preg_split('/<p><img alt="" src="|" style="height:.*/',$f);
-        // $data['image']= $x[1];
-        // dd($data);
+
+        if (isset($data['Chosen'])) {
+            $data['Chosen']=1;}
+        else {
+            $data['Chosen']=0;
+        }
         $g=Product::create($data)->get();
         $id=$g->last()->id;
         $t=Product::find($id);
@@ -139,15 +142,24 @@ class admin_product extends Controller
         $data=$request->validate([
             'name' => ['required', 'string', 'max:255'],
             'price' => ['required', 'string', 'max:255'],
-            'discription' => ['required', 'string', 'max:255'],
+            'discription' => ['required', 'string'],
+            'Criticism' => ['required', 'string' ],
             'stars' => ['required', 'string', 'max:255'],
             'with' => ['required', 'string', 'max:255'],
             'length' => ['required', 'string', 'max:255'],
             'discust' => ['required', 'string', 'max:255'],
             'categories'=>['required'],
-            'image' => ['required'],
+
+            'Chosen' => ['nullable'],
             'garant' => ['required'],
         ]);
+        if (isset($data['Chosen'])) {
+            $data['Chosen']=1;}
+        else {
+            $data['Chosen']=0;
+        }
+            # code...
+
         // dd($request->file('cfc'));
         // Storage::putFileAs('file',$request->file('cfc'),$request->file('cfc')->getClientOriginalName());
         // $f =$data['image'];
