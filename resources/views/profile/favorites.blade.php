@@ -47,12 +47,11 @@
                                                     <a href="{{route('product',['id'=>$favorite->id])}}"><h2>{{$favorite->name}}</h2></a>
                                                     <div class="encode4365gbf265g43d">{{$favorite->price}} </div>
                                                     <div class="rate">
-                                                        <i class="fa fa-star-half-alt"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <span class="encode43bf265g43d">({{$favorite->comment->count()}} رای دهنده)</span>
+                                                    @for ( $i=0; $i < $favorite->stars; $i++ )
+                                                    <i class="fa fa-star"></i>
+
+                                                    @endfor
+                                                        <span class="encode43bf265g43d">@if($favorite->comment->count())( ({{$favorite->comment->count()}}) رای دهنده)@endif</span>
                                                     </div>
                                                 </div>
                                             </div>

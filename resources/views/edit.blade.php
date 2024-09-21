@@ -32,7 +32,7 @@
                             <img src="assets/images/login.png" alt="image">
                         </div>
                         <div class="col-12 col-lg-7 pt-5 pt-md-0 align-self-center">
-                            <form action="{{route('aaaaaaaaaa' , ['id'=>request()->user()->id] )}}" method="POST">
+                            <form action="{{route('aaaaaaaaaa' , ['id'=>request()->user()->id] )}}" enctype="multipart/form-data" method="POST">
 
                                  @method('PATCH')
                                  @csrf
@@ -40,42 +40,46 @@
                             <p>با ورود به ناحیه کاربری خود از همه امکانات سایت بهره مند شوید.</p>
                             <div class="form-group">
                                 <label for="name">نام و نام خانوادگی :</label>
-                                <input name="name" type="text" class="form-control" id="name">
+                                <input name="name" type="text" class="form-control"  value="{{request()->user()->name}}" >
                             </div>
                             <div class="form-group">
                                 <label for="email">پست الکترونیک :</label>
-                                <input name="email" type="email" class="form-control" id="email">
+                                <input name="email" type="email" class="form-control"  value="{{request()->user()->email}}" >
+                            </div>
+                            <div class="form-group">
+                                <label for="email">عکس پروفایل  :</label>
+                                <input name="image" type="file" class="form-control" id="email" value="" >
                             </div>
                             <div class="form-group">
                                 <label for="email">شماره تلفن همراه  :</label>
-                                <input name="phonenumber" type="number" class="form-control" id="email">
+                                <input name="phonenumber" type="number" class="form-control"  value="{{request()->user()->phonenumber}}" >
                             </div>
                             <div class="form-group">
                                 <label for="email">کدملی  :</label>
-                                <input name="meli_code" type="number" class="form-control" id="email">
+                                <input name="meli_code" type="number" class="form-control"  value="{{request()->user()->meli_code}}" >
                             </div>
                             <div class="form-group">
                                 <label for="email">تلفن ثابت  :</label>
-                                <input  name="home_number" type="number" class="form-control" id="email">
+                                <input  name="home_number" type="number" class="form-control"  value="{{request()->user()->home_number}}" >
                             </div>
                             <div class="form-group">
                                 <label for="email">تاریخ تولد  :</label>
-                                <input name="birthday" type="date" class="form-control" id="email">
+                                <input name="birthday" type="date" class="form-control"  value="{{ \Carbon\Carbon::parse(request()->user()->birthday)->format('Y-m-d')}}" >
                             </div>
                             <div class="form-group">
                                 <label for="email"> شماره کارت جهت مرجوع وجه  :</label>
-                                <input name="cart_number" type="cart_number" class="form-control" id="email">
+                                <input name="cart_number" type="cart_number" class="form-control"  value="{{ request()->user()->cart_number}}">
                             </div>
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <label for="password">رمز عبور :</label>
-                                <input name="password" type="password" class="form-control" id="password">
+                                <input name="password" type="password" class="form-control" id="password" >
                             </div>
                             <div class="form-group">
                                 <label for="password">تائید رمز عبور :</label>
                                 <input name="password_confirmation" type="password" class="form-control" id="password">
-                            </div>
+                            </div> -->
                             <div class="form-group">
-                                <button type="submit" value="تکمیل عضویت" class="btn btn-success">تکمیل عضویت</button>
+                                <button type="submit" value="تکمیل عضویت" class="btn btn-success">تکمیل ویرایش</button>
                         </div>
                             </form></div>
                     </div>

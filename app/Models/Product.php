@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\ProductAttributeValues;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -35,7 +36,7 @@ class Product extends Model
     }
 
     public function attribute () {
-        return $this->belongsToMany(Attributes::class,'attribute_product');
+        return $this->belongsToMany(Attributes::class,'attribute_product')->using(ProductAttributeValues::class)->withPivot('value_id');
     }
 
     public function gallery() {

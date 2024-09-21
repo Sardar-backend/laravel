@@ -167,14 +167,12 @@ class homecontorel extends Controller
         $product->update(['count_view' => $view]);
         $category = $product->category()->get()->first();
         $category=$category->products()->get();
-        // dd($category->products()->get());
+
         $comments = $product->comment()->where('status','LIKE',true)->where('parent_id','LIKE',0)->get();
-        // foreach ($product->attribute()->get() as $d) {
-        //    foreach ($d->values()->get() as $key) {
-        //         echo $key->value;
-        //    }
+        // foreach ($product->attribute()->where('name','رنگ')->get() as $attribute) {
+        //     var_dump($attribute->pivot->value->value );
         // }
-        
+        //dd($product->attribute()->where('name','رنگ')->first()->pivot->value->value );
         $user =request()->user();
         return view('product',compact('product','comments','user','category'));
     }
@@ -191,24 +189,25 @@ class homecontorel extends Controller
 
     public function edit_user_post (Request $request , int $id ){
         $user= User::find($id);
-        // dd($user);
+        //dd($user);
         $data=$request->validate([
             'name' => ['required', 'string', 'max:255'],
             'phonenumber' => ['required' ,'max:255'],
             'meli_code' => ['required', 'max:255'],
+            'image' => ['required'],
             'cart_number' => ['required',  'max:255'],
             'home_number' => ['required'  , 'max:255'],
             'email' => ['required',  'email', 'max:255', Rule::unique('users')->ignore($user->id)],
             'birthday' => ['required'],
-            'password' => ['required',  'min:8', 'confirmed']
+            // 'password' => ['required',  'min:8', 'confirmed']
         ]);
-
-
-        // if (!isNull($request->password)) {
-        //     $request->validate(['password' => ['required', 'string', 'min:8', 'confirmed']]);
-
-        //     $data['password']=$request->password;
-        // }
+        // dd($data['image']);
+        //Storage::disk('public')->putFile( 'photos', request()->file('image'));
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('files', 'public');
+        } else {
+            return "File not uploaded.";
+        }
         $user->update($data);
         Alert::success('عملیات موفق آمیز بود','اطلاعات کاربری شما با موفق ویرایش شد');
         return redirect()->route('personal');

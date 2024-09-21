@@ -61,21 +61,21 @@ class User extends Authenticatable
     public function is_superuser(){
         return $this->is_superuser;
     }
-    public function permission (){
-        return $this->belongsToMany(permission::class);
-    }
+    // public function permission (){
+    //     return $this->belongsToMany(permission::class);
+    // }
 
-    public function role (){
-        return $this->belongsToMany(role::class);
-    }
+    // public function role (){
+    //     return $this->belongsToMany(role::class);
+    // }
 
-    public function hasRole($role){
-        return !! $role->intersect($this->roles)->all();
-    }
+    // public function hasRole($role){
+    //     return !! $role->intersect($this->roles)->all();
+    // }
 
-    public function hasPermission($key){
-        return $this->permisons->contains('name', $key->name) || $this->hasRole($key->roles);
-    }
+    // public function hasPermission($key){
+    //     return $this->permisons->contains('name', $key->name) || $this->hasRole($key->roles);
+    // }
 
     public function adresses() {
         return $this->hasMany(adresse::class);

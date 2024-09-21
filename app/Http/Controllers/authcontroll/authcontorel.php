@@ -8,6 +8,7 @@ use App\Models\activecode;
 
 use App\Models\User;
 use App\Notifications\notificationCode;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Auth;
@@ -37,13 +38,26 @@ class authcontorel extends Controller
         }
 
         $g= User::find($w);
+        //dd(isset($g->activecode[0]->code));
         if ($g) {
-            $code = activecode::createcode();
+            // $code = activecode::createcode();
+            $now = Carbon::now();
+            $expiredAt = Carbon::parse($g->activecode[0]->expired_at);
+            if (isset($g->activecode[0]->code) && !$expiredAt->lessThan($now)) {
+                dd();
+                $code=$g->activecode[0]->code;
+            }else {
+                $code = activecode::createcode();
+                activecode::create([
 
-            $fd=$u[0]->activecode[0]->code;
+                    'user_id' =>$g->id,
+                    'code' => $code,
+                    'expired_at'=> now()->addMinutes(10)
+                ]);
+            }
 
             // $g->notify(new notificationCode($fd,$gnn));
-            $u = $fd;
+            $u = $code;
             $error = '';
             return view('enter2',compact('u','error'));
         }else {

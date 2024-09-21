@@ -412,9 +412,163 @@
 <!-- /Header -->
 
 @php
-
-
 $quantity=(Cart::get($product)==null)? 0:Cart::get($product)['quantity'];
+
+$colorMap = [
+    'قرمز' => 'red',
+    'سبز' => 'green',
+    'زرد' => 'yellow',
+    'آبی' => 'blue',
+    'نارنجی' => 'orange',
+    'بنفش' => 'purple',
+    'صورتی' => 'pink',
+    'قهوه‌ای' => 'brown',
+    'خاکستری' => 'gray',
+    'سیاه' => 'black',
+    'سفید' => 'white',
+    'آبی تیره' => 'darkblue',
+    'آبی روشن' => 'lightblue',
+    'سبز تیره' => 'darkgreen',
+    'سبز روشن' => 'lightgreen',
+    'قرمز تیره' => 'darkred',
+    'قرمز روشن' => 'lightcoral',
+    'زرد تیره' => 'goldenrod',
+    'زرد روشن' => 'lightyellow',
+    'نارنجی تیره' => 'darkorange',
+    'نارنجی روشن' => 'lightsalmon',
+    'بنفش تیره' => 'darkviolet',
+    'بنفش روشن' => 'plum',
+    'صورتی تیره' => 'deeppink',
+    'صورتی روشن' => 'lightpink',
+    'قهوه‌ای تیره' => 'sienna',
+    'قهوه‌ای روشن' => 'burlywood',
+    'خاکستری تیره' => 'dimgray',
+    'خاکستری روشن' => 'lightgray',
+    'فیروزه‌ای' => 'turquoise',
+    'لاجوردی' => 'navy',
+    'لیمویی' => 'lime',
+    'کاربنی' => 'midnightblue',
+    'شفقی' => 'orangered',
+    'آبی کبود' => 'steelblue',
+    'لاجوردی روشن' => 'skyblue',
+    'سبز فسفری' => 'chartreuse',
+    'خردلی' => 'gold',
+    'کاهویی' => 'greenyellow',
+    'ارکیده‌ای' => 'orchid',
+    'رزگلد' => 'rosybrown',
+    'سرخابی' => 'fuchsia',
+    'آبی فیروزه‌ای' => 'cyan',
+    'سبز دریایی' => 'seagreen',
+    'سرمه‌ای' => 'teal',
+    'زرد طلایی' => 'gold',
+    'زرشکی' => 'maroon',
+    'یاسی' => 'lavender',
+    'قرمز آتشی' => 'firebrick',
+    'آبی نفتی' => 'cadetblue',
+    'آبی اقیانوسی' => 'aquamarine',
+    'کرمی' => 'beige',
+    'گلبهی' => 'coral',
+    'نیلی' => 'indigo',
+    'زیتونی' => 'olive',
+    'خاکی' => 'khaki',
+    'نقره‌ای' => 'silver',
+    'مسی' => 'copper',
+    'آبی آسمانی' => 'skyblue',
+    'خرمایی' => 'chocolate',
+    'پسته‌ای' => 'palegreen',
+    'بادمجانی' => 'rebeccapurple',
+    'شامپاینی' => 'champagne',
+    'آبی سلطنتی' => 'royalblue',
+    'زرد موزی' => 'banana',
+    'سبز پسته‌ای' => 'mintcream',
+    'قرمز گیلاسی' => 'cherry',
+    'آبی کاربنی' => 'prussianblue',
+    'صورتی چرک' => 'thistle',
+    'آبی کارولینایی' => 'carolina',
+    'قرمز عنابی' => 'crimson',
+    'سبز یشمی' => 'jade',
+    'آبی یخی' => 'aliceblue',
+    'کبود' => 'cornflowerblue',
+    'سبز سدری' => 'darkolivegreen',
+    'سبز زیتونی' => 'darkseagreen',
+    'آبی کمرنگ' => 'paleturquoise',
+    'نقره‌ای مات' => 'darkgray',
+    'زرد نخودی' => 'cornsilk',
+    'خاکی روشن' => 'palegoldenrod',
+    'ارغوانی' => 'magenta',
+    'آبی ملوانی' => 'navyblue',
+    'بنفش شاه‌توتی' => 'blueviolet',
+    'قرمز آجری' => 'brick',
+    'سبز لجنی' => 'darkkhaki',
+    'آبی دریایی' => 'lightseagreen',
+    'لیمویی روشن' => 'lightgoldenrodyellow',
+    'آبی تند' => 'deepskyblue',
+    'زرد چمنی' => 'lightgoldenrod',
+    'صورتی چرک' => 'palevioletred',
+    'آبی درباری' => 'dodgerblue',
+    'سبز مایل به آبی' => 'darkcyan',
+    'آبی سیر' => 'deepblue',
+    'زرد کاهی' => 'moccasin',
+    'بژ' => 'beige',
+    'آبی کبریتی' => 'powderblue',
+    'سبز مغزپسته‌ای' => 'palegreen',
+    'آبی سربی' => 'slateblue',
+    'سرخ آبی' => 'slategray',
+    'سبز زرد' => 'yellowgreen',
+    'سبز چمنی' => 'forestgreen',
+    'آبی درخشان' => 'lightcyan',
+    'زرشکی روشن' => 'lightcoral',
+    'کرم خاکی' => 'wheat',
+    'خرمایی روشن' => 'peru',
+    'طلایی مات' => 'darkgoldenrod',
+    'سبز سدری روشن' => 'palegreen',
+    'نارنجی چرک' => 'sandybrown',
+    'طلایی روشن' => 'goldenrod',
+    'گندمی' => 'tan',
+    'آبی کدر' => 'steelblue',
+    'سبز زمردی' => 'emerald',
+    'قرمز گوجه‌ای' => 'tomato',
+    'بنفش ملایم' => 'mediumorchid',
+    'صورتی چرکی' => 'mediumvioletred',
+    'آبی فیروزه‌ای' => 'mediumturquoise',
+    'زرشکی تیره' => 'darkred',
+    'صورتی شاد' => 'mediumviolet',
+    'سبز مرجانی' => 'lightgreen',
+    'صورتی مات' => 'mistyrose',
+    'کاهی روشن' => 'linen',
+    'نیلی کمرنگ' => 'plum',
+    'قهوه‌ای بژ' => 'sienna',
+    'بنفش دودی' => 'slateblue',
+    'سبز روشن مات' => 'springgreen',
+    'نارنجی قرمز' => 'orangered',
+    'سبز پررنگ' => 'darkgreen',
+    'آبی دریاچه‌ای' => 'darkturquoise',
+    'نقره‌ای مات' => 'darkslategray',
+    'طلایی پررنگ' => 'darkgoldenrod',
+    'گندمی' => 'burlywood',
+    'نارنجی ملایم' => 'bisque',
+    'زرد کم‌رنگ' => 'lemonchiffon',
+    'آبی سنگی' => 'lightslategray',
+    'آبی مهتابی' => 'lightsteelblue',
+    'یاسی کم‌رنگ' => 'lightpurple',
+    'خاکی ملایم' => 'moccasin',
+    'آبی نیلی' => 'darkorchid',
+    'قرمز مات' => 'indianred',
+    'قهوه‌ای سوخته' => 'rosybrown',
+    'نارنجی سوخته' => 'darkorange',
+    'آبی آرام' => 'skyblue',
+    'سبز تازه' => 'lawngreen',
+    'بنفش شاه بلوطی' => 'orchid',
+    'صورتی کمرنگ' => 'lightcoral',
+    'نیلی آبی' => 'mediumslateblue',
+    'سبز ملایم' => 'palegreen',
+    'نارنجی روشن' => 'papayawhip',
+    'سبز پسته‌ای' => 'seagreen',
+    'کاهویی روشن' => 'greenyellow',
+    'خاکستری' => 'gray',
+    'آبی شفاف' => 'powderblue',
+];
+
 @endphp
 <section class="inner-page" id="product-page">
     <div class="container-fluid" id="page-hero">
@@ -423,7 +577,7 @@ $quantity=(Cart::get($product)==null)? 0:Cart::get($product)['quantity'];
                 <div class="container">
                     <div class="row">
                         <div class="col-12 px-0">
-                            <h1>گوشی موبایل سامسونگ مدل Galaxy A21s</h1>
+                            <h1>{{$product->name}}</h1>
                             <p>دارای قابلیت دو سیم کارته و حافظه 128 گیگا بایت</p>
 
                         </div>
@@ -507,11 +661,14 @@ $quantity=(Cart::get($product)==null)? 0:Cart::get($product)['quantity'];
                                 <h1>{{$product->name}}</h1>
 
                             <div class="stars-container">
+                                @for ( $i=0; $i < $product->stars; $i++ )
+                                <i class="fa fa-star"></i>
+
+                                @endfor
+                                <!-- <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i> -->
                                 <a href="#tabs-panel"><span>(نقد و بررسی)</span></a>
                             </div>
                             <div class="encode4365gbf265g43d-container py-2">
@@ -527,20 +684,24 @@ $quantity=(Cart::get($product)==null)? 0:Cart::get($product)['quantity'];
                                     <div class="col-12 col-sm-4 col-lg-3">
                                         <div class="variable">
                                             <div class="sub-title pt-2 pb-3">رنگ</div>
-                                            <span class="color-variable"><a href="#" class="red"></a></span>
-                                            <span class="color-variable"><a href="#" class="yellow"></a></span>
+                                            @foreach ($product->attribute()->where('name','رنگ')->get() as $attribute)
+                                            <span onclick="let c = document.querySelector('#color').value ='{{$attribute->pivot->value->value}}'" class="color-variable"><a style="background-color:{{$colorMap[$attribute->pivot->value->value]}};"  ></a></span>
+
+                                            @endforeach
+                                            <!-- <span class="color-variable"><a href="#" class="yellow"></a></span>
                                             <span class="color-variable"><a href="#" class="blue"></a></span>
-                                            <span class="color-variable"><a href="#" class="black"></a></span>
+                                            <span class="color-variable"><a href="#" class="black"></a></span> -->
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-4 col-lg-3">
                                         <div class="variable">
-                                            <div class="sub-title pt-2 pb-2">گارانتی</div>
-                                            <select name="" class="form-select">
+                                            <div class="sub-title pt-2 pb-2">گارانتی </div>
+                                            <option class="mt-2">{{$product->garant}}</option>
+                                            <!-- <select name="" class="form-select">
                                                 <option value="">بدون گارانتی</option>
                                                 <option value="">گارانتی 6 ماهه</option>
                                                 <option value="">گارانت 12 ماهه</option>
-                                            </select>
+                                            </select> -->
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-4 col-lg-3">
@@ -567,6 +728,7 @@ $quantity=(Cart::get($product)==null)? 0:Cart::get($product)['quantity'];
                                     <div class="col-12">
                                         <form action="{{route('add_to_card',[$product->id])}}" method="post" id="cart" >
                                         <input type="hidden" name="quantity" id="quantityy" min="1" max="{{$product->count}}" value="1" >
+                                        <input type="hidden" name="color" id="color"  value="unimportant" >
                                              @csrf
                                         </form>
                                         <!-- <a href="cart.html"> -->
@@ -646,26 +808,27 @@ $quantity=(Cart::get($product)==null)? 0:Cart::get($product)['quantity'];
                                                         <div class="col-12 col-md-3 font-weight-bold"><div class="bg-light p-2">عرض</div></div>
                                                         <div class="col-12 col-md-9 pr-md-0"><div class="bg-light p-2">{{$product->length}} سانتی متر</div></div>
                                                     </div>
-                                                    <div class="row mb-2">
+                                                    <!-- <div class="row mb-2">
                                                         <div class="col-12 col-md-3 font-weight-bold"><div class="bg-light p-2">ارتفاع</div></div>
                                                         <div class="col-12 col-md-9 pr-md-0"><div class="bg-light p-2"> سانتی متر</div></div>
-                                                    </div>
+                                                    </div> -->
                                                     <!-- /Detail Section -->
                                                     <!-- Detail Section -->
 
                                                     <div>
                                                         <div class="row">
                                                             <div class="col-12 my-2">
-                                                                <span class="detail-title"><i class="fa fa-chevron-left small"></i> sefsd</span>
+                                                                <span class="detail-title"><i class="fa fa-chevron-left small"></i> مشخصات جزئی</span>
                                                             </div>
                                                         </div>
-                                                        @foreach ($product->attribute()->get()->unique('name') as $attribute)
+                                                        @foreach ($product->attribute()->where('name', '!=', 'رنگ')->get() as $attribute)
                                                     <div class="row mb-2">
                                                         <div class="col-12 col-md-3 font-weight-bold"><div class="bg-light p-2">{{$attribute->name}}</div></div>
                                                         <div class="col-12 col-md-9 pr-md-0"><div class="bg-light p-2">
-                                                            @foreach ($attribute->values()->get() as $value)
-                                                                <span>{{$value->value}}</span>
-                                                            @endforeach
+                                                            <!-- @foreach ($attribute->pivot as $value)
+                                                                <span>{{$value}}</span>
+                                                            @endforeach -->
+                                                            <span>{{$attribute->pivot->value->value }}</span>
 
                                                         </div></div>
                                                     </div>
@@ -807,7 +970,7 @@ $quantity=(Cart::get($product)==null)? 0:Cart::get($product)['quantity'];
                                 <!-- Product Item -->
                                  @foreach ($category as $item)
                                     <div class="encode4326654321vfb item">
-                                    <a href="{{route('product',['id'=>$item->id])}}"><div class="image" style="background-image: url({{$product->gallery()->first()->image}})"></div></a>
+                                    <a href="{{route('product',['id'=>$item->id])}}"><div class="image" style="background-image: url({{$item->gallery()->first()->image}})"></div></a>
                                     <div class="details p-3">
                                         <div class="category">
                                             <a href="products.html">گوشی موبایل</a>
@@ -817,12 +980,13 @@ $quantity=(Cart::get($product)==null)? 0:Cart::get($product)['quantity'];
                                         <a href="{{route('product',['id'=>$item->id])}}"><h2>{{$item->name}}</h2></a>
                                         <div class="encode4365gbf265g43d">{{$item->price}} تومان</div>
                                         <div class="rate">
-                                            <i class="fa fa-star-half-alt"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <span class="encode43bf265g43d">({{$item->comment()->count()}} رای دهنده)</span>
+                                        @for ( $i=0; $i < $item->stars; $i++ )
+                                        <i class="fa fa-star"></i>
+
+                                        @endfor
+
+
+                                            <span class="encode43bf265g43d">@if($item->comment->count())( ({{$item->comment->count()}}) رای دهنده)@endif</span>
                                         </div>
                                     </div>
                                     </div>

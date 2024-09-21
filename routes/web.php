@@ -37,13 +37,13 @@ Route::get('/checkout',[\App\Http\Controllers\paymentController::class,'checkout
 // Route::post('/t_auth2',[\App\Http\Controllers\homecontorel::class,'tokenpostauth2']);
 
 
-Route::get('/Addresses',[\App\Http\Controllers\admin\usercontorel::class,'adresses'])->name('adresses');
-Route::post('/Addresses',[\App\Http\Controllers\admin\usercontorel::class,'adresses_post'])->name('adresses_post');
-Route::post('/deleteadresses{id}',[\App\Http\Controllers\admin\usercontorel::class,'delete_adresses'])->name('delete_adresses');
+Route::get('/Addresses',[\App\Http\Controllers\admin\usercontorel::class,'adresses'])->name('adresses')->middleware('auth');
+Route::post('/Addresses',[\App\Http\Controllers\admin\usercontorel::class,'adresses_post'])->name('adresses_post')->middleware('auth');
+Route::post('/deleteadresses{id}',[\App\Http\Controllers\admin\usercontorel::class,'delete_adresses'])->name('delete_adresses')->middleware('auth');
 
-Route::get('/factors',[\App\Http\Controllers\admin\usercontorel::class,'factors'])->name('factors');
+Route::get('/factors',[\App\Http\Controllers\admin\usercontorel::class,'factors'])->name('factors')->middleware('auth');
 
-Route::get('/favorites',[\App\Http\Controllers\admin\usercontorel::class,'favorites'])->name('favorites');
+Route::get('/favorites',[\App\Http\Controllers\admin\usercontorel::class,'favorites'])->name('favorites')->middleware('auth');
 
 Route::get('/personal',[\App\Http\Controllers\admin\usercontorel::class,'personal'])->middleware('auth')->name('personal');
 
@@ -68,9 +68,9 @@ Route::patch('/edit_post{id}',[\App\Http\Controllers\homecontorel::class,'edit_u
 // Route::resource('edit_user', App\Http\Controllers\authcontroll\edit_user::class);
 
 
-Route::post('/like',[\App\Http\Controllers\homecontorel::class,'like_post'])->name('like_post');
+Route::post('/like',[\App\Http\Controllers\homecontorel::class,'like_post'])->name('like_post')->middleware('auth');
 
-Route::post('/dislike',[\App\Http\Controllers\homecontorel::class,'dislike_post'])->name('dislike_post');
+Route::post('/dislike',[\App\Http\Controllers\homecontorel::class,'dislike_post'])->name('dislike_post')->middleware('auth');
 
 Route::get('/blogs-{category}',[\App\Http\Controllers\homecontorel::class,'blog_category'])->name('blog_category');
 
@@ -81,7 +81,7 @@ Route::get('/blogs-{category}',[\App\Http\Controllers\homecontorel::class,'blog_
 // )->name('categorys');
 
 
-Route::post('/add_to_card{product}',[\App\Http\Controllers\cartcontroller::class,'addToCart'])->name('add_to_card');
+Route::post('/add_to_card{product}',[\App\Http\Controllers\cartcontroller::class,'addToCart'])->name('add_to_card')->middleware('auth');
 
 
 Route::post('/login_step2',[\App\Http\Controllers\authcontroll\authcontorel::class,'po'])->name('perp');
@@ -89,7 +89,7 @@ Route::post('/login_step2',[\App\Http\Controllers\authcontroll\authcontorel::cla
 Route::get('/login_step2',[\App\Http\Controllers\authcontroll\authcontorel::class,'enter2']);
 
 Route::get('/login',[\App\Http\Controllers\authcontroll\authcontorel::class,'login'])->name('login');
-Route::get('/logout',[\App\Http\Controllers\authcontroll\authcontorel::class,'logout'])->name('logout');
+Route::get('/logout',[\App\Http\Controllers\authcontroll\authcontorel::class,'logout'])->name('logout')->middleware('auth');
 
 //Route::get('/y',[\App\Http\Controllers\authcontroll\authcontorel::class,'log'])->name('x');
 

@@ -324,12 +324,11 @@
                                                     <a href="{{route('product',$id=$product->id)}}"><h2>{{$product->name}}</h2></a>
                                                     <div class="encode4365gbf265g43d">{{$product->price}} تومان</div>
                                                     <div class="rate">
-                                                        <i class="fa fa-star-half-alt"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <span class="encode43bf265g43d">(14 رای دهنده)</span>
+                                                    @for ( $i=0; $i < $product->stars; $i++ )
+                                <i class="fa fa-star"></i>
+
+                                @endfor
+                                                        <span class="encode43bf265g43d">@if($product->comment->count())( ({{$product->comment->count()}}) رای دهنده)@endif</span>
                                                     </div>
                                                 </div>
                                         </div>

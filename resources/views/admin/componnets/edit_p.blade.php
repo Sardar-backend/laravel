@@ -108,7 +108,43 @@
                       <input type="number" min="0" max="100" name="discust" class="form-control" id="inputEmail3" placeholder="تخفیف را وارد کنید" value="{{$cat->discust}}">
                     </div>
                   </div>
+                  <h6>ویژگی محصول</h6>
+                  
+                    <hr>
+                        <div class="container asa">
 
+                            <div class="row elem" onclick="">
+                            <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                            <label for="inputEmail3" class="col-sm-3 control-label">نوع ویژگی</label>
+
+                            <div class="col-sm-10">
+                            <input type="text" min="0" max="100" name="attribute[0][name]" class="form-control" id="inputEmail3" placeholder="تخفیف را وارد کنید">
+                            </div>
+                            </div>
+                            <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+
+                            <label for="inputEmail3" class="col-sm-3 control-label">نام ویژگی</label>
+
+                            <div class="col-sm-10">
+                            <input type="text" min="0" max="100" name="attribute[0][value]" class="form-control" id="inputEmail3" placeholder="تخفیف را وارد کنید">
+
+                            </div>
+                            </div>
+
+                            <!-- <div style="align-content: end !important;" class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                            <div class="col-sm-10">
+                                <button type="button" class="btn btn-danger">حذف</button>
+                            </div>
+                            </div> -->
+
+
+                        </div>
+                        </div>
+                        <div class="container">
+                        <button class="btn btn-sm btn-danger mt-5" type="button" onclick="name()" id="add_product_attribute">ویژگی جدید</button>
+
+
+                        <br><br><br></div>
                   <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                       <div class="form-check">
@@ -148,5 +184,17 @@
             </div>
     </div>
 </div>
+<script>
+    let r =document.querySelector('.asa')
+    let el =document.getElementsByClassName('elem')
+    let y = document.querySelector('#add_product_attribute')
+    let id = 1 ;
+    y.addEventListener('click', function(){
 
+        r.innerHTML +='<div class="row elem mt-2" onclick=""><div class="col-xs-5 col-sm-5 col-md-5 col-lg-5"><div class="col-sm-10"><input type="text" min="0" max="100" name="attribute['+id+'][name]" class="form-control" id="inputEmail3" placeholder="نوع را وارد کنید"></div></div><div class="col-xs-5 col-sm-5 col-md-5 col-lg-5"><div class="col-sm-10"><input type="text" min="0" max="100" name="attribute['+id+'][value]" class="form-control" id="inputEmail3" placeholder="نام را وارد کنید"></div></div><div onclick="this.parentNode.remove()" class="col-xs-1 col-sm-1 col-md-1 col-lg-1"><div class="col-sm-10"><button id="bf" type="button" class="btn btn-danger">حذف</button></div></div></div>'
+        id++ ;
+        let g =document.getElementsByClassName('bf')
+
+    })
+</script>
 @endcomponent

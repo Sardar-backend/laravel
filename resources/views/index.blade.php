@@ -84,10 +84,14 @@
                 <input type="hidden" name="product_id" value="{{$p->id}}">
                 </form>
                     <div class="icons">
+                    @guest
+                    <div onclick="let cdsds = document.querySelector('#formlike{{$p->id}}').submit()" class="btn btn-outline-secondary encode43243d"></div>
+                    @else
                     @if (Auth::user()->favorite()->where('product_id',$p->id)->get()->first())
                         <div style="background-image: url('assets/images/icons/favorited.png'); background-repeat:no-repeat;  background-position:center;" onclick="let dsd = document.querySelector('#formdislike{{$p->id}}').submit()" class="btn btn-outline-secondary "></div>
                     @else
                     <div onclick="let cdss = document.querySelector('#formlike{{$p->id}}').submit()" class="btn btn-outline-secondary encode43243d"></div>
+                    @endif
                     @endif
                     </div>
                         <div class="details p-3">
@@ -99,11 +103,10 @@
                             <a href={{route('product',['id'=>$p->id])}}><h2>{{$p->name}}</h2></a>
                             <div class="encode4365gbf265g43d">{{$p->price}} تومان</div>
                             <div class="rate">
-                                <i class="fa fa-star-half-alt"></i>
+                            @for ( $i=0; $i < $p->stars; $i++ )
                                 <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
+
+                                @endfor
                                 <span class="encode43bf265g43d">@if($p->comment->count())( ({{$product->comment->count()}}) رای دهنده)@endif</span>
                             </div>
                         </div>
@@ -132,10 +135,14 @@
                 <input type="hidden" name="product_id" value="{{$product->id}}">
                 </form>
                     <div class="icons">
-                    @if (Auth::user()->favorite()->where('product_id',$product->id)->get()->first())
-                        <div style="background-image: url('assets/images/icons/favorited.png'); background-repeat:no-repeat;  background-position:center;" onclick="let d = document.querySelector('#formdislike{{$product->id}}').submit()" class="btn btn-outline-secondary "></div>
+                    @guest
+                    <div onclick="let cdsdsq = document.querySelector('#formlike{{$p->id}}').submit()" class="btn btn-outline-secondary encode43243d"></div>
                     @else
-                    <div onclick="let cd = document.querySelector('#formlike{{$product->id}}').submit()" class="btn btn-outline-secondary encode43243d"></div>
+                    @if (Auth::user()->favorite()->where('product_id',$p->id)->get()->first())
+                        <div style="background-image: url('assets/images/icons/favorited.png'); background-repeat:no-repeat;  background-position:center;" onclick="let dsdq = document.querySelector('#formdislike{{$p->id}}').submit()" class="btn btn-outline-secondary "></div>
+                    @else
+                    <div onclick="let cdssq = document.querySelector('#formlike{{$p->id}}').submit()" class="btn btn-outline-secondary encode43243d"></div>
+                    @endif
                     @endif
                     </div>
                     <div class="details p-3">
@@ -151,11 +158,10 @@
                             <span class="encode4365gbf265g43d">{{$product->price * (100 - $product->discust)/100}} تومان</span>
                         </div>
                         <div class="rate">
-                            <i class="fa fa-star-half-alt"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
+                        @for ( $i=0; $i < $product->stars; $i++ )
+                                <i class="fa fa-star"></i>
+
+                                @endfor
                             <span class="encode43bf265g43d">@if($product->comment->count())( ({{$product->comment->count()}}) رای دهنده)@endif</span>
                         </div>
                     </div>
@@ -180,10 +186,14 @@
                 <div class="encode4326654321vfb">
                     <a href="product-{{$product->id}}"><div class="image" style="background-image: url({{$product->gallery()->first()->image}})"></div></a>
                     <div class="icons">
-                    @if (Auth::user()->favorite()->where('product_id',$product->id)->get()->first())
-                        <div style="background-image: url('assets/images/icons/favorited.png'); background-repeat:no-repeat;  background-position:center;" onclick="let d = document.querySelector('#formdislike{{$product->id}}').submit()" class="btn btn-outline-secondary "></div>
+                    @guest
+                    <div onclick="let cdsdsn = document.querySelector('#formlike{{$p->id}}').submit()" class="btn btn-outline-secondary encode43243d"></div>
                     @else
-                    <div onclick="let c = document.querySelector('#formlike{{$product->id}}').submit()" class="btn btn-outline-secondary encode43243d"></div>
+                    @if (Auth::user()->favorite()->where('product_id',$p->id)->get()->first())
+                        <div style="background-image: url('assets/images/icons/favorited.png'); background-repeat:no-repeat;  background-position:center;" onclick="let dsdn = document.querySelector('#formdislike{{$p->id}}').submit()" class="btn btn-outline-secondary "></div>
+                    @else
+                    <div onclick="let cdssn = document.querySelector('#formlike{{$p->id}}').submit()" class="btn btn-outline-secondary encode43243d"></div>
+                    @endif
                     @endif
                     </div>
                     <div class="details p-3">
@@ -195,11 +205,10 @@
                         <a href="{{route('product',['id'=>$product->id])}}"><h2>{{$product->name}}</h2></a>
                         <div class="encode4365gbf265g43d">{{$product->price}} تومان</div>
                         <div class="rate">
-                            <i class="fa fa-star-half-alt"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
+                        @for ( $i=0; $i < $product->stars; $i++ )
+                                <i class="fa fa-star"></i>
+
+                                @endfor
                             <span class="encode43bf265g43d">@if($product->comment->count())( ({{$product->comment->count()}}) رای دهنده)@endif</span>
                         </div>
                     </div>
@@ -398,10 +407,14 @@
                 <input type="hidden" name="product_id" value="{{$product->id}}">
                 </form>
                     <div class="icons">
-                    @if (Auth::user()->favorite()->where('product_id',$product->id)->get()->first())
-                        <div style="background-image: url('assets/images/icons/favorited.png'); background-repeat:no-repeat;  background-position:center;" onclick="let dq = document.querySelector('#formdislike{{$product->id}}').submit()" class="btn btn-outline-secondary "></div>
+                    @guest
+                    <div onclick="let cdsgds = document.querySelector('#formlike{{$p->id}}').submit()" class="btn btn-outline-secondary encode43243d"></div>
                     @else
-                    <div onclick="let cdsa = document.querySelector('#formlike{{$product->id}}').submit()" class="btn btn-outline-secondary encode43243d"></div>
+                    @if (Auth::user()->favorite()->where('product_id',$p->id)->get()->first())
+                        <div style="background-image: url('assets/images/icons/favorited.png'); background-repeat:no-repeat;  background-position:center;" onclick="let dsgd = document.querySelector('#formdislike{{$p->id}}').submit()" class="btn btn-outline-secondary "></div>
+                    @else
+                    <div onclick="let cdsgs = document.querySelector('#formlike{{$p->id}}').submit()" class="btn btn-outline-secondary encode43243d"></div>
+                    @endif
                     @endif
                     </div>
                     <div class="details p-3">
@@ -413,11 +426,10 @@
                         <a href="{{route('product',['id'=>$product->id])}}"><h2>{{$product->name}}</h2></a>
                         <div class="encode4365gbf265g43d">{{$product->price}} تومان</div>
                         <div class="rate">
-                            <i class="fa fa-star-half-alt"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
+                        @for ( $i=0; $i < $product->stars; $i++ )
+                                <i class="fa fa-star"></i>
+
+                                @endfor
                             <span class="encode43bf265g43d">@if($product->comment->count())( ({{$product->comment->count()}}) رای دهنده)@endif</span>
                         </div>
                     </div>
@@ -441,10 +453,14 @@
                 <input type="hidden" name="product_id" value="{{$product->id}}">
                 </form>
                     <div class="icons">
-                    @if (Auth::user()->favorite()->where('product_id',$product->id)->get()->first())
-                        <div style="background-image: url('assets/images/icons/favorited.png'); background-repeat:no-repeat;  background-position:center;" onclick="let sdd = document.querySelector('#formdislike{{$product->id}}').submit()" class="btn btn-outline-secondary "></div>
+                    @guest
+                    <div onclick="let cdsdaas = document.querySelector('#formlike{{$p->id}}').submit()" class="btn btn-outline-secondary encode43243d"></div>
                     @else
-                    <div onclick="let cbd = document.querySelector('#formlike{{$product->id}}').submit()" class="btn btn-outline-secondary encode43243d"></div>
+                    @if (Auth::user()->favorite()->where('product_id',$p->id)->get()->first())
+                        <div style="background-image: url('assets/images/icons/favorited.png'); background-repeat:no-repeat;  background-position:center;" onclick="let dsdaa = document.querySelector('#formdislike{{$p->id}}').submit()" class="btn btn-outline-secondary "></div>
+                    @else
+                    <div onclick="let cdsaas = document.querySelector('#formlike{{$p->id}}').submit()" class="btn btn-outline-secondary encode43243d"></div>
+                    @endif
                     @endif
                     </div>
                     <div class="details p-3">
@@ -456,11 +472,10 @@
                         <a href="{{route('product',['id'=>$product->id])}}"><h2>{{$product->name}}</h2></a>
                         <div class="encode4365gbf265g43d">{{$product->price}} تومان</div>
                         <div class="rate">
-                            <i class="fa fa-star-half-alt"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
+                        @for ( $i=0; $i < $product->stars; $i++ )
+                                <i class="fa fa-star"></i>
+
+                        @endfor
                             <span class="encode43bf265g43d">@if($product->comment->count())( ({{$product->comment->count()}}) رای دهنده)@endif</span>
                         </div>
                     </div>
@@ -484,10 +499,14 @@
                 <input type="hidden" name="product_id" value="{{$product->id}}">
                 </form>
                     <div class="icons">
-                    @if (Auth::user()->favorite()->where('product_id',$product->id)->get()->first())
-                        <div style="background-image: url('assets/images/icons/favorited.png'); background-repeat:no-repeat;  background-position:center;" onclick="let dasdas = document.querySelector('#formdislike{{$product->id}}').submit()" class="btn btn-outline-secondary "></div>
+                    @guest
+                    <div onclick="let cdsdhs = document.querySelector('#formlike{{$p->id}}').submit()" class="btn btn-outline-secondary encode43243d"></div>
                     @else
-                    <div onclick="let cddg = document.querySelector('#formlike{{$product->id}}').submit()" class="btn btn-outline-secondary encode43243d"></div>
+                    @if (Auth::user()->favorite()->where('product_id',$p->id)->get()->first())
+                        <div style="background-image: url('assets/images/icons/favorited.png'); background-repeat:no-repeat;  background-position:center;" onclick="let dsdh = document.querySelector('#formdislike{{$p->id}}').submit()" class="btn btn-outline-secondary "></div>
+                    @else
+                    <div onclick="let cdshs = document.querySelector('#formlike{{$p->id}}').submit()" class="btn btn-outline-secondary encode43243d"></div>
+                    @endif
                     @endif
                     </div>
                     <div class="details p-3">
@@ -499,11 +518,10 @@
                         <a href="{{route('product',['id'=>$product->id])}}"><h2>{{$product->name}}</h2></a>
                         <div class="encode4365gbf265g43d">{{$product->price}} تومان</div>
                         <div class="rate">
-                            <i class="fa fa-star-half-alt"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
+                        @for ( $i=0; $i < $product->stars; $i++ )
+                                <i class="fa fa-star"></i>
+
+                                @endfor
                             <span class="encode43bf265g43d">@if($product->comment->count())( ({{$product->comment->count()}}) رای دهنده)@endif</span>
                         </div>
                     </div>
@@ -526,10 +544,14 @@
                 <input type="hidden" name="product_id" value="{{$product->id}}">
                 </form>
                     <div class="icons">
-                    @if (Auth::user()->favorite()->where('product_id',$product->id)->get()->first())
-                        <div style="background-image: url('assets/images/icons/favorited.png'); background-repeat:no-repeat;  background-position:center;" onclick="let dnnn = document.querySelector('#formdislike{{$product->id}}').submit()" class="btn btn-outline-secondary "></div>
+                    @guest
+                    <div onclick="let cdsdos = document.querySelector('#formlike{{$p->id}}').submit()" class="btn btn-outline-secondary encode43243d"></div>
                     @else
-                    <div onclick="let cdvvv = document.querySelector('#formlike{{$product->id}}').submit()" class="btn btn-outline-secondary encode43243d"></div>
+                    @if (Auth::user()->favorite()->where('product_id',$p->id)->get()->first())
+                        <div style="background-image: url('assets/images/icons/favorited.png'); background-repeat:no-repeat;  background-position:center;" onclick="let dsod = document.querySelector('#formdislike{{$p->id}}').submit()" class="btn btn-outline-secondary "></div>
+                    @else
+                    <div onclick="let cdsos = document.querySelector('#formlike{{$p->id}}').submit()" class="btn btn-outline-secondary encode43243d"></div>
+                    @endif
                     @endif
                     </div>
                     <div class="details p-3">
@@ -541,11 +563,10 @@
                         <a href="{{route('product',['id'=>$product->id])}}"><h2>{{$product->name}}</h2></a>
                         <div class="encode4365gbf265g43d">{{$product->price}} تومان</div>
                         <div class="rate">
-                            <i class="fa fa-star-half-alt"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
+                        @for ( $i=0; $i < $product->stars; $i++ )
+                                <i class="fa fa-star"></i>
+
+                                @endfor
                             <span class="encode43bf265g43d">@if($product->comment->count())( ({{$product->comment->count()}}) رای دهنده)@endif</span>
                         </div>
                     </div>

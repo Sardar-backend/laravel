@@ -52,6 +52,7 @@ class paymentController extends Controller
     public function pay()
     {
     $FinalPrice =Cart::all()->sum(function($cart){  return $cart['price'] * $cart['quantity'];})  -  Cart::all()->sum(function($cart){return (($cart['product']->discust)/100 * $cart['price'])* $cart['quantity'];});
+
     $amount = $FinalPrice ; // مبلغ پرداخت به تومان
     $invoice = Payment::purchase(
         (new Invoice)->amount($amount),
@@ -69,6 +70,7 @@ class paymentController extends Controller
 {
     try {
         $FinalPrice =Cart::all()->sum(function($cart){  return $cart['price'] * $cart['quantity'];})  -  Cart::all()->sum(function($cart){return (($cart['product']->discust)/100 * $cart['price'])* $cart['quantity'];});
+        
         $receipt = Payment::amount($FinalPrice )->transactionId($request->transaction_id)->verify();
         // پرداخت موفقیت‌آمیز بود
         return 'پرداخت موفقیت‌آمیز بود';

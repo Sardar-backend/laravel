@@ -5,7 +5,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header d-flex">
-                <h3 class="card-title">فهرست کاربران</h3>
+                <h3 class="card-title">فهرست پیغام ها</h3>
 
                 <div class="card-tools d-flex"><form action="">
                   <div class="input-group input-group-sm" style="width: 150px;">

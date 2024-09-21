@@ -68,9 +68,11 @@
             width: 4% !important;
             height: 4% !important;
             margin: 0 2px 0 2px !important;
+
         }
         .about-img{
-            box-shadow: 20px 20px 15px #8A8A8A;
+            box-shadow: 25px 25px 15px #8A8A8A;
+            border-radius: 2px !important;
         }
     </style>
 </head>
@@ -217,7 +219,7 @@
                                                 <a href="#" aria-expanded="false">سایر صفحات<em class="droopmenu-topanim"></em></a><div class="dm-arrow"></div>
                                                 <ul style="">
                                                     <!-- <li><a href="compare.html">مقایسه محصول</a></li> -->
-                                                    <li><a href="">سبد خرید</a></li>
+                                                    <li><a href="cart">سبد خرید</a></li>
                                                     <li><a href=""checkout.html">پیش فاکتور</a></li>
                                                     <!-- <li class="dm-bottom-separator"></li> -->
                                                     <!-- <li><a href=>عضویت/ورود به سایت</a></li> -->
