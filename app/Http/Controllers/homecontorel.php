@@ -88,7 +88,7 @@ class homecontorel extends Controller
     }
 
     public function contact(){
-        Auth::loginUsingId(1);
+        Auth::loginUsingId(2);
         $this->seo()->setTitle('تماس با ما')
         ->setDescription('پیشنهادات ، انتقادات و پیام های دیگر به ما بفرستید')
         ->opengraph()->setTitle('تماس با ما')
@@ -199,15 +199,15 @@ class homecontorel extends Controller
             'home_number' => ['required'  , 'max:255'],
             'email' => ['required',  'email', 'max:255', Rule::unique('users')->ignore($user->id)],
             'birthday' => ['required'],
-            // 'password' => ['required',  'min:8', 'confirmed']
         ]);
-        // dd($data['image']);
-        //Storage::disk('public')->putFile( 'photos', request()->file('image'));
-        if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('files', 'public');
-        } else {
-            return "File not uploaded.";
-        }
+        $f=Storage::disk('public')->putFile( 'ProfilePhoto', request()->file('image'));
+        $data['image']=$f;
+
+        // if ($data['image']) {
+        //     $path = $request->file('image')->store('ProfilePhoto', 'public');
+        // } else {
+        //     return "File not uploaded.";
+        // }
         $user->update($data);
         Alert::success('عملیات موفق آمیز بود','اطلاعات کاربری شما با موفق ویرایش شد');
         return redirect()->route('personal');

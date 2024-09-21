@@ -84,16 +84,16 @@ Route::get('/blogs-{category}',[\App\Http\Controllers\homecontorel::class,'blog_
 Route::post('/add_to_card{product}',[\App\Http\Controllers\cartcontroller::class,'addToCart'])->name('add_to_card')->middleware('auth');
 
 
-Route::post('/login_step2',[\App\Http\Controllers\authcontroll\authcontorel::class,'po'])->name('perp');
+Route::post('/login_step2',[\App\Http\Controllers\authcontroll\authcontorel::class,'po'])->middleware('guest')->name('perp');
 
-Route::get('/login_step2',[\App\Http\Controllers\authcontroll\authcontorel::class,'enter2']);
+Route::get('/login_step2',[\App\Http\Controllers\authcontroll\authcontorel::class,'enter2'])->middleware('guest');
 
-Route::get('/login',[\App\Http\Controllers\authcontroll\authcontorel::class,'login'])->name('login');
+Route::get('/login',[\App\Http\Controllers\authcontroll\authcontorel::class,'login'])->name('login')->middleware('guest');
 Route::get('/logout',[\App\Http\Controllers\authcontroll\authcontorel::class,'logout'])->name('logout')->middleware('auth');
 
 //Route::get('/y',[\App\Http\Controllers\authcontroll\authcontorel::class,'log'])->name('x');
 
-Route::post('/pvc',[\App\Http\Controllers\authcontroll\authcontorel::class,'mm'])->name('mm');
+Route::post('/pvc',[\App\Http\Controllers\authcontroll\authcontorel::class,'mm'])->middleware('guest')->name('mm');
 
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();

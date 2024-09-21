@@ -107,7 +107,7 @@
                                 <i class="fa fa-star"></i>
 
                                 @endfor
-                                <span class="encode43bf265g43d">@if($p->comment->count())( ({{$product->comment->count()}}) رای دهنده)@endif</span>
+                                <span class="encode43bf265g43d">@if($p->comment->count())( ({{$p->comment->count()}}) رای دهنده)@endif</span>
                             </div>
                         </div>
                     </div>

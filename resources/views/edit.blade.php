@@ -48,7 +48,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="email">عکس پروفایل  :</label>
-                                <input name="image" type="file" class="form-control" id="email" value="" >
+                                <input name="image" accept="image/*" type="file" class="form-control"   >
                             </div>
                             <div class="form-group">
                                 <label for="email">شماره تلفن همراه  :</label>

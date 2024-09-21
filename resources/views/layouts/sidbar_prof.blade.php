@@ -6,7 +6,13 @@
                                         <button class="accordion-button bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
                                             <span class="row">
                                                 <span class="col-3 col-sm-2 col-lg-3">
+                                                    @if (request()->user()->image)
+
+                                                    <img src="/storage/{{request()->user()->image}}" class="rounded-circle">
+                                                    @else
+
                                                     <img src="../assets/images/user-no-image.jpg" class="rounded-circle">
+                                                    @endif
                                                 </span>
                                                 <span class="col-7 col-sm-8 col-lg-7 pt-0 pt-sm-2 pt-md-3 pt-lg-0 align-self-center">
                                                     <div id="full-name">{{request()->user()->name}}</div>
