@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\Cart\Cart;
+use App\Models\adresse;
 use Exception;
 use Illuminate\Http\Request;
 use PhpParser\Node\Expr\FuncCall;
@@ -39,11 +40,12 @@ class paymentController extends Controller
                 'status' => 'unpaid',
                 'price' => $price
             ]);
+            if ( $to=request('info')){
+            Alert::info('توجه','این سایت کارکرد تجاری ندارد و قابل اتصال به درگاه پرداخت نیست');}
 
+            $adrres = adresse::where('is_selected',1)->first();
 
-
-
-            return view('checkout',compact('all'));
+            return view('checkout',compact('all','adrres'));
     }
     Alert::error('خطا','سبد خرید شما خالی است');
     return back();
@@ -70,7 +72,7 @@ class paymentController extends Controller
 {
     try {
         $FinalPrice =Cart::all()->sum(function($cart){  return $cart['price'] * $cart['quantity'];})  -  Cart::all()->sum(function($cart){return (($cart['product']->discust)/100 * $cart['price'])* $cart['quantity'];});
-        
+
         $receipt = Payment::amount($FinalPrice )->transactionId($request->transaction_id)->verify();
         // پرداخت موفقیت‌آمیز بود
         return 'پرداخت موفقیت‌آمیز بود';

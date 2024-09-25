@@ -34,8 +34,8 @@
                     <th>طول</th>
                     <th>تخفیف</th>
                     <th>گارانتی</th>
+                    <th>تعداد</th>
                     <th>منتخب</th>
-                    <th></th>
 
                   </tr>
                   @foreach ($users as $user)
@@ -48,6 +48,7 @@
                     <td>{{$user->with}}</td>
                     <td>{{$user->discust}}</td>
                     <td>{{$user->garant}}</td>
+                    <td>{{$user->count}}</td>
                     <!-- <td>{{$user->Chosen}}</td> -->
 
                     @if ($user->Chosen)

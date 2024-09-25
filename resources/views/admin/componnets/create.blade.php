@@ -32,31 +32,29 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="inputPassword3" class="col-sm-2 control-label">پسورد</label>
+                  <div class="col-sm-10">
+                  <label for="email">عکس پروفایل  :</label>
+                  <input name="image" accept="image/*" type="file" class="form-control"   ></div></div>
+                  <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">کد ملی</label>
 
                     <div class="col-sm-10">
-                      <input type="password" name="password" class="form-control" id="inputPassword3" placeholder="پسورد را وارد کنید">
+                      <input type="number" min="0" name="meli_code" class="form-control" id="inputPassword3" placeholder=" کد ملی را وارد کنید">
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="inputPassword3" class="col-sm-2 control-label">تکرار پسورد</label>
+                    <label for="inputPassword3" class="col-sm-2 control-label">شماره کارت </label>
 
                     <div class="col-sm-10">
-                      <input type="password" name="password_confirmation" class="form-control" id="inputPassword3" placeholder="پسورد را وارد کنید">
+                      <input type="number" min="0" name="cart_number" class="form-control" id="inputPassword3" placeholder="شماره کارت را وارد کنید">
                     </div>
-                    <br><br><div class="form-group">
-                    <label for="inputPassword3" class="col-sm-2 control-label">عکس پروفایل</label>
-                    <textarea id="my-editor" name="image" class="form-control">{!! old('content', '') !!}</textarea>
-                    <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
-                    <script>
-                    var options = {
-                        filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
-                        filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
-                        filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
-                        filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
-                    };
-                    CKEDITOR.replace('my-editor', options);
-                    </script></div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label"> تاریخ تولد </label>
+
+                    <div class="col-sm-10">
+                      <input type="date" min="0" name="birthday" class="form-control" id="inputPassword3" placeholder="تاریخ تولد کارت را وارد کنید">
+                    </div>
                   </div>
                   <!-- <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">

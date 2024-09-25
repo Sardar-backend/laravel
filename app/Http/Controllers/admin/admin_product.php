@@ -79,9 +79,15 @@ class admin_product extends Controller
             'categories'=>['required'],
             'garant' => ['required'],
             'Chosen' => ['nullable'],
+            'Special_sale' => ['nullable'],
         ]);
 
         if (isset($data['Chosen'])) {
+            $data['Chosen']=1;}
+        else {
+            $data['Chosen']=0;
+        }
+        if (isset($data['Special_sale'])) {
             $data['Chosen']=1;}
         else {
             $data['Chosen']=0;
@@ -149,9 +155,11 @@ class admin_product extends Controller
             'length' => ['required', 'string', 'max:255'],
             'discust' => ['required', 'string', 'max:255'],
             'categories'=>['required'],
-
+            'attribute' => ['required', 'array','nullable'],
             'Chosen' => ['nullable'],
+            'count' => ['required', 'string', 'max:255'],
             'garant' => ['required'],
+            'Special_sale' => ['nullable'],
         ]);
         if (isset($data['Chosen'])) {
             $data['Chosen']=1;}
@@ -166,6 +174,23 @@ class admin_product extends Controller
         // $x= preg_split('/<p><img alt="" src="|" style="height:.*/',$f);
         // $data['image']= $x[1];
         $p = Product::where('name' , $data['name'])->get()->first();
+        // $t=Product::find($id);
+        $p->attribute()->detach();
+        $attr = collect($data['attribute']);
+        $attr->each(function($item) use($p) {
+            if (is_null($item['name']) || is_null($item['value']))return;
+                $attre = Attributes::firstOrCreate(
+                    ['name' => $item['name']]
+                );
+                // dd($attre->values()->get());
+                $attre_value = $attre->values()->firstOrCreate(
+                    ['value' => $item['value']]
+                    // ['value' => 'value']
+                );
+
+                $p->attribute()->attach($attre->id,['value_id' => $attre_value->id]);
+        });
+
 
         $user->update($data);
         $p->category()->sync($data['categories']);

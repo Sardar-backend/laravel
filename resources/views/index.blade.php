@@ -274,11 +274,13 @@
                     </div>
                 </div>
             </div>
+            @foreach ($Special_sale as $product)
+
             <div class="col-12 col-sm-6 col-lg-3">
                 <!-- Product Box -->
                 <div class="encode4326654321vfb">
                     <a href="{{route('product',['id'=>$product->id])}}">
-                        <div class="image" style="background-image: url('assets/images/products/p303.png')">
+                        <div class="image" style="background-image: url('{{$product->gallery()->first()->image}}')">
                             <span class="badge on-sale-badge">فروش ویژه</span>
                         </div>
                     </a>
@@ -288,56 +290,25 @@
                             &nbsp;/&nbsp;
                             <a href="products.html">سامسونگ</a>
                         </div>
-                        <a href="{{route('product',['id'=>$product->id])}}"><h2>مودم روتر ADSL2 Plus بی‌ سیم N300 دی-لینک مدل DSL-2740U</h2></a>
+                        <a href="{{route('product',['id'=>$product->id])}}"><h2>{{$product->name}}</h2></a>
                         <div>
-                            <span class="discounted">4.500.000 تومان</span>
+                            <span class="discounted">{{$product->price}} تومان</span>
                             <br class="d-sm-none">
-                            <span class="encode4365gbf265g43d">4.800.000 تومان</span>
+                            <span class="encode4365gbf265g43d">{{$product->price * (100 - $product->discust)/100}} تومان</span>
                         </div>
                         <div class="rate">
-                            <i class="fa fa-star-half-alt"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <span class="encode43bf265g43d">(14 رای دهنده)</span>
+                        @for ( $i=0; $i < $product->stars; $i++ )
+                                <i class="fa fa-star"></i>
+
+                        @endfor
+                            <span class="encode43bf265g43d">@if($product->comment->count())( ({{$product->comment->count()}}) رای دهنده)@endif</span>
                         </div>
                     </div>
                 </div>
                 <!-- /Product Box -->
             </div>
-            <div class="col-12 col-sm-6 col-lg-3">
-                <!-- Product Box -->
-                <div class="encode4326654321vfb">
-                    <a href="{{route('product',['id'=>$product->id])}}">
-                        <div class="image" style="background-image: url('assets/images/products/p403.png')">
-                            <span class="badge on-sale-badge">فروش ویژه</span>
-                        </div>
-                    </a>
-                    <div class="details p-3">
-                        <div class="category">
-                            <a href="products.html">گوشی موبایل</a>
-                            &nbsp;/&nbsp;
-                            <a href="products.html">سامسونگ</a>
-                        </div>
-                        <a href="{{route('product',['id'=>$product->id])}}"><h2>دوربین دیجیتال مدل AX6065</h2></a>
-                        <div>
-                            <span class="discounted">4.500.000 تومان</span>
-                            <br class="d-sm-none">
-                            <span class="encode4365gbf265g43d">4.800.000 تومان</span>
-                        </div>
-                        <div class="rate">
-                            <i class="fa fa-star-half-alt"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <span class="encode43bf265g43d">(14 رای دهنده)</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- /Product Box -->
-            </div>
+            @endforeach
+
         </div>
     </div>
 </section>

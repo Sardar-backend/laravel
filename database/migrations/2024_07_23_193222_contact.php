@@ -47,7 +47,8 @@ return new class extends Migration
             $table->float('length');
             $table->float('discust');
             $table->string('garant');
-            $table->boolean('Chosen');
+            $table->boolean('Chosen')->default(0);
+            $table->boolean('Special_sale')->default(0);
             $table->timestamp('failed_at')->useCurrent();
         });
 
@@ -72,6 +73,7 @@ return new class extends Migration
             $table->string('city');
             $table->char('tahvil');
             $table->char('adress');
+            $table->boolean('is_selected')->default(false);
             $table->integer('number');
             $table->integer('post_number');
             $table->timestamp('failed_at')->useCurrent();

@@ -39,23 +39,23 @@
                                                 <div class="col-12 col-md-9 pl-0" id="address-detail">
                                                     <div class="p-3 ml-3 mb-2 mb-md-0 ml-md-0 address-to-send">
                                                         <div class="address-title">
-                                                            <span id="province-title">فارس</span>،
-                                                            <span id="city-title">شیراز</span>،
-                                                            <span id="address">بلوار آزادگان، کارخانه نوآوری شیراز</span>،
+                                                            <span id="province-title">{{$adrres->ostan}}</span>،
+                                                            <span id="city-title">{{$adrres->city}}</span>،
+                                                            <span id="address">{{$adrres->adress}}</span>،
                                                         </div>
                                                         <div class="row">
-                                                            <div class="col-12 col-md-4">کدپستی: 1234567890</div>
-                                                            <div class="col-12 col-md-8">تحویل گیرنده: مصطفی | 09351234567</div>
+                                                            <div class="col-12 col-md-4">کدپستی: {{$adrres->adress}}</div>
+                                                            <div class="col-12 col-md-8">تحویل گیرنده: {{$adrres->tahvil}} | {{$adrres->number}}</div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-3">
                                                     <div class="row">
                                                         <div class="col-6 col-md-12 pl-2 px-md-3">
-                                                            <a href="#"><div class="btn btn-light w-100">تغییر آدرس</div></a>
+                                                            <a href="{{route('adresses')}}"><div class="btn btn-light w-100">تغییر آدرس</div></a>
                                                         </div>
                                                         <div class="col-6 col-md-12 pr-2 px-md-3">
-                                                            <a href="#"><div class="btn btn-outline-dark mt-0 mt-md-1 w-100">افزودن آدرس جدید</div></a>
+                                                            <a href="{{route('adresses')}}"><div class="btn btn-outline-dark mt-0 mt-md-1 w-100">افزودن آدرس جدید</div></a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -79,7 +79,7 @@
                                                 <span class="col-6 col-sm-4 col-lg-3 px-0">
                                                     <a href="product-{{$pro['product']->id}}" target="_blank">
                                                         <div class="encode4326654321vfb">
-                                                            <div class="image" style="background-image: url(assets/images/products/p100.png)"></div>
+                                                            <div class="image" style="background-image: url({{$pro['product']->gallery()->first()->image}})"></div>
                                                             <div class="text-center px-1 px-sm-3">
                                                                 <a href="product.html" target="_blank"><h2>{{$pro['product']->name}}</h2></a>
                                                                 <div class="number">تعداد: {{$pro['quantity']}} عدد</div>
@@ -110,7 +110,7 @@
                             <!-- /Orders List -->
 
                             <!-- Choose Date To Send -->
-                            <section class="mt-3" id="select-receive-date">
+                            <!-- <section class="mt-3" id="select-receive-date">
                                 <div class="container-fluid">
                                     <div class="row">
                                         <div class="col-12">
@@ -121,54 +121,54 @@
                                                             <div class="col-12">
                                                                 <div class="pادامه ثبت سفارش-1 title">انتخاب تاریخ تحویل</div>
                                                                 <div class="row">
-                                                                    <!-- Date -->
+
                                                                     <div class="col-6 col-sm-4 col-lg-2 pt-3 pt-md-0 pl-2">
                                                                         <div class="form-check">
                                                                             <input type="radio" class="form-check-input valid-order-date" id="date1">
                                                                             <label class="receive-date" for="date1">دوشنبه<br><span class="date">20 تیر 1400</span></label>
                                                                         </div>
                                                                     </div>
-                                                                    <!-- Date -->
-                                                                    <!-- Date -->
+
+
                                                                     <div class="col-6 col-sm-4 col-lg-2 pt-3 pt-md-0 pl-2">
                                                                         <div class="form-check">
                                                                             <input type="radio" class="form-check-input valid-order-date" id="date2">
                                                                             <label class="receive-date" for="date2">سه شنبه<br><span class="date">21 تیر 1400</span></label>
                                                                         </div>
                                                                     </div>
-                                                                    <!-- Date -->
-                                                                    <!-- Date -->
+
+
                                                                     <div class="col-6 col-sm-4 col-lg-2 pt-3 pt-md-0 pl-2">
                                                                         <div class="form-check">
                                                                             <input type="radio" class="form-check-input valid-order-date" id="date3">
                                                                             <label class="receive-date" for="date3">چهارشنبه<br><span class="date">22 تیر 1400</span></label>
                                                                         </div>
                                                                     </div>
-                                                                    <!-- Date -->
-                                                                    <!-- Date -->
+
+
                                                                     <div class="col-6 col-sm-4 col-lg-2 pt-3 pt-md-0 pl-2">
                                                                         <div class="form-check">
                                                                             <input type="radio" class="form-check-input valid-order-date" id="date4">
                                                                             <label class="receive-date" for="date4">پنج شنبه<br><span class="date">23 تیر 1400</span></label>
                                                                         </div>
                                                                     </div>
-                                                                    <!-- Date -->
-                                                                    <!-- Date -->
+
+
                                                                     <div class="col-6 col-sm-4 col-lg-2 pt-3 pt-md-0 pl-2">
                                                                         <div class="form-check">
                                                                             <input type="radio" class="form-check-input valid-order-date" id="date5">
                                                                             <label class="receive-date" for="date5">پنج شنبه<br><span class="date">24 تیر 1400</span></label>
                                                                         </div>
                                                                     </div>
-                                                                    <!-- Date -->
-                                                                    <!-- Date -->
+
+
                                                                     <div class="col-6 col-sm-4 col-lg-2 pt-3 pt-md-0 pl-2">
                                                                         <div class="form-check">
                                                                             <input type="radio" class="form-check-input valid-order-date" id="date6">
                                                                             <label class="receive-date" for="date6">جمعه<br><span class="date">25 تیر 1400</span></label>
                                                                         </div>
                                                                     </div>
-                                                                    <!-- Date -->
+
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -178,9 +178,17 @@
                                         </div>
                                     </div>
                                 </div>
-                            </section>
+                            </section> -->
                             <!-- /Choose Date To Send -->
                         </div>
+                        @php
+                        use App\Helpers\Cart\Cart;
+                        $totalPrice=Cart::all()->sum(function($cart){
+                            return $cart['price'] * $cart['quantity'];
+                        });
+                        $totalDiscust =Cart::all()->sum(function($cart){return (($cart['product']->discust)/100 * $cart['price'])* $cart['quantity'];});
+                        $FinalPrice = $totalPrice - $totalDiscust;
+                        @endphp
                         <div class="col-12 col-lg-3 mt-2 mt-lg-0 pr-3 pr-lg-0">
                             <div id="factor">
                                 <div class="container">
@@ -189,7 +197,7 @@
                                             <div>جمع کل فاکتور:</div>
                                         </div>
                                         <div class="col-6">
-                                            <div>3.200.000 تومان</div>
+                                            <div>{{$totalPrice}} تومان</div>
                                         </div>
                                     </div>
                                     <div class="row py-2 bg-light">
@@ -197,7 +205,7 @@
                                             <div>جمع تخفیف:</div>
                                         </div>
                                         <div class="col-6">
-                                            <div>200.000 تومان</div>
+                                            <div>{{$totalDiscust}} تومان</div>
                                         </div>
                                     </div>
                                     <div class="row py-2">
@@ -213,19 +221,19 @@
                                             <div>مبلغ قابل پرداخت:</div>
                                         </div>
                                         <div class="col-6">
-                                            <div>3.000.000 تومان</div>
+                                            <div>{{$FinalPrice}} تومان</div>
                                         </div>
                                     </div>
                                 </div>
                                 <hr>
                                 <div class="container">
-                                    <div class="row py-2">
+                                    <!-- <div class="row py-2">
                                         <div class="col-12">
                                             <div>انتخاب نحوه پرداخت</div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="row pb-2">
-                                        <div class="col-12 pb-2">
+                                        <!-- <div class="col-12 pb-2">
                                             <div class="form-check">
                                                 <label class="form-check-label">
                                                     <input type="radio" class="form-check-input" name="payment_type" checked>پرداخت آنلاین
@@ -236,16 +244,18 @@
                                                     <input type="radio" class="form-check-input" name="payment_type">ثبت فیش پرداخت/کارت به کارت
                                                 </label>
                                             </div>
-                                        </div>
-                                        <div class="col-12 pb-2" id="rules">
+                                        </div> -->
+                                        <!-- <div class="col-12 pb-2" id="rules">
                                             <div class="form-check">
                                                 <label class="form-check-label">
                                                     <input type="checkbox" class="form-check-input" name="accept_rules" value="1"><a href="#" target="_blank">قوانین و مقررات</a> را خواندم و قبول دارم.
                                                 </label>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <div class="col-12">
-                                            <input type="submit" value="پرداخت و تکمیل خرید" class="btn btn-success w-100">
+                                            <form action="" method="get">
+                                                <input type="hidden" name="info" value="g">
+                                            <button type="submit" value="پرداخت و تکمیل خرید" class="btn btn-success w-100">پرداخت و تکمیل خرید</button></form>
                                         </div>
                                     </div>
                                 </div>

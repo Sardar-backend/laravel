@@ -742,14 +742,16 @@ $colorMap = [
                                             @endif
                                         <!-- </a> -->
                                         <br class="d-sm-none">
+
+
+                                        @guest
+                                        <div onclick="let cdsdsn = document.querySelector('#formlike{{$product->id}}').submit()" class="btn btn-outline-secondary encode43243d"></div>
+                                        @else
                                         @if (Auth::user()->favorite()->where('product_id',$product->id)->get()->first())
-                                        <div
-                                            style="background-image: url('assets/images/icons/favorited.png');"
-                                         onclick="let d = document.querySelector('#formdislike').submit()" class="btn btn-outline-secondary encode43243d mt-1 mt-sm-0" data-toggle="tooltip" data-placement="top" title="افزودن به علاقه‌مندی"></div>
-                                         @else
-                                         <div
-                                            style="background-image: url('assets/images/icons/favorite.png');"
-                                         onclick="let c = document.querySelector('#formlike').submit()" class="btn btn-outline-secondary encode43243d mt-1 mt-sm-0" data-toggle="tooltip" data-placement="top" title="افزودن به علاقه‌مندی"></div>
+                                            <div style="background-image: url('assets/images/icons/favorited.png'); background-repeat:no-repeat;  background-position:center;" onclick="let dsdn = document.querySelector('#formdislike{{$product->id}}').submit()" class="btn btn-outline-secondary "></div>
+                                        @else
+                                        <div onclick="let cdssn = document.querySelector('#formlike{{$product->id}}').submit()" class="btn btn-outline-secondary encode43243d"></div>
+                                        @endif
                                         @endif
                                         <!-- <a href="#"><div class="btn btn-outline-secondary encode43bf243d mt-1 mt-sm-0" data-toggle="tooltip" data-placement="top" title="مقایسه"></div></a> -->
                                     </div>
@@ -929,12 +931,16 @@ $colorMap = [
 
                                                 <!-- /Comments Tab -->
                                                                 <!-- Send Comment Form -->
+
                                                                 <div class="comments-container">
                                                                 <div class="row pt-4">
                                                                     <div class="col-12"><h2>دیدگاه خود را ارسال کنید</h2></div>
                                                                 </div>
                                                                 <div class="row">
-                                                                    <div class="col-12 py-3">
+                                                                    <div class="col-12 py-3">@guest
+                                                                        
+                                                                    <p>برای ارسال نظر باید وارد شوید</p>
+                                                                    @else
                                                                         <form method="post" action="{{route('create_comment')}}">
                                                                             @csrf
                                                                             <input type="hidden" class="parent_id"  name="parent_id" @if (request()->p)
@@ -943,10 +949,13 @@ $colorMap = [
                                                                             value="0"
                                                                             @endif
                                                                             id="">
-                                                                            <input type="hidden" name="user_id" value="{{$user->id}}">
+                                                                            <input type="hidden" name="user_id" value="{{request()->user()->id }}">
                                                                             <input type="hidden" name="commenttable_id" value="{{$product->id}}">
                                                                             <input type="hidden" name="commenttable_type" value="{{get_class($product)}}">
                                                                             <div id="send-comment-form">
+
+
+
                                                                                 <p>نظر خود را برای این مطلب ارسال کنید. نشانی ایمیل شما منتشر نخواهد شد.</p>
                                                                                 <div class="row">
 
@@ -961,11 +970,13 @@ $colorMap = [
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
+
                                                                             </div>
                                                                         </form>
-                                                                    </div>
+                                                                    </div>@endif
                                                                 </div>
                                                             </div>
+
                                                             <!-- /Send Comment Form -->
                                             </div>
                                         </div>

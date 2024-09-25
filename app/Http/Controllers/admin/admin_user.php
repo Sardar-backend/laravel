@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 
 use function PHPUnit\Framework\isNull;
@@ -56,16 +57,22 @@ class admin_user extends Controller
     {
         $data=$request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'phonenumber' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'is_superuser' => ['nullable'],
-            'image' => ['nullable'],
+            'phonenumber' => ['required' ,'max:255'],
+            'meli_code' => ['required', 'max:255'],
+            'image' => ['required'],
+            'cart_number' => ['required',  'max:255'],
+            'home_number' => ['required'  , 'max:255'],
+            'email' => ['required',  'email', 'max:255'],
+            'birthday' => ['required'],
+            'is_superuser' => ['nullable']
+
         ]);
+        $f=Storage::disk('public')->putFile( 'ProfilePhoto', request()->file('image'));
+        $data['image']=$f;
         // dd($data);
-        $f =$data['image'];
-        $x= preg_split('/<p><img alt="" src="|" style="height:.*/',$f);
-        $data['image']= $x[1];
+        // $f =$data['image'];
+        // $x= preg_split('/<p><img alt="" src="|" style="height:.*/',$f);
+        // $data['image']= $x[1];
         User::create($data);
         return redirect()->route('admin');
         }
@@ -101,14 +108,21 @@ class admin_user extends Controller
         $user= User::find($id);
         $data=$request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'phonenumber' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'image' => ['string']
+            'phonenumber' => ['required' ,'max:255'],
+            'meli_code' => ['required', 'max:255'],
+            'image' => ['required'],
+            'cart_number' => ['required',  'max:255'],
+            'home_number' => ['required'  , 'max:255'],
+            'email' => ['required',  'email', 'max:255', Rule::unique('users')->ignore($user->id)],
+            'birthday' => ['required'],
+            'is_superuser' => ['nullable']
         ]);
-        $f =$data['image'];
-        $x= preg_split('/<p><img alt="" src="|" style="height:.*/',$f);
-        $data['image']= $x[1];
+        // $f =$data['image'];
+        // $x= preg_split('/<p><img alt="" src="|" style="height:.*/',$f);
+        // $data['image']= $x[1];
+        $f=Storage::disk('public')->putFile( 'ProfilePhoto', request()->file('image'));
+        $data['image']=$f;
+
         // dd($data);
         // if (!isNull($request->password)) {
         //     $request->validate(['password' => ['required', 'string', 'min:8', 'confirmed']]);

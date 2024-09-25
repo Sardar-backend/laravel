@@ -9,7 +9,7 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form class="form-horizontal" action="{{route('edituser', ['id'=>$user->id])}}" method="post">
+              <form class="form-horizontal" action="{{route('edituser', ['id'=>$user->id])}}" enctype="multipart/form-data" method="post">
                 @method('PATCH')
                 @csrf
                 <div class="card-body">
@@ -32,8 +32,11 @@
                       <input type="email" name="email" class="form-control" id="inputEmail3" placeholder="ایمیل را وارد کنید" value="{{$user->email}}">
                     </div>
                   </div>
-                  <br><br><div class="form-group">
-                    <label for="inputPassword3" class="col-sm-2 control-label">عکس پروفایل</label>
+                  <div class="form-group">
+                  <div class="col-sm-10">
+                  <label for="email">عکس پروفایل  :</label>
+                  <input name="image" accept="image/*" type="file" class="form-control"   ></div></div>
+                    <!-- <label for="inputPassword3" class="col-sm-2 control-label">عکس پروفایل</label>
                     <textarea id="my-editor" name="image" class="form-control">{!! old('content', '') !!}</textarea>
                     <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
                     <script>
@@ -44,27 +47,34 @@
                         filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
                     };
                     CKEDITOR.replace('my-editor', options);
-                    </script></div>
-                  </div>
+                    </script></div> -->
+
                   <div class="form-group">
-                    <label for="inputPassword3" class="col-sm-2 control-label">پسورد</label>
+                    <label for="inputPassword3" class="col-sm-2 control-label">کد ملی</label>
 
                     <div class="col-sm-10">
-                      <input type="password" name="password" class="form-control" id="inputPassword3" placeholder="پسورد را وارد کنید">
+                      <input type="number" min="0" name="meli_code" class="form-control" id="inputPassword3" placeholder=" کد ملی را وارد کنید">
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="inputPassword3" class="col-sm-2 control-label">تکرار پسورد</label>
+                    <label for="inputPassword3" class="col-sm-2 control-label">شماره کارت </label>
 
                     <div class="col-sm-10">
-                      <input type="password" name="password_confirmation" class="form-control" id="inputPassword3" placeholder="پسورد را وارد کنید">
+                      <input type="number" min="0" name="cart_number" class="form-control" id="inputPassword3" placeholder="شماره کارت را وارد کنید">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label"> تاریخ تولد </label>
+
+                    <div class="col-sm-10">
+                      <input type="date" min="0" name="birthday" class="form-control" id="inputPassword3" placeholder="تاریخ تولد کارت را وارد کنید">
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                       <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck2">
-                        <label class="form-check-label" for="exampleCheck2">مرا به خاطر بسپار</label>
+                        <input id="exampleCheck2" onclick="let sds= document.querySelector('exampleCheck2').value == 1 " name="is_superuser" type="checkbox" value="0" class="form-check-input" >
+                        <label class="form-check-label" for="exampleCheck2">کاربر کارمند</label>
                       </div>
                     </div>
                   </div>

@@ -19,7 +19,7 @@ Route::get('/faq',[\App\Http\Controllers\homecontorel::class,'faq'])->name('faq'
 
 Route::get('/products',[\App\Http\Controllers\ProductListcontroller::class,'products'])->name('products');
 
-Route::get('/product-{id}',[\App\Http\Controllers\homecontorel::class,'product'])->middleware('auth')->name('product');
+Route::get('/product-{id}',[\App\Http\Controllers\homecontorel::class,'product'])->name('product');
 
 
 
@@ -40,6 +40,7 @@ Route::get('/checkout',[\App\Http\Controllers\paymentController::class,'checkout
 Route::get('/Addresses',[\App\Http\Controllers\admin\usercontorel::class,'adresses'])->name('adresses')->middleware('auth');
 Route::post('/Addresses',[\App\Http\Controllers\admin\usercontorel::class,'adresses_post'])->name('adresses_post')->middleware('auth');
 Route::post('/deleteadresses{id}',[\App\Http\Controllers\admin\usercontorel::class,'delete_adresses'])->name('delete_adresses')->middleware('auth');
+Route::post('/selectadresses{id}',[\App\Http\Controllers\homecontorel::class,'selectadresses'])->name('selectadresses')->middleware('auth');
 
 Route::get('/factors',[\App\Http\Controllers\admin\usercontorel::class,'factors'])->name('factors')->middleware('auth');
 
@@ -81,7 +82,7 @@ Route::get('/blogs-{category}',[\App\Http\Controllers\homecontorel::class,'blog_
 // )->name('categorys');
 
 
-Route::post('/add_to_card{product}',[\App\Http\Controllers\cartcontroller::class,'addToCart'])->name('add_to_card')->middleware('auth');
+Route::post('/add_to_card{product}',[\App\Http\Controllers\cartcontroller::class,'addToCart'])->name('add_to_card');
 
 
 Route::post('/login_step2',[\App\Http\Controllers\authcontroll\authcontorel::class,'po'])->middleware('guest')->name('perp');

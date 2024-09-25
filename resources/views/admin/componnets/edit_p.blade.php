@@ -54,7 +54,7 @@
                       <!-- <input type="file" name="cfc" class="form-control" > -->
 
 
-                  </div>
+
                   <!-- <div class="form-group col-sm-10">
                     <textarea id="my-editor" name="image" class="form-control">{!! old('content', '') !!}</textarea>
                     <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
@@ -102,6 +102,13 @@
                     </div>
                   </div>
                   <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">تعداد محصول</label>
+
+                    <div class="col-sm-10">
+                      <input type="number" min="0" name="count" class="form-control" id="inputEmail3" placeholder="تعداد را وارد کنید">
+                    </div>
+                  </div>
+                  <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">تخفیف</label>
 
                     <div class="col-sm-10">
@@ -109,7 +116,12 @@
                     </div>
                   </div>
                   <h6>ویژگی محصول</h6>
-                  
+                  <div class="form-group"><div class="col-sm-10">
+                  @foreach ($cat->attribute()->get() as $attribute)
+                    <span class="btn btn-info" >{{$attribute->name}}:{{$attribute->pivot->value->value }}</span>
+                  @endforeach
+                  </div></div>
+
                     <hr>
                         <div class="container asa">
 
@@ -161,17 +173,21 @@
                   <div class="form-group">
                   <div class="col-sm-offset-2 col-sm-10">
                   <div class="form-check">
-
-
                       <input  name="Chosen" type="checkbox"
                       @if ($cat->Chosen)
                         checked
                       @endif
                       id="exampleCheck2" >
                       <label   class="form-check-label" for="exampleCheck2">  فروش ویژه یا منتخب </label>
-
                   </div>
-
+                  <div class="form-check">
+                      <input  name="Special_sale" type="checkbox"
+                      @if ($cat->Special_sale)
+                        checked
+                      @endif
+                      id="exampleCheck2" >
+                      <label   class="form-check-label" for="exampleCheck2">  فروش ویژه یا منتخب </label>
+                  </div>
                   </div></div>
                 </div>
                 <!-- /.card-body -->

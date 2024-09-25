@@ -16,7 +16,7 @@ class adminmiddleware
     public function handle(Request $request, Closure $next): Response
     {
 
-        if ($request->user()?->is_superuser() || $request->user()?->is_staff()) {
+        if ($request->user()?->is_superuser()) {
            return $next($request);
         }else {
            return redirect('/home');

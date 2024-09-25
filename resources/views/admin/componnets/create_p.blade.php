@@ -87,6 +87,13 @@
                     </div>
                   </div>
                   <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">تعداد محصول</label>
+
+                    <div class="col-sm-10">
+                      <input type="number" min="0" name="count" class="form-control" id="inputEmail3" placeholder="تعداد را وارد کنید">
+                    </div>
+                  </div>
+                  <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">تخفیف</label>
 
                     <div class="col-sm-10">
@@ -147,11 +154,12 @@
                   <div class="form-group">
                   <div class="col-sm-offset-2 col-sm-10">
                   <div class="form-check">
-
-
                       <input value="1" name="Chosen" type="checkbox"  id="exampleCheck2" >
-                      <label   class="form-check-label" for="exampleCheck2">فروش ویژه یا منتخب  </label>
-
+                      <label   class="form-check-label" for="exampleCheck2">   منتخب  </label>
+                  </div>
+                  <div class="form-check">
+                      <input value="1" name="Special_sale" type="checkbox"  id="exampleCheck2" >
+                      <label   class="form-check-label" for="exampleCheck2">فروش ویژه    </label>
                   </div>
 
                   </div></div>

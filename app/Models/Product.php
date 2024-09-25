@@ -22,7 +22,8 @@ class Product extends Model
         'Chosen',
         'garant',
         'count_view'
-        ,'Criticism'
+        ,'Criticism',
+        'Special_sale'
     ];
 
     public function comment() {

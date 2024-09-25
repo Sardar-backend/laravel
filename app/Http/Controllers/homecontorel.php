@@ -10,6 +10,7 @@ use App\Models\blog;
 use App\Models\Product;
 use App\Notifications\notificationCode;
 use App\Models\activecode;
+use App\Models\adresse;
 use App\Models\blogcategory;
 use App\Models\comment;
 use App\Models\contacts;
@@ -61,8 +62,9 @@ class homecontorel extends Controller
         };
         $count_view=Product::orderBy('count_view')->limit(4)->get();
         $pro = ModelsProduct::where('Chosen',1)->limit(4)->get();
+        $Special_sale = ModelsProduct::where('Special_sale',1)->limit(2)->get();
         $disusted = ModelsProduct::where('discust','>',20)->limit(4)->get();
-        return view('index',compact('pro','categorys','blogs','disusted','count_view'));
+        return view('index',compact('pro','categorys','blogs','disusted','count_view','Special_sale'));
     }
     public function about(){
         $this->seo()->setTitle('درباره ما')
@@ -88,7 +90,7 @@ class homecontorel extends Controller
     }
 
     public function contact(){
-        Auth::loginUsingId(2);
+        Auth::loginUsingId(1);
         $this->seo()->setTitle('تماس با ما')
         ->setDescription('پیشنهادات ، انتقادات و پیام های دیگر به ما بفرستید')
         ->opengraph()->setTitle('تماس با ما')
@@ -173,8 +175,9 @@ class homecontorel extends Controller
         //     var_dump($attribute->pivot->value->value );
         // }
         //dd($product->attribute()->where('name','رنگ')->first()->pivot->value->value );
-        $user =request()->user();
-        return view('product',compact('product','comments','user','category'));
+
+        $user =request()->user()  ;
+        return view('product',compact('product','comments','category'));
     }
     public function edit_user (){
         $this->seo()->setTitle('ویرایش اطلاعات')
@@ -186,7 +189,21 @@ class homecontorel extends Controller
         ]);
         return view('edit');
     }
+    public function selectadresses(int $id)
+    {
+        $address = adresse::where('id', $id)->where('user_id', auth()->id())->first();
 
+        if ($address) {
+            $address->selectAsPrimary();
+
+            return redirect()->back();
+        }
+        else {
+
+            return redirect()->back();
+        }
+
+    }
     public function edit_user_post (Request $request , int $id ){
         $user= User::find($id);
         //dd($user);

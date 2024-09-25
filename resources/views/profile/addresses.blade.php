@@ -99,7 +99,8 @@
                             <!-- User Addresses -->
                             <div class="custom-container" id="addresses">
                                 <div class="row pt-2 px-3">
-                                    <div class="col-12"><h1>آدرس های من</h1></div>
+                                    <div class="col-11"><h1>آدرس های من</h1></div>
+
                                 </div>
                                 <hr>
                                 <div class="container">
@@ -117,12 +118,22 @@
                                                 </div>
 
                                                 <div class="col-12 col-sm-2 text-lg-end">
+                                                <form action="{{route('selectadresses' , ['id'=> $adress->id ])}}" id="dfd{{$adress->id}}" method="post">
+
+                                                    @csrf
+                                                </form>
                                                 <form id="aaa{{$adress->id}}" action="{{route('delete_adresses',['id'=>$adress->id])}}" method="post">
                                                     @csrf
                                                 </form>
                                                     <a onclick="let cc = document.querySelector('#aaa{{$adress->id}}').submit()"  class="float-right float-sm-left pr-2 pl-sm-2"><i  id="iiii" class="fa fa-trash-alt font-weight-normal"></i></a>
                                                     <!-- <a href="#" class="float-right float-sm-left"><i class="fa fa-edit font-weight-normal"></i></a> -->
-                                                    <!-- <a href="#" class="float-right float-sm-left ml-2" title="آدرس پیش فرض"><i class="fa fa-check-circle" style="color: #fcb941"></i></a> -->
+                                                     @if ($adress->is_selected)
+
+                                                     <a  class="float-right float-sm-left ml-2" title=" ادرس منتخب"><i class="fa fa-check-circle" style="color: #fcb941"></i></a>
+                                                     @else
+                                                     <a  class="float-right float-sm-left ml-2" title="انتخاب به عنوان ادرس منتخب"><i onclick="let f = document.querySelector('#dfd{{$adress->id}}').submit()" class="fa fa-check-circle" style="color: #999999"></i></a>
+
+                                                     @endif
                                                 </div>
                                             </div>
                                         </div>
