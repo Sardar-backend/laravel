@@ -20,5 +20,8 @@ class adresse extends Model
         $this->update(['is_selected' => 1]);
     }
 
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 
 }

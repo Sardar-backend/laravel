@@ -25,4 +25,5 @@ Route::resource('admin_blogCategory',App\Http\Controllers\admin\admin_blogCatego
 
 Route::get('admin/massage',[App\Http\Controllers\admin\admin_comment::class,'massage'])->middleware(adminmiddleware::class)->name('massage');
 
-Route::apiResource('api',App\Http\Controllers\api\api::class);
+Route::apiResource('api/user',App\Http\Controllers\api\apiUser::class);
+Route::apiResource('api/adresse',App\Http\Controllers\api\apiAdresse::class);
