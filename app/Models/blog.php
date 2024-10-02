@@ -9,7 +9,7 @@ class blog extends Model
 {
 
     public $timestamps = false;
-    public $fillable = [ 'id', 'title', 'content','count_view'];
+    public $fillable = [ 'id', 'title','image', 'content','count_view'];
 
 
 

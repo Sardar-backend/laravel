@@ -1,5 +1,6 @@
 @extends('base')
 @section('content')
+
 <section class="inner-page blog-inner-page" id="blog-page">
     <div class="container-fluid" id="page-hero">
         <div class="row">
@@ -8,7 +9,7 @@
                     <div class="row">
                         <div class="col-12 px-0">
                             <h1>آموزش نصب قالب وردپرسی روبیک مارکت</h1>
-                            <p>در این آموزش یاد میگیرید که چگونه قالب وردپرسی روبیک مارکت را نصب کنید.</p>
+                            <!-- <p>در این آموزش یاد میگیرید که چگونه قالب وردپرسی روبیک مارکت را نصب کنید.</p> -->
                             <!-- <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="index.html">صفحه نخست</a></li>
@@ -47,8 +48,8 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-12 pt-2 text-justify" id="post-html">
-                                                <div class="text-center pt-2 pb-3"><img src="assets/images/blog/post100.jpg" alt="آموزش نصب قالب وردپرسی روبیک مارکت"></div>
-                                                <p>{{$blog->content}}</p>
+                                                <div class="text-center pt-2 pb-3"><img src="/storage/{{$blog->image}}" alt="آموزش نصب قالب وردپرسی روبیک مارکت"></div>
+                                                <p>{!! nl2br(e($blog->content)) !!}</p>
                                                 <!-- <p>این یک متن آزمایشی است که به زودی توسط نویسنده این سایت، تکمیل یا حذف خواهد شد. اگر شما نویسنده‌ی این سایت هستید، برای حذف یا ویرایش این صفحه، کافی است از طریق مرکز مدیریت سایت خود وارد بخش مربوطه شده و محتوای این صفحه را ویرایش یا حذف کنید.</p>
                                                 <p>صفحات و محتوای آزمایشی همیشه بخشی از محتوای پیش‌نمایش قالب و افزونه های وب هستند که شما بتوانید ارتباط درستی با پیش نمایش قالب گرفته و تصمیم مناسبی بگیرید. این صفحات معمولا برای اطلاعات کلی در مورد سایت مثل «درباره ما»، «تماس با ما»، «فهرست» یا «نظرات شما» مفید هستند.</p>
                                                 <p>بنابراین نگران ویرایش و بروزرسانی محتوای این نوع صفحات نباشید. شما می‌توانید به سادگی و تنها با چند کلیک وارد ناحیه مدیریت وب‌سایت خود شده و مطلب مربوطه را ویرایش کنید.</p>
@@ -97,7 +98,7 @@
                                                                     <div class="sender-details">
                                                                         <div class="row">
                                                                             <div class="col-3 col-sm-2 col-md-1 pl-md-0 pl-lg-2 pl-xl-3">
-                                                                                <img oncontextmenu="function d (event){ event.preventDefault()}" style="pointer-events: none;"  src="assets/images/user-no-image.jpg" alt="image" class="rounded">
+                                                                                <img oncontextmenu="function d (event){ event.preventDefault()}" style="pointer-events: none;"  src="/storage/{{$comment->user->image}}" alt="image" class="rounded">
                                                                             </div>
                                                                             <div class="col-9 col-sm-10 col-md-11 pr-0 pr-md-2 pr-xl-0 pt-0 pt-lg-1">
                                                                                 <div class="name">{{$comment->user->name}}</div>
@@ -124,7 +125,7 @@
                                                                                 <div class="sender-details">
                                                                                     <div class="row">
                                                                                         <div class="col-3 col-sm-2 col-md-1 pl-md-0 pl-lg-2 pl-xl-3">
-                                                                                            <img src="assets/images/user-no-image.jpg" alt="image" class="rounded">
+                                                                                            <img src="/storage/{{$child->user->image}}" alt="image" class="rounded">
                                                                                         </div>
                                                                                         <div class="col-9 col-sm-10 col-md-11 pr-0 pr-md-2 pr-xl-0 pt-0 pt-lg-1">
                                                                                             <div class="name">{{$child->user->name}}</div>

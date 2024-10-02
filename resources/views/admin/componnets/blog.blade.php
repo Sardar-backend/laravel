@@ -18,7 +18,7 @@
                     </div>
                     </form>
                     <div class="btn-group-sm mr-2"></div>
-                    <a href="{{ route('admin_blog.create') }}" class="btn btn-info">ایجاد مقالات</a>
+                    <a href="{{ route('admin_blog.create') }}" class="btn btn-info">ایجاد مقاله</a>
                     </div>
                 </div>
 

@@ -19,9 +19,15 @@
                   </div>
                   </div>
                   <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">شماره تلفن</label>
+                    <label for="inputEmail3" class="col-sm-2 control-label">شماره موبایل</label>
                   <div class="col-sm-10">
                       <input type="text" name="phonenumber" class="form-control" id="inputEmail3" placeholder="شماره را وارد کنید">
+                  </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">شماره منزل</label>
+                  <div class="col-sm-10">
+                      <input type="text" name="home_number" class="form-control" id="inputEmail3" placeholder="شماره را وارد کنید">
                   </div>
                   </div>
                   <div class="form-group">

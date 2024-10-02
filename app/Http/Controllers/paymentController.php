@@ -29,7 +29,8 @@ class paymentController extends Controller
             'width' => 200,
         ]);
         $all=Cart::all();
-        if ($all) {
+        // dd( count($all));
+        if (count($all)) {
             $price = $all->sum(function($cart){
                 return $cart['product']->price * $cart['quantity'];
             });
@@ -46,9 +47,10 @@ class paymentController extends Controller
             $adrres = adresse::where('is_selected',1)->first();
 
             return view('checkout',compact('all','adrres'));
-    }
+            }
+
     Alert::error('خطا','سبد خرید شما خالی است');
-    return back();
+    return redirect('/');
     }
 
     public function pay()

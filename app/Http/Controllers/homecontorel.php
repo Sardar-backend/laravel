@@ -61,9 +61,10 @@ class homecontorel extends Controller
             return 'Home';
         };
         $count_view=Product::orderBy('count_view')->limit(4)->get();
-        $pro = ModelsProduct::where('Chosen',1)->limit(4)->get();
-        $Special_sale = ModelsProduct::where('Special_sale',1)->limit(2)->get();
-        $disusted = ModelsProduct::where('discust','>',20)->limit(4)->get();
+        $pro = Product::where('Chosen',1)->limit(4)->get();
+        $Special_sale = Product::where('Special_sale',1)->limit(2)->get();
+        $disusted = Product::where('discust','>',20)->limit(4)->get();
+        // dd($disusted);
         return view('index',compact('pro','categorys','blogs','disusted','count_view','Special_sale'));
     }
     public function about(){
@@ -85,7 +86,7 @@ class homecontorel extends Controller
             'height' => 200,
             'width' => 200,
         ]);
-        $blogs=blog::orderBy('failed_at')->paginate(2);
+        $blogs=blog::orderBy('failed_at')->paginate(6);
         return view('blog',compact('blogs'))->with('last_blog',Zand::ttt()[0])->with('last_products',Zand::ttt()[1]);
     }
 
@@ -109,7 +110,17 @@ class homecontorel extends Controller
             'number_phone' => ['required'],
             'subject' => ['required','string'],
             'content' => ['required','string']
-        ]);
+        ]
+        , [
+            'name.required' => 'لطفاً نام خود را وارد کنید.',
+            'email.required' => 'لطفاً ایمیل خود را وارد کنید.',
+            'email.email' => 'ایمیل وارد شده صحیح نیست.',
+            'number_phone.required' => 'لطفاً شماره تماس خود را وارد کنید.',
+            'subject.required' => 'لطفاً موضوع پیام خود را وارد کنید.',
+            'content.required' => 'لطفاً محتوای پیام خود را وارد کنید.'
+        ]
+    );
+
         $con=contacts::create($data);
         Alert::success('ارسال موفیت آمیز بود','پیغام شما ارسال شد');
         return back();
@@ -209,14 +220,40 @@ class homecontorel extends Controller
         //dd($user);
         $data=$request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'phonenumber' => ['required' ,'max:255'],
-            'meli_code' => ['required', 'max:255'],
+            'phonenumber' => ['required' ,'max:13'],
+            'meli_code' => ['required', 'max:10'],
             'image' => ['required'],
             'cart_number' => ['required',  'max:255'],
-            'home_number' => ['required'  , 'max:255'],
+            'home_number' => ['required'  , 'max:11'],
             'email' => ['required',  'email', 'max:255', Rule::unique('users')->ignore($user->id)],
             'birthday' => ['required'],
-        ]);
+        ], [
+            'name.required' => 'لطفاً نام خود را وارد کنید.',
+            'name.string' => 'نام باید یک رشته متنی باشد.',
+            'name.max' => 'نام نباید بیش از ۲۵۵ کاراکتر باشد.',
+
+            'phonenumber.required' => 'لطفاً شماره تلفن خود را وارد کنید.',
+            'phonenumber.max' => 'شماره تلفن نباید بیش از 13 کاراکتر باشد.',
+
+            'meli_code.required' => 'لطفاً کد ملی خود را وارد کنید.',
+            'meli_code.max' => 'کد ملی نباید بیش از 10 کاراکتر باشد.',
+
+            'image.required' => 'لطفاً تصویر خود را بارگذاری کنید.',
+
+            'cart_number.required' => 'لطفاً شماره کارت بانکی خود را وارد کنید.',
+            'cart_number.max' => 'شماره کارت نباید بیش از 12 کاراکتر باشد.',
+
+            'home_number.required' => 'لطفاً شماره منزل خود را وارد کنید.',
+            'home_number.max' => 'شماره منزل نباید بیش از 11 کاراکتر باشد.',
+
+            'email.required' => 'لطفاً ایمیل خود را وارد کنید.',
+            'email.email' => 'لطفاً یک آدرس ایمیل معتبر وارد کنید.',
+            'email.max' => 'ایمیل نباید بیش از ۲۵۵ کاراکتر باشد.',
+            'email.unique' => 'این ایمیل قبلاً ثبت شده است.',
+
+            'birthday.required' => 'لطفاً تاریخ تولد خود را وارد کنید.',
+        ]
+        );
         $f=Storage::disk('public')->putFile( 'ProfilePhoto', request()->file('image'));
         $data['image']=$f;
 
@@ -305,14 +342,15 @@ class homecontorel extends Controller
 
 
     public function blog_category(string $category){
-        $this->seo()->setTitle($category.' ' .'مقالات ')
+        $this->seo()->setTitle('مقالات '.' ' .$category)
         ->setDescription($category . ' '.'مقالات دسته بندی')
         ->opengraph()->setTitle($category.' '.'مقالات')
         ->addImage(asset('img/logo.png'), [
             'height' => 200,
             'width' => 200,
         ]);
-        $blogs = blogcategory::where('name',$category)->orderBy('updated_at')->paginate(4);
+
+        $blogs = blogcategory::where('name',$category)->first()->blogs()->orderBy('failed_at')->paginate(4);
         // $blogs=blog::where()->orderBy('failed_at')->paginate(2);
         return view('blog',compact('blogs'))->with('last_blog',Zand::ttt()[0])->with('last_products',Zand::ttt()[1]);
     }

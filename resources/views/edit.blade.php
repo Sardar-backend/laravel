@@ -37,7 +37,17 @@
                                  @method('PATCH')
                                  @csrf
                             <div class="title">ویرایش اطلاعات</div>
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @else
                             <p>با ورود به ناحیه کاربری خود از همه امکانات سایت بهره مند شوید.</p>
+                            @endif
                             <div class="form-group">
                                 <label for="name">نام و نام خانوادگی :</label>
                                 <input name="name" type="text" class="form-control"  value="{{request()->user()->name}}" >

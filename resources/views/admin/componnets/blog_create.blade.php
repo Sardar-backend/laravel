@@ -9,7 +9,7 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form class="form-horizontal" action="{{route('admin_blog.store')}}" method="post">
+              <form class="form-horizontal" action="{{route('admin_blog.store')}}" enctype="multipart/form-data" method="post">
                 @csrf
                 <div class="card-body">
                   <div class="form-group">
@@ -19,12 +19,30 @@
                   </div>
                   </div>
                   <div class="form-group">
+                  <div class="col-sm-10">
+                  <label for="email">عکس مقاله  :</label>
+                  <input name="image" accept="image/*" type="file" class="form-control"   ></div></div>
+                  <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">متن مقاله</label>
                   <div class="col-sm-10">
                   <textarea name="content"  class="form-control" placeholder="متن را وارد کنید" id="discription" cols="30" rows="10"></textarea>
                   </div>
                   </div>
+                  <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">دسته بندی</label>
+                    <div class="col-sm-10">
+                    <select  class="form-control" name="categories[]" id="categories" multiple>
+                        @php
+                        use App\Models\blogcategory;
+                        $categories = blogcategory::all();
+                        @endphp
+                        @foreach ($categories as $category)
+                            <option value="{{$category->id}}" >{{$category->name}}</option>
+                        @endforeach
 
+                    </select>
+                    </div>
+                  </div>
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">

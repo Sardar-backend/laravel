@@ -41,7 +41,7 @@
                                                  @foreach ($blogs as $blog)
                                                 <div class="col">
                                                     <div class="encode43bdsf23da" data-aos="fade-up" data-aos-duration="1000">
-                                                        <a href={{route('blog_single',$id=$blog->id)}}><div  class="post-image" style="background-image: url('assets/images/blog/post100.jpg')"></div></a>
+                                                        <a href={{route('blog_single',$id=$blog->id)}}><div  class="post-image" style="background-image: url('/storage/{{$blog->image}}')"></div></a>
                                                         <div class="details py-3 px-4">
                                                             <div class="post-date">ارسال شده در {{jdate($blog->failed_at)->format('%B %d، %Y')}}</div>
                                                             <a href="{{route('blog_single',$id=$blog->id)}}">

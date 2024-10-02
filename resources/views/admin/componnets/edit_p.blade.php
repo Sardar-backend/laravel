@@ -178,7 +178,7 @@
                         checked
                       @endif
                       id="exampleCheck2" >
-                      <label   class="form-check-label" for="exampleCheck2">  فروش ویژه یا منتخب </label>
+                      <label   class="form-check-label" for="exampleCheck2">   منتخب </label>
                   </div>
                   <div class="form-check">
                       <input  name="Special_sale" type="checkbox"
@@ -186,7 +186,7 @@
                         checked
                       @endif
                       id="exampleCheck2" >
-                      <label   class="form-check-label" for="exampleCheck2">  فروش ویژه یا منتخب </label>
+                      <label   class="form-check-label" for="exampleCheck2">فروش ویژه  </label>
                   </div>
                   </div></div>
                 </div>

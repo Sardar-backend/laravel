@@ -10,6 +10,8 @@ use App\Models\contacts;
 use App\Models\Product;
 use App\Models\productcategory;
 use App\Models\User;
+use App\RestfulApi\ApiResponse;
+use App\RestfulApi\Fecades\ApiResponseFacade;
 use Illuminate\Contracts\Debug\ExceptionHandler;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -18,9 +20,12 @@ use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
 
 use function PHPUnit\Framework\isNull;
-
+// use App\Services\UserServices;
+use App\Services\UserServices;
 class apiUser extends Controller
 {
+    public function __construct(private UserServices $userService) {
+    }
     public function index()
     {
         $users=User::paginate(2);
@@ -66,15 +71,16 @@ class apiUser extends Controller
                     ] ,  422 );
 
                 }
+            $result = $this->userService->registerUser($validator->validate());
             $inputs = $validator->validated();
-            $inputs['password'] = Hash::make($inputs['password']);
-            $tiket = User::create($inputs);
-            return (new AppendsBuilder())->withMessage('User created successfully')->withData($tiket)->build()->Response();
-            // return response()->json([
-            //     'massage' => 'User created successfully',
-            //     'data' => $tiket
+            // $inputs['password'] = Hash::make($inputs['password']);
+            // $tiket = User::create($inputs);
+            // return (new AppendsBuilder())->withMessage('User created successfully')->withData($tiket)->build()->Response();
 
-            // ]);
+
+            if (!$result['ok']) {
+                return ApiResponseFacade::withMessage('User created successfully')->withData($result['data'])->build()->Response();
+            }
 
         } catch (\Throwable $th) {
             app()[ExceptionHandler::class]->report($th);

@@ -49,7 +49,19 @@
                         <div class="col-12 col-lg-7 p-4"><form action="{{route('contact_post')}}" method="post">@csrf
 
                             <div class="title">ارسال پیام</div>
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @else
+
                             <p>نظرات، پیشنهادات و انتقادات سازنده خود را از طریق فرم زیر با ما در میان بگذارید. ما در این فروشگاه اینترنتی همواره برای بهبود خدمات خود در تلاش هستیم.</p>
+                            @endif
+
                             <div class="form-group">
                                 <label for="name">نام شما :</label>
                                 <input name="name"  type="text" class="form-control" id="name">

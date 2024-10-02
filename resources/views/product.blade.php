@@ -377,8 +377,8 @@
                                                 <a href="#" aria-expanded="false">سایر صفحات<em class="droopmenu-topanim"></em></a><div class="dm-arrow"></div>
                                                 <ul style="">
                                                     <!-- <li><a href="compare.html">مقایسه محصول</a></li> -->
-                                                    <li><a href="">سبد خرید</a></li>
-                                                    <li><a href=""checkout.html">پیش فاکتور</a></li>
+                                                    <li><a href="cart">سبد خرید</a></li>
+                                                    <li><a href="checkout">پیش فاکتور</a></li>
                                                     <!-- <li class="dm-bottom-separator"></li> -->
                                                     <!-- <li><a href=>عضویت/ورود به سایت</a></li> -->
                                                     <!-- <li><a href="register.html">عضویت در سایت</a></li> -->
@@ -790,7 +790,7 @@ $colorMap = [
                                             <div class="col-12 pt-2 px-0 px-lg-0">
                                                 <!-- HTML Tab -->
                                                 <div id="html-tab" class="tabs-container text-justify p-0 p-md-3 nhhn">
-                                                    <p>{{$product->Criticism}}</p>
+                                                    <p>{!! nl2br(e($product->Criticism)) !!}</p>
                                                 </div>
                                                 <!-- /HTML Tab -->
 
@@ -938,7 +938,7 @@ $colorMap = [
                                                                 </div>
                                                                 <div class="row">
                                                                     <div class="col-12 py-3">@guest
-                                                                        
+
                                                                     <p>برای ارسال نظر باید وارد شوید</p>
                                                                     @else
                                                                         <form method="post" action="{{route('create_comment')}}">

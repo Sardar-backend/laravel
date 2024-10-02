@@ -87,10 +87,11 @@ class admin_product extends Controller
         else {
             $data['Chosen']=0;
         }
+
         if (isset($data['Special_sale'])) {
-            $data['Chosen']=1;}
+            $data['Special_sale']=1;}
         else {
-            $data['Chosen']=0;
+            $data['Special_sale']=0;
         }
         $g=Product::create($data)->get();
         $id=$g->last()->id;
@@ -166,7 +167,11 @@ class admin_product extends Controller
         else {
             $data['Chosen']=0;
         }
-            # code...
+        if (isset($data['Special_sale'])) {
+            $data['Special_sale']=1;}
+        else {
+            $data['Special_sale']=0;
+        }
 
         // dd($request->file('cfc'));
         // Storage::putFileAs('file',$request->file('cfc'),$request->file('cfc')->getClientOriginalName());
@@ -182,10 +187,10 @@ class admin_product extends Controller
                 $attre = Attributes::firstOrCreate(
                     ['name' => $item['name']]
                 );
-                // dd($attre->values()->get());
+
                 $attre_value = $attre->values()->firstOrCreate(
                     ['value' => $item['value']]
-                    // ['value' => 'value']
+
                 );
 
                 $p->attribute()->attach($attre->id,['value_id' => $attre_value->id]);

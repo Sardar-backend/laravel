@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\blog;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class admin_blog extends Controller
 {
@@ -30,6 +31,7 @@ class admin_blog extends Controller
         return view('admin/componnets/blog_create');
     }
 
+
     /**
      * Store a newly created resource in storage.
      */
@@ -38,8 +40,14 @@ class admin_blog extends Controller
         $data = $request->validate([
             'title' => ['required', 'string', 'max:255'],
             'content' => ['required','string'],
+            'image' => ['required'],
+            'categories'=> ['required','array'],
         ]);
-        blog::create($data);
+        $data['image']=Storage::disk('public')->putFile( 'files', request()->file('image'));
+
+        // dd($data);
+        $obj=blog::create($data);
+        $obj->category()->sync($data['categories']);
         return redirect()->route('admin_blog.index')->with('success', 'Blog created successfully.');
     }
 
@@ -69,9 +77,16 @@ class admin_blog extends Controller
         $data=$request->validate([
             'title' => ['required', 'string', 'max:255'],
             'content' => ['required','string'],
+            'image' => ['required'],
+            'categories'=> ['required','array'],
         ]);
+        $data['image']=Storage::disk('public')->putFile( 'files', request()->file('image'));
         $blog=blog::find($id);
-        $blog->update($data);
+        $obj=$blog->update($data);
+        $obj = $blog->fresh();
+        $obj->category()->detach();
+        // dd($obj->id);
+        $obj->category()->sync($data['categories']);
         return redirect()->route('admin_blog.index');
     }
 

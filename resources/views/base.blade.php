@@ -220,7 +220,7 @@
                                                 <ul style="">
                                                     <!-- <li><a href="compare.html">مقایسه محصول</a></li> -->
                                                     <li><a href="cart">سبد خرید</a></li>
-                                                    <li><a href=""checkout.html">پیش فاکتور</a></li>
+                                                    <li><a href="checkout"">پیش فاکتور</a></li>
                                                     <!-- <li class="dm-bottom-separator"></li> -->
                                                     <!-- <li><a href=>عضویت/ورود به سایت</a></li> -->
                                                     <!-- <li><a href="register.html">عضویت در سایت</a></li> -->
