@@ -578,7 +578,7 @@ $colorMap = [
                     <div class="row">
                         <div class="col-12 px-0">
                             <h1>{{$product->name}}</h1>
-                            <p>دارای قابلیت دو سیم کارته و حافظه 128 گیگا بایت</p>
+                            <p>مرکز خرید روبیک مارکت</p>
 
                         </div>
                     </div>
@@ -676,7 +676,7 @@ $colorMap = [
                                 <span class="encode4365gbf265g43d">{{$product->price * (100-$product->discust)/100}} <span>تومان</span></span>
                                 <div class="badge badge-danger font-weight-light m-1 py-1 px-2">10%</div>
                             </div>
-                            <p>{{$product->discription}}</p>
+                            <p>{!! nl2br(e($product->discription)) !!}</p>
                             <hr>
                             <div class="variables">
                                 <div class="title">گزینه های موجود:</div>
@@ -717,10 +717,10 @@ $colorMap = [
                                     </div>
                                 </div>
                             </div>
-                            <form id="formlike" action="{{route('like_post')}}" method="post">@csrf
+                            <form id="formlike{{$product->id}}" action="{{route('like_post')}}" method="post">@csrf
                                             <input type="hidden" name="product_id" value="{{$product->id}}">
                             </form>
-                            <form id="formdislike" action="{{route('dislike_post' )}}" method="post">@csrf
+                            <form id="formdislike{{$product->id}}" action="{{route('dislike_post' )}}" method="post">@csrf
                                             <input type="hidden" name="product_id" value="{{$product->id}}">
                             </form>
                             <div class="cta-container pt-3 pt-md-5">
@@ -879,12 +879,12 @@ $colorMap = [
                                                                                         </div>
                                                                                         <div class="col-12">
                                                                                             <p>{{$r->content}}</p>
-                                                                                            <form action="">
+                                                                                            <!-- <form action="">
                                                                                             <input type="hidden" name="p" value="{{$r->id}}">
-                                                                                            <button style="background-color: inherit !important; border:0;" class="reply bb nn" type="submit">ارسال پاسخ<img class="ml-5" src="assets/images/comment-reply.png" id="{{$r->id}}" alt="image"></button>
-                                                                                            <!-- <span class="reply bb" id="{{$r->id}}"> ارسال پاسخ</span> -->
-                                                                                        </form>
-                                                                                            <!-- <span class="reply"><img src="assets/images/comment-reply.png" alt="image"> ارسال پاسخ</span> -->
+                                                                                             <button style="background-color: inherit !important; border:0;" class="reply bb nn" type="submit">ارسال پاسخ<img class="ml-5" src="assets/images/comment-reply.png" id="{{$r->id}}" alt="image"></button>
+                                                                                             <span class="reply bb" id="{{$r->id}}"> ارسال پاسخ</span>
+                                                                                        </form> -->
+                                                                                            <span class="reply" onclick="let parent_id = document.querySelector('.parent_id').value={{$r->id}};"><img src="assets/images/comment-reply.png" alt="image"> ارسال پاسخ</span>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -943,12 +943,7 @@ $colorMap = [
                                                                     @else
                                                                         <form method="post" action="{{route('create_comment')}}">
                                                                             @csrf
-                                                                            <input type="hidden" class="parent_id"  name="parent_id" @if (request()->p)
-                                                                            value="{{request()->p}}"
-                                                                            @else
-                                                                            value="0"
-                                                                            @endif
-                                                                            id="">
+                                                                            <input type="hidden" class="parent_id"  name="parent_id"id="">
                                                                             <input type="hidden" name="user_id" value="{{request()->user()->id }}">
                                                                             <input type="hidden" name="commenttable_id" value="{{$product->id}}">
                                                                             <input type="hidden" name="commenttable_type" value="{{get_class($product)}}">

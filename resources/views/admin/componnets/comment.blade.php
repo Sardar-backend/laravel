@@ -38,7 +38,7 @@
                   <tr>
                     <td>{{$user->id}}</td>
                     <td>{{$user->user->name}}</td>
-                    <td>{{substr(strip_tags($user->content),0,150)}}...</td>
+                    <td>{{$user->content}}</td>
                     <td>
                         @if (! $user->status)
                         <span class="badge bg-danger p-2">تائید نشده</span>

@@ -105,7 +105,7 @@
                     <label for="inputEmail3" class="col-sm-2 control-label">تعداد محصول</label>
 
                     <div class="col-sm-10">
-                      <input type="number" min="0" name="count" class="form-control" id="inputEmail3" placeholder="تعداد را وارد کنید">
+                      <input type="number" min="0" name="count" class="form-control" value="{{$cat->count}}" id="inputEmail3" placeholder="تعداد را وارد کنید">
                     </div>
                   </div>
                   <div class="form-group">

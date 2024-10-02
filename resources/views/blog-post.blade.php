@@ -106,7 +106,7 @@
                                                                             </div>
                                                                             <div class="col-12">
                                                                                 <p>{{$comment->content}}</p>
-                                                                                <span onclick="let parent_id = document.querySelector('.parent_id').value={{$comment->id}};window.scrollTo(0,);" class="reply"><img  src="assets/images/comment-reply.png" alt="image"> ارسال پاسخ</span>
+                                                                                <span onclick="let parent_id = document.querySelector('.parent_id').value={{$comment->id}};" class="reply"><img  src="assets/images/comment-reply.png" alt="image"> ارسال پاسخ</span>
                                                                             </div>
                                                                         </div>
                                                                     </div>
