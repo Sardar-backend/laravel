@@ -16,7 +16,7 @@
                                                         <div class="side-blog-product">
                                                             <div class="row pl-3">
                                                                 <div class="col-4 pl-2">
-                                                                    <div class="image" style="background-image: url(assets/images/products/p100.png)"></div>
+                                                                    <div class="image" style="background-image: url({{$product->gallery()->first()->image}})"></div>
                                                                 </div>
                                                                 <div class="col-8 px-0">
                                                                     <h2> {{$product->name}}</h2>
@@ -51,7 +51,7 @@
                                                     <div class="side-blog-post">
                                                         <div class="row pl-3">
                                                             <div class="col-4 pl-2">
-                                                                <a href="{{route('blog_single',['id'=>$blog->id])}}"><div class="image" style="background-image: url(assets/images/blog/post100.jpg)"></div></a>
+                                                                <a href="{{route('blog_single',['id'=>$blog->id])}}"><div class="image" style="background-image: url('/storage/{{$blog->image}}')"></div></a>
                                                             </div>
                                                             <div class="col-8 px-0">
                                                                 <a href="blog-post.html"><h2>{{$blog->title}}</h2></a>

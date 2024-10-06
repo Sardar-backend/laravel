@@ -19,12 +19,12 @@
                   </div>
                   </div>
                   <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">قیمت</label>
-                  <div class="col-sm-10">
-                      <input type="text" name="price" class="form-control" id="inputEmail3" placeholder="قیمت را وارد کنید">
-                  </div>
-                  </div>
-                  <div class="form-group">
+                      <label for="inputEmail3" class="col-sm-2 control-label">قیمت</label>
+                      <div class="col-sm-10">
+                          <input type="text" name="price" class="form-control" id="inputEmail3" placeholder="قیمت را وارد کنید">
+                        </div>
+                    </div>
+                    <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">توضیحات</label>
 
                     <div class="col-sm-10">
@@ -33,20 +33,26 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">نقد و بررسی</label>
+                      <label for="inputEmail3" class="col-sm-2 control-label">نقد و بررسی</label>
 
-                    <div class="col-sm-10">
-                        <textarea name="Criticism"  class="form-control" placeholder="نقد را وارد کنید" id="discription" cols="30" rows="10"></textarea>
-                      <!-- <input type="text-eria" name="discription" id="discription" placeholder="توضیحات را وارد کنید" > -->
+                      <div class="col-sm-10">
+                          <textarea name="Criticism"  class="form-control" placeholder="نقد را وارد کنید" id="discription" cols="30" rows="10"></textarea>
+                          <!-- <input type="text-eria" name="discription" id="discription" placeholder="توضیحات را وارد کنید" > -->
+                        </div>
                     </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">ستاره ها</label>
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">ستاره ها</label>
 
-                    <div class="col-sm-10">
-                      <input type="number" max="5" min="0" name="stars" class="form-control" id="inputEmail3" placeholder="ستاره را وارد کنید">
+                        <div class="col-sm-10">
+                            <input type="number" max="5" min="0" name="stars" class="form-control" id="inputEmail3" placeholder="ستاره را وارد کنید">
+                        </div>
                     </div>
-                  </div>
+                    <div class="form-group">
+                      <label for="inputEmail3" class="col-sm-2 control-label">برند</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="Brand" class="form-control" id="inputEmail3" placeholder="برند محصول را وارد کنید">
+                    </div>
+                    </div>
 <!--
                   <div class="form-group">
                     <textarea id="my-editor" name="image" class="form-control">{!! old('content', '') !!}</textarea>

@@ -34,6 +34,7 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id()->primary();
             $table->string('name');
+            $table->string('Brand');
             // $table->string('image');
             // $table->unsignedBigInteger('sabad_id');
             // $table->foreign('sabad_id')->references('id')->on('sabad')->onDelete('cascade');

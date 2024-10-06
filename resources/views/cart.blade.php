@@ -78,7 +78,13 @@
                                                          </div>
                                                          <div class="col-10 col-md-8">
                                                              <a href="{{route('product',['id'=>$product->id])}}" target="_blank"><div class="title pt-2">{{$product->name}}</div></a>
+                                                             @if ($cart['color']=='unimportant')
+
+                                                             <a ><div class="title pt-2">رنگ : دلخواه</div></a>
+                                                             @else
+
                                                              <a ><div class="title pt-2">رنگ :{{$cart['color']}}</div></a>
+                                                             @endif
                                                          </div>
                                                      </div>
                                                  </div>

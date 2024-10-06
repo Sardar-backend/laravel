@@ -316,10 +316,15 @@
                                         <div class="encode4326654321vfb">
                                                 <a href="{{route('product',$id=$product->id)}}"><div class="image" style="background-image: url('{{$product->gallery()->first()->image}}')"></div></a>
                                                 <div class="details p-3">
-                                                    <div class="category">
+                                                    <!-- <div class="category">
                                                         <a href="products.html">گوشی موبایل</a>
                                                         &nbsp;/&nbsp;
                                                         <a href="products.html">سامسونگ</a>
+                                                    </div> -->
+                                                    <div class="category">
+                                                        <a href="/products?search={{$item->category()->first()->name}}">{{$item->category()->first()->name}}</a>
+                                                        &nbsp;/&nbsp;
+                                                        <a href="/products?search={{$item->Brand}}">{{$item->Brand}}</a>
                                                     </div>
                                                     <a href="{{route('product',$id=$product->id)}}"><h2>{{$product->name}}</h2></a>
                                                     <div class="encode4365gbf265g43d">{{$product->price}} تومان</div>

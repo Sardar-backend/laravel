@@ -23,7 +23,8 @@ class Product extends Model
         'garant',
         'count_view'
         ,'Criticism',
-        'Special_sale'
+        'Special_sale',
+        'Brand'
     ];
 
     public function comment() {

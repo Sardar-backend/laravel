@@ -32,17 +32,17 @@
             <div class="col-12 col-md-3 mt-2 mt-sm-1 text-center text-sm-start" id="slider-side-banners">
                 <div class="row row-cols-1 row-cols-sm-3 row-cols-md-1 h-100 gy-2 g-sm-1 g-md-0">
                     <div class="col align-self-start" data-aos="fade-top" data-aos-duration="1000">
-                        <a href="products.html">
+                        <a href="/product-3">
                             <img src="assets/images/slider/side-slide1.jpg" alt="image" width="100%">
                         </a>
                     </div>
                     <div class="col align-self-center" data-aos="fade-top" data-aos-duration="1100">
-                        <a href="products.html">
+                        <a href="/product-4">
                             <img src="assets/images/slider/side-slide2.jpg" alt="image" width="100%">
                         </a>
                     </div>
                     <div class="col align-self-end" data-aos="fade-top" data-aos-duration="1200">
-                        <a href="products.html">
+                        <a href="/product-1">
                             <img src="assets/images/slider/side-slide3.jpg" alt="image" width="100%">
                         </a>
                     </div>
@@ -95,10 +95,15 @@
                     @endif
                     </div>
                         <div class="details p-3">
-                            <div class="category">
+                            <!-- <div class="category">
                                 <a href={{route('product',['id'=>$p->id])}}>گوشی موبایل</a>
                                 &nbsp;/&nbsp;
                                 <a href={{route('product',['id'=>$p->id])}}>سامسونگ</a>
+                            </div> -->
+                            <div class="category">
+                                <a href="/products?search={{$p->category()->first()->name}}">{{$p->category()->first()->name}}</a>
+                                &nbsp;/&nbsp;
+                                <a href="/products?search={{$p->Brand}}">{{$p->Brand}}</a>
                             </div>
                             <a href={{route('product',['id'=>$p->id])}}><h2>{{$p->name}}</h2></a>
                             <div class="encode4365gbf265g43d">{{$p->price}} تومان</div>
@@ -146,10 +151,15 @@
                     @endif
                     </div>
                     <div class="details p-3">
-                        <div class="category">
+                        <!-- <div class="category">
                             <a href="products.html">گوشی موبایل</a>
                             &nbsp;/&nbsp;
                             <a href="products.html">سامسونگ</a>
+                        </div> -->
+                        <div class="category">
+                                <a href="/products?search={{$product->category()->first()->name}}">{{$product->category()->first()->name}}</a>
+                                &nbsp;/&nbsp;
+                                <a href="/products?search={{$product->Brand}}">{{$product->Brand}}</a>
                         </div>
                         <a href="{{route('product',['id'=>$product->id])}}"><h2>{{$product->name}}</h2></a>
                         <div>
@@ -197,11 +207,11 @@
                     @endif
                     </div>
                     <div class="details p-3">
-                        <div class="category">
-                            <a href="products.html">گوشی موبایل</a>
-                            &nbsp;/&nbsp;
-                            <a href="products.html">سامسونگ</a>
-                        </div>
+                    <div class="category">
+                                <a href="/products?search={{$product->category()->first()->name}}">{{$product->category()->first()->name}}</a>
+                                &nbsp;/&nbsp;
+                                <a href="/products?search={{$product->Brand}}">{{$product->Brand}}</a>
+                    </div>
                         <a href="{{route('product',['id'=>$product->id])}}"><h2>{{$product->name}}</h2></a>
                         <div class="encode4365gbf265g43d">{{$product->price}} تومان</div>
                         <div class="rate">
@@ -285,10 +295,10 @@
                         </div>
                     </a>
                     <div class="details p-3">
-                        <div class="category">
-                            <a href="products.html">گوشی موبایل</a>
-                            &nbsp;/&nbsp;
-                            <a href="products.html">سامسونگ</a>
+                    <div class="category">
+                                <a href="/products?search={{$product->category()->first()->name}}">{{$product->category()->first()->name}}</a>
+                                &nbsp;/&nbsp;
+                                <a href="/products?search={{$product->Brand}}">{{$product->Brand}}</a>
                         </div>
                         <a href="{{route('product',['id'=>$product->id])}}"><h2>{{$product->name}}</h2></a>
                         <div>
@@ -389,10 +399,10 @@
                     @endif
                     </div>
                     <div class="details p-3">
-                        <div class="category">
-                            <a href="products.html">گوشی موبایل</a>
-                            &nbsp;/&nbsp;
-                            <a href="products.html">سامسونگ</a>
+                    <div class="category">
+                                <a href="/products?search={{$product->category()->first()->name}}">{{$product->category()->first()->name}}</a>
+                                &nbsp;/&nbsp;
+                                <a href="/products?search={{$product->Brand}}">{{$product->Brand}}</a>
                         </div>
                         <a href="{{route('product',['id'=>$product->id])}}"><h2>{{$product->name}}</h2></a>
                         <div class="encode4365gbf265g43d">{{$product->price}} تومان</div>
@@ -435,10 +445,10 @@
                     @endif
                     </div>
                     <div class="details p-3">
-                        <div class="category">
-                            <a href="products.html">گوشی موبایل</a>
-                            &nbsp;/&nbsp;
-                            <a href="products.html">سامسونگ</a>
+                    <div class="category">
+                                <a href="/products?search={{$product->category()->first()->name}}">{{$product->category()->first()->name}}</a>
+                                &nbsp;/&nbsp;
+                                <a href="/products?search={{$product->Brand}}">{{$product->Brand}}</a>
                         </div>
                         <a href="{{route('product',['id'=>$product->id])}}"><h2>{{$product->name}}</h2></a>
                         <div class="encode4365gbf265g43d">{{$product->price}} تومان</div>
@@ -481,10 +491,10 @@
                     @endif
                     </div>
                     <div class="details p-3">
-                        <div class="category">
-                            <a href="products.html">گوشی موبایل</a>
-                            &nbsp;/&nbsp;
-                            <a href="products.html">سامسونگ</a>
+                    <div class="category">
+                                <a href="/products?search={{$product->category()->first()->name}}">{{$product->category()->first()->name}}</a>
+                                &nbsp;/&nbsp;
+                                <a href="/products?search={{$product->Brand}}">{{$product->Brand}}</a>
                         </div>
                         <a href="{{route('product',['id'=>$product->id])}}"><h2>{{$product->name}}</h2></a>
                         <div class="encode4365gbf265g43d">{{$product->price}} تومان</div>
@@ -526,10 +536,10 @@
                     @endif
                     </div>
                     <div class="details p-3">
-                        <div class="category">
-                            <a href="products.html">گوشی موبایل</a>
-                            &nbsp;/&nbsp;
-                            <a href="products.html">سامسونگ</a>
+                    <div class="category">
+                                <a href="/products?search={{$product->category()->first()->name}}">{{$product->category()->first()->name}}</a>
+                                &nbsp;/&nbsp;
+                                <a href="/products?search={{$product->Brand}}">{{$product->Brand}}</a>
                         </div>
                         <a href="{{route('product',['id'=>$product->id])}}"><h2>{{$product->name}}</h2></a>
                         <div class="encode4365gbf265g43d">{{$product->price}} تومان</div>
@@ -556,7 +566,7 @@
 <div class="container" data-aos="fade-up" data-aos-duration="1200">
     <div class="row">
         <div class="col-12 col-md-4 pt-2 text-center">
-            <a href="products?search=لپ تاپ">
+            <a href="products?search=لپ‌تاپ">
                 <img src="assets/images/promo-image1.png" alt="image">
             </a>
         </div>
@@ -579,13 +589,13 @@
 
             <div class="col">
                 <div class="encode43bdsf23da" data-aos="fade-up" data-aos-duration="1000">
-                    <a href="blog-post.html"><div class="post-image" style="background-image: url('assets/images/blog/post100.jpg')"></div></a>
+                    <a href="/blog-single-{{$blog->id}}"><div class="post-image" style="background-image: url('/storage/{{$blog->image}}')"></div></a>
                     <div class="details py-3 px-4">
                         <div class="post-date">ارسال شده در {{jdate($blog->failed_at)->ago()}}</div>
-                        <a href="blog-post.html">
+                        <a href="/blog-single-{{$blog->id}}">
                             <h2 class="post-title">{{$blog->title}}</h2>
                         </a>
-                        <a href="blog-post.html">
+                        <a href="/blog-single-{{$blog->id}}">
                             <div class="encode43bbfb">{{substr(strip_tags($blog->content),0,462)}}...</div>
                         </a>
                         <div class="read-more"><a href="{{route('blog_single' , $id=$blog->id )}}" class="hvr-icon-back">بیشتر خوانید <i class="fa fa-arrow-left hvr-icon"></i></a></div>

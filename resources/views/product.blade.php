@@ -991,9 +991,9 @@ $colorMap = [
                                     <a href="{{route('product',['id'=>$item->id])}}"><div class="image" style="background-image: url({{$item->gallery()->first()->image}})"></div></a>
                                     <div class="details p-3">
                                         <div class="category">
-                                            <a href="products.html">گوشی موبایل</a>
+                                            <a href="/products?search={{$item->category()->first()->name}}">{{$item->category()->first()->name}}</a>
                                             &nbsp;/&nbsp;
-                                            <a href="products.html">سامسونگ</a>
+                                            <a href="/products?search={{$item->Brand}}">{{$item->Brand}}</a>
                                         </div>
                                         <a href="{{route('product',['id'=>$item->id])}}"><h2>{{$item->name}}</h2></a>
                                         <div class="encode4365gbf265g43d">{{$item->price}} تومان</div>

@@ -78,6 +78,7 @@ class admin_product extends Controller
             'attribute' => ['required', 'array',],
             'categories'=>['required'],
             'garant' => ['required'],
+            'Brand' => ['required'],
             'Chosen' => ['nullable'],
             'Special_sale' => ['nullable'],
         ]);
@@ -160,6 +161,7 @@ class admin_product extends Controller
             'Chosen' => ['nullable'],
             'count' => ['required', 'string', 'max:255'],
             'garant' => ['required'],
+            'Brand' => ['required'],
             'Special_sale' => ['nullable'],
         ]);
         if (isset($data['Chosen'])) {

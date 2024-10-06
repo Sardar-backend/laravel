@@ -21,7 +21,7 @@
                   <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">دسته بندی والد</label>
                   <div class="col-sm-10">
-                      <input type="text" name="parent" class="form-control" id="inputEmail3" placeholder=" نام دسته بندی را وارد کنید">
+                      <input type="text" name="parent" class="form-control" id="inputEmail3" placeholder="در صورت نداشتن والد صفر قرار دهید">
                   </div>
                   </div>
 
