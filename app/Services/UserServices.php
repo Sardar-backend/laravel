@@ -15,7 +15,7 @@ class UserServices
         return app(ServiceWrapper::class)(function() use($inputs){
             $inputs['password'] = Hash::make($inputs['password']);
             return User::create($inputs);
-        })
+        });
 
 }
 }

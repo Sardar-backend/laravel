@@ -37,13 +37,13 @@
                                         <div class="col">
                                             <!-- Product Box -->
                                             <div class="encode4326654321vfb">
-                                                <a href="{{route('product',['id'=>$favorite->id])}}"><div class="image" style="background-image: url('../assets/images/products/p100.png')"></div></a>
+                                                <a href="{{route('product',['id'=>$favorite->id])}}"><div class="image" style="background-image: url('{{$favorite->gallery()->first()->image}}')"></div></a>
                                                 <div class="details p-3">
-                                                    <div class="category">
-                                                        <a href="../products.html">گوشی موبایل</a>
+                                                <div class="category">
+                                                        <a href="/products?search={{$favorite->category()->first()->name}}">{{$favorite->category()->first()->name}}</a>
                                                         &nbsp;/&nbsp;
-                                                        <a href="../products.html">سامسونگ</a>
-                                                    </div>
+                                                        <a href="/products?search={{$favorite->Brand}}">{{$favorite->Brand}}</a>
+                                                </div>
                                                     <a href="{{route('product',['id'=>$favorite->id])}}"><h2>{{$favorite->name}}</h2></a>
                                                     <div class="encode4365gbf265g43d">{{$favorite->price}} </div>
                                                     <div class="rate">

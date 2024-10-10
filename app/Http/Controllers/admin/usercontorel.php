@@ -32,8 +32,14 @@ class usercontorel extends Controller
             'number' => ['required'],
             'post_number' => ['required'],
         ]);
-        adresse::create($data);
-        Alert::success('عملیات موفق آمیز بود','آدرس شما اضافه شد');
+        try {
+            adresse::create($data);
+            Alert::success('عملیات موفق آمیز بود','آدرس شما اضافه شد');
+
+        } catch (\Throwable $th) {
+            //Alert::error('خطا','عملیات موفقیت آمیز نبود');
+            Alert::error('خطا',$th->getMessage());
+        }
         return back();
     }
 

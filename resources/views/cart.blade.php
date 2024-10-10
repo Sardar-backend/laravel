@@ -1,5 +1,51 @@
 @extends('base')
 @section('content')
+    <script>
+        $(document).ready(function() {
+        // زمانی که دکمه افزایش کلیک می‌شود
+        $('.btn-plus').click(function() {
+            var productId = $(this).data('product-id');
+            var currentQty = parseInt($('#order-number-' + productId).val());
+            var newQty = currentQty + 1;
+
+            // ارسال درخواست AJAX برای افزایش تعداد
+            updateCart(productId, newQty);
+        });
+
+        // زمانی که دکمه کاهش کلیک می‌شود
+        $('.btn-minus').click(function() {
+            var productId = $(this).data('product-id');
+            var currentQty = parseInt($('#order-number-' + productId).val());
+            if (currentQty > 1) {  // مطمئن می‌شویم که تعداد از 1 کمتر نشود
+                var newQty = currentQty - 1;
+
+                // ارسال درخواست AJAX برای کاهش تعداد
+                updateCart(productId, newQty);
+            }
+        });
+
+        // تابع AJAX برای ارسال درخواست
+        function updateCart(productId, newQty) {
+            $.ajax({
+                url: '/update-cart',  // آدرس API که به سرور ارسال می‌شود
+                method: 'POST',  // یا 'PUT' بسته به روش شما
+                data: {
+                    product_id: productId,
+                    quantity: newQty,
+                    _token: '{{ csrf_token() }}'  // برای لاراول (در صورتی که از لاراول استفاده می‌کنید)
+                },
+                success: function(response) {
+                    // در صورت موفقیت، تعداد جدید را در اینپوت نمایش می‌دهیم
+                    $('#order-number-' + productId).val(newQty);
+                    alert('Cart updated successfully!');
+                },
+                error: function(xhr) {
+                    alert('Error updating cart.');
+                }
+            });
+        }
+    });
+    </script>
 
 <section class="inner-page" id="cart-page">
     <div class="container-fluid" id="page-hero">
@@ -188,13 +234,13 @@
 
                                 <!-- Product Item -->
                                 <div class="encode4326654321vfb item">
-                                    <a href="{{route('product',['id'=>$product->id])}}"><div class="image" style="background-image: url('assets/images/products/p102.png')"></div></a>
+                                    <a href="{{route('product',['id'=>$product->id])}}"><div class="image" style="background-image: url('{{$product->gallery()->first()->image}}')"></div></a>
                                     <div class="details p-3">
-                                        <div class="category">
-                                            <a href="products.html">گوشی موبایل</a>
+                                    <div class="category">
+                                            <a href="/products?search={{$product->category()->first()->name}}">{{$product->category()->first()->name}}</a>
                                             &nbsp;/&nbsp;
-                                            <a href="products.html">سامسونگ</a>
-                                        </div>
+                                            <a href="/products?search={{$product->Brand}}">{{$product->Brand}}</a>
+                                    </div>
                                         <a href="{{route('product',['id'=>$product->id])}}""><h2>{{$product->name}}</h2></a>
                                         <div class="encode4365gbf265g43d">{{$product->price}} تومان</div>
                                         <div class="rate">
@@ -217,7 +263,6 @@
         </div>
     </div>
 </section>
-
 
 
 @endsection

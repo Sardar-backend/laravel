@@ -28,7 +28,7 @@ class admin_product extends Controller
         if ($keyword=request('search')) {
             $users = $users->where('name', 'LIKE', "%{$keyword}%")->orWhere('discription', 'LIKE', "%{$keyword}%")->orWhere('id', 'LIKE', "%{$keyword}%");
         }
-        $users=$users->paginate(20);
+        $users=$users->paginate(10);
         return view('admin.componnets.product',compact('users'));
     }
 
@@ -69,6 +69,7 @@ class admin_product extends Controller
        $data=$request->validate([
             'name' => ['required', 'string', 'max:255', 'unique:products'],
             'price' => ['required', 'string', 'max:255'],
+            'count' => ['required'],
             'discription' => ['required', 'string'],
             'stars' => ['required', 'string', 'max:255'],
             'with' => ['required', 'string', 'max:255'],
@@ -159,7 +160,7 @@ class admin_product extends Controller
             'categories'=>['required'],
             'attribute' => ['required', 'array','nullable'],
             'Chosen' => ['nullable'],
-            'count' => ['required', 'string', 'max:255'],
+            'count' => ['required'],
             'garant' => ['required'],
             'Brand' => ['required'],
             'Special_sale' => ['nullable'],

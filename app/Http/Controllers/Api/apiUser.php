@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 use App\RestfulApi\AppendsBuilder;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\User\UserRequest;
 use App\Http\Resources\ApiUserList;
 use App\Http\Resources\ApiUserListResource;
 use App\Models\blogcategory;
@@ -30,8 +31,8 @@ class apiUser extends Controller
     {
         $users=User::paginate(2);
         // return ApiUserListResource::collection($users);
-        return (new AppendsBuilder())->withMessage('User created successfully')->withData($users)->build()->Response();
-
+        //return (new AppendsBuilder())->withMessage('User created successfully')->withData($users)->build()->Response();
+        return ApiResponseFacade::withMessage('List of users created successfully')->withData($users)->build()->Response();
         // return response()->json([
         //     'data' => $users,
         // ]);
@@ -48,7 +49,7 @@ class apiUser extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request )
+    public function store(UserRequest $request )
     {
         try {
             // request()['name'] = $request->user()->name;
@@ -72,7 +73,7 @@ class apiUser extends Controller
 
                 }
             $result = $this->userService->registerUser($validator->validate());
-            $inputs = $validator->validated();
+            // $inputs = $validator->validated();
             // $inputs['password'] = Hash::make($inputs['password']);
             // $tiket = User::create($inputs);
             // return (new AppendsBuilder())->withMessage('User created successfully')->withData($tiket)->build()->Response();

@@ -92,6 +92,7 @@
                                                 <div class="col-6 text-center encode4365gbf265g43d-range mt-3">
                                                     <div>از</div>
                                                     <div id="encode4365gbf265g43d-range-to">500000</div>
+
                                                     <div>تومان</div>
                                                 </div>
                                                 <div id="button" class="col-12 text-center py-2">
@@ -322,9 +323,9 @@
                                                         <a href="products.html">سامسونگ</a>
                                                     </div> -->
                                                     <div class="category">
-                                                        <a href="/products?search={{$item->category()->first()->name}}">{{$item->category()->first()->name}}</a>
+                                                        <a href="/products?search={{$product->category()->first()->name}}">{{$product->category()->first()->name}}</a>
                                                         &nbsp;/&nbsp;
-                                                        <a href="/products?search={{$item->Brand}}">{{$item->Brand}}</a>
+                                                        <a href="/products?search={{$product->Brand}}">{{$product->Brand}}</a>
                                                     </div>
                                                     <a href="{{route('product',$id=$product->id)}}"><h2>{{$product->name}}</h2></a>
                                                     <div class="encode4365gbf265g43d">{{$product->price}} تومان</div>

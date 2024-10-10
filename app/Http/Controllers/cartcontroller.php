@@ -55,4 +55,24 @@ class cartcontroller extends Controller
 
         return back();
     }
+
+
+    public function updateCart(Request $request)
+{
+    $productId = $request->input('product_id');
+    $quantity = $request->input('quantity');
+
+    // یافتن محصول در سبد خرید
+    $cartItem = Cart::where('product_id', $productId)->first();
+
+    // به‌روزرسانی تعداد
+    if ($cartItem) {
+        $cartItem->quantity = $quantity;
+        $cartItem->save();
+        
+        return response()->json(['success' => true]);
+    }
+
+    return response()->json(['success' => false], 400);
+}
 }

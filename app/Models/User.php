@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\Base\traits\HasRules;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -10,7 +12,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable , HasRules;
 
     /**
      * The attributes that are mass assignable.
@@ -24,6 +26,18 @@ class User extends Authenticatable
         'password',
         'image',
         'is_superuser'
+    ];
+
+    protected static $rules = [
+        'name' => ['required', 'string', 'max:255'],
+        'phonenumber' => ['required' ,'max:255'],
+        'meli_code' => ['required', 'max:255'],
+        'image' => ['required'],
+        'cart_number' => ['required',  'max:255'],
+        'home_number' => ['required'  , 'max:255'],
+        'email' => ['required',  'email', 'max:255'],
+        'birthday' => ['required'],
+        'is_superuser' => ['nullable']
     ];
 
     /**

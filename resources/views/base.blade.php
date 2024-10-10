@@ -229,6 +229,7 @@
 
                                                 </ul>
                                             </li>
+                                            @auth
                                             <li class="droopmenu-parent" aria-haspopup="true">
                                                 <a href={{route('personal')}} aria-expanded="false">پروفایل کاربری<em class="droopmenu-topanim"></em></a><div class="dm-arrow"></div>
                                                 <ul style="">
@@ -238,6 +239,7 @@
                                                     <li><a href={{route('favorites')}}>علاقه مندی ها</a></li>
                                                 </ul>
                                             </li>
+                                            @endif
                                         </ul>
                                     </div>
                                 </div>

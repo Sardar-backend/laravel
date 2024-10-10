@@ -21,6 +21,7 @@ class Product extends Model
         'discust',
         'Chosen',
         'garant',
+        'count',
         'count_view'
         ,'Criticism',
         'Special_sale',

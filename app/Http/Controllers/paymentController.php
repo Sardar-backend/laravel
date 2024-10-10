@@ -45,6 +45,10 @@ class paymentController extends Controller
             Alert::info('توجه','این سایت کارکرد تجاری ندارد و قابل اتصال به درگاه پرداخت نیست');}
 
             $adrres = adresse::where('is_selected',1)->first();
+            if (!$adrres) {
+                Alert::warning('هشدار','شما آدرسی برای سفارشات منتخب نکرده اید');
+                return redirect('/Addresses');
+            }
 
             return view('checkout',compact('all','adrres'));
             }

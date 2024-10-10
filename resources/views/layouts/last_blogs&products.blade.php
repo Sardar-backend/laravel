@@ -54,7 +54,7 @@
                                                                 <a href="{{route('blog_single',['id'=>$blog->id])}}"><div class="image" style="background-image: url('/storage/{{$blog->image}}')"></div></a>
                                                             </div>
                                                             <div class="col-8 px-0">
-                                                                <a href="blog-post.html"><h2>{{$blog->title}}</h2></a>
+                                                                <a href="{{route('blog_single',['id'=>$blog->id])}}"><h2>{{$blog->title}}</h2></a>
                                                                 <div class="row">
                                                                     <div class="col-12 col-xl-6 pl-0">
                                                                         <span class="category">دسته بندی: <a href="{{route('blog_category',['category'=>$blog->category()->get()->first()->name])}}">{{$blog->category()->get()->first()->name}}</a></span>

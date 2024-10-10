@@ -23,7 +23,7 @@ class apiAdresse extends Controller
 {
     public function index()
     {
-        $users=adresse::with('user:id,name')->paginate(2);
+        $users=adresse::with('user:id,name')->paginate(1);
         return ApiResponseFacade::withData($users)->withMessage('sssdsssdsd')->build()->Response();
         // return response()->json([
         //     'data' => $users,

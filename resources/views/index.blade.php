@@ -244,23 +244,23 @@
                 <div class="on-sale-encode4326654321vfb h-100 p-3" data-aos="fade-zoom-in" data-aos-duration="800">
                     <div class="row h-100">
                         <div class="col-12 col-sm-4 col-lg-5">
-                            <a href="{{route('product',['id'=>$product->id])}}"><div class="image h-100" style="background-image: url('assets/images/products/p1000.png')"></div></a>
+                            <a href="{{route('product',['id'=>$product->id])}}"><div class="image h-100" style="background-image: url('{{$product->gallery()->first()->image}}')"></div></a>
                         </div>
                         <div class="col-12 col-sm-8 col-lg-7 py-3">
                             <div class="encode4365gbf2vrf">محصول ویژه امروز</div>
                             <div class="box-subtitle">فروش به مدت محدود</div>
                             <a href="{{route('product',['id'=>$product->id])}}">
-                                <div class="product-title pt-4">گوشی موبایل سامسونگ مدل Galaxy A51 دو سیم کارت</div>
+                                <div class="product-title pt-4">{{$product->name}}</div>
                             </a>
                             <div class="encode4365gbf265g43d py-2">
-                                <span class="discounted">4.500.000 تومان</span>
+                                <span class="discounted">{{$product->price * (100 - $product->discust)/100}} تومان</span>
                                 <br class="d-sm-none">
-                                <span class="pre">4.800.000 تومان</span>
+                                <span class="pre">{{$product->price}}تومان</span>
                             </div>
                             <div class="cta pt-2">
                                 <a href="{{route('product',['id'=>$product->id])}}" class="hvr-icon-back">همین حالا بخرید <i class="fa fa-arrow-left hvr-icon"></i></a>
                             </div>
-                            <div class="counter mt-3">
+                            <!-- <div class="counter mt-3">
                                 <div class="time-counter">
                                     <div class="seconds count">
                                         <div class="num">30</div>
@@ -279,7 +279,7 @@
                                         <div class="label">روز</div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>

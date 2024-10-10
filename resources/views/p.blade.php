@@ -52,7 +52,7 @@
               <div class="hero-mask opacity-9 bg-dark"></div>
               <div class="hero-content">
                 <div class="logo mb-4"> <a class="d-flex justify-content-center"  title="Oxyy"><img src="img/logo.png" alt="Oxyy"></a> </div>
-                <div class="d-flex justify-content-center">ورود به روبیک مارکت</div>
+                <div class="d-flex justify-content-center">ورود به روبیک مارکت</div><br>
                 <form id="loginForm" class="form-dark" action={{route('perp')}} method="post">@csrf
 
                   <div class="form-group icon-group">
